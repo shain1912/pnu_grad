@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>학·석사 연계과정 안내 — 시안 선택</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard Variable',-apple-system,BlinkMacSystemFont,sans-serif;background:#0a0a0f;color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:48px 24px}
+  .wrap{max-width:1080px;width:100%}
+  .label{font-size:13px;letter-spacing:0.2em;color:#888;text-transform:uppercase;margin-bottom:12px}
+  h1{font-size:clamp(32px,5vw,52px);font-weight:800;line-height:1.15;margin-bottom:12px;background:linear-gradient(135deg,#fff 0%,#888 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  p.lead{color:#aaa;font-size:17px;line-height:1.6;margin-bottom:48px;max-width:600px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+  a.card{display:block;text-decoration:none;color:inherit;border-radius:16px;overflow:hidden;background:#16161d;border:1px solid #2a2a35;transition:transform .25s,border-color .25s;position:relative}
+  a.card:hover{transform:translateY(-4px);border-color:#444}
+  .preview{height:140px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;letter-spacing:-0.02em}
+  .v1 .preview{background:linear-gradient(135deg,#1E40FF 0%,#0F1F8A 100%);color:#fff}
+  .v2 .preview{background:linear-gradient(135deg,#0F7B5C 0%,#0a5a43 100%);color:#F7F4ED;font-family:'Gowun Batang','Pretendard Variable',serif}
+  .v3 .preview{background:#08080A;color:#FFB800;border-bottom:1px solid #2a2a35;font-family:'JetBrains Mono',monospace}
+  .v3 .preview::before{content:'';position:absolute;top:14px;left:14px;width:8px;height:8px;border-radius:50%;background:#FFB800;box-shadow:0 0 12px #FFB800}
+  .body{padding:20px}
+  .tag{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;font-weight:600}
+  .v1 .tag{background:rgba(30,64,255,0.15);color:#7da3ff}
+  .v2 .tag{background:rgba(15,123,92,0.18);color:#5dc99e}
+  .v3 .tag{background:rgba(255,184,0,0.15);color:#FFB800}
+  h3{font-size:18px;margin-bottom:6px;font-weight:700}
+  .desc{color:#888;font-size:14px;line-height:1.55}
+  .open{display:inline-block;margin-top:14px;font-size:13px;color:#fff;border:1px solid #444;padding:6px 14px;border-radius:999px}
+  a.card:hover .open{background:#fff;color:#000;border-color:#fff}
+  footer{margin-top:48px;color:#666;font-size:13px;text-align:center}
+  footer a{color:#aaa;text-decoration:none;border-bottom:1px solid #333}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <img src="/logos/pnu-signature.jpg" alt="부산대학교" style="height:38px;width:auto;background:#fff;padding:6px 10px;border-radius:6px;margin-bottom:20px;display:block" />
+    <div class="label">PNU · 학·석사 연계과정 안내</div>
+    <h1>3개 시안 중 선택해서 보세요</h1>
+    <p class="lead">동일한 콘텐츠를 서로 다른 디자인 톤으로 풀어낸 랜딩 페이지입니다. 신청 모달, 스크롤 리빌, FAQ 아코디언, 카운트업/카운트다운 등 인터랙션이 모두 작동합니다.</p>
+
+    <div class="grid">
+      <a class="card v1" href="/admission-v1-blue.html">
+        <div class="preview">PNU</div>
+        <div class="body">
+          <span class="tag">v1 · 블루 베이스</span>
+          <h3>공식·공공 톤</h3>
+          <div class="desc">Pretendard · 60-30-10 · 블루 단색 + 카운트업 + 신청 모달. 가장 정통적인 공식 안내 페이지.</div>
+          <span class="open">열기 →</span>
+        </div>
+      </a>
+
+      <a class="card v2" href="/admission-v2-green.html">
+        <div class="preview">Editorial</div>
+        <div class="body">
+          <span class="tag">v2 · 그린 에디토리얼</span>
+          <h3>매거진·저널 스타일</h3>
+          <div class="desc">Gowun Batang 세리프 + 학술 그린(#0F7B5C) + 크림 페이퍼. Chapter 넘버링, 비대칭 Hero, 인용구.</div>
+          <span class="open">열기 →</span>
+        </div>
+      </a>
+
+      <a class="card v3" href="/admission-v3-dark.html">
+        <div class="preview">2026</div>
+        <div class="body">
+          <span class="tag">v3 · 다크 앰버</span>
+          <h3>프리미엄·몰입</h3>
+          <div class="desc">딥 다크 + 앰버 글로우(#FFB800). 실시간 카운트다운, 거대 outline 워터마크, 벤토 그리드, 터미널 프로세스.</div>
+          <span class="open">열기 →</span>
+        </div>
+      </a>
+    </div>
+
+    <footer>
+      또는 <a href="/">설문 앱으로 돌아가기</a>
+    </footer>
+  </div>
+</body>
+</html>
