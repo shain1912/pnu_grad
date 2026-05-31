@@ -134,3 +134,4 @@ start-caddy.bat
 - [`docs/adr/0001`](./docs/adr/0001-sheets-as-mirror-not-source-of-truth.md) — 시트는 미러, SQLite가 SoT
 - [`docs/adr/0002`](./docs/adr/0002-admin-uses-id-pw-not-oauth.md) — 관리자는 자체 ID/PW
 - [`docs/adr/0003`](./docs/adr/0003-sheet-sync-fire-and-forget.md) — 시트 동기화는 fire-and-forget
+- [`docs/adr/0004`](./docs/adr/0004-no-resource-board-forms-via-college-sites.md) — 자료실·게시판 없음, 양식은 단과대학 홈페이지로 위임
