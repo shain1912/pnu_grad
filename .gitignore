@@ -10,6 +10,10 @@ backend/credentials/
 *.log
 .DS_Store
 
+# 신청자 응답 CSV 내보내기 = 개인정보. 절대 커밋/배포 금지.
+responses-*.csv
+**/responses-*.csv
+
 # Caddy 런타임
 caddy/caddy.exe
 caddy/access.log

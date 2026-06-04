@@ -92,50 +92,31 @@ export default function AdminDashboard() {
             <Stat label="시트 상태" value={stats.sheet.configured ? '연결됨' : '미구성'} small tone={stats.sheet.configured ? 'ok' : 'muted'} />
           </div>
 
-          <div style={styles.grid2}>
-            <Section title="희망 트랙 분포">
-              {stats.track_distribution.length === 0 ? (
-                <Empty />
-              ) : (
-                <ResponsiveContainer width="100%" height={Math.max(180, stats.track_distribution.length * 50)}>
-                  <BarChart data={stats.track_distribution} layout="vertical" margin={{left: 30, right: 20}}>
-                    <XAxis type="number" allowDecimals={false} stroke="#888" />
-                    <YAxis dataKey="label" type="category" width={140} stroke="#888" tick={{fontSize:12}} />
-                    <Tooltip contentStyle={{background:'#1a1d27',border:'1px solid #2a2d38'}} />
-                    <Bar dataKey="count">
-                      {stats.track_distribution.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
-                    </Bar>
-                  </BarChart>
-                </ResponsiveContainer>
-              )}
-            </Section>
+          <Section title="희망 트랙 분포">
+            {(stats.track_distribution?.length ?? 0) === 0 ? (
+              <Empty />
+            ) : (
+              <ResponsiveContainer width="100%" height={Math.max(180, stats.track_distribution.length * 50)}>
+                <BarChart data={stats.track_distribution} layout="vertical" margin={{left: 30, right: 20}}>
+                  <XAxis type="number" allowDecimals={false} stroke="#888" />
+                  <YAxis dataKey="label" type="category" width={200} stroke="#888" tick={{fontSize:12}} />
+                  <Tooltip contentStyle={{background:'#1a1d27',border:'1px solid #2a2d38'}} />
+                  <Bar dataKey="count">
+                    {stats.track_distribution.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            )}
+          </Section>
 
-            <Section title="이수학기 분포">
-              {stats.semester_distribution.length === 0 ? (
-                <Empty />
-              ) : (
-                <ResponsiveContainer width="100%" height={Math.max(180, stats.semester_distribution.length * 50)}>
-                  <BarChart data={stats.semester_distribution} layout="vertical" margin={{left: 30, right: 20}}>
-                    <XAxis type="number" allowDecimals={false} stroke="#888" />
-                    <YAxis dataKey="label" type="category" width={70} stroke="#888" tick={{fontSize:12}} />
-                    <Tooltip contentStyle={{background:'#1a1d27',border:'1px solid #2a2d38'}} />
-                    <Bar dataKey="count">
-                      {stats.semester_distribution.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
-                    </Bar>
-                  </BarChart>
-                </ResponsiveContainer>
-              )}
-            </Section>
-          </div>
-
-          <Section title="학과 Top 5">
-            {stats.top_departments.length === 0 ? (
+          <Section title="지망 학과/전공 Top 10 (1·2·3지망 합산)">
+            {(stats.top_preferences?.length ?? 0) === 0 ? (
               <Empty />
             ) : (
               <table style={styles.table}>
-                <thead><tr><th style={styles.th}>순위</th><th style={styles.th}>학과(부)</th><th style={{...styles.th, textAlign:'right'}}>신청수</th></tr></thead>
+                <thead><tr><th style={styles.th}>순위</th><th style={styles.th}>학과 / 전공</th><th style={{...styles.th, textAlign:'right'}}>지망수</th></tr></thead>
                 <tbody>
-                  {stats.top_departments.map((d, i) => (
+                  {stats.top_preferences.map((d, i) => (
                     <tr key={i} style={{borderTop:'1px solid #2a2d38'}}>
                       <td style={styles.td}>{i+1}</td>
                       <td style={styles.td}>{d.label}</td>

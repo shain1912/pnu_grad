@@ -813,6 +813,209 @@
   }
   .foot-note{margin-top:16px;font-size:12px;line-height:1.6;color:var(--ink-4);max-width:760px}
 
+  /* ===== Department Directory ===== */
+  .dept-toolbar{
+    display:flex;flex-direction:column;gap:18px;
+    margin-bottom:36px;
+  }
+  .dept-filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .dept-chip{
+    padding:9px 16px;border-radius:999px;
+    background:var(--surface);border:1px solid var(--line);
+    font-size:13px;font-weight:600;color:var(--ink-2);
+    letter-spacing:-.01em;transition:all .2s var(--ease-out);
+    white-space:nowrap;
+  }
+  .dept-chip:hover{border-color:var(--line-2);color:var(--ink)}
+  .dept-chip.active{
+    background:var(--amber);border-color:var(--amber);color:var(--bg);
+    font-weight:700;box-shadow:0 0 18px var(--amber-glow);
+  }
+  .dept-chip.bk21-toggle{
+    font-family:var(--font-mono);font-size:12px;letter-spacing:.04em;
+    display:inline-flex;align-items:center;gap:6px;
+  }
+  .dept-chip.bk21-toggle::before{content:'★';font-size:11px;color:var(--amber)}
+  .dept-chip.bk21-toggle.active::before{color:var(--bg)}
+  .dept-search-wrap{position:relative;max-width:420px;width:100%}
+  .dept-search{
+    width:100%;padding:13px 16px 13px 42px;
+    background:var(--bg-2);color:var(--ink);
+    border:1px solid var(--line-2);border-radius:12px;
+    font-family:inherit;font-size:14px;
+    transition:border-color .2s,box-shadow .2s;
+  }
+  .dept-search:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(255,184,0,.15)}
+  .dept-search-wrap::before{
+    content:'🔍';position:absolute;left:15px;top:50%;transform:translateY(-50%);
+    font-size:14px;opacity:.55;pointer-events:none;
+  }
+  .dept-count{font-size:12px;color:var(--ink-3);font-family:var(--font-mono);letter-spacing:.04em}
+
+  .dept-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+  }
+  @media (max-width:900px){.dept-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.dept-grid{grid-template-columns:1fr}}
+  .dept-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:24px;
+    display:flex;flex-direction:column;
+    transition:all .3s var(--ease-out);
+    position:relative;
+  }
+  .dept-card:hover{border-color:var(--line-2);transform:translateY(-3px);background:var(--surface-2)}
+  .dept-card.no-recruit{opacity:.45}
+  .dept-card.no-recruit:hover{transform:none}
+  .dept-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
+  .dept-card h4{font-size:18px;font-weight:800;color:var(--ink);letter-spacing:-.02em;line-height:1.3;flex:1}
+  .dept-badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+  .dept-badge{
+    font-family:var(--font-mono);font-size:10px;font-weight:700;
+    letter-spacing:.06em;padding:3px 8px;border-radius:5px;
+    background:var(--bg-3);border:1px solid var(--line);color:var(--ink-2);
+    white-space:nowrap;
+  }
+  .dept-badge.gye{color:var(--ink);background:var(--bg-2)}
+  .dept-badge.bk21{background:rgba(255,184,0,.1);border-color:rgba(255,184,0,.35);color:var(--amber)}
+  .dept-badge.norec{background:rgba(255,90,95,.08);border-color:rgba(255,90,95,.3);color:var(--rose)}
+  .dept-bk21-desc{
+    font-size:11.5px;line-height:1.5;color:var(--ink-3);margin-bottom:12px;
+    display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;
+    overflow:hidden;
+  }
+  .dept-bk21-link{
+    display:inline-flex;align-items:center;gap:5px;
+    font-size:11px;font-weight:700;letter-spacing:-.01em;
+    color:var(--amber);text-decoration:none;margin-bottom:14px;
+    transition:opacity .2s var(--ease-out);
+  }
+  .dept-bk21-link:hover{opacity:.75;text-decoration:underline}
+  .dept-majors{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+  .dept-major-chip{
+    font-size:12px;padding:4px 10px;border-radius:999px;
+    background:var(--bg-2);border:1px solid var(--line);color:var(--ink-3);
+  }
+  .dept-card-foot{margin-top:auto}
+  .dept-add{
+    width:100%;height:42px;border-radius:10px;
+    background:rgba(255,184,0,.08);border:1px solid rgba(255,184,0,.28);
+    color:var(--amber);font-size:13px;font-weight:700;letter-spacing:-.01em;
+    transition:all .2s var(--ease-out);
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  }
+  .dept-add:hover{background:var(--amber);color:var(--bg);border-color:var(--amber)}
+  .dept-add:disabled{opacity:.4;cursor:not-allowed;background:var(--bg-3);border-color:var(--line);color:var(--ink-4)}
+  .dept-empty{
+    grid-column:1/-1;padding:48px;text-align:center;
+    color:var(--ink-3);font-size:14px;
+    border:1px dashed var(--line-2);border-radius:16px;background:var(--bg-2);
+  }
+
+  /* ===== Department pager (board style) ===== */
+  .dept-pager{
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
+    gap:6px;margin-top:36px;
+  }
+  .dept-pager[hidden]{display:none}
+  .dept-pager .pg{
+    min-width:40px;height:40px;padding:0 12px;
+    border-radius:10px;
+    background:var(--surface);border:1px solid var(--line);
+    color:var(--ink-2);font-size:13px;font-weight:600;letter-spacing:-.01em;
+    font-family:var(--font-mono);
+    display:inline-flex;align-items:center;justify-content:center;gap:6px;
+    transition:all .2s var(--ease-out);
+  }
+  .dept-pager .pg:hover:not(:disabled):not(.active){
+    border-color:var(--line-2);color:var(--ink);background:var(--surface-2);
+  }
+  .dept-pager .pg.active{
+    background:var(--amber);border-color:var(--amber);color:var(--bg);
+    font-weight:700;box-shadow:0 0 18px var(--amber-glow);cursor:default;
+  }
+  .dept-pager .pg.nav{font-weight:700}
+  .dept-pager .pg:disabled{opacity:.35;cursor:not-allowed}
+  .dept-pager .pg-ellipsis{
+    min-width:28px;height:40px;
+    display:inline-flex;align-items:center;justify-content:center;
+    color:var(--ink-4);font-family:var(--font-mono);font-size:13px;user-select:none;
+  }
+
+  /* ===== Apply picks (modal) ===== */
+  .picks-list{display:flex;flex-direction:column;gap:10px;margin-bottom:8px}
+  .pick-item{
+    display:flex;align-items:center;gap:12px;
+    padding:12px 14px;
+    background:var(--bg);border:1px solid var(--line-2);border-radius:10px;
+  }
+  .pick-rank{
+    flex-shrink:0;width:26px;height:26px;border-radius:7px;
+    display:grid;place-items:center;
+    background:var(--amber);color:var(--bg);
+    font-family:var(--font-mono);font-size:11px;font-weight:700;
+  }
+  .pick-text{flex:1;font-size:13px;color:var(--ink);line-height:1.4;letter-spacing:-.01em}
+  .pick-text small{display:block;color:var(--ink-3);font-size:11px;font-family:var(--font-mono);letter-spacing:.04em;margin-top:2px}
+  .pick-remove{
+    flex-shrink:0;width:26px;height:26px;border-radius:50%;
+    display:grid;place-items:center;
+    background:var(--bg-3);border:1px solid var(--line);color:var(--ink-3);
+    font-size:13px;transition:all .2s;
+  }
+  .pick-remove:hover{background:var(--rose);border-color:var(--rose);color:#fff}
+  .picks-empty{
+    padding:18px;text-align:center;font-size:13px;color:var(--ink-3);
+    border:1px dashed var(--line-2);border-radius:10px;background:var(--bg);
+  }
+  .picks-empty a{color:var(--amber);font-weight:700}
+
+  /* ===== Apply pick picker (modal direct select) ===== */
+  .pick-picker{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:10px;
+    margin-bottom:12px;
+  }
+  .pick-picker select{
+    width:100%;padding:12px 14px;
+    background:var(--bg);color:var(--ink);
+    border:1px solid var(--line-2);border-radius:10px;
+    font-family:inherit;font-size:14px;
+    transition:border-color .2s,box-shadow .2s;
+    appearance:none;
+    background-image:linear-gradient(45deg, transparent 50%, var(--ink-2) 50%), linear-gradient(135deg, var(--ink-2) 50%, transparent 50%);
+    background-position:calc(100% - 18px) 50%, calc(100% - 13px) 50%;
+    background-size:5px 5px,5px 5px;background-repeat:no-repeat;
+  }
+  .pick-picker select:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(255,184,0,.15)}
+  .pick-picker select:disabled{opacity:.5;cursor:not-allowed}
+  .pick-picker #pickDeptSelect{grid-column:1/2}
+  .pick-picker #pickMajorSelect{grid-column:1/2}
+  .pick-add-btn{
+    grid-column:2/3;grid-row:1/2;align-self:stretch;
+    padding:0 18px;border-radius:10px;
+    background:rgba(255,184,0,.08);border:1px solid rgba(255,184,0,.28);
+    color:var(--amber);font-size:13px;font-weight:700;letter-spacing:-.01em;
+    white-space:nowrap;transition:all .2s var(--ease-out);
+  }
+  .pick-add-btn:hover:not(:disabled){background:var(--amber);color:var(--bg);border-color:var(--amber)}
+  .pick-add-btn:disabled{opacity:.4;cursor:not-allowed;background:var(--bg-3);border-color:var(--line);color:var(--ink-4)}
+  .pick-picker #pickMajorSelect:not([hidden]) ~ .pick-add-btn{grid-row:1/3}
+  .pick-picker-hint{
+    grid-column:1/-1;margin:0;
+    font-size:11px;line-height:1.5;color:var(--ink-3);
+  }
+  .pick-picker-hint.warn{color:var(--amber)}
+  @media (max-width:480px){
+    .pick-picker{grid-template-columns:1fr}
+    .pick-picker #pickDeptSelect,.pick-picker #pickMajorSelect{grid-column:1/-1}
+    .pick-add-btn{grid-column:1/-1;grid-row:auto;height:44px}
+    .pick-picker #pickMajorSelect:not([hidden]) ~ .pick-add-btn{grid-row:auto}
+  }
+
   /* ===== Modal ===== */
   .modal-backdrop{
     position:fixed;inset:0;
@@ -911,6 +1114,7 @@
       <a class="gnb-link" href="#overview">과정 소개</a>
       <a class="gnb-link" href="#why">혜택</a>
       <a class="gnb-link" href="#eligibility">지원 자격</a>
+      <a class="gnb-link" href="#departments">학과 디렉터리</a>
       <a class="gnb-link" href="#schedule">전형 일정</a>
       <a class="gnb-link" href="#faq">FAQ</a>
     </nav>
@@ -1288,6 +1492,37 @@
   </div>
 </section>
 
+<!-- ===== DEPARTMENT DIRECTORY ===== -->
+<section class="block" id="departments">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Department Directory</span>
+      <h2 class="section-title">대학원 학과<br /><em>디렉터리</em></h2>
+      <p class="section-lead">진학을 희망하는 일반대학원 학과·전공을 찾아 <strong style="color:var(--amber)">지망 목록에 담아</strong> 사전 신청서에 바로 반영하세요. ★ 표시는 BK21 참여학과입니다. 협동과정·계약학과는 원칙적으로 제외됩니다.</p>
+    </div>
+
+    <div class="dept-toolbar reveal">
+      <div class="dept-filters" id="deptGyeFilters" role="group" aria-label="계열 필터">
+        <button type="button" class="dept-chip active" data-gye="전체">전체</button>
+        <button type="button" class="dept-chip" data-gye="인문·사회">인문·사회</button>
+        <button type="button" class="dept-chip" data-gye="자연과학">자연과학</button>
+        <button type="button" class="dept-chip" data-gye="공학">공학</button>
+        <button type="button" class="dept-chip" data-gye="예술">예술</button>
+        <button type="button" class="dept-chip" data-gye="체육">체육</button>
+        <button type="button" class="dept-chip" data-gye="의학">의학</button>
+        <button type="button" class="dept-chip bk21-toggle" id="deptBk21Toggle" aria-pressed="false">BK21만</button>
+      </div>
+      <div class="dept-search-wrap">
+        <input type="text" class="dept-search" id="deptSearch" placeholder="학과·전공 키워드 검색" aria-label="학과 검색" />
+      </div>
+      <div class="dept-count" id="deptCount"></div>
+    </div>
+
+    <div class="dept-grid reveal" id="deptGrid" aria-live="polite"></div>
+    <nav class="dept-pager" id="deptPager" aria-label="학과 디렉터리 페이지" hidden></nav>
+  </div>
+</section>
+
 <!-- ===== SCHEDULE ===== -->
 <section class="block" id="schedule" style="background:var(--bg-2)">
   <div class="container">
@@ -1502,23 +1737,36 @@
   <div class="modal">
     <button class="modal-close" aria-label="닫기">✕</button>
     <div class="modal-head">
-      <div class="eyebrow">2026학년도 1학기 신청</div>
+      <div class="eyebrow">2026학년도 1학기 사전 신청</div>
       <h3>연계과정 사전 신청서</h3>
-      <p>아래 정보를 입력하시면 사전 신청이 접수됩니다. 정식 지원서 양식은 소속 단과대학 홈페이지에서 받아 행정실에 제출해 주세요.</p>
+      <p>로그인한 <strong style="color:var(--amber)">@pusan.ac.kr</strong> 계정 이메일로 접수됩니다. 정식 지원서 양식은 소속 단과대학 홈페이지에서 받아 행정실에 제출하세요.</p>
     </div>
     <form id="applyForm">
-      <div class="form-row">
-        <div class="form-group"><label>이름 <span class="req">*</span></label><input type="text" name="name" required placeholder="홍길동" /></div>
-        <div class="form-group"><label>학번 <span class="req">*</span></label><input type="text" name="sid" required placeholder="202312345" /></div>
+      <div class="form-group">
+        <label>희망 트랙 <span class="req">*</span></label>
+        <select name="track" required>
+          <option value="">선택하세요</option>
+          <option>① 학·석사 연계과정</option>
+          <option>② 학·석박사통합 연계과정</option>
+          <option>③ 연계과정 전환</option>
+        </select>
       </div>
-      <div class="form-group"><label>이메일 <span class="req">*</span></label><input type="email" name="email" required placeholder="example@pusan.ac.kr" /></div>
-      <div class="form-row">
-        <div class="form-group"><label>소속 학과(부) <span class="req">*</span></label><input type="text" name="dept" required placeholder="예: 정보컴퓨터공학부" /></div>
-        <div class="form-group"><label>이수 학기 <span class="req">*</span></label><select name="semester" required><option value="">선택하세요</option><option>4학기</option><option>5학기</option><option>6학기</option><option>7학기</option></select></div>
+      <div class="form-group">
+        <label>지망 학과·전공 <span class="req">*</span></label>
+        <div class="pick-picker" id="pickPicker">
+          <select id="pickDeptSelect" aria-label="학과 선택">
+            <option value="">학과를 선택하세요</option>
+          </select>
+          <select id="pickMajorSelect" aria-label="전공 선택" hidden>
+            <option value="">전공을 선택하세요</option>
+          </select>
+          <button type="button" class="pick-add-btn" id="pickAddBtn" disabled>지망 추가</button>
+          <p class="pick-picker-hint" id="pickPickerHint" hidden></p>
+        </div>
+        <div class="picks-list" id="picksList"></div>
+        <p style="font-size:11px;color:var(--ink-3);margin-top:8px;line-height:1.5">1지망은 필수이며 최대 3지망까지 담을 수 있습니다. 위에서 직접 고르거나 <a href="#departments" data-close style="color:var(--amber)">학과 디렉터리</a>에서 추가하세요.</p>
       </div>
-      <div class="form-group"><label>희망 트랙 <span class="req">*</span></label><select name="track" required><option value="">선택하세요</option><option>① 학·석사 연계과정</option><option>② 학·석박사통합 연계과정</option><option>③ 연계과정 전환</option></select></div>
-      <div class="form-group"><label>진학희망 대학원 학과</label><input type="text" name="grad" placeholder="예: 인공지능학과" /></div>
-      <div class="checkbox-row"><input type="checkbox" id="agree" required /><label for="agree" style="margin:0;font-weight:500;font-family:var(--font-sans);letter-spacing:0;text-transform:none">개인정보 수집·이용에 동의합니다.</label></div>
+      <div class="checkbox-row"><input type="checkbox" id="agree" required /><label for="agree" style="margin:0;font-weight:500;font-family:var(--font-sans);letter-spacing:0;text-transform:none">로그인 계정 이메일 수집·이용에 동의합니다. (이름·사진은 저장하지 않습니다)</label></div>
       <div class="modal-foot">
         <button type="button" class="btn btn-md btn-outline" data-close>취소</button>
         <button type="submit" class="btn btn-md btn-primary">신청 접수하기</button>
@@ -1560,13 +1808,7 @@
         return;
       }
     } catch (err) { /* 무시하고 진행 */ }
-    if (user) {
-      const form = document.getElementById('applyForm');
-      const nameInput = form.querySelector('input[name="name"]');
-      const emailInput = form.querySelector('input[name="email"]');
-      if (nameInput && user.name) nameInput.value = user.name;
-      if (emailInput && user.email) emailInput.value = user.email;
-    }
+    renderPicks();
     openApplyModal();
   }));
   function closeModal(){
@@ -1586,30 +1828,359 @@
   }
   window.showToast = showToast;
 
+  // ===== Department directory + picks store =====
+  const MAX_PICKS = 3;
+  let departments = [];
+  let picks = []; // [{ dept, major, text }]
+  let deptFilter = { gye:'전체', bk21:false, q:'' };
+  const DEPT_PAGE_SIZE = 9;
+  let deptPage = 1;
+
+  function picksHasText(text){ return picks.some(p => p.text === text); }
+
+  function buildPickText(deptName, majorName){
+    return majorName ? `${deptName} / ${majorName}` : deptName;
+  }
+
+  function addPick(deptName, majorName){
+    if (picks.length >= MAX_PICKS){ showToast('⚠ 지망은 최대 3개까지 담을 수 있습니다.'); return; }
+    const text = buildPickText(deptName, majorName);
+    if (picksHasText(text)){ showToast('이미 담은 학과·전공입니다.'); return; }
+    picks.push({ dept:deptName, major:majorName||'', text });
+    renderPicks();
+    renderDeptGrid();
+    showToast(`'${text}' 을(를) 담았습니다.`);
+  }
+
+  function removePick(idx){ picks.splice(idx,1); renderPicks(); renderDeptGrid(); }
+
+  function renderPicks(){
+    updatePickAddState();
+    const wrap = document.getElementById('picksList');
+    if (!wrap) return;
+    if (!picks.length){
+      wrap.innerHTML = '<div class="picks-empty"><a href="#departments" data-close>학과 디렉터리</a>에서 지망 학과를 담거나 위에서 직접 선택해주세요.</div>';
+      wrap.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',closeModal));
+      return;
+    }
+    const rankLabel = ['1지망','2지망','3지망'];
+    wrap.innerHTML = picks.map((p,i)=>`
+      <div class="pick-item">
+        <span class="pick-rank">${i+1}</span>
+        <span class="pick-text">${escapeHtml(p.text)}<small>${rankLabel[i]}</small></span>
+        <button type="button" class="pick-remove" data-remove="${i}" aria-label="${rankLabel[i]} 제거">✕</button>
+      </div>`).join('');
+    wrap.querySelectorAll('[data-remove]').forEach(b=>b.addEventListener('click',()=>removePick(parseInt(b.dataset.remove,10))));
+  }
+
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+  function renderDeptGrid(){
+    const grid = document.getElementById('deptGrid');
+    const countEl = document.getElementById('deptCount');
+    const pager = document.getElementById('deptPager');
+    if (!grid) return;
+    const q = deptFilter.q.trim().toLowerCase();
+    const list = departments.filter(d=>{
+      if (deptFilter.gye !== '전체' && d.gyeyeol !== deptFilter.gye) return false;
+      if (deptFilter.bk21 && !d.bk21) return false;
+      if (q){
+        const hay = (d.name + ' ' + (d.majors||[]).map(m=>m.name).join(' ')).toLowerCase();
+        if (!hay.includes(q)) return false;
+      }
+      return true;
+    });
+    if (!departments.length){
+      if (countEl) countEl.textContent = '';
+      grid.innerHTML = '<div class="dept-empty">학과 정보를 불러올 수 없습니다. 잠시 후 다시 시도해주세요.</div>';
+      if (pager){ pager.hidden = true; pager.innerHTML = ''; }
+      return;
+    }
+    if (!list.length){
+      if (countEl) countEl.textContent = `0 / ${departments.length} 학과`;
+      grid.innerHTML = '<div class="dept-empty">조건에 맞는 학과가 없습니다.</div>';
+      if (pager){ pager.hidden = true; pager.innerHTML = ''; }
+      return;
+    }
+    const totalPages = Math.max(1, Math.ceil(list.length / DEPT_PAGE_SIZE));
+    if (deptPage > totalPages) deptPage = totalPages;
+    if (deptPage < 1) deptPage = 1;
+    const start = (deptPage - 1) * DEPT_PAGE_SIZE;
+    const pageList = list.slice(start, start + DEPT_PAGE_SIZE);
+    if (countEl) countEl.textContent = `총 ${list.length}개 · ${totalPages}페이지 중 ${deptPage}`;
+    grid.innerHTML = pageList.map(d=>{
+      const majors = (d.majors||[]);
+      const majorChips = majors.length
+        ? `<div class="dept-majors">${majors.map(m=>`<span class="dept-major-chip">${escapeHtml(m.name)}${m.recruit===false?' · 미모집':''}</span>`).join('')}</div>`
+        : '';
+      let bk21Extra = '';
+      if (d.bk21){
+        if (d.bk21_desc){
+          bk21Extra += `<p class="dept-bk21-desc">${escapeHtml(d.bk21_desc)}</p>`;
+        }
+        if (d.bk21_url && String(d.bk21_url).trim()){
+          let url = String(d.bk21_url).trim();
+          if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+          bk21Extra += `<a class="dept-bk21-link" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">🔗 BK21 사업단</a>`;
+        }
+      }
+      const noRec = d.recruit === false;
+      const added = majors.length >= 2
+        ? false
+        : picksHasText(buildPickText(d.name, majors.length === 1 ? majors[0].name : ''));
+      const disabled = noRec || picks.length >= MAX_PICKS || added;
+      const btnLabel = noRec ? '미모집' : added ? '담음 ✓' : '지망 담기';
+      return `
+      <article class="dept-card${noRec?' no-recruit':''}">
+        <div class="dept-card-top"><h4>${escapeHtml(d.name)}</h4></div>
+        <div class="dept-badges">
+          <span class="dept-badge gye">${escapeHtml(d.gyeyeol)}</span>
+          ${d.bk21?'<span class="dept-badge bk21">★ BK21</span>':''}
+          ${noRec?'<span class="dept-badge norec">미모집</span>':''}
+        </div>
+        ${bk21Extra}
+        ${majorChips}
+        <div class="dept-card-foot">
+          <button type="button" class="dept-add" data-id="${d.id}" ${disabled?'disabled':''}>${btnLabel}</button>
+        </div>
+      </article>`;
+    }).join('');
+    grid.querySelectorAll('.dept-add:not([disabled])').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const d = departments.find(x=>String(x.id)===btn.dataset.id);
+        if (!d) return;
+        const majors = (d.majors||[]).filter(m=>m.recruit !== false);
+        if (majors.length >= 2){
+          const choice = window.prompt(
+            `${d.name} 전공을 선택하세요:\n` + majors.map((m,i)=>`${i+1}. ${m.name}`).join('\n'),
+            '1'
+          );
+          if (choice === null) return;
+          const idx = parseInt(choice,10) - 1;
+          if (isNaN(idx) || idx < 0 || idx >= majors.length){ showToast('⚠ 올바른 번호를 입력하세요.'); return; }
+          addPick(d.name, majors[idx].name);
+        } else {
+          addPick(d.name, majors.length === 1 ? majors[0].name : '');
+        }
+      });
+    });
+    renderDeptPager(totalPages);
+  }
+
+  function deptPageNumbers(current, total){
+    // 처음/끝 + 현재 ±2, 나머지는 '…'
+    const pages = new Set([1, total, current, current-1, current-2, current+1, current+2]);
+    const sorted = [...pages].filter(n=>n>=1 && n<=total).sort((a,b)=>a-b);
+    const out = [];
+    let prev = 0;
+    sorted.forEach(n=>{
+      if (prev && n - prev > 1) out.push('…');
+      out.push(n);
+      prev = n;
+    });
+    return out;
+  }
+
+  function goDeptPage(n){
+    deptPage = n;
+    renderDeptGrid();
+    const sec = document.getElementById('departments');
+    if (sec) sec.scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+
+  function renderDeptPager(totalPages){
+    const pager = document.getElementById('deptPager');
+    if (!pager) return;
+    if (totalPages <= 1){ pager.hidden = true; pager.innerHTML = ''; return; }
+    pager.hidden = false;
+    const prevDisabled = deptPage <= 1;
+    const nextDisabled = deptPage >= totalPages;
+    let html = `<button type="button" class="pg nav" data-pg="${deptPage-1}" ${prevDisabled?'disabled':''} aria-label="이전 페이지">이전</button>`;
+    deptPageNumbers(deptPage, totalPages).forEach(item=>{
+      if (item === '…'){
+        html += `<span class="pg-ellipsis" aria-hidden="true">…</span>`;
+      } else {
+        const active = item === deptPage;
+        html += `<button type="button" class="pg${active?' active':''}" data-pg="${item}" ${active?'aria-current="page"':''} aria-label="${item}페이지">${item}</button>`;
+      }
+    });
+    html += `<button type="button" class="pg nav" data-pg="${deptPage+1}" ${nextDisabled?'disabled':''} aria-label="다음 페이지">다음</button>`;
+    pager.innerHTML = html;
+    pager.querySelectorAll('.pg:not(:disabled):not(.active)').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const n = parseInt(btn.dataset.pg,10);
+        if (!isNaN(n)) goDeptPage(n);
+      });
+    });
+  }
+
+  // ===== Modal direct-pick picker (shares the same picks store) =====
+  function buildPickDeptSelect(){
+    const sel = document.getElementById('pickDeptSelect');
+    if (!sel) return;
+    sel.innerHTML = '<option value="">학과를 선택하세요</option>';
+    // 계열별 그룹화 (등장 순서 유지)
+    const groups = [];
+    const byGye = new Map();
+    departments.forEach(d=>{
+      if (d.recruit === false) return; // 미모집 학과 제외
+      const key = d.gyeyeol || '기타';
+      if (!byGye.has(key)){ byGye.set(key, []); groups.push(key); }
+      byGye.get(key).push(d);
+    });
+    groups.forEach(key=>{
+      const og = document.createElement('optgroup');
+      og.label = key;
+      byGye.get(key).forEach(d=>{
+        const opt = document.createElement('option');
+        opt.value = String(d.id);
+        opt.textContent = (d.bk21 ? '★ ' : '') + d.name;
+        og.appendChild(opt);
+      });
+      sel.appendChild(og);
+    });
+    renderPickMajorSelect();
+  }
+
+  function renderPickMajorSelect(){
+    const deptSel = document.getElementById('pickDeptSelect');
+    const majorSel = document.getElementById('pickMajorSelect');
+    if (!deptSel || !majorSel) return;
+    const d = departments.find(x=>String(x.id) === deptSel.value);
+    const majors = d ? (d.majors||[]).filter(m=>m.recruit !== false) : [];
+    if (!d || majors.length === 0){
+      // 전공 없음 → 숨김(학과 단위로 담김)
+      majorSel.hidden = true;
+      majorSel.disabled = true;
+      majorSel.innerHTML = '<option value="">전공을 선택하세요</option>';
+    } else {
+      majorSel.hidden = false;
+      majorSel.disabled = false;
+      const optional = majors.length === 1; // 1개면 선택 없이도 추가 가능
+      majorSel.innerHTML = '<option value="">' + (optional ? '전공(학과 단위로 담기)' : '전공을 선택하세요') + '</option>'
+        + majors.map(m=>`<option value="${escapeHtml(m.name)}">${escapeHtml(m.name)}</option>`).join('');
+    }
+    updatePickAddState();
+  }
+
+  function updatePickAddState(){
+    const deptSel = document.getElementById('pickDeptSelect');
+    const majorSel = document.getElementById('pickMajorSelect');
+    const btn = document.getElementById('pickAddBtn');
+    const hint = document.getElementById('pickPickerHint');
+    if (!deptSel || !btn) return;
+    const full = picks.length >= MAX_PICKS;
+    const d = departments.find(x=>String(x.id) === deptSel.value);
+    const majors = d ? (d.majors||[]).filter(m=>m.recruit !== false) : [];
+    const needMajor = majors.length >= 2; // 전공 2개 이상이면 선택 필수
+    const majorVal = (majorSel && !majorSel.hidden) ? majorSel.value : '';
+    const ready = !!d && (!needMajor || !!majorVal);
+    btn.disabled = full || !ready;
+    if (deptSel) deptSel.disabled = full;
+    if (hint){
+      if (full){
+        hint.hidden = false; hint.classList.add('warn');
+        hint.textContent = '지망은 최대 3개까지 담을 수 있습니다.';
+      } else if (d && needMajor && !majorVal){
+        hint.hidden = false; hint.classList.remove('warn');
+        hint.textContent = '전공을 선택한 뒤 추가하세요.';
+      } else {
+        hint.hidden = true; hint.classList.remove('warn'); hint.textContent = '';
+      }
+    }
+  }
+
+  function handlePickAdd(){
+    const deptSel = document.getElementById('pickDeptSelect');
+    const majorSel = document.getElementById('pickMajorSelect');
+    if (!deptSel) return;
+    const d = departments.find(x=>String(x.id) === deptSel.value);
+    if (!d){ showToast('⚠ 학과를 선택하세요.'); return; }
+    const majors = (d.majors||[]).filter(m=>m.recruit !== false);
+    let majorName = '';
+    if (majors.length >= 2){
+      majorName = (majorSel && !majorSel.hidden) ? majorSel.value : '';
+      if (!majorName){ showToast('⚠ 전공을 선택하세요.'); return; }
+    } else if (majors.length === 1){
+      // 전공 1개: 명시 선택했으면 그 값, 아니면 학과 단위
+      majorName = (majorSel && !majorSel.hidden) ? majorSel.value : '';
+    }
+    addPick(d.name, majorName); // 기존 스토어 함수 재사용 (중복/최대3 검증 포함)
+    // 추가 후 select 값 초기화
+    deptSel.value = '';
+    renderPickMajorSelect();
+  }
+
+  (function initDeptDirectory(){
+    fetch('/api/departments', { credentials:'include' })
+      .then(r=>r.ok ? r.json() : [])
+      .then(data=>{ departments = Array.isArray(data) ? data : []; renderDeptGrid(); buildPickDeptSelect(); })
+      .catch(()=>{ departments = []; renderDeptGrid(); buildPickDeptSelect(); });
+
+    document.getElementById('deptGyeFilters')?.querySelectorAll('.dept-chip[data-gye]').forEach(chip=>{
+      chip.addEventListener('click',()=>{
+        document.querySelectorAll('.dept-chip[data-gye]').forEach(c=>c.classList.remove('active'));
+        chip.classList.add('active');
+        deptFilter.gye = chip.dataset.gye;
+        deptPage = 1;
+        renderDeptGrid();
+      });
+    });
+    const bk21Btn = document.getElementById('deptBk21Toggle');
+    bk21Btn?.addEventListener('click',()=>{
+      deptFilter.bk21 = !deptFilter.bk21;
+      bk21Btn.classList.toggle('active', deptFilter.bk21);
+      bk21Btn.setAttribute('aria-pressed', String(deptFilter.bk21));
+      deptPage = 1;
+      renderDeptGrid();
+    });
+    const search = document.getElementById('deptSearch');
+    search?.addEventListener('input',()=>{ deptFilter.q = search.value; deptPage = 1; renderDeptGrid(); });
+
+    // 모달 직접 선택 컨트롤
+    document.getElementById('pickDeptSelect')?.addEventListener('change', renderPickMajorSelect);
+    document.getElementById('pickMajorSelect')?.addEventListener('change', updatePickAddState);
+    document.getElementById('pickAddBtn')?.addEventListener('click', handlePickAdd);
+  })();
+
+  // ===== Submit =====
   document.getElementById('applyForm').addEventListener('submit', async e => {
     e.preventDefault();
     const fd = new FormData(e.target);
-    if (!document.getElementById('agree').checked) { showToast('⚠ 개인정보 수집·이용 동의가 필요합니다.'); return; }
+    if (!document.getElementById('agree').checked) { showToast('⚠ 이메일 수집·이용 동의가 필요합니다.'); return; }
 
-    const semesterMap = { '4학기':1, '5학기':2, '6학기':3, '7학기':4 };
-    const trackMap = {
-      '① 학·석사 연계과정':5,
-      '② 학·석박사통합 연계과정':6,
-      '③ 연계과정 전환':7
-    };
-    const semOpt = semesterMap[fd.get('semester')];
-    const trackOpt = trackMap[fd.get('track')];
-    if (!semOpt || !trackOpt) { showToast('⚠ 이수 학기/희망 트랙을 선택해주세요.'); return; }
+    const trackLabel = (fd.get('track')||'').trim();
+    if (!trackLabel) { showToast('⚠ 희망 트랙을 선택해주세요.'); return; }
+    if (!picks.length) { showToast('⚠ 1지망 학과를 학과 디렉터리에서 담아주세요.'); return; }
 
-    const answers = [
-      { question_id: 1, text_value: (fd.get('sid')||'').trim() },
-      { question_id: 2, text_value: (fd.get('dept')||'').trim() },
-      { question_id: 3, selected_option_ids: [semOpt] },
-      { question_id: 4, selected_option_ids: [trackOpt] },
-      { question_id: 6, selected_option_ids: [8] }
-    ];
-    const grad = (fd.get('grad')||'').trim();
-    if (grad) answers.push({ question_id: 5, text_value: grad });
+    // 설문 스키마(question_id/option_id) 조회 후 매핑
+    let survey;
+    try {
+      const sRes = await fetch('/api/surveys/1', { credentials:'include' });
+      if (sRes.status === 401) {
+        window.location.href = '/auth/google?returnTo=' + encodeURIComponent(window.location.pathname + '?modal=apply');
+        return;
+      }
+      if (!sRes.ok) { showToast('⚠ 설문 정보를 불러올 수 없습니다.'); return; }
+      survey = await sRes.json();
+    } catch (err) {
+      showToast('⚠ 네트워크 오류. 잠시 후 다시 시도해주세요.'); return;
+    }
+
+    const questions = (survey && survey.questions) || [];
+    const norm = s => String(s||'').replace(/\s+/g,'').replace(/[①②③]/g,'');
+    const trackQ = questions.find(q => q.type === 'single');
+    const textQs = questions.filter(q => q.type === 'short_text').sort((a,b)=>(a.ord||0)-(b.ord||0));
+
+    if (!trackQ) { showToast('⚠ 트랙 질문을 찾을 수 없습니다.'); return; }
+    const trackOpt = (trackQ.options||[]).find(o => norm(o.label) === norm(trackLabel));
+    if (!trackOpt) { showToast('⚠ 선택한 트랙을 매핑할 수 없습니다.'); return; }
+    if (textQs.length < 1) { showToast('⚠ 지망 입력 항목을 찾을 수 없습니다.'); return; }
+
+    const answers = [{ question_id: trackQ.id, selected_option_ids: [trackOpt.id] }];
+    picks.forEach((p,i)=>{
+      if (textQs[i]) answers.push({ question_id: textQs[i].id, text_value: p.text });
+    });
 
     try {
       const res = await fetch('/api/surveys/1/responses', {
@@ -1619,11 +2190,13 @@
         body: JSON.stringify({ answers })
       });
       if (res.status === 201) {
-        showToast(`✅ ${fd.get('name')}님, 사전 신청이 접수되었습니다.`);
-        document.querySelector('.modal-overlay')?.classList.remove('open');
+        showToast('사전 신청이 접수되었습니다');
         document.body.style.overflow='';
         closeModal();
         e.target.reset();
+        picks = [];
+        renderPicks();
+        renderDeptGrid();
       } else if (res.status === 409) {
         showToast('이미 신청을 완료하셨습니다.');
       } else if (res.status === 401) {

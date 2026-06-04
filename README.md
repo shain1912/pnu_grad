@@ -135,3 +135,4 @@ start-caddy.bat
 - [`docs/adr/0002`](./docs/adr/0002-admin-uses-id-pw-not-oauth.md) — 관리자는 자체 ID/PW
 - [`docs/adr/0003`](./docs/adr/0003-sheet-sync-fire-and-forget.md) — 시트 동기화는 fire-and-forget
 - [`docs/adr/0004`](./docs/adr/0004-no-resource-board-forms-via-college-sites.md) — 자료실·게시판 없음, 양식은 단과대학 홈페이지로 위임
+- [`docs/adr/0005`](./docs/adr/0005-response-data-minimization-3choices.md) — 응답 데이터 최소화(이메일+트랙+3지망), 개인정보 최소 수집

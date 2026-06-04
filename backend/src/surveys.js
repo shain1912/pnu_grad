@@ -1,16 +1,16 @@
 import express from 'express';
-import { db } from './db.js';
+import { db, tx } from './db.js';
 import { requireAuth } from './auth.js';
 import { mirrorResponseToSheet } from './sheets.js';
 
 const router = express.Router();
 
 // 설문 목록 (공개된 것만)
-router.get('/', requireAuth, (req, res) => {
-  const rows = db.prepare(`
+router.get('/', requireAuth, async (req, res) => {
+  const rows = await db.prepare(`
     SELECT s.id, s.title, s.description, s.closes_at, s.created_at,
            u.name AS author_name,
-           (SELECT COUNT(*) FROM responses WHERE survey_id = s.id) AS response_count,
+           (SELECT COUNT(*)::int FROM responses WHERE survey_id = s.id) AS response_count,
            EXISTS(SELECT 1 FROM responses WHERE survey_id = s.id AND user_id = ?) AS has_responded
     FROM surveys s JOIN users u ON u.id = s.author_id
     WHERE s.is_public = 1
@@ -20,9 +20,9 @@ router.get('/', requireAuth, (req, res) => {
 });
 
 // 설문 상세 (질문 + 옵션)
-router.get('/:id', requireAuth, (req, res) => {
+router.get('/:id', requireAuth, async (req, res) => {
   const id = Number(req.params.id);
-  const survey = db.prepare(`
+  const survey = await db.prepare(`
     SELECT s.*, u.name AS author_name
     FROM surveys s JOIN users u ON u.id = s.author_id
     WHERE s.id = ?
@@ -32,7 +32,7 @@ router.get('/:id', requireAuth, (req, res) => {
     return res.status(403).json({ error: 'forbidden' });
   }
 
-  const questions = db.prepare(`
+  const questions = await db.prepare(`
     SELECT id, ord, type, body, is_required FROM questions WHERE survey_id = ? ORDER BY ord
   `).all(id);
 
@@ -40,7 +40,7 @@ router.get('/:id', requireAuth, (req, res) => {
   if (questions.length) {
     const qIds = questions.map(q => q.id);
     const placeholders = qIds.map(() => '?').join(',');
-    const opts = db.prepare(
+    const opts = await db.prepare(
       `SELECT id, question_id, ord, label FROM question_options WHERE question_id IN (${placeholders}) ORDER BY question_id, ord`
     ).all(...qIds);
     opts.forEach(o => {
@@ -48,7 +48,7 @@ router.get('/:id', requireAuth, (req, res) => {
     });
   }
 
-  const hasResponded = !!db.prepare(
+  const hasResponded = !!await db.prepare(
     'SELECT 1 FROM responses WHERE survey_id = ? AND user_id = ?'
   ).get(id, req.user.id);
 
@@ -62,12 +62,12 @@ router.get('/:id', requireAuth, (req, res) => {
 });
 
 // 응답 제출
-router.post('/:id/responses', requireAuth, (req, res) => {
+router.post('/:id/responses', requireAuth, async (req, res) => {
   const surveyId = Number(req.params.id);
   const { answers } = req.body || {};
   if (!Array.isArray(answers)) return res.status(400).json({ error: 'answers_array_required' });
 
-  const survey = db.prepare('SELECT * FROM surveys WHERE id = ?').get(surveyId);
+  const survey = await db.prepare('SELECT * FROM surveys WHERE id = ?').get(surveyId);
   if (!survey) return res.status(404).json({ error: 'not_found' });
   if (!survey.is_public) return res.status(403).json({ error: 'forbidden' });
   if (survey.closes_at && new Date(survey.closes_at) < new Date()) {
@@ -75,17 +75,17 @@ router.post('/:id/responses', requireAuth, (req, res) => {
   }
 
   // 기존 응답 체크
-  const existing = db.prepare('SELECT id FROM responses WHERE survey_id = ? AND user_id = ?').get(surveyId, req.user.id);
+  const existing = await db.prepare('SELECT id FROM responses WHERE survey_id = ? AND user_id = ?').get(surveyId, req.user.id);
   if (existing) return res.status(409).json({ error: 'already_responded' });
 
   // 질문 + 옵션 로드
-  const questions = db.prepare('SELECT * FROM questions WHERE survey_id = ?').all(surveyId);
+  const questions = await db.prepare('SELECT * FROM questions WHERE survey_id = ?').all(surveyId);
   const qById = Object.fromEntries(questions.map(q => [q.id, q]));
   const validOptions = {};
-  questions.forEach(q => {
-    const opts = db.prepare('SELECT id FROM question_options WHERE question_id = ?').all(q.id);
+  for (const q of questions) {
+    const opts = await db.prepare('SELECT id FROM question_options WHERE question_id = ?').all(q.id);
     validOptions[q.id] = new Set(opts.map(o => o.id));
-  });
+  }
 
   // 타입별 검증
   const answersByQ = {};
@@ -135,45 +135,44 @@ router.post('/:id/responses', requireAuth, (req, res) => {
   }
 
   // 트랜잭션
-  const insertResponse = db.prepare('INSERT INTO responses (survey_id, user_id) VALUES (?, ?)');
-  const insertAnswer = db.prepare(`
-    INSERT INTO answers (response_id, question_id, selected_option_ids, numeric_value, text_value)
-    VALUES (?, ?, ?, ?, ?)
-  `);
-  db.exec('BEGIN');
+  let responseId;
   try {
-    const result = insertResponse.run(surveyId, req.user.id);
-    const responseId = result.lastInsertRowid;
-    for (const a of answers) {
-      const q = qById[a.question_id];
-      insertAnswer.run(
-        responseId,
-        q.id,
-        (q.type === 'single' || q.type === 'multi') ? JSON.stringify(a.selected_option_ids) : null,
-        q.type === 'scale5' ? a.numeric_value : null,
-        (q.type === 'short_text' || q.type === 'long_text') ? a.text_value : null,
-      );
-    }
-    db.exec('COMMIT');
-    res.status(201).json({ response_id: Number(responseId) });
-
-    // 시트 미러링 — fire-and-forget. 실패해도 응답엔 영향 없음.
-    mirrorResponseToSheet(Number(responseId))
-      .catch(err => console.error(`[sheet-mirror] response ${responseId} failed:`, err.message));
+    responseId = await tx(async (t) => {
+      const inserted = await t.run('INSERT INTO responses (survey_id, user_id) VALUES (?, ?) RETURNING id', surveyId, req.user.id);
+      const rid = inserted.rows[0].id;
+      for (const a of answers) {
+        const q = qById[a.question_id];
+        await t.run(
+          `INSERT INTO answers (response_id, question_id, selected_option_ids, numeric_value, text_value)
+           VALUES (?, ?, ?, ?, ?)`,
+          rid,
+          q.id,
+          (q.type === 'single' || q.type === 'multi') ? JSON.stringify(a.selected_option_ids) : null,
+          q.type === 'scale5' ? a.numeric_value : null,
+          (q.type === 'short_text' || q.type === 'long_text') ? a.text_value : null,
+        );
+      }
+      return rid;
+    });
   } catch (err) {
-    db.exec('ROLLBACK');
-    if (String(err.message).includes('UNIQUE')) return res.status(409).json({ error: 'already_responded' });
+    if (err.code === '23505') return res.status(409).json({ error: 'already_responded' }); // unique_violation
     console.error(err);
-    res.status(500).json({ error: 'internal' });
+    return res.status(500).json({ error: 'internal' });
   }
+
+  res.status(201).json({ response_id: Number(responseId) });
+
+  // 시트 미러링 — fire-and-forget. 실패해도 응답엔 영향 없음.
+  mirrorResponseToSheet(Number(responseId))
+    .catch(err => console.error(`[sheet-mirror] response ${responseId} failed:`, err.message));
 });
 
 // 내 응답 조회
-router.get('/:id/my-response', requireAuth, (req, res) => {
+router.get('/:id/my-response', requireAuth, async (req, res) => {
   const surveyId = Number(req.params.id);
-  const response = db.prepare('SELECT * FROM responses WHERE survey_id = ? AND user_id = ?').get(surveyId, req.user.id);
+  const response = await db.prepare('SELECT * FROM responses WHERE survey_id = ? AND user_id = ?').get(surveyId, req.user.id);
   if (!response) return res.status(404).json({ error: 'not_found' });
-  const answers = db.prepare('SELECT * FROM answers WHERE response_id = ?').all(response.id);
+  const answers = await db.prepare('SELECT * FROM answers WHERE response_id = ?').all(response.id);
   res.json({
     response_id: response.id,
     submitted_at: response.submitted_at,
@@ -187,13 +186,13 @@ router.get('/:id/my-response', requireAuth, (req, res) => {
 });
 
 // 통계 — 작성자 또는 공개설문은 누구나 (MVP는 단순)
-router.get('/:id/statistics', requireAuth, (req, res) => {
+router.get('/:id/statistics', requireAuth, async (req, res) => {
   const surveyId = Number(req.params.id);
-  const survey = db.prepare('SELECT * FROM surveys WHERE id = ?').get(surveyId);
+  const survey = await db.prepare('SELECT * FROM surveys WHERE id = ?').get(surveyId);
   if (!survey) return res.status(404).json({ error: 'not_found' });
 
-  const totalResponses = db.prepare('SELECT COUNT(*) AS c FROM responses WHERE survey_id = ?').get(surveyId).c;
-  const questions = db.prepare('SELECT * FROM questions WHERE survey_id = ? ORDER BY ord').all(surveyId);
+  const totalResponses = (await db.prepare('SELECT COUNT(*)::int AS c FROM responses WHERE survey_id = ?').get(surveyId)).c;
+  const questions = await db.prepare('SELECT * FROM questions WHERE survey_id = ? ORDER BY ord').all(surveyId);
 
   const result = { survey_id: surveyId, total_responses: totalResponses, generated_at: new Date().toISOString(), questions: [] };
 
@@ -201,8 +200,8 @@ router.get('/:id/statistics', requireAuth, (req, res) => {
     const block = { id: q.id, ord: q.ord, type: q.type, body: q.body };
 
     if (q.type === 'single' || q.type === 'multi') {
-      const options = db.prepare('SELECT id, label, ord FROM question_options WHERE question_id = ? ORDER BY ord').all(q.id);
-      const allAns = db.prepare('SELECT selected_option_ids FROM answers WHERE question_id = ?').all(q.id);
+      const options = await db.prepare('SELECT id, label, ord FROM question_options WHERE question_id = ? ORDER BY ord').all(q.id);
+      const allAns = await db.prepare('SELECT selected_option_ids FROM answers WHERE question_id = ?').all(q.id);
       const counts = new Map(options.map(o => [o.id, 0]));
       let respondents = 0;
       let totalPicks = 0;
@@ -222,7 +221,7 @@ router.get('/:id/statistics', requireAuth, (req, res) => {
       if (q.type === 'multi') block.avg_picked = respondents ? +(totalPicks / respondents).toFixed(2) : 0;
 
     } else if (q.type === 'scale5') {
-      const rows = db.prepare('SELECT numeric_value AS v FROM answers WHERE question_id = ? AND numeric_value IS NOT NULL').all(q.id);
+      const rows = await db.prepare('SELECT numeric_value AS v FROM answers WHERE question_id = ? AND numeric_value IS NOT NULL').all(q.id);
       const n = rows.length;
       const dist = { 1:0, 2:0, 3:0, 4:0, 5:0 };
       let sum = 0;
@@ -239,7 +238,7 @@ router.get('/:id/statistics', requireAuth, (req, res) => {
       block.distribution = dist;
 
     } else if (q.type === 'short_text') {
-      const rows = db.prepare(
+      const rows = await db.prepare(
         `SELECT TRIM(LOWER(text_value)) AS norm FROM answers WHERE question_id = ? AND text_value IS NOT NULL AND TRIM(text_value) <> ''`
       ).all(q.id);
       const freq = new Map();
@@ -250,7 +249,7 @@ router.get('/:id/statistics', requireAuth, (req, res) => {
       block.top = top;
 
     } else if (q.type === 'long_text') {
-      const rows = db.prepare(
+      const rows = await db.prepare(
         `SELECT text_value FROM answers WHERE question_id = ? AND text_value IS NOT NULL AND TRIM(text_value) <> ''`
       ).all(q.id);
       const lens = rows.map(r => r.text_value.length);

@@ -30,12 +30,12 @@ function setAdminCookie(res, token) {
   });
 }
 
-export function requireAdmin(req, res, next) {
+export async function requireAdmin(req, res, next) {
   const token = req.cookies?.admin_token;
   if (!token) return res.status(401).json({ error: 'unauthenticated' });
   try {
     const payload = jwt.verify(token, JWT_SECRET(), { audience: ADMIN_AUDIENCE });
-    const admin = db.prepare('SELECT id, username FROM admins WHERE id = ?').get(payload.sub);
+    const admin = await db.prepare('SELECT id, username FROM admins WHERE id = ?').get(payload.sub);
     if (!admin) return res.status(401).json({ error: 'admin_not_found' });
     req.admin = admin;
     next();
@@ -50,13 +50,13 @@ router.post('/login', async (req, res) => {
   const { username, password } = req.body || {};
   if (!username || !password) return res.status(400).json({ error: 'missing_credentials' });
 
-  const admin = db.prepare('SELECT * FROM admins WHERE username = ?').get(username);
+  const admin = await db.prepare('SELECT * FROM admins WHERE username = ?').get(username);
   if (!admin) return res.status(401).json({ error: 'invalid_credentials' });
 
   const ok = await bcrypt.compare(password, admin.password_hash);
   if (!ok) return res.status(401).json({ error: 'invalid_credentials' });
 
-  db.prepare("UPDATE admins SET last_login_at = datetime('now') WHERE id = ?").run(admin.id);
+  await db.prepare('UPDATE admins SET last_login_at = now() WHERE id = ?').run(admin.id);
   setAdminCookie(res, issueAdminJwt(admin));
   res.json({ admin: { id: admin.id, username: admin.username } });
 });
@@ -71,56 +71,55 @@ router.get('/me', requireAdmin, (req, res) => {
 });
 
 // === Dashboard 통계 ===
-router.get('/stats', requireAdmin, (req, res) => {
+router.get('/stats', requireAdmin, async (req, res) => {
   const surveyId = 1; // 단일 신청 설문 가정 (MVP)
 
-  const totalRow = db.prepare('SELECT COUNT(*) AS c FROM responses WHERE survey_id = ?').get(surveyId);
-  const total = totalRow.c;
+  const total = (await db.prepare('SELECT COUNT(*)::int AS c FROM responses WHERE survey_id = ?').get(surveyId)).c;
 
-  const last24hRow = db.prepare(
-    "SELECT COUNT(*) AS c FROM responses WHERE survey_id = ? AND submitted_at >= datetime('now','-1 day')"
+  const last24hRow = await db.prepare(
+    "SELECT COUNT(*)::int AS c FROM responses WHERE survey_id = ? AND submitted_at >= now() - interval '1 day'"
   ).get(surveyId);
 
-  const notSyncedRow = db.prepare(
-    'SELECT COUNT(*) AS c FROM responses WHERE survey_id = ? AND sheet_synced_at IS NULL'
+  const notSyncedRow = await db.prepare(
+    'SELECT COUNT(*)::int AS c FROM responses WHERE survey_id = ? AND sheet_synced_at IS NULL'
   ).get(surveyId);
 
-  // 트랙별 분포 (Q4 = question_id 4, options 5/6/7)
-  const trackRows = db.prepare(`
-    SELECT qo.label, COUNT(*) AS c
-    FROM answers a JOIN responses r ON r.id = a.response_id
-    JOIN question_options qo ON qo.id = CAST(json_extract(a.selected_option_ids, '$[0]') AS INTEGER)
-    WHERE a.question_id = 4 AND r.survey_id = ?
-    GROUP BY qo.label
-    ORDER BY qo.ord
-  `).all(surveyId);
+  // 동적 question_id 매핑 (ADR 0005: ord 1=트랙(single), 2~4=1/2/3지망(short_text))
+  const qs = await db.prepare(
+    'SELECT id, ord, type FROM questions WHERE survey_id = ? ORDER BY ord'
+  ).all(surveyId);
+  const trackQ = qs.find(q => q.ord === 1 && q.type === 'single');
+  const prefQIds = qs.filter(q => q.ord >= 2 && q.ord <= 4 && q.type === 'short_text').map(q => q.id);
 
-  // 이수학기 분포 (Q3, options 1/2/3/4)
-  const semRows = db.prepare(`
-    SELECT qo.label, COUNT(*) AS c
+  // 트랙별 분포 (Q1, single)
+  const trackRows = trackQ ? await db.prepare(`
+    SELECT qo.label, COUNT(*)::int AS c
     FROM answers a JOIN responses r ON r.id = a.response_id
-    JOIN question_options qo ON qo.id = CAST(json_extract(a.selected_option_ids, '$[0]') AS INTEGER)
-    WHERE a.question_id = 3 AND r.survey_id = ?
-    GROUP BY qo.label
+    JOIN question_options qo ON qo.id = (a.selected_option_ids::jsonb ->> 0)::int
+    WHERE a.question_id = ? AND r.survey_id = ?
+    GROUP BY qo.label, qo.ord
     ORDER BY qo.ord
-  `).all(surveyId);
+  `).all(trackQ.id, surveyId) : [];
 
-  // 학과 top 5 (Q2, short_text)
-  const deptRows = db.prepare(`
-    SELECT TRIM(a.text_value) AS dept, COUNT(*) AS c
-    FROM answers a JOIN responses r ON r.id = a.response_id
-    WHERE a.question_id = 2 AND r.survey_id = ?
-      AND TRIM(COALESCE(a.text_value,'')) <> ''
-    GROUP BY dept ORDER BY c DESC, dept LIMIT 5
-  `).all(surveyId);
+  // 지망 학과/전공 top 10 (1/2/3지망 short_text 통합 집계)
+  let prefRows = [];
+  if (prefQIds.length) {
+    const placeholders = prefQIds.map(() => '?').join(',');
+    prefRows = await db.prepare(`
+      SELECT TRIM(a.text_value) AS pref, COUNT(*)::int AS c
+      FROM answers a JOIN responses r ON r.id = a.response_id
+      WHERE a.question_id IN (${placeholders}) AND r.survey_id = ?
+        AND TRIM(COALESCE(a.text_value,'')) <> ''
+      GROUP BY pref ORDER BY c DESC, pref LIMIT 10
+    `).all(...prefQIds, surveyId);
+  }
 
   res.json({
     total_responses: total,
     last_24h: last24hRow.c,
     not_synced: notSyncedRow.c,
     track_distribution: trackRows.map(r => ({ label: r.label, count: r.c })),
-    semester_distribution: semRows.map(r => ({ label: r.label, count: r.c })),
-    top_departments: deptRows.map(r => ({ label: r.dept, count: r.c })),
+    top_preferences: prefRows.map(r => ({ label: r.pref, count: r.c })),
     sheet: getSheetStatus(),
     generated_at: new Date().toISOString(),
   });
@@ -132,7 +131,7 @@ router.post('/sync', requireAdmin, async (req, res) => {
   if (!status.configured) {
     return res.status(400).json({ error: 'sheet_not_configured' });
   }
-  const rows = db.prepare(
+  const rows = await db.prepare(
     'SELECT id FROM responses WHERE sheet_synced_at IS NULL ORDER BY id'
   ).all();
 
@@ -151,27 +150,31 @@ router.post('/sync', requireAdmin, async (req, res) => {
 });
 
 // === CSV 다운로드 ===
-router.get('/responses.csv', requireAdmin, (req, res) => {
-  const rows = db.prepare(`
-    SELECT r.id, r.submitted_at, u.email, u.name,
-           (SELECT a.text_value FROM answers a WHERE a.response_id = r.id AND a.question_id = 1) AS 학번,
-           (SELECT a.text_value FROM answers a WHERE a.response_id = r.id AND a.question_id = 2) AS 학과,
+router.get('/responses.csv', requireAdmin, async (req, res) => {
+  // ADR 0005 — email·트랙·1/2/3지망만 내보냄 (이름/학번/학과/이수학기 제거).
+  // ord 1=트랙(single), 2~4=1/2/3지망(short_text)
+  const qs = await db.prepare(
+    'SELECT id, ord, type FROM questions WHERE survey_id = 1 ORDER BY ord'
+  ).all();
+  const trackQ = qs.find(q => q.ord === 1 && q.type === 'single');
+  const pref1 = qs.find(q => q.ord === 2);
+  const pref2 = qs.find(q => q.ord === 3);
+  const pref3 = qs.find(q => q.ord === 4);
+
+  const rows = await db.prepare(`
+    SELECT r.id, r.submitted_at, u.email,
            (SELECT qo.label FROM answers a JOIN question_options qo
-              ON qo.id = CAST(json_extract(a.selected_option_ids,'$[0]') AS INTEGER)
-              WHERE a.response_id = r.id AND a.question_id = 3) AS 이수학기,
-           (SELECT qo.label FROM answers a JOIN question_options qo
-              ON qo.id = CAST(json_extract(a.selected_option_ids,'$[0]') AS INTEGER)
-              WHERE a.response_id = r.id AND a.question_id = 4) AS 트랙,
-           (SELECT a.text_value FROM answers a WHERE a.response_id = r.id AND a.question_id = 5) AS 진학희망학과,
-           (SELECT qo.label FROM answers a JOIN question_options qo
-              ON qo.id = CAST(json_extract(a.selected_option_ids,'$[0]') AS INTEGER)
-              WHERE a.response_id = r.id AND a.question_id = 6) AS 동의
+              ON qo.id = (a.selected_option_ids::jsonb ->> 0)::int
+              WHERE a.response_id = r.id AND a.question_id = ?) AS 트랙,
+           (SELECT a.text_value FROM answers a WHERE a.response_id = r.id AND a.question_id = ?) AS 지망1,
+           (SELECT a.text_value FROM answers a WHERE a.response_id = r.id AND a.question_id = ?) AS 지망2,
+           (SELECT a.text_value FROM answers a WHERE a.response_id = r.id AND a.question_id = ?) AS 지망3
     FROM responses r JOIN users u ON u.id = r.user_id
     WHERE r.survey_id = 1
     ORDER BY r.submitted_at
-  `).all();
+  `).all(trackQ?.id ?? -1, pref1?.id ?? -1, pref2?.id ?? -1, pref3?.id ?? -1);
 
-  const headers = ['response_id','submitted_at','email','name','학번','학과','이수학기','트랙','진학희망학과','동의'];
+  const headers = ['response_id','submitted_at','email','트랙','1지망','2지망','3지망'];
   const esc = v => {
     if (v == null) return '';
     const s = String(v);
@@ -179,7 +182,7 @@ router.get('/responses.csv', requireAdmin, (req, res) => {
   };
   const lines = [headers.join(',')];
   for (const r of rows) {
-    lines.push([r.id, r.submitted_at, r.email, r.name, r.학번, r.학과, r.이수학기, r.트랙, r.진학희망학과, r.동의].map(esc).join(','));
+    lines.push([r.id, r.submitted_at, r.email, r.트랙, r.지망1, r.지망2, r.지망3].map(esc).join(','));
   }
   // UTF-8 BOM (엑셀에서 한글 깨짐 방지)
   res.setHeader('Content-Type', 'text/csv; charset=utf-8');

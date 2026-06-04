@@ -48,31 +48,30 @@ function setAuthCookie(res, token) {
   });
 }
 
-function upsertUser({ google_sub, email, email_verified, name, picture }) {
+async function upsertUser({ google_sub, email, email_verified, name, picture }) {
   // google_sub 없으면 email 기준으로
   const existing = google_sub
-    ? db.prepare('SELECT * FROM users WHERE google_sub = ?').get(google_sub)
-    : db.prepare('SELECT * FROM users WHERE email = ?').get(email);
+    ? await db.prepare('SELECT * FROM users WHERE google_sub = ?').get(google_sub)
+    : await db.prepare('SELECT * FROM users WHERE email = ?').get(email);
 
   if (existing) {
-    db.prepare(`UPDATE users SET name = ?, picture = ?, email = ?, last_login_at = datetime('now') WHERE id = ?`)
-      .run(name || existing.name, picture || existing.picture, email, existing.id);
-    return db.prepare('SELECT * FROM users WHERE id = ?').get(existing.id);
+    return await db.prepare(
+      `UPDATE users SET name = ?, picture = ?, email = ?, last_login_at = now() WHERE id = ? RETURNING *`
+    ).get(name || existing.name, picture || existing.picture, email, existing.id);
   }
-  const result = db.prepare(`
+  return await db.prepare(`
     INSERT INTO users (google_sub, email, email_verified, name, picture)
-    VALUES (?, ?, ?, ?, ?)
-  `).run(google_sub || null, email, email_verified ? 1 : 0, name || null, picture || null);
-  return db.prepare('SELECT * FROM users WHERE id = ?').get(result.lastInsertRowid);
+    VALUES (?, ?, ?, ?, ?) RETURNING *
+  `).get(google_sub || null, email, email_verified ? 1 : 0, name || null, picture || null);
 }
 
 // === 인증 미들웨어 (다른 라우트가 사용) ===
-export function requireAuth(req, res, next) {
+export async function requireAuth(req, res, next) {
   const token = req.cookies?.token;
   if (!token) return res.status(401).json({ error: 'unauthenticated' });
   try {
     const payload = jwt.verify(token, JWT_SECRET());
-    const user = db.prepare('SELECT id, email, name, picture FROM users WHERE id = ?').get(payload.sub);
+    const user = await db.prepare('SELECT id, email, name, picture FROM users WHERE id = ?').get(payload.sub);
     if (!user) return res.status(401).json({ error: 'user_not_found' });
     req.user = user;
     next();
@@ -132,7 +131,7 @@ router.get('/google/callback', async (req, res) => {
       return res.redirect(`${FRONTEND_URL()}/login?error=domain_not_allowed`);
     }
 
-    const user = upsertUser({ google_sub: sub, email, email_verified, name, picture });
+    const user = await upsertUser({ google_sub: sub, email, email_verified, name, picture });
     setAuthCookie(res, issueJwt(user));
 
     const returnTo = req.cookies?.oauth_return_to;

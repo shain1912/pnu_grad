@@ -57,10 +57,11 @@ async function getSheetsClient() {
   }
 }
 
+// ADR 0005 — 이메일·트랙·1/2/3지망만 미러. 이름/학번/학과/이수학기 컬럼 제거.
 const HEADER_ROW = [
-  'submitted_at', 'response_id', 'email', 'name',
-  '학번', '학과', '이수학기', '희망 트랙', '진학희망 학과', '개인정보 동의',
+  'submitted_at', 'response_id', 'email', '트랙', '1지망', '2지망', '3지망',
 ];
+const HEADER_RANGE = 'A1:G1';
 
 async function resolveTabName(sheets, sheetId, configuredTab) {
   if (_resolvedTab) return _resolvedTab;
@@ -78,7 +79,7 @@ async function resolveTabName(sheets, sheetId, configuredTab) {
 
 async function ensureHeader(sheets, sheetId, tab) {
   if (_headerWritten) return;
-  const range = `${tab}!A1:J1`;
+  const range = `${tab}!${HEADER_RANGE}`;
   const cur = await sheets.spreadsheets.values.get({ spreadsheetId: sheetId, range }).catch(() => null);
   const isEmpty = !cur?.data?.values?.[0]?.length;
   if (isEmpty) {
@@ -90,37 +91,35 @@ async function ensureHeader(sheets, sheetId, tab) {
   _headerWritten = true;
 }
 
-function buildRow(responseId) {
-  // 응답 + 사용자 + 답변 텍스트화
-  const r = db.prepare(`
-    SELECT r.id, r.submitted_at, u.email, u.name
+async function buildRow(responseId) {
+  // 응답 + 이메일 + 답변 텍스트화 (이름/사진은 미러하지 않음 — ADR 0005)
+  const r = await db.prepare(`
+    SELECT r.id, r.submitted_at, u.email
     FROM responses r JOIN users u ON u.id = r.user_id
     WHERE r.id = ?
   `).get(responseId);
   if (!r) throw new Error(`response ${responseId} not found`);
 
-  const a = db.prepare(`
+  const a = await db.prepare(`
     SELECT a.question_id, a.selected_option_ids, a.text_value, qo.label AS option_label
     FROM answers a
     LEFT JOIN question_options qo
-      ON qo.id = CAST(json_extract(a.selected_option_ids, '$[0]') AS INTEGER)
+      ON qo.id = (a.selected_option_ids::jsonb ->> 0)::int
     WHERE a.response_id = ?
   `).all(responseId);
 
   const byQ = {};
   for (const row of a) byQ[row.question_id] = row;
 
+  // Q1=트랙(single→label), Q2/Q3/Q4=1/2/3지망(short_text)
   return [
     r.submitted_at,
     r.id,
     r.email,
-    r.name,
-    byQ[1]?.text_value || '',
+    byQ[1]?.option_label || '',
     byQ[2]?.text_value || '',
-    byQ[3]?.option_label || '',
-    byQ[4]?.option_label || '',
-    byQ[5]?.text_value || '',
-    byQ[6]?.option_label || '',
+    byQ[3]?.text_value || '',
+    byQ[4]?.text_value || '',
   ];
 }
 
@@ -134,7 +133,7 @@ export async function mirrorResponseToSheet(responseId) {
   const tab = await resolveTabName(sheets, sheetId, configuredTab);
   await ensureHeader(sheets, sheetId, tab);
 
-  const row = buildRow(responseId);
+  const row = await buildRow(responseId);
   await sheets.spreadsheets.values.append({
     spreadsheetId: sheetId,
     range: `${tab}!A1`,
@@ -143,6 +142,6 @@ export async function mirrorResponseToSheet(responseId) {
     requestBody: { values: [row] },
   });
 
-  db.prepare("UPDATE responses SET sheet_synced_at = datetime('now') WHERE id = ?").run(responseId);
+  await db.prepare('UPDATE responses SET sheet_synced_at = now() WHERE id = ?').run(responseId);
   return { ok: true };
 }
