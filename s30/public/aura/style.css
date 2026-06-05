@@ -51,15 +51,20 @@
 /* ---- Light theme override hook (plan: light/dark transitions) ----
    Apply with <html data-theme="light"> or [data-theme="light"] on body. */
 [data-theme="light"] {
-  --bg-0: #eef2fb;
-  --bg-1: #f7f9ff;
-  --ink: #0e1a3a;
-  --ink-soft: #3c466b;
-  --ink-faint: #6f7aa0;
-  --glass-bg: rgba(255, 255, 255, 0.55);
-  --glass-bg-strong: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(40, 70, 140, 0.18);
-  --shadow-card: 0 24px 60px -26px rgba(40, 60, 120, 0.4);
+  --bg-0: #e8eef9;
+  --bg-1: #f4f7fd;
+  --ink: #0b1330;
+  --ink-soft: #38456b;
+  --ink-faint: #5b6680;
+  /* accents tuned for light bg (deeper so they read on white) */
+  --accent-1: #2563eb;
+  --accent-2: #00a651;
+  --glow-cyan: rgba(37, 99, 235, 0.30);
+  --glow-violet: rgba(0, 166, 81, 0.28);
+  --glass-bg: rgba(255, 255, 255, 0.62);
+  --glass-bg-strong: rgba(255, 255, 255, 0.78);
+  --glass-border: rgba(40, 70, 140, 0.20);
+  --shadow-card: 0 24px 60px -26px rgba(40, 60, 120, 0.34);
 }
 
 /* =============================================================
@@ -112,7 +117,7 @@ img, video { display: block; max-width: 100%; }
   display: block;
   /* faint vignette baked under the canvas in case the scene is sparse */
   background:
-    radial-gradient(120% 90% at 50% 0%, #0e1a3a 0%, var(--bg-0) 60%);
+    radial-gradient(120% 90% at 50% 0%, #dbe5f6 0%, var(--bg-0) 60%);
 }
 
 /* =============================================================
@@ -127,7 +132,7 @@ img, video { display: block; max-width: 100%; }
   justify-items: center;
   gap: 1.6rem;
   background:
-    radial-gradient(60% 60% at 50% 45%, #0a1430 0%, var(--bg-0) 100%);
+    radial-gradient(60% 60% at 50% 45%, #f4f7fd 0%, var(--bg-0) 100%);
   transition: opacity 0.9s var(--ease), visibility 0.9s;
 }
 .loader.is-hidden {
@@ -209,8 +214,8 @@ img, video { display: block; max-width: 100%; }
   padding: clamp(0.7rem, 1.6vw, 1.1rem) clamp(1.1rem, 4vw, 2.6rem);
   background: linear-gradient(
     to bottom,
-    rgba(5, 6, 15, 0.66) 0%,
-    rgba(5, 6, 15, 0.28) 100%
+    rgba(255, 255, 255, 0.82) 0%,
+    rgba(255, 255, 255, 0.42) 100%
   );
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
@@ -368,8 +373,8 @@ img, video { display: block; max-width: 100%; }
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(110% 80% at 50% 30%, transparent 0%, rgba(5,6,15,0.55) 70%),
-    linear-gradient(to bottom, rgba(5,6,15,0.35) 0%, rgba(5,6,15,0.85) 100%);
+    radial-gradient(110% 80% at 50% 30%, transparent 0%, rgba(232,238,249,0.30) 75%),
+    linear-gradient(to bottom, rgba(232,238,249,0) 0%, rgba(232,238,249,0.45) 100%);
 }
 
 /* =============================================================
@@ -675,10 +680,10 @@ img, video { display: block; max-width: 100%; }
    --pillar custom property and a translucent --pillar-soft, then
    tint that zone's tag, struct text, bullets, quote bar and the
    overlay card's accent edge + glow. Keeps the dark-glass base. */
-.section--zone[data-pillar="A"]  { --pillar: #00a651; --pillar-soft: rgba(245, 158, 11, 0.14); --pillar-glow: rgba(245, 158, 11, 0.45); }
+.section--zone[data-pillar="A"]  { --pillar: #00a651; --pillar-soft: rgba(0, 166, 81, 0.14); --pillar-glow: rgba(0, 166, 81, 0.45); }
 .section--zone[data-pillar="U"]  { --pillar: #3b82f6; --pillar-soft: rgba(59, 130, 246, 0.14); --pillar-glow: rgba(59, 130, 246, 0.45); }
 .section--zone[data-pillar="R"]  { --pillar: #10b981; --pillar-soft: rgba(16, 185, 129, 0.14); --pillar-glow: rgba(16, 185, 129, 0.45); }
-.section--zone[data-pillar="A2"] { --pillar: #3b82f6; --pillar-soft: rgba(139, 92, 246, 0.14); --pillar-glow: rgba(139, 92, 246, 0.45); }
+.section--zone[data-pillar="A2"] { --pillar: #3b82f6; --pillar-soft: rgba(59, 130, 246, 0.14); --pillar-glow: rgba(59, 130, 246, 0.45); }
 
 /* Soft pillar glow on the overlay card border within a coded zone */
 .section--zone[data-pillar] .overlay {
@@ -754,10 +759,10 @@ img, video { display: block; max-width: 100%; }
   max-width: 680px;
 }
 /* Reuse the same 4 pillar hues on each <li> */
-.aura-legend li[data-pillar="A"]  { --pillar: #00a651; --pillar-soft: rgba(245, 158, 11, 0.12); --pillar-glow: rgba(245, 158, 11, 0.4); }
+.aura-legend li[data-pillar="A"]  { --pillar: #00a651; --pillar-soft: rgba(0, 166, 81, 0.12); --pillar-glow: rgba(0, 166, 81, 0.4); }
 .aura-legend li[data-pillar="U"]  { --pillar: #3b82f6; --pillar-soft: rgba(59, 130, 246, 0.12); --pillar-glow: rgba(59, 130, 246, 0.4); }
 .aura-legend li[data-pillar="R"]  { --pillar: #10b981; --pillar-soft: rgba(16, 185, 129, 0.12); --pillar-glow: rgba(16, 185, 129, 0.4); }
-.aura-legend li[data-pillar="A2"] { --pillar: #3b82f6; --pillar-soft: rgba(139, 92, 246, 0.12); --pillar-glow: rgba(139, 92, 246, 0.4); }
+.aura-legend li[data-pillar="A2"] { --pillar: #3b82f6; --pillar-soft: rgba(59, 130, 246, 0.12); --pillar-glow: rgba(59, 130, 246, 0.4); }
 
 .aura-legend li {
   flex: 1 1 0;
@@ -822,8 +827,8 @@ img, video { display: block; max-width: 100%; }
   max-width: 1100px;
   width: 100%;
   padding: clamp(1.3rem, 2.6vw, 2rem) clamp(1.3rem, 3vw, 2.4rem);
-  background: rgba(10, 14, 30, 0.32);
-  box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  background: var(--glass-bg);
+  box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 /* ---- 12.6 · KPI strip --------------------------------------- */

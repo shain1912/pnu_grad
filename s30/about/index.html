@@ -92,19 +92,19 @@
 .ov-chip.primary { color:#fff; background:linear-gradient(120deg,var(--pnu-blue),var(--pnu-green)); border-color:transparent; }
 
 /* ===== A.U.R.A 2.0 — 시네마틱 다크 인포그래픽 존 ===== */
-.aura-zone { position:relative; overflow:hidden; padding:88px 0 92px; background:radial-gradient(circle at 16% 14%, #1a52a8 0%, transparent 52%), radial-gradient(circle at 88% 86%, #00A651 0%, transparent 48%), radial-gradient(circle at 60% 50%, #143F90 0%, transparent 70%), linear-gradient(150deg,#0A1228 0%,#0F1F45 50%,#070E22 100%); }
-.aura-zone::before { content:''; position:absolute; inset:0; background-image:url('/s30/assets/img/tech-circuit.jpg'); background-size:cover; background-position:center; opacity:.12; mix-blend-mode:luminosity; }
-.aura-zone-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(126,200,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(126,200,255,.06) 1px,transparent 1px); background-size:46px 46px; mask-image:radial-gradient(circle at 50% 35%, #000 0%, transparent 78%); -webkit-mask-image:radial-gradient(circle at 50% 35%, #000 0%, transparent 78%); }
+.aura-zone { position:relative; overflow:hidden; padding:88px 0 92px; background:radial-gradient(circle at 16% 14%, #dbe7fb 0%, transparent 52%), radial-gradient(circle at 88% 86%, #d6f3e4 0%, transparent 48%), radial-gradient(circle at 60% 50%, #e4edfb 0%, transparent 70%), linear-gradient(150deg,#f4f8fe 0%,#eaf1fb 50%,#f8fafd 100%); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.aura-zone::before { content:''; position:absolute; inset:0; background-image:url('/s30/assets/img/tech-circuit.jpg'); background-size:cover; background-position:center; opacity:.05; mix-blend-mode:multiply; }
+.aura-zone-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(20,63,144,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,63,144,.05) 1px,transparent 1px); background-size:46px 46px; mask-image:radial-gradient(circle at 50% 35%, #000 0%, transparent 78%); -webkit-mask-image:radial-gradient(circle at 50% 35%, #000 0%, transparent 78%); }
 .aura-zone-inner { position:relative; z-index:2; }
 .aura-zone-head { text-align:center; margin-bottom:46px; }
-.aura-zone-eyebrow { display:inline-flex; align-items:center; gap:10px; font-size:11.5px; font-weight:800; color:#7EC8FF; letter-spacing:.18em; text-transform:uppercase; margin-bottom:18px; font-family:'Inter',sans-serif; }
+.aura-zone-eyebrow { display:inline-flex; align-items:center; gap:10px; font-size:11.5px; font-weight:800; color:#2563EB; letter-spacing:.18em; text-transform:uppercase; margin-bottom:18px; font-family:'Inter',sans-serif; }
 .ab-live { width:8px; height:8px; border-radius:50%; background:#00E08A; box-shadow:0 0 0 0 rgba(0,224,138,.6); animation:abpulse 2s infinite; }
 @keyframes abpulse { 0%{box-shadow:0 0 0 0 rgba(0,224,138,.55);} 70%{box-shadow:0 0 0 10px rgba(0,224,138,0);} 100%{box-shadow:0 0 0 0 rgba(0,224,138,0);} }
-.aura-zone-title { font-size:clamp(2rem,3.8vw,3.2rem); font-weight:900; line-height:1.12; letter-spacing:-.04em; color:#fff; }
-.aura-zone-title .grad { background:linear-gradient(100deg,#7EC8FF,#00E08A); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.aura-zone-title { font-size:clamp(2rem,3.8vw,3.2rem); font-weight:900; line-height:1.12; letter-spacing:-.04em; color:#0F172A; }
+.aura-zone-title .grad { background:linear-gradient(100deg,#2563EB,#00A651); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
 .aura-zone-chips { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin-top:18px; }
-.azc { display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color:rgba(255,255,255,.85); background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:100px; padding:7px 14px; font-family:'Inter',sans-serif; }
-.azc i { color:#7EC8FF; font-size:11px; }
+.azc { display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color:#1E293B; background:#EFF6FF; border:1px solid #DBEAFE; border-radius:100px; padding:7px 14px; font-family:'Inter',sans-serif; }
+.azc i { color:#2563EB; font-size:11px; }
 
 /* 거대 4기둥 */
 .pillar-row { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-bottom:34px; }
@@ -540,8 +540,8 @@
   </div><!-- /container: 헤더까지만 -->
 
   <!-- 실제 3D 인터랙티브 마스터플랜 (그대로 임베드 · 화면 폭 꽉 채움) -->
-  <div style="position:relative;width:100%;background:#070E22">
-    <iframe src="/s30/aura/" title="A.U.R.A 2.0 인터랙티브 마스터플랜" loading="lazy" allowfullscreen style="display:block;width:100%;height:92vh;min-height:580px;border:0;border-top:1px solid rgba(126,200,255,.2);border-bottom:1px solid rgba(126,200,255,.2);background:#070E22"></iframe>
+  <div style="position:relative;width:100%;background:#E8EEF9">
+    <iframe src="/s30/aura/" title="A.U.R.A 2.0 인터랙티브 마스터플랜" loading="lazy" allowfullscreen style="display:block;width:100%;height:92vh;min-height:580px;border:0;border-top:1px solid rgba(40,70,140,.16);border-bottom:1px solid rgba(40,70,140,.16);background:#E8EEF9"></iframe>
     <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);z-index:3;display:inline-flex;align-items:center;gap:8px;background:rgba(7,14,34,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(126,200,255,.3);color:#cfe6ff;font-size:12px;font-weight:600;padding:8px 16px;border-radius:100px;pointer-events:none">
       <i class="fas fa-up-down" style="color:#7EC8FF"></i> 프레임 안에서 스크롤하여 A·U·R·A 4대 전략 축을 탐색하세요
     </div>

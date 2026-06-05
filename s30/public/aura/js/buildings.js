@@ -15,12 +15,12 @@ import * as THREE from 'three';
 
 /* ---------- Shared palette ---------- */
 const PALETTE = {
-  cyan: 0x7ec8ff,
-  violet: 0x00e08a,
-  amber: 0x00e08a,
-  steel: 0x1a2240,
-  panel: 0x10162e,
-  dark: 0x0a0e20,
+  cyan: 0x2563eb,   /* vivid blue glow — reads on light bg   */
+  violet: 0x00a651, /* PNU green glow                        */
+  amber: 0x0075c9,  /* PNU blue-sub (3rd accent)             */
+  steel: 0x2b4c8a,  /* medium-dark blue structure (visible)  */
+  panel: 0x1e3a6e,  /* darker blue panel                     */
+  dark: 0x14294f,   /* deepest structural blue               */
 };
 
 /* ---------- Material helpers ---------- */
@@ -37,7 +37,7 @@ function structMat(color = PALETTE.steel) {
 /** Emissive accent material — glows in the chosen color. */
 function glowMat(color, intensity = 1.6) {
   return new THREE.MeshStandardMaterial({
-    color: 0x070e22,
+    color: 0x14294f,
     emissive: color,
     emissiveIntensity: intensity,
     metalness: 0.2,

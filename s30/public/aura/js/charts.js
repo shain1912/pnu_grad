@@ -7,10 +7,10 @@ export function initCharts() {
   const Chart = window.Chart;
   if (!Chart) return;
 
-  const CYAN = '#7ec8ff';
-  const VIOLET = '#00e08a';
-  const INK = '#aab6d6';
-  const GRID = 'rgba(155, 190, 255, 0.12)';
+  const CYAN = '#2563eb';
+  const VIOLET = '#00a651';
+  const INK = '#38456b';
+  const GRID = 'rgba(40, 70, 140, 0.14)';
 
   Chart.defaults.color = INK;
   Chart.defaults.font.family = "'Inter', system-ui, sans-serif";
@@ -26,7 +26,7 @@ export function initCharts() {
           label: '행정 만족도 (점)',
           data: [70, 75, 80, 90],
           borderColor: CYAN,
-          backgroundColor: 'rgba(57, 224, 255, 0.16)',
+          backgroundColor: 'rgba(37, 99, 235, 0.14)',
           borderWidth: 3,
           fill: true,
           tension: 0.35,
@@ -60,7 +60,7 @@ export function initCharts() {
             label: '현재 달성 (2026.3 기준)',
             data: [85, 70, 65, 72, 75],
             borderColor: CYAN,
-            backgroundColor: 'rgba(57, 224, 255, 0.22)',
+            backgroundColor: 'rgba(37, 99, 235, 0.20)',
             borderWidth: 2,
             pointBackgroundColor: CYAN,
           },
@@ -68,7 +68,7 @@ export function initCharts() {
             label: '2027 목표',
             data: [100, 100, 100, 100, 100],
             borderColor: VIOLET,
-            backgroundColor: 'rgba(123, 92, 255, 0.14)',
+            backgroundColor: 'rgba(0, 166, 81, 0.16)',
             borderWidth: 2,
             borderDash: [5, 4],
             pointBackgroundColor: VIOLET,

@@ -34,8 +34,8 @@ renderer.outputColorSpace = THREE.SRGBColorSpace;
 
 /* ---------- Scene ---------- */
 const scene = new THREE.Scene();
-scene.background = new THREE.Color('#060b1c');
-scene.fog = new THREE.FogExp2('#060b1c', 0.0065);
+scene.background = new THREE.Color('#e8eef9');
+scene.fog = new THREE.FogExp2('#e8eef9', 0.0042);
 
 /* ---------- Camera ---------- */
 const camera = new THREE.PerspectiveCamera(
@@ -48,19 +48,19 @@ camera.position.set(0, 30, 60);
 camera.lookAt(0, 0, 0);
 
 /* ---------- Lights ---------- */
-scene.add(new THREE.AmbientLight('#5566aa', 0.6));
-const key = new THREE.DirectionalLight('#bcd0ff', 1.1);
+scene.add(new THREE.AmbientLight('#b4c0dc', 0.85));
+const key = new THREE.DirectionalLight('#ffffff', 1.2);
 key.position.set(40, 80, 40);
 scene.add(key);
-const rim = new THREE.DirectionalLight('#00e08a', 0.6);
+const rim = new THREE.DirectionalLight('#00a651', 0.55);
 rim.position.set(-50, 30, -40);
 scene.add(rim);
-scene.add(new THREE.HemisphereLight('#33408f', '#0a1228', 0.5));
+scene.add(new THREE.HemisphereLight('#dce6fb', '#aab8d8', 0.65));
 
 /* ---------- Ground grid (campus floor) ---------- */
-const grid = new THREE.GridHelper(1600, 160, '#2b3a8f', '#0f1f45');
+const grid = new THREE.GridHelper(1600, 160, '#8fa0cf', '#c4cfe8');
 grid.material.transparent = true;
-grid.material.opacity = 0.35;
+grid.material.opacity = 0.5;
 grid.position.y = -0.5;
 scene.add(grid);
 
