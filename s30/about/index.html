@@ -1,14 +1,224 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>사업 소개 — 부산대학교 AI 거점대학육성사업단 | ARISE PNU</title>
-<meta name="description" content="A.U.R.A 2.0 마스터플랜 · 사업 개요 · 비전 · 거버넌스 · 추진체계">
+<meta name="description" content="AI 시대의 중심축, 부산대학교. 사업 정체성·비전·A.U.R.A 2.0 마스터플랜·거버넌스 체계 — 국책 사업 누적 3,111억, AI 교수진 58명, 동남권 AX 생태계의 중심 거점.">
 <link rel="icon" type="image/jpeg" href="/s30/assets/pnu-symbol-color.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+4:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="/src/styles/main.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+/* 페이지 고유 CSS — main.css는 건드리지 않음 */
+
+/* 히어로 프리미엄 글로우 액센트 (about 한정) */
+#overview { position:relative; }
+#overview::before { content:''; position:absolute; top:-60px; right:0; width:340px; height:340px; border-radius:50%; background:radial-gradient(circle,rgba(0,91,170,.07),transparent 70%); pointer-events:none; z-index:0; }
+#overview .container { position:relative; z-index:1; }
+.ov-meta-cell { transition:transform .25s, box-shadow .25s; }
+.ov-meta-cell:hover { transform:translateY(-3px); box-shadow:0 10px 24px rgba(0,91,170,.1); }
+.ov-chip { transition:transform .2s, box-shadow .2s; }
+.ov-chip:hover { transform:translateY(-2px); box-shadow:0 6px 16px rgba(0,91,170,.14); }
+
+/* 예산 구조 섹션 (3,111억 도넛 차트 + 범례) */
+.budget-section { background:linear-gradient(180deg,#0B1530 0%,#0F1F45 60%,#0B1A3E 100%); position:relative; overflow:hidden; }
+.budget-section::before { content:''; position:absolute; inset:0; background-image:url('/s30/assets/img/tech-circuit.jpg'); background-size:cover; background-position:center; opacity:.08; mix-blend-mode:luminosity; }
+.budget-section .container { position:relative; z-index:2; }
+.budget-section .s-eyebrow { color:#7EC8FF; }
+.budget-section .s-title { color:#fff; }
+.budget-section .s-title em { background:linear-gradient(100deg,#7EC8FF,#00E08A); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.budget-section .s-sub { color:rgba(255,255,255,.72); }
+.budget-layout { display:grid; grid-template-columns:.85fr 1.15fr; gap:48px; align-items:center; margin-top:18px; }
+.budget-chart-wrap { position:relative; }
+.budget-chart-center { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; pointer-events:none; }
+.budget-chart-center .bc-n { font-family:'Inter',sans-serif; font-size:2.7rem; font-weight:900; line-height:1; letter-spacing:-.04em; background:linear-gradient(120deg,#7EC8FF,#00E08A); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.budget-chart-center .bc-u { font-size:1.1rem; font-weight:800; color:#fff; }
+.budget-chart-center .bc-l { font-size:11px; font-weight:600; color:rgba(255,255,255,.6); margin-top:6px; letter-spacing:.04em; }
+.budget-legend { display:flex; flex-direction:column; gap:10px; }
+.bl-row { display:grid; grid-template-columns:14px 1fr auto; gap:13px; align-items:center; padding:11px 16px; border-radius:12px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); transition:all .25s; }
+.bl-row:hover { background:rgba(255,255,255,.08); transform:translateX(4px); border-color:rgba(126,200,255,.4); }
+.bl-dot { width:13px; height:13px; border-radius:4px; }
+.bl-name { font-size:13.5px; font-weight:700; color:#fff; }
+.bl-name small { display:block; font-size:10.5px; font-weight:500; color:rgba(255,255,255,.55); margin-top:2px; font-family:'Inter',sans-serif; }
+.bl-val { text-align:right; font-family:'Inter',sans-serif; }
+.bl-val .v { font-size:15px; font-weight:800; color:#fff; }
+.bl-val .p { font-size:10.5px; font-weight:600; color:#7EC8FF; }
+.budget-source { margin-top:22px; font-size:11px; color:rgba(255,255,255,.45); font-family:'Inter',sans-serif; text-align:center; }
+
+/* 임팩트 성과 하이라이트 그리드 */
+.impact-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:14px; }
+.impact-card { position:relative; padding:30px 22px 26px; border-radius:18px; background:var(--white); border:1px solid var(--border); box-shadow:0 10px 30px rgba(15,31,69,.06); overflow:hidden; transition:all .3s; }
+.impact-card::after { content:''; position:absolute; top:0; left:0; width:100%; height:4px; background:linear-gradient(90deg,var(--pnu-blue),var(--pnu-green)); transform:scaleX(0); transform-origin:left; transition:transform .35s; }
+.impact-card:hover { transform:translateY(-6px); box-shadow:0 20px 44px rgba(15,31,69,.13); border-color:var(--pnu-blue); }
+.impact-card:hover::after { transform:scaleX(1); }
+.impact-card .ic-ico { width:46px; height:46px; border-radius:13px; display:flex; align-items:center; justify-content:center; font-size:19px; color:#fff; margin-bottom:16px; background:linear-gradient(135deg,var(--pnu-blue),var(--pnu-blue-sub)); }
+.impact-card.green .ic-ico { background:linear-gradient(135deg,#00A651,#0a8f48); }
+.impact-card.gold .ic-ico { background:linear-gradient(135deg,#143F90,#0075C9); }
+.impact-card.violet .ic-ico { background:linear-gradient(135deg,#0F1F45,#143F90); }
+.impact-card .ic-n { font-family:'Inter',sans-serif; font-size:3.4rem; font-weight:900; line-height:.92; letter-spacing:-.05em; color:var(--ink); }
+.impact-card .ic-n span { font-size:1.3rem; font-weight:800; color:var(--pnu-blue); margin-left:2px; }
+.impact-card .ic-l { font-size:13.5px; font-weight:700; color:var(--ink); margin-top:9px; }
+.impact-card .ic-s { font-size:11.5px; color:var(--text-m); margin-top:4px; line-height:1.5; }
+
+/* 성과 임팩트 배지 띠 (다크) */
+.impact-band { background:linear-gradient(120deg,#0F1F45,#143F90); }
+.impact-band .section-header .s-eyebrow { color:#7EC8FF; justify-content:center; }
+.impact-band .section-header .s-title { color:#fff; }
+.impact-band .section-header .s-sub { color:rgba(255,255,255,.72); margin:0 auto; }
+.impact-band .impact-card { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); box-shadow:none; }
+.impact-band .impact-card:hover { background:rgba(255,255,255,.09); border-color:rgba(126,200,255,.5); }
+.impact-band .impact-card .ic-n { color:#fff; text-shadow:0 0 30px rgba(126,200,255,.35); }
+.impact-band .impact-card .ic-n span { color:#7EC8FF; }
+.impact-band .impact-card:hover .ic-ico { box-shadow:0 0 26px rgba(126,200,255,.5); }
+.impact-band .impact-card .ic-ico { transition:box-shadow .35s, transform .35s; }
+.impact-band .impact-card:hover .ic-ico { transform:scale(1.08) rotate(-4deg); }
+.impact-band .impact-card .ic-l { color:#fff; }
+.impact-band .impact-card .ic-s { color:rgba(255,255,255,.62); }
+
+/* 개요 좌측 텍스트 위 작은 사진 띠 */
+.ov-photo-strip { display:grid; grid-template-columns:1.4fr 1fr; gap:12px; margin-bottom:26px; }
+.ov-photo { position:relative; border-radius:14px; overflow:hidden; height:170px; box-shadow:0 8px 24px rgba(15,31,69,.1); }
+.ov-photo img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease; }
+.ov-photo:hover img { transform:scale(1.06); }
+.ov-photo .ovp-tag { position:absolute; left:12px; bottom:12px; z-index:2; color:#fff; font-size:11px; font-weight:800; letter-spacing:.04em; font-family:'Inter',sans-serif; padding:5px 11px; border-radius:100px; background:rgba(15,31,69,.62); backdrop-filter:blur(6px); }
+.ov-photo::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,transparent 45%,rgba(15,31,69,.4)); z-index:1; }
+
+/* 개요 좌측 칩 (문단 대체) */
+.ov-chips { display:flex; flex-wrap:wrap; gap:9px; margin-bottom:24px; }
+.ov-chip { display:inline-flex; align-items:center; gap:7px; font-size:12.5px; font-weight:700; color:var(--pnu-blue); background:var(--blue-tint); border:1px solid var(--blue-light); border-radius:100px; padding:8px 14px; }
+.ov-chip i { font-size:11px; }
+.ov-chip.primary { color:#fff; background:linear-gradient(120deg,var(--pnu-blue),var(--pnu-green)); border-color:transparent; }
+
+/* ===== A.U.R.A 2.0 — 시네마틱 다크 인포그래픽 존 ===== */
+.aura-zone { position:relative; overflow:hidden; padding:88px 0 92px; background:radial-gradient(circle at 16% 14%, #1a52a8 0%, transparent 52%), radial-gradient(circle at 88% 86%, #00A651 0%, transparent 48%), radial-gradient(circle at 60% 50%, #143F90 0%, transparent 70%), linear-gradient(150deg,#0A1228 0%,#0F1F45 50%,#070E22 100%); }
+.aura-zone::before { content:''; position:absolute; inset:0; background-image:url('/s30/assets/img/tech-circuit.jpg'); background-size:cover; background-position:center; opacity:.12; mix-blend-mode:luminosity; }
+.aura-zone-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(126,200,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(126,200,255,.06) 1px,transparent 1px); background-size:46px 46px; mask-image:radial-gradient(circle at 50% 35%, #000 0%, transparent 78%); -webkit-mask-image:radial-gradient(circle at 50% 35%, #000 0%, transparent 78%); }
+.aura-zone-inner { position:relative; z-index:2; }
+.aura-zone-head { text-align:center; margin-bottom:46px; }
+.aura-zone-eyebrow { display:inline-flex; align-items:center; gap:10px; font-size:11.5px; font-weight:800; color:#7EC8FF; letter-spacing:.18em; text-transform:uppercase; margin-bottom:18px; font-family:'Inter',sans-serif; }
+.ab-live { width:8px; height:8px; border-radius:50%; background:#00E08A; box-shadow:0 0 0 0 rgba(0,224,138,.6); animation:abpulse 2s infinite; }
+@keyframes abpulse { 0%{box-shadow:0 0 0 0 rgba(0,224,138,.55);} 70%{box-shadow:0 0 0 10px rgba(0,224,138,0);} 100%{box-shadow:0 0 0 0 rgba(0,224,138,0);} }
+.aura-zone-title { font-size:clamp(2rem,3.8vw,3.2rem); font-weight:900; line-height:1.12; letter-spacing:-.04em; color:#fff; }
+.aura-zone-title .grad { background:linear-gradient(100deg,#7EC8FF,#00E08A); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.aura-zone-chips { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin-top:18px; }
+.azc { display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color:rgba(255,255,255,.85); background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:100px; padding:7px 14px; font-family:'Inter',sans-serif; }
+.azc i { color:#7EC8FF; font-size:11px; }
+
+/* 거대 4기둥 */
+.pillar-row { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-bottom:34px; }
+.pillar { position:relative; padding:30px 22px 26px; border-radius:20px; border:1px solid rgba(255,255,255,.12); background:linear-gradient(165deg,rgba(255,255,255,.07),rgba(255,255,255,.02)); backdrop-filter:blur(8px); overflow:hidden; transition:all .3s; }
+.pillar::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--pc,#7EC8FF); opacity:.85; }
+.pillar:hover { transform:translateY(-6px); border-color:rgba(255,255,255,.28); box-shadow:0 22px 50px rgba(0,0,0,.4); }
+.pillar-letter { font-family:'Source Serif 4',serif; font-style:italic; font-weight:800; font-size:88px; line-height:.86; color:var(--pc,#7EC8FF); text-shadow:0 6px 30px rgba(0,0,0,.4); }
+.pillar-ico { width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:17px; color:#fff; margin:10px 0 14px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); }
+.pillar-name { font-family:'Inter',sans-serif; font-size:13px; font-weight:800; letter-spacing:.02em; color:var(--pc,#7EC8FF); }
+.pillar-kr { font-size:18px; font-weight:900; color:#fff; margin-top:3px; }
+.pillar-chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:16px; }
+.pillar-chips span { font-size:11px; font-weight:700; color:rgba(255,255,255,.82); background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); border-radius:8px; padding:5px 9px; }
+.pillar.p-a { --pc:#7EC8FF; }
+.pillar.p-u { --pc:#00E08A; }
+.pillar.p-r { --pc:#A9C7FF; }
+.pillar.p-a2 { --pc:#FFD27E; }
+
+/* KPI 대형 타일 */
+.aura-kpi-row { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-bottom:34px; }
+.aura-kpi { text-align:center; padding:26px 12px; border-radius:16px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); transition:all .25s; }
+.aura-kpi:hover { transform:translateY(-4px); border-color:rgba(126,200,255,.45); background:rgba(255,255,255,.08); }
+.aura-kpi .ak-n { font-family:'Inter',sans-serif; font-size:2.7rem; font-weight:900; line-height:1; letter-spacing:-.04em; }
+.aura-kpi .ak-n span { background:linear-gradient(120deg,#7EC8FF,#00E08A); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; }
+.aura-kpi .ak-l { font-size:12px; font-weight:700; color:rgba(255,255,255,.78); margin-top:11px; }
+
+/* 차트 2개 */
+.aura-chart-row { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.aura-chart-card { padding:22px 24px 18px; border-radius:18px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); }
+.acc-head { font-size:13.5px; font-weight:800; color:#fff; display:flex; align-items:center; gap:9px; margin-bottom:14px; }
+.acc-head i { color:#7EC8FF; }
+.acc-canvas { position:relative; height:260px; }
+.acc-foot { display:flex; justify-content:space-between; margin-top:10px; font-size:11px; font-weight:700; color:rgba(255,255,255,.55); font-family:'Inter',sans-serif; padding:0 6px; }
+.acc-legend { display:flex; justify-content:center; gap:18px; margin-top:12px; }
+.acc-legend .lg { font-size:11.5px; font-weight:700; color:rgba(255,255,255,.8); display:inline-flex; align-items:center; gap:7px; }
+.acc-legend .lg::before { content:''; width:11px; height:11px; border-radius:3px; }
+.acc-legend .lg-now::before { background:#7EC8FF; }
+.acc-legend .lg-tgt::before { background:#00E08A; }
+
+/* 비전 목표 타일 */
+.vision-targets { display:flex; gap:14px; margin-top:24px; flex-wrap:wrap; }
+.vtg { padding:16px 22px; border-radius:14px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16); }
+.vtg-y { font-family:'Inter',sans-serif; font-size:1.7rem; font-weight:900; color:#fff; line-height:1; letter-spacing:-.03em; }
+.vtg-l { font-size:12.5px; font-weight:700; color:rgba(255,255,255,.78); margin-top:6px; }
+
+/* 다이어그램 노드 hover 효과 */
+.gov-svg .dnode { transition:opacity .25s; cursor:default; }
+.diagram-wrap:hover .gov-svg .dnode { opacity:.55; }
+.diagram-wrap .gov-svg .dnode:hover { opacity:1; }
+.flow-dash { stroke-dasharray:7 6; animation:flowmove 1.1s linear infinite; }
+@keyframes flowmove { to { stroke-dashoffset:-26; } }
+@media (prefers-reduced-motion: reduce){ .flow-dash, .ab-live { animation:none; } }
+
+/* ===== 개요 우측: 작은 도넛 게이지 (국립대 1위 / 3년 연속) ===== */
+.ov-side { position:relative; }
+.ov-gauge-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:18px; }
+.ov-gauge { position:relative; padding:16px 12px 14px; border-radius:14px; background:linear-gradient(165deg,#fff,var(--blue-tint)); border:1px solid var(--blue-light); text-align:center; overflow:hidden; transition:all .3s; }
+.ov-gauge:hover { transform:translateY(-4px); box-shadow:0 14px 30px rgba(0,91,170,.16); border-color:var(--pnu-blue); }
+.ov-gauge canvas { max-width:96px; margin:0 auto; }
+.ov-gauge-c { position:absolute; top:16px; left:0; right:0; height:96px; display:flex; flex-direction:column; align-items:center; justify-content:center; pointer-events:none; }
+.ov-gauge-c .ogn { font-family:'Inter',sans-serif; font-size:1.35rem; font-weight:900; color:var(--pnu-blue); line-height:1; letter-spacing:-.03em; }
+.ov-gauge-c .ogn small { font-size:.8rem; }
+.ov-gauge .ogl { font-size:11px; font-weight:800; color:var(--ink); margin-top:8px; }
+.ov-gauge .ogs { font-size:10px; font-weight:600; color:var(--text-m); margin-top:2px; }
+
+/* ===== 전략 스케일 인포그래픽 (8·22·47 퍼널) — 크림 리듬 ===== */
+.strategy-section { background:var(--bg-cream); position:relative; overflow:hidden; }
+.strategy-section::before { content:''; position:absolute; top:-120px; right:-120px; width:420px; height:420px; border-radius:50%; background:radial-gradient(circle,rgba(0,91,170,.10),transparent 70%); pointer-events:none; }
+.strategy-section::after { content:''; position:absolute; bottom:-140px; left:-100px; width:380px; height:380px; border-radius:50%; background:radial-gradient(circle,rgba(0,166,81,.09),transparent 70%); pointer-events:none; }
+.strategy-section .container { position:relative; z-index:2; }
+.funnel-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:8px; }
+.funnel-step { position:relative; padding:34px 26px 30px; border-radius:20px; background:var(--white); border:1px solid var(--border); box-shadow:0 12px 32px rgba(15,31,69,.07); text-align:center; overflow:hidden; transition:all .35s; }
+.funnel-step::before { content:''; position:absolute; inset:0 0 auto 0; height:5px; background:var(--fc); }
+.funnel-step::after { content:attr(data-step); position:absolute; top:16px; right:20px; font-family:'Inter',sans-serif; font-size:13px; font-weight:900; color:var(--fc); opacity:.4; }
+.funnel-step:hover { transform:translateY(-8px); box-shadow:0 26px 56px rgba(15,31,69,.15); }
+.funnel-step .fs-ico { width:54px; height:54px; margin:6px auto 16px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:22px; color:#fff; background:var(--fc); box-shadow:0 10px 24px var(--fcg); }
+.funnel-step .fs-n { font-family:'Inter',sans-serif; font-size:4.6rem; font-weight:900; line-height:.9; letter-spacing:-.05em; background:linear-gradient(160deg,var(--fc),var(--fc2)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.funnel-step .fs-l { font-size:14px; font-weight:800; color:var(--ink); margin-top:12px; }
+.funnel-step .fs-en { font-size:10.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--text-m); margin-top:4px; font-family:'Inter',sans-serif; }
+.funnel-step.f1 { --fc:#143F90; --fc2:#0075C9; --fcg:rgba(20,63,144,.25); }
+.funnel-step.f2 { --fc:#0075C9; --fc2:#00A651; --fcg:rgba(0,117,201,.25); }
+.funnel-step.f3 { --fc:#00A651; --fc2:#00E08A; --fcg:rgba(0,166,81,.25); }
+.funnel-arrow { display:flex; align-items:center; justify-content:center; gap:14px; margin-top:26px; color:var(--text-m); font-size:12px; font-weight:700; }
+.funnel-arrow .fa-line { flex:0 0 60px; height:2px; background:linear-gradient(90deg,#143F90,#00A651); border-radius:2px; }
+.funnel-arrow i { color:var(--pnu-blue); }
+
+/* 거버넌스 카드 내부 작은 리스트 */
+.gov-card .gov-list { list-style:none; margin-top:14px; display:flex; flex-direction:column; gap:9px; }
+.gov-card .gov-list li { display:flex; gap:10px; align-items:flex-start; font-size:13px; color:var(--text-b); line-height:1.55; }
+.gov-card .gov-list li i { color:var(--pnu-blue); font-size:11px; margin-top:5px; flex-shrink:0; }
+.gov-title { font-size:18px; font-weight:800; color:var(--ink); margin-bottom:6px; }
+.gov-link { display:inline-flex; align-items:center; gap:6px; margin-top:16px; font-size:12.5px; font-weight:700; color:var(--pnu-blue); font-family:'Inter',sans-serif; }
+
+@media (max-width:1024px){
+  .impact-grid { grid-template-columns:repeat(2,1fr); }
+  .pillar-row { grid-template-columns:repeat(2,1fr); }
+  .aura-kpi-row { grid-template-columns:repeat(5,1fr); gap:10px; }
+  .aura-kpi .ak-n { font-size:2.1rem; }
+}
+@media (max-width:900px){
+  .ov-photo-strip { grid-template-columns:1fr 1fr; }
+  .budget-layout { grid-template-columns:1fr; gap:32px; }
+  .impact-grid { grid-template-columns:1fr 1fr; }
+  .pillar-row { grid-template-columns:1fr 1fr; }
+  .aura-kpi-row { grid-template-columns:repeat(2,1fr); }
+  .aura-chart-row { grid-template-columns:1fr; }
+  .funnel-grid { grid-template-columns:1fr; }
+  .funnel-arrow { display:none; }
+}
+@media (max-width:540px){
+  .pillar-row { grid-template-columns:1fr; }
+  .aura-kpi-row { grid-template-columns:1fr; }
+  .impact-card .ic-n { font-size:2.7rem; }
+}
+</style>
 </head>
 <body>
 
@@ -96,292 +306,472 @@
 <section class="page-hero">
   <div class="container ph-inner">
     <div class="ph-left">
-      <div class="ph-eyebrow"><i class="fas fa-flag"></i> About ARISE PNU</div>
-      <h1 class="ph-title">사업 소개 · <em>A.U.R.A 2.0</em>로<br>AI 시대의 중심축이 되다</h1>
-      <p class="ph-sub">2026년 2월 9일 발표된 A.U.R.A 2.0 마스터플랜은 부산대학교 80주년을 맞아 향후 2년간 100억 원을 투자해 AI 철학·연구·교육·행정 전 영역을 혁신하는 통합 전략입니다.</p>
+      <div class="ph-eyebrow">ABOUT · 사업 소개</div>
+      <h1 class="ph-title">AI 시대의 중심축, <em>부산대학교</em></h1>
+      <p class="ph-sub">교육부 선정 · 동남권 AX 거점 · A.U.R.A 2.0</p>
       <div class="breadcrumb">
         <a href="/s30/"><i class="fas fa-home"></i> 홈</a>
         <i class="fas fa-chevron-right"></i>
         <span class="current">사업 소개</span>
       </div>
     </div>
-    <div class="ph-icon"><i class="fas fa-sitemap"></i></div>
+    <div class="ph-icon"><i class="fas fa-flag"></i></div>
   </div>
 </section>
 
 <!-- OVERVIEW -->
 <section class="section" id="overview">
   <div class="container">
-    <div class="section-banner" style="position:relative;height:300px;border-radius:18px;overflow:hidden;margin-bottom:48px;box-shadow:0 12px 36px rgba(15,31,69,.12)">
-      <img src="/s30/assets/img/campus.jpg" alt="부산대학교 캠퍼스 전경" style="width:100%;height:100%;object-fit:cover;display:block">
-      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(15,31,69,.7),rgba(15,31,69,.15) 60%,transparent);display:flex;flex-direction:column;justify-content:flex-end;padding:32px;color:#fff">
-        <div style="font-size:11px;letter-spacing:.14em;color:#BFDBFE;text-transform:uppercase;margin-bottom:8px;font-weight:800;font-family:'Inter',sans-serif">PUSAN NATIONAL UNIVERSITY · ARISE</div>
-        <div style="font-size:24px;font-weight:900;line-height:1.3;letter-spacing:-.02em;max-width:780px">국립대 최초 AI 기반 대학 혁신, 80주년 부산대학교에서 시작됩니다</div>
-      </div>
-    </div>
     <div class="section-header">
-      <div class="s-eyebrow">사업 개요</div>
-      <h2 class="s-title">왜 지금, <em>AI 거점대학</em>인가</h2>
-      <p class="s-sub">동남권 AX 생태계의 중심에서 부산대학교는 국립대 최초로 AI 기반 대학 혁신을 전면 추진합니다.</p>
+      <div class="s-eyebrow">Project Identity</div>
+      <div class="s-title">동남권 AX 생태계의 <em>중심 거점</em></div>
     </div>
 
     <div class="overview-grid">
       <div class="ov-text">
-        <p>부산대학교 AI 거점대학육성사업단(ARISE PNU)은 교육부 AI 거점대학 사업의 동남권 거점으로, <strong>A.U.R.A 2.0 마스터플랜</strong>을 통해 AI 기반 대학 혁신을 종합적으로 추진합니다.</p>
-        <p>2026년 2월 9일 공식 발표된 본 사업은 박상후 대외·전략부총장을 총괄책임자로 하여 향후 <strong>2년간 100억 원</strong>을 투자, 부산대 80주년(2026)을 기점으로 100주년(2046) Top 100 진입을 목표로 합니다.</p>
-        <p>국책 사업 누적 예산 <strong>3,111억 원</strong> 규모 8개 대형 사업을 동시 운영하며, 2028년 본 사업 진입 시 연 1,000억 × 5년 규모의 추가 재원을 확보할 예정입니다.</p>
+        <div class="ov-photo-strip">
+          <div class="ov-photo">
+            <img src="/s30/assets/img/campus.jpg" alt="부산대학교 캠퍼스" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,#0d3b6e,#005BAA 60%,#1d7bcc)'">
+            <span class="ovp-tag">PNU Campus · 1946–</span>
+          </div>
+          <div class="ov-photo">
+            <img src="/s30/assets/img/it-building.jpg" alt="IT관 신축" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,#143F90,#0F1F45)'">
+            <span class="ovp-tag">IT관 · 거점</span>
+          </div>
+        </div>
+
+        <div class="ov-chips">
+          <span class="ov-chip"><i class="fas fa-flag"></i> 교육부 선정 2025</span>
+          <span class="ov-chip"><i class="fas fa-map-marker-alt"></i> 동남권 AX 거점</span>
+          <span class="ov-chip"><i class="fas fa-birthday-cake"></i> 개교 80주년</span>
+          <span class="ov-chip"><i class="fas fa-medal"></i> 국립대 1위 · 3년 연속</span>
+          <span class="ov-chip primary"><i class="fas fa-sitemap"></i> A.U.R.A 2.0</span>
+        </div>
+
         <div class="ov-meta">
-          <div class="ov-meta-cell"><div class="k">발표일</div><div class="v">2026.02.09</div></div>
-          <div class="ov-meta-cell"><div class="k">총괄책임</div><div class="v">박상후 부총장</div></div>
-          <div class="ov-meta-cell"><div class="k">투자 규모</div><div class="v">2년 100억 원</div></div>
-          <div class="ov-meta-cell"><div class="k">국책 누적</div><div class="v">3,111억 원</div></div>
+          <div class="ov-meta-cell"><div class="k">Selected</div><div class="v">교육부 선정 · 2025</div></div>
+          <div class="ov-meta-cell"><div class="k">Region</div><div class="v">동남권 AX 거점 대학</div></div>
+          <div class="ov-meta-cell"><div class="k">Milestone</div><div class="v">개교 80주년 기념사업</div></div>
+          <div class="ov-meta-cell"><div class="k">Rank</div><div class="v">국립대 1위 (3년 연속)</div></div>
         </div>
       </div>
+
       <div class="ov-side">
-        <h4><i class="fas fa-quote-left"></i> 총장 메시지</h4>
-        <div class="quote">"AI 기반 대학혁신은 교육·연구·행정 전 영역의 경쟁력을 결정하는 새로운 기회이자 과제입니다. 전 구성원이 함께 설계하고 참여해야 합니다."</div>
+        <h4><i class="fas fa-quote-left" style="margin-right:8px"></i> 총장 메시지</h4>
+        <div class="quote">"AI는 단순한 기술혁신을 넘어 국가 경쟁력을 좌우하는 구조적 변화의 중심에 있습니다."</div>
         <cite>— 최재원 부산대학교 총장</cite>
         <div class="ov-stat-row">
-          <div class="ov-stat"><div class="n">QS 473<span>위</span></div><div class="l">세계 대학 순위 (↑79)</div></div>
-          <div class="ov-stat"><div class="n">국립 1<span>위</span></div><div class="l">3년 연속</div></div>
-          <div class="ov-stat"><div class="n">424<span>명</span></div><div class="l">AI 대학 2027 신입생</div></div>
-          <div class="ov-stat"><div class="n">14<span>+</span></div><div class="l">AI 연구 그룹</div></div>
+          <div class="ov-stat">
+            <div class="n">3,111<span>억</span></div>
+            <div class="l">국책 사업 누적 (2023–)</div>
+          </div>
+          <div class="ov-stat">
+            <div class="n">58<span>명</span></div>
+            <div class="l">AI 핵심 교수진</div>
+          </div>
+        </div>
+        <div class="ov-gauge-row">
+          <div class="ov-gauge">
+            <canvas id="rankGauge" width="96" height="96" aria-label="국립대 1위 게이지" role="img"></canvas>
+            <div class="ov-gauge-c"><div class="ogn">No.1</div></div>
+            <div class="ogl">국립대 종합</div>
+            <div class="ogs">3년 연속 1위</div>
+          </div>
+          <div class="ov-gauge">
+            <canvas id="qsGauge" width="96" height="96" aria-label="QS 세계 순위 게이지" role="img"></canvas>
+            <div class="ov-gauge-c"><div class="ogn">473<small>위</small></div></div>
+            <div class="ogl">QS 세계 순위</div>
+            <div class="ogs">2030 Top 200</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- A.U.R.A 2.0 -->
-<section class="section section-alt" id="aura">
+<!-- STATS BAND -->
+<section class="stats-band">
   <div class="container">
-    <div class="section-header">
-      <div class="s-eyebrow">A.U.R.A 2.0 마스터플랜</div>
-      <h2 class="s-title">AI 시대의 중심축이 되기 위한 <em>4대 전략 축</em></h2>
-      <p class="s-sub">철학(Philosophy) · 연구(Unified Research) · 교육(Reinforced Education) · 행정(Adaptive Administration) — 부산대학교가 정의한 AI 대학 혁신 모델.</p>
-    </div>
-
-    <div class="split-section" style="display:grid;grid-template-columns:1.05fr 1fr;gap:32px;align-items:center;margin-bottom:48px">
-      <div style="border-radius:18px;overflow:hidden;height:340px;box-shadow:0 10px 30px rgba(15,31,69,.10)">
-        <img src="/s30/assets/img/tech-circuit.jpg" alt="AI 기술 회로" style="width:100%;height:100%;object-fit:cover;display:block">
+    <div class="stats-grid">
+      <div class="stat-cell">
+        <div class="stat-cell-tag">Funding</div>
+        <div class="stat-cell-num">3,111<span>억</span></div>
+        <div class="stat-cell-lbl">국책 사업 누적</div>
+        <div class="stat-cell-note">8개 대형 사업 (2023–)</div>
       </div>
-      <div>
-        <div style="font-size:11px;letter-spacing:.14em;color:var(--pnu-blue);text-transform:uppercase;font-weight:800;margin-bottom:10px;font-family:'Inter',sans-serif">철학 · 연구 · 교육 · 행정</div>
-        <h3 style="font-size:22px;font-weight:900;color:var(--ink);line-height:1.3;letter-spacing:-.025em;margin-bottom:14px">통합형 AI 대학 혁신 모델</h3>
-        <p style="font-size:14.5px;color:var(--text-b);line-height:1.8">A.U.R.A 2.0은 단일 사업이 아닌 부산대학교 전 영역을 관통하는 4축 통합 혁신 전략입니다. 윤리·인문 기반의 AI 철학에서 출발해 융합 연구, 증강 교육, 적응형 행정까지 — 모든 구성원이 AI를 능동적으로 활용하는 새로운 대학 운영 패러다임을 제시합니다.</p>
+      <div class="stat-cell">
+        <div class="stat-cell-tag">Faculty</div>
+        <div class="stat-cell-num">58<span>명</span></div>
+        <div class="stat-cell-lbl">AI 핵심 교수진</div>
+        <div class="stat-cell-note">AI 핵심 분야 전 영역</div>
       </div>
-    </div>
-
-    <div class="aura-grid">
-      <div class="aura-card">
-        <div class="aura-letter">A</div>
-        <span class="aura-tag">AI Philosophy</span>
-        <h3 class="aura-title">AI 철학 수립<small>AI 윤리·철학 기반 대학 문화</small></h3>
-        <p class="aura-desc">AI 시대 대학의 본질을 재정의하고, 윤리·인문학적 토대 위에서 모든 구성원이 AI를 능동적으로 활용하는 문화를 구축합니다.</p>
-        <ul class="aura-list">
-          <li><i class="fas fa-check"></i> AI 윤리·사용 가이드라인 v1 제정 (2025)</li>
-          <li><i class="fas fa-check"></i> 전 구성원 AI 리터러시 의무 교육</li>
-          <li><i class="fas fa-check"></i> "AI와 디지털 사고" 전교 필수 3학점 (전국 최초)</li>
-          <li><i class="fas fa-check"></i> 인문 AI 융합 콜로키움 분기별 운영</li>
-        </ul>
+      <div class="stat-cell">
+        <div class="stat-cell-tag">Enrollment</div>
+        <div class="stat-cell-num">424<span>명</span></div>
+        <div class="stat-cell-lbl">AI 대학 신입생</div>
+        <div class="stat-cell-note">학부 입학 정원 (2027)</div>
       </div>
-
-      <div class="aura-card green">
-        <div class="aura-letter">U</div>
-        <span class="aura-tag">Unified Research</span>
-        <h3 class="aura-title">융합 연구 추진<small>장영실 AI 융합연구원 거점</small></h3>
-        <p class="aura-desc">학문 경계를 넘어 양자·해양·의료·소재 등 국가 전략 분야의 AI 융합 연구를 가속화합니다.</p>
-        <ul class="aura-list">
-          <li><i class="fas fa-check"></i> 장영실 AI 융합연구원 개원 (2025.12.30)</li>
-          <li><i class="fas fa-check"></i> 양자AI 47억원 · 위상초전도체 (옥종목 교수)</li>
-          <li><i class="fas fa-check"></i> 국가 전략 분야 AI 융합 연구 지속 추진</li>
-          <li><i class="fas fa-check"></i> 삼성중공업 · 은성의료재단 · KIMS 협약</li>
-        </ul>
+      <div class="stat-cell">
+        <div class="stat-cell-tag">Global Rank</div>
+        <div class="stat-cell-num">QS 473</div>
+        <div class="stat-cell-lbl">세계 대학 순위</div>
+        <div class="stat-cell-note">연간 논문 480+편</div>
       </div>
-
-      <div class="aura-card violet">
-        <div class="aura-letter">R</div>
-        <span class="aura-tag">Reinforced Education</span>
-        <h3 class="aura-title">증강 인재 양성<small>AI 기반 교육 고도화</small></h3>
-        <p class="aura-desc">AI 대학 신설(2027 · 424명), AI 부트캠프, 적응형 학습 시스템으로 차세대 AI 인재를 양성합니다.</p>
-        <ul class="aura-list">
-          <li><i class="fas fa-check"></i> AI 대학 신설 (2027 · 424명)</li>
-          <li><i class="fas fa-check"></i> AI 첨단산업 부트캠프 75억 · 7개 트랙</li>
-          <li><i class="fas fa-check"></i> Pentomino 학사구조 · 마이크로디그리 13트랙</li>
-          <li><i class="fas fa-check"></i> AI MASTER 5단계 역량 인증제</li>
-        </ul>
-      </div>
-
-      <div class="aura-card amber">
-        <div class="aura-letter">A</div>
-        <span class="aura-tag">Adaptive Administration</span>
-        <h3 class="aura-title">적응형 행정 구축<small>AI 기반 행정 자동화</small></h3>
-        <p class="aura-desc">산지니 AI 플랫폼을 중심으로 LMS AI 조교 · 다국어 통번역 등 AI 인프라로 대학 운영 효율을 극대화합니다.</p>
-        <ul class="aura-list">
-          <li><i class="fas fa-check"></i> 산지니 AI 국립대 최초 LLM 플랫폼 (2025.12)</li>
-          <li><i class="fas fa-check"></i> AI 통번역 안경 20개 언어 · 정확도 98%</li>
-          <li><i class="fas fa-check"></i> LMS AI 조교 · 자동 출결 · 학습분석 대시보드</li>
-          <li><i class="fas fa-check"></i> Google AI Ecosystem 전면 도입 (2026.06)</li>
-        </ul>
+      <div class="stat-cell">
+        <div class="stat-cell-tag">Target 2030</div>
+        <div class="stat-cell-num gold">Top 200</div>
+        <div class="stat-cell-lbl">글로벌 진입 목표</div>
+        <div class="stat-cell-note">100주년(2046) Top 100</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 추진체계 다이어그램 -->
+<!-- BUDGET STRUCTURE (3,111억 도넛 차트) -->
+<section class="section budget-section" id="budget">
+  <div class="container">
+    <div class="section-header center">
+      <div class="s-eyebrow" style="justify-content:center">Funding Portfolio · 2023–</div>
+      <div class="s-title">국책 사업 누적 <em>3,111억 원</em></div>
+    </div>
+
+    <div class="budget-layout">
+      <div class="budget-chart-wrap">
+        <canvas id="budgetChart" height="300" aria-label="국책 사업 예산 구조 도넛 차트" role="img"></canvas>
+        <div class="budget-chart-center">
+          <div class="bc-n">3,111</div>
+          <div class="bc-u">억 원</div>
+          <div class="bc-l">8개 대형 사업 누적</div>
+        </div>
+      </div>
+
+      <div class="budget-legend">
+        <div class="bl-row">
+          <span class="bl-dot" style="background:#143F90"></span>
+          <span class="bl-name">글로컬대학30<small>2023–27 · 교육부</small></span>
+          <span class="bl-val"><span class="v">1,500억</span><span class="p">48.2%</span></span>
+        </div>
+        <div class="bl-row">
+          <span class="bl-dot" style="background:#0075C9"></span>
+          <span class="bl-name">RISE 지역혁신<small>2025–29 · 교육부 × 부산시</small></span>
+          <span class="bl-val"><span class="v">956억</span><span class="p">30.7%</span></span>
+        </div>
+        <div class="bl-row">
+          <span class="bl-dot" style="background:#00A651"></span>
+          <span class="bl-name">반도체 특성화대학<small>KIAT</small></span>
+          <span class="bl-val"><span class="v">328억</span><span class="p">10.5%</span></span>
+        </div>
+        <div class="bl-row">
+          <span class="bl-dot" style="background:#00E08A"></span>
+          <span class="bl-name">SW중심대학 2단계<small>MSIT</small></span>
+          <span class="bl-val"><span class="v">142억</span><span class="p">4.6%</span></span>
+        </div>
+        <div class="bl-row">
+          <span class="bl-dot" style="background:#7EC8FF"></span>
+          <span class="bl-name">AI 첨단산업 부트캠프<small>교육부 × KIAT</small></span>
+          <span class="bl-val"><span class="v">75억</span><span class="p">2.4%</span></span>
+        </div>
+        <div class="bl-row">
+          <span class="bl-dot" style="background:#A9C7FF"></span>
+          <span class="bl-name">AI 융합대학원 2기<small>IITP</small></span>
+          <span class="bl-val"><span class="v">63억</span><span class="p">2.0%</span></span>
+        </div>
+        <div class="bl-row">
+          <span class="bl-dot" style="background:#FFD27E"></span>
+          <span class="bl-name">양자과학기술 원천연구<small>MSIT · 국내 최초</small></span>
+          <span class="bl-val"><span class="v">47억</span><span class="p">1.5%</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="budget-source">SOURCE: 부산대 기획처 · UPDATED 2026.05.26</div>
+  </div>
+</section>
+
+<!-- STRATEGY SCALE FUNNEL (8·22·47) — 크림 리듬 -->
+<section class="section strategy-section" id="scale">
+  <div class="container">
+    <div class="section-header center">
+      <div class="s-eyebrow" style="justify-content:center">Strategy Architecture</div>
+      <div class="s-title">A.U.R.A 2.0 <em>추진 규모</em></div>
+    </div>
+
+    <div class="funnel-grid">
+      <div class="funnel-step f1" data-step="01">
+        <div class="fs-ico"><i class="fas fa-bullseye"></i></div>
+        <div class="fs-n">8</div>
+        <div class="fs-l">전략 목표</div>
+        <div class="fs-en">Strategic Goals</div>
+      </div>
+      <div class="funnel-step f2" data-step="02">
+        <div class="fs-ico"><i class="fas fa-sitemap"></i></div>
+        <div class="fs-n">22</div>
+        <div class="fs-l">전략 과제</div>
+        <div class="fs-en">Strategic Tasks</div>
+      </div>
+      <div class="funnel-step f3" data-step="03">
+        <div class="fs-ico"><i class="fas fa-list-check"></i></div>
+        <div class="fs-n">47</div>
+        <div class="fs-l">실행 과제</div>
+        <div class="fs-en">Action Items</div>
+      </div>
+    </div>
+    <div class="funnel-arrow">
+      <span>전략 목표</span><span class="fa-line"></span><i class="fas fa-angles-right"></i><span class="fa-line"></span><span>실행 과제</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ A.U.R.A 2.0 — CINEMATIC DARK INFOGRAPHIC ZONE ============ -->
+<section class="aura-zone" id="aura">
+  <div class="aura-zone-grid"></div>
+  <div class="container aura-zone-inner">
+
+    <!-- 헤더 -->
+    <div class="aura-zone-head">
+      <div class="aura-zone-eyebrow"><span class="ab-live"></span> A.U.R.A 2.0 · MASTERPLAN</div>
+      <h2 class="aura-zone-title">AI 대학 전환의 <span class="grad">4대 전략 축</span></h2>
+      <div class="aura-zone-chips">
+        <span class="azc"><i class="fas fa-calendar"></i> 2026.02 발표</span>
+        <span class="azc"><i class="fas fa-won-sign"></i> 2년 100억</span>
+        <span class="azc"><i class="fas fa-user-tie"></i> 총장 직속 추진체계</span>
+      </div>
+    </div>
+
+  </div><!-- /container: 헤더까지만 -->
+
+  <!-- 실제 3D 인터랙티브 마스터플랜 (그대로 임베드 · 화면 폭 꽉 채움) -->
+  <div style="position:relative;width:100%;background:#070E22">
+    <iframe src="/s30/aura/" title="A.U.R.A 2.0 인터랙티브 마스터플랜" loading="lazy" allowfullscreen style="display:block;width:100%;height:92vh;min-height:580px;border:0;border-top:1px solid rgba(126,200,255,.2);border-bottom:1px solid rgba(126,200,255,.2);background:#070E22"></iframe>
+    <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);z-index:3;display:inline-flex;align-items:center;gap:8px;background:rgba(7,14,34,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(126,200,255,.3);color:#cfe6ff;font-size:12px;font-weight:600;padding:8px 16px;border-radius:100px;pointer-events:none">
+      <i class="fas fa-up-down" style="color:#7EC8FF"></i> 프레임 안에서 스크롤하여 A·U·R·A 4대 전략 축을 탐색하세요
+    </div>
+  </div>
+</section>
+
+<!-- GOVERNANCE STRUCTURE DIAGRAM -->
 <section class="section" id="structure">
   <div class="container">
     <div class="section-header center">
-      <div class="s-eyebrow">PNU AX Ecosystem</div>
-      <h2 class="s-title">살아 움직이는 <span class="grad">AI 거점 생태계</span></h2>
-      <p class="s-sub">AI 대학(중심) + 좌(AI 융합교육원) + 우(장영실 AI 융합연구원) + 하(AX 정보화혁신본부)를 잇는 살아있는 허브 구조</p>
+      <div class="s-eyebrow" style="justify-content:center">Governance Structure</div>
+      <div class="s-title">총장 직속 <span class="grad">AX 추진 거버넌스</span></div>
     </div>
 
     <div class="diagram-wrap">
-      <svg class="diagram-svg" viewBox="0 0 1100 460" xmlns="http://www.w3.org/2000/svg">
+      <svg class="diagram-svg gov-svg" viewBox="0 0 1080 560" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="cg" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#005BAA"/>
-            <stop offset="100%" stop-color="#0075C9"/>
-          </linearGradient>
-          <linearGradient id="gg" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#047857"/>
-            <stop offset="100%" stop-color="#00A651"/>
-          </linearGradient>
-          <linearGradient id="ag" x1="0%" y1="0%" x2="100%" y2="100%">
+          <marker id="garr" markerWidth="9" markerHeight="9" refX="6" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="#143F90" opacity="0.7"/>
+          </marker>
+          <linearGradient id="topGrad" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stop-color="#143F90"/>
-            <stop offset="100%" stop-color="#143F90"/>
+            <stop offset="100%" stop-color="#0B1A3E"/>
+          </linearGradient>
+          <linearGradient id="midGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#0075C9"/>
+            <stop offset="100%" stop-color="#005BAA"/>
           </linearGradient>
         </defs>
 
-        <!-- Connecting lines -->
-        <line class="diagram-line" x1="550" y1="200" x2="220" y2="120" stroke="#005BAA" stroke-width="2" opacity=".5"/>
-        <line class="diagram-line" x1="550" y1="200" x2="880" y2="120" stroke="#047857" stroke-width="2" opacity=".5"/>
-        <line class="diagram-line" x1="550" y1="260" x2="550" y2="380" stroke="#143F90" stroke-width="2" opacity=".5"/>
+        <text x="540" y="26" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#64748B" letter-spacing="2">AI 거점 사업 추진 체계 · 2025–2030</text>
 
-        <!-- Center: AI College -->
-        <g>
-          <circle cx="550" cy="230" r="92" fill="url(#cg)" opacity=".95"/>
-          <circle cx="550" cy="230" r="106" fill="none" stroke="#005BAA" stroke-width="1.5" opacity=".25" stroke-dasharray="4 4"/>
-          <text x="550" y="218" text-anchor="middle" fill="#fff" font-size="13" font-weight="800" font-family="Inter">CENTER</text>
-          <text x="550" y="240" text-anchor="middle" fill="#fff" font-size="18" font-weight="900" font-family="Noto Sans KR">AI 대학</text>
-          <text x="550" y="262" text-anchor="middle" fill="rgba(255,255,255,.85)" font-size="11" font-family="Noto Sans KR">2027 신설 · 4학부 + 1 계약학과</text>
+        <!-- 총장 -->
+        <g class="dnode">
+          <rect x="390" y="50" width="300" height="62" rx="14" fill="url(#topGrad)" stroke="#143F90" stroke-width="2"/>
+          <text x="540" y="80" text-anchor="middle" font-family="Noto Sans KR" font-size="17" font-weight="900" fill="#fff">최재원 총장</text>
+          <text x="540" y="99" text-anchor="middle" font-family="Noto Sans KR" font-size="11" fill="rgba(255,255,255,.8)">사업 총괄</text>
+        </g>
+        <line x1="540" y1="112" x2="540" y2="148" stroke="#143F90" stroke-width="2.2" marker-end="url(#garr)"/>
+
+        <!-- AX 선도위원회 (총장 직속) -->
+        <g class="dnode">
+          <rect x="370" y="150" width="340" height="58" rx="13" fill="#EFF6FF" stroke="#143F90" stroke-width="2"/>
+          <text x="540" y="178" text-anchor="middle" font-family="Noto Sans KR" font-size="15" font-weight="800" fill="#0F172A">AX 선도위원회</text>
+          <text x="540" y="196" text-anchor="middle" font-family="Noto Sans KR" font-size="10.5" fill="#1E3A5F">총장 직속 · 총장 직속 추진체계</text>
+        </g>
+        <line x1="540" y1="208" x2="540" y2="244" stroke="#143F90" stroke-width="2.2" marker-end="url(#garr)"/>
+
+        <!-- AX·정보화혁신본부 (실행 본부) -->
+        <g class="dnode">
+          <rect x="350" y="246" width="380" height="58" rx="13" fill="url(#midGrad)" stroke="#005BAA" stroke-width="2"/>
+          <text x="540" y="274" text-anchor="middle" font-family="Noto Sans KR" font-size="15" font-weight="800" fill="#fff">AX · 정보화혁신본부</text>
+          <text x="540" y="292" text-anchor="middle" font-family="Inter" font-size="11" fill="rgba(255,255,255,.85)">2025 신설 · 실행 본부 · uitc.pusan.ac.kr</text>
         </g>
 
-        <!-- Left: AI Edu Institute -->
-        <g>
-          <rect x="80" y="60" width="280" height="120" rx="18" fill="url(#cg)" opacity=".88"/>
-          <text x="220" y="92" text-anchor="middle" fill="rgba(255,255,255,.85)" font-size="11" font-weight="700" font-family="Inter">EDUCATION ARM</text>
-          <text x="220" y="120" text-anchor="middle" fill="#fff" font-size="17" font-weight="800" font-family="Noto Sans KR">AI 융합교육원</text>
-          <text x="220" y="146" text-anchor="middle" fill="rgba(255,255,255,.9)" font-size="12" font-family="Noto Sans KR">마이크로디그리 · AI MASTER</text>
-          <text x="220" y="164" text-anchor="middle" fill="rgba(255,255,255,.75)" font-size="11" font-family="Noto Sans KR">Pentomino 학사구조</text>
+        <!-- 분기선: 본부 → 4 전담기관 -->
+        <line x1="540" y1="304" x2="540" y2="330" stroke="#005BAA" stroke-width="2.2"/>
+        <path d="M540 330 H165" stroke="#005BAA" stroke-width="2" fill="none"/>
+        <path d="M540 330 H915" stroke="#005BAA" stroke-width="2" fill="none"/>
+        <line x1="165" y1="330" x2="165" y2="372" stroke="#005BAA" stroke-width="2" class="flow-dash" marker-end="url(#garr)"/>
+        <line x1="415" y1="330" x2="415" y2="372" stroke="#005BAA" stroke-width="2" class="flow-dash" marker-end="url(#garr)"/>
+        <line x1="665" y1="330" x2="665" y2="372" stroke="#005BAA" stroke-width="2" class="flow-dash" marker-end="url(#garr)"/>
+        <line x1="915" y1="330" x2="915" y2="372" stroke="#005BAA" stroke-width="2" class="flow-dash" marker-end="url(#garr)"/>
+
+        <!-- 4 전담기관 -->
+        <g class="dnode">
+          <rect x="60" y="374" width="210" height="78" rx="13" fill="#0F172A" stroke="#143F90" stroke-width="1.5"/>
+          <text x="165" y="404" text-anchor="middle" font-family="Noto Sans KR" font-size="14" font-weight="800" fill="#fff">AI 대학</text>
+          <text x="165" y="423" text-anchor="middle" font-family="Noto Sans KR" font-size="10" fill="rgba(255,255,255,.7)">2027 신설 · 424명</text>
+          <text x="165" y="439" text-anchor="middle" font-family="Inter" font-size="9" fill="#7EC8FF">ai.pusan.ac.kr</text>
+        </g>
+        <g class="dnode">
+          <rect x="310" y="374" width="210" height="78" rx="13" fill="#0a3d1e" stroke="#00A651" stroke-width="1.5"/>
+          <text x="415" y="404" text-anchor="middle" font-family="Noto Sans KR" font-size="14" font-weight="800" fill="#fff">장영실 AI</text>
+          <text x="415" y="421" text-anchor="middle" font-family="Noto Sans KR" font-size="11" font-weight="700" fill="#fff">융합연구원</text>
+          <text x="415" y="439" text-anchor="middle" font-family="Inter" font-size="9" fill="#7CF0B5">airc.pusan.ac.kr</text>
+        </g>
+        <g class="dnode">
+          <rect x="560" y="374" width="210" height="78" rx="13" fill="#0F172A" stroke="#143F90" stroke-width="1.5"/>
+          <text x="665" y="404" text-anchor="middle" font-family="Noto Sans KR" font-size="14" font-weight="800" fill="#fff">AI 융합교육원</text>
+          <text x="665" y="423" text-anchor="middle" font-family="Noto Sans KR" font-size="10" fill="rgba(255,255,255,.7)">전교 AI 리터러시</text>
+          <text x="665" y="439" text-anchor="middle" font-family="Inter" font-size="9" fill="#7EC8FF">aiedu.pusan.ac.kr</text>
+        </g>
+        <g class="dnode">
+          <rect x="810" y="374" width="210" height="78" rx="13" fill="#1E293B" stroke="#143F90" stroke-width="1.5"/>
+          <text x="915" y="404" text-anchor="middle" font-family="Noto Sans KR" font-size="13" font-weight="800" fill="#fff">산학·공공 협력망</text>
+          <text x="915" y="423" text-anchor="middle" font-family="Noto Sans KR" font-size="10" fill="rgba(255,255,255,.7)">기업·정부·지자체 (35+)</text>
+          <text x="915" y="439" text-anchor="middle" font-family="Inter" font-size="9" fill="#94A3B8">Consortium</text>
         </g>
 
-        <!-- Right: Research Institute -->
-        <g>
-          <rect x="740" y="60" width="280" height="120" rx="18" fill="url(#gg)" opacity=".92"/>
-          <text x="880" y="92" text-anchor="middle" fill="rgba(255,255,255,.85)" font-size="11" font-weight="700" font-family="Inter">RESEARCH ARM</text>
-          <text x="880" y="120" text-anchor="middle" fill="#fff" font-size="17" font-weight="800" font-family="Noto Sans KR">장영실 AI 융합연구원</text>
-          <text x="880" y="146" text-anchor="middle" fill="rgba(255,255,255,.9)" font-size="12" font-family="Noto Sans KR">양자 · 해양 · 의료 · 소재</text>
-          <text x="880" y="164" text-anchor="middle" fill="rgba(255,255,255,.75)" font-size="11" font-family="Noto Sans KR">2025.12.30 개원</text>
-        </g>
-
-        <!-- Bottom: AX Innovation Center -->
-        <g>
-          <rect x="370" y="370" width="360" height="80" rx="16" fill="url(#ag)" opacity=".92"/>
-          <text x="550" y="396" text-anchor="middle" fill="rgba(255,255,255,.85)" font-size="11" font-weight="700" font-family="Inter">ADMIN BACKBONE</text>
-          <text x="550" y="420" text-anchor="middle" fill="#fff" font-size="17" font-weight="800" font-family="Noto Sans KR">AX 정보화혁신본부</text>
-          <text x="550" y="438" text-anchor="middle" fill="rgba(255,255,255,.9)" font-size="11" font-family="Noto Sans KR">산지니 AI · LMS AI 조교 · Google Edu</text>
+        <!-- 하단: 산출 -->
+        <line x1="165" y1="452" x2="165" y2="488" stroke="#94A3B8" stroke-width="1.6" stroke-dasharray="3 3"/>
+        <line x1="415" y1="452" x2="415" y2="488" stroke="#94A3B8" stroke-width="1.6" stroke-dasharray="3 3"/>
+        <line x1="665" y1="452" x2="665" y2="488" stroke="#94A3B8" stroke-width="1.6" stroke-dasharray="3 3"/>
+        <line x1="915" y1="452" x2="915" y2="488" stroke="#94A3B8" stroke-width="1.6" stroke-dasharray="3 3"/>
+        <g class="dnode">
+          <rect x="120" y="490" width="840" height="40" rx="20" fill="#EFF6FF" stroke="#005BAA" stroke-width="1.5"/>
+          <text x="540" y="515" text-anchor="middle" font-family="Noto Sans KR" font-size="12.5" font-weight="700" fill="#0F172A">동남권 AX 생태계 완성 · 교육 · 연구 · 행정 전 영역 AI 전환 (2030 Top 200)</text>
         </g>
       </svg>
     </div>
   </div>
 </section>
 
-<!-- GOVERNANCE -->
+<!-- GOVERNANCE CARDS -->
 <section class="section section-alt" id="governance">
   <div class="container">
     <div class="section-header">
       <div class="s-eyebrow">Governance</div>
-      <h2 class="s-title">총장 직속 <em>AX 거버넌스</em> 체계</h2>
-      <p class="s-sub">사업의 신속한 의사결정과 전 학과 참여를 보장하기 위해 3-Tier 거버넌스 구조를 채택했습니다.</p>
-    </div>
-
-    <div class="section-banner" style="position:relative;height:260px;border-radius:18px;overflow:hidden;margin-bottom:42px;box-shadow:0 10px 30px rgba(15,31,69,.10)">
-      <img src="/s30/assets/img/meeting.jpg" alt="AX 선도위원회 회의" style="width:100%;height:100%;object-fit:cover;display:block">
-      <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(15,31,69,.78),rgba(15,31,69,.35) 55%,rgba(15,31,69,.05));display:flex;flex-direction:column;justify-content:center;padding:32px 38px;color:#fff">
-        <div style="font-size:11px;letter-spacing:.14em;color:#BFDBFE;text-transform:uppercase;margin-bottom:8px;font-weight:800;font-family:'Inter',sans-serif">3-TIER GOVERNANCE</div>
-        <div style="font-size:22px;font-weight:900;line-height:1.35;letter-spacing:-.02em;max-width:580px">총장 직속 의사결정 · 부총장 실행 · 단과대 참여의 3중 구조</div>
-        <div style="font-size:13.5px;color:rgba(255,255,255,.82);margin-top:8px;max-width:560px;line-height:1.7">분기 정기회의 · 주간 점검 · 부산 의대 AX 추진단 모범 확산</div>
-      </div>
+      <div class="s-title">사업을 움직이는 <em>핵심 조직</em></div>
     </div>
 
     <div class="gov-grid">
       <div class="gov-card">
-        <span class="gov-tag gold">Tier 1 · 의사결정</span>
+        <span class="gov-tag gold">총장 직속 · 의사결정</span>
         <div class="gov-title">AX 선도위원회</div>
-        <div class="gov-desc">총장 직속의 최고 의사결정 기구. 사업 전반의 방향과 예산을 결정하며 분기별 정기 회의.</div>
         <ul class="gov-list">
-          <li>위원장: 최재원 총장</li>
-          <li>부위원장: 박상후 대외·전략부총장</li>
-          <li>위원 12명 (학장단·전문가)</li>
-          <li>분기 정기회의 · 수시 안건</li>
+          <li><i class="fas fa-check"></i> 총장 직속 추진체계</li>
+          <li><i class="fas fa-check"></i> 8·22·47 전략 체계 총괄 관리</li>
+          <li><i class="fas fa-check"></i> AI 윤리·사용 가이드라인 심의</li>
         </ul>
       </div>
+
       <div class="gov-card">
-        <span class="gov-tag">Tier 2 · 실행</span>
-        <div class="gov-title">AX Impact 추진단</div>
-        <div class="gov-desc">실무 핵심 인력 50명으로 구성된 실행 조직. 핵심 4개 사업 영역별 TF를 운영합니다.</div>
+        <span class="gov-tag">2025 신설 · 실행 본부</span>
+        <div class="gov-title">AX · 정보화혁신본부</div>
         <ul class="gov-list">
-          <li>단장: 박상후 부총장 (겸직)</li>
-          <li>4개 TF: 교육·연구·산학·인프라</li>
-          <li>실무 인력 50명</li>
-          <li>주간 점검 · 월간 전체 회의</li>
+          <li><i class="fas fa-check"></i> AI 인프라·정보화 통합 운영</li>
+          <li><i class="fas fa-check"></i> 산지니 AI · 다국어 통번역 운영</li>
+          <li><i class="fas fa-check"></i> uitc.pusan.ac.kr</li>
         </ul>
+        <a href="https://uitc.pusan.ac.kr" target="_blank" class="gov-link">본부 바로가기 <i class="fas fa-arrow-up-right-from-square"></i></a>
       </div>
+
       <div class="gov-card">
-        <span class="gov-tag green">Tier 3 · 단과대</span>
-        <div class="gov-title">부산 의대 AX 추진단</div>
-        <div class="gov-desc">단과대별 자체 AX 추진단 운영. 의과대학이 2026.03.09 최초 발족하여 모범 사례로 확산 중.</div>
+        <span class="gov-tag green">관련 전담기관</span>
+        <div class="gov-title">4대 전담기관</div>
         <ul class="gov-list">
-          <li>발족일: 2026.03.09</li>
-          <li>의과대학장 직속</li>
-          <li>임상 AI · 의료 영상 AI</li>
-          <li>은성의료재단 협력</li>
+          <li><i class="fas fa-check"></i> AI 대학 (2027 신설 · 424명)</li>
+          <li><i class="fas fa-check"></i> 장영실 AI 융합연구원 (2025.12.30 개원)</li>
+          <li><i class="fas fa-check"></i> AI 융합교육원 · AX·정보화혁신본부</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- VISION -->
+<!-- IMPACT HIGHLIGHTS (다크 배지 띠) -->
+<section class="section impact-band" id="impact">
+  <div class="container">
+    <div class="section-header center">
+      <div class="s-eyebrow">Impact & Achievements</div>
+      <div class="s-title">숫자로 보는 <em>ARISE PNU</em></div>
+    </div>
+    <div class="impact-grid">
+      <div class="impact-card">
+        <div class="ic-ico"><i class="fas fa-trophy"></i></div>
+        <div class="ic-n" data-count="1" data-suffix="위"><span></span></div>
+        <div class="ic-l">RoboCup 2025 세계 챔피언</div>
+        <div class="ic-s">휴머노이드 'Anubis' · 8/8 미션 완수 · 1,500팀 격파</div>
+      </div>
+      <div class="impact-card gold">
+        <div class="ic-ico"><i class="fas fa-medal"></i></div>
+        <div class="ic-n" data-count="28" data-suffix="+"><span></span></div>
+        <div class="ic-l">국제 경진대회 수상</div>
+        <div class="ic-s">RoboCup · Kaggle · NeurIPS 등 누적</div>
+      </div>
+      <div class="impact-card green">
+        <div class="ic-ico"><i class="fas fa-file-alt"></i></div>
+        <div class="ic-n" data-count="480" data-suffix="+"><span></span></div>
+        <div class="ic-l">연간 논문 발표</div>
+        <div class="ic-s">QS 473위 · 연구 역량</div>
+      </div>
+      <div class="impact-card violet">
+        <div class="ic-ico"><i class="fas fa-rocket"></i></div>
+        <div class="ic-n" data-count="12" data-suffix="억"><span></span></div>
+        <div class="ic-l">기술이전 · 창업 유치</div>
+        <div class="ic-s">산학 연계 · 누적</div>
+      </div>
+      <div class="impact-card gold">
+        <div class="ic-ico"><i class="fas fa-award"></i></div>
+        <div class="ic-n" style="font-size:1.7rem; padding-top:8px">경영대상</div>
+        <div class="ic-l">2025 한국의 경영대상 AI 혁신 대상</div>
+        <div class="ic-s">KMAC · 대학 유일 수상 · 2025.12.09</div>
+      </div>
+      <div class="impact-card">
+        <div class="ic-ico"><i class="fas fa-certificate"></i></div>
+        <div class="ic-n" style="font-size:1.5rem; padding-top:10px">AI-MASTER</div>
+        <div class="ic-l">국내 대학 최초 인증</div>
+        <div class="ic-s">한국인공지능산업협회 · 2026.03.05</div>
+      </div>
+      <div class="impact-card green">
+        <div class="ic-ico"><i class="fas fa-atom"></i></div>
+        <div class="ic-n" data-count="47" data-suffix="억"><span></span></div>
+        <div class="ic-l">양자AI 원천연구</div>
+        <div class="ic-s">국내 최초 · 위상초전도체 · 2025–2029</div>
+      </div>
+      <div class="impact-card violet">
+        <div class="ic-ico"><i class="fas fa-handshake"></i></div>
+        <div class="ic-n" data-count="35" data-suffix="+"><span></span></div>
+        <div class="ic-l">산학·글로벌 파트너</div>
+        <div class="ic-s">Google · NVIDIA · 삼성중공업 · LG전자 등</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION TIMELINE BAND -->
 <section class="vision-band">
   <div class="container vision-inner">
     <div>
-      <div class="vision-eyebrow"><i class="fas fa-bullseye"></i> 80주년 → 100주년 비전</div>
-      <h2 class="vision-title">부산대 80주년,<br>다음 20년을 <em>설계하다</em></h2>
-      <p class="vision-desc">2026년 부산대학교 80주년을 기점으로 A.U.R.A 2.0 마스터플랜을 시작, 2028년 본 사업 진입(연 1,000억 × 5년)을 거쳐 2030년 글로벌 Top 200, 100주년(2046) Top 100 진입을 목표합니다.</p>
+      <div class="vision-eyebrow">Vision 2025–2027</div>
+      <h2 class="vision-title">기반 구축에서<br><em>동남권 AX 허브</em>까지</h2>
+      <div class="vision-targets">
+        <div class="vtg"><div class="vtg-y">2030</div><div class="vtg-l">QS Top 200</div></div>
+        <div class="vtg"><div class="vtg-y">2046</div><div class="vtg-l">100주년 · Top 100</div></div>
+      </div>
     </div>
     <div class="vision-timeline">
       <div class="vt-item">
+        <div class="vt-year">2025</div>
+        <div class="vt-text"><strong>기반 구축 · Foundation</strong>A.U.R.A 선언·발족 · AX·정보화혁신본부 신설 · 산지니 AI · 장영실 연구원 개원 · 경영대상 대상 · IT관 착공</div>
+      </div>
+      <div class="vt-item">
         <div class="vt-year">2026</div>
-        <div class="vt-text"><strong>80주년 · A.U.R.A 2.0 출범</strong>2년 100억 투자 · Google for Education 협약 · 부산 AI 서밋 (Fei-Fei Li 기조)</div>
+        <div class="vt-text"><strong>실행 · Implementation</strong>AI-MASTER 인증 · AI 부트캠프 1기 · LMS AI 조교 · Google 전면 도입 · 거점대학 본 선정 신청(7월)</div>
       </div>
       <div class="vt-item">
         <div class="vt-year">2027</div>
-        <div class="vt-text"><strong>AI 대학 개원</strong>학부 입학 정원 424명 · IT관 신축 완공 (267억 · 13,161㎡)</div>
-      </div>
-      <div class="vt-item">
-        <div class="vt-year">2028</div>
-        <div class="vt-text"><strong>본 사업 진입</strong>연 1,000억 × 5년 · 글로컬 30 본사업 · RISE 2단계 · 양자AI 가속화</div>
-      </div>
-      <div class="vt-item">
-        <div class="vt-year">2030</div>
-        <div class="vt-text"><strong>글로벌 Top 200 진입</strong>QS World 200위권 · 동남권 AX 생태계 완성 · AI 스타트업 100사 육성</div>
-      </div>
-      <div class="vt-item">
-        <div class="vt-year">2046</div>
-        <div class="vt-text"><strong>100주년 · 글로벌 Top 100</strong>대한민국 대표 AI 종합대학 · 아시아 5대 AI 거점</div>
+        <div class="vt-text"><strong>확산 · Expansion</strong>AI 대학 첫 신입생 424명 · 행정 만족도 90 · 글로벌 연구네트워크 10개 · 동남권 AX 허브 완성</div>
       </div>
     </div>
   </div>
@@ -395,62 +785,191 @@
         <div class="ft-brand-row">
           <img src="/s30/assets/pnu-signature.jpg" alt="부산대학교" class="ft-logo-img" style="filter:brightness(0) invert(1)">
         </div>
-        <div class="ft-brand-name">
-          AI 거점대학육성사업단 · ARISE PNU
-          <small>arise-ai.pusan.ac.kr · A.U.R.A 2.0 마스터플랜</small>
-        </div>
+        <div class="ft-brand-name">AI 거점대학육성사업단 · ARISE PNU<small>arise-ai.pusan.ac.kr · A.U.R.A 2.0 마스터플랜</small></div>
         <div class="ft-desc" style="margin-top:16px"><em>"Arise PNU, 같이 더 높게"</em> — 동남권 AX 생태계의 중심 거점, 부산대학교 AI 거점대학육성사업단입니다.</div>
-        <div class="ft-addr">
-          📍 부산광역시 금정구 부산대학로 63번길 2 · IT관 3층 AI 거점사업단<br>
-          📞 051-510-0000 · ✉ arise@pusan.ac.kr<br>
-          ⏰ 평일 09:00 – 18:00
-        </div>
+        <div class="ft-addr">📍 부산광역시 금정구 부산대학로 63번길 2 · IT관 3층 AI 거점사업단<br>📞 051-510-0000 · ✉ arise@pusan.ac.kr<br>⏰ 평일 09:00 – 18:00</div>
         <div class="ft-sns" style="margin-top:24px">
-          <a href="#"><i class="fab fa-youtube"></i></a>
-          <a href="#"><i class="fab fa-x-twitter"></i></a>
-          <a href="#"><i class="fab fa-linkedin"></i></a>
-          <a href="#"><i class="fab fa-github"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
-      <div class="ft-col">
-        <h4>사업 소개</h4>
-        <a href="/s30/about/#overview">사업 개요 · 비전</a>
-        <a href="/s30/about/#aura">A.U.R.A 2.0</a>
-        <a href="/s30/about/#structure">추진 체계</a>
-        <a href="/s30/about/#governance">거버넌스</a>
-        <a href="/s30/roadmap/">3개년 로드맵</a>
+      <div class="ft-col"><h4>사업 소개</h4>
+        <a href="/s30/about/#overview">사업 개요 · 비전</a><a href="/s30/about/#aura">A.U.R.A 2.0</a><a href="/s30/about/#governance">거버넌스</a><a href="/s30/roadmap/">3개년 로드맵</a>
       </div>
-      <div class="ft-col">
-        <h4>핵심 사업</h4>
-        <a href="/s30/programs/#education">AI 교육 혁신</a>
-        <a href="/s30/programs/#research">AI 연구 강화</a>
-        <a href="/s30/programs/#industry">산학 협력</a>
-        <a href="/s30/programs/#infra">AI 인프라</a>
-        <a href="/s30/programs/#education">AI 부트캠프</a>
+      <div class="ft-col"><h4>핵심 사업</h4>
+        <a href="/s30/programs/#education">AI 교육 혁신</a><a href="/s30/programs/#research">AI 연구 강화</a><a href="/s30/programs/#industry">산학 협력</a><a href="/s30/programs/#infra">AI 인프라</a>
       </div>
-      <div class="ft-col">
-        <h4>관련 사이트</h4>
-        <a href="https://www.pusan.ac.kr" target="_blank">부산대학교 ↗</a>
-        <a href="https://ai.pusan.ac.kr" target="_blank">AI 대학 ↗</a>
-        <a href="https://airc.pusan.ac.kr" target="_blank">장영실연구원 ↗</a>
-        <a href="https://aiedu.pusan.ac.kr" target="_blank">AI 융합교육원 ↗</a>
-        <a href="https://uitc.pusan.ac.kr" target="_blank">AX·정보화혁신본부 ↗</a>
+      <div class="ft-col"><h4>관련 사이트</h4>
+        <a href="https://www.pusan.ac.kr" target="_blank">부산대학교 ↗</a><a href="https://ai.pusan.ac.kr" target="_blank">AI 대학 ↗</a><a href="https://airc.pusan.ac.kr" target="_blank">장영실연구원 ↗</a><a href="https://aiedu.pusan.ac.kr" target="_blank">AI 융합교육원 ↗</a><a href="https://uitc.pusan.ac.kr" target="_blank">AX·정보화혁신본부 ↗</a>
       </div>
     </div>
     <div class="ft-bottom">
       <div class="ft-copy">© 2026 Pusan National University ARISE-AI. All rights reserved.</div>
-      <div class="ft-policy">
-        <a href="#">개인정보처리방침</a>
-        <a href="#">이메일무단수집거부</a>
-        <a href="#">사이트맵</a>
-        <a href="#">접근성 정책</a>
-      </div>
+      <div class="ft-policy"><a href="#">개인정보처리방침</a><a href="#">이메일무단수집거부</a><a href="#">사이트맵</a><a href="#">접근성 정책</a></div>
     </div>
   </div>
 </footer>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* 예산 구조 도넛 차트 (3,111억) */
+  function initBudgetChart(){
+    var el = document.getElementById('budgetChart');
+    if(!el || typeof Chart === 'undefined') return;
+    new Chart(el, {
+      type: 'doughnut',
+      data: {
+        labels: ['글로컬대학30','RISE 지역혁신','반도체 특성화대학','SW중심대학 2단계','AI 첨단산업 부트캠프','AI 융합대학원 2기','양자과학기술 원천연구'],
+        datasets: [{
+          data: [1500, 956, 328, 142, 75, 63, 47],
+          backgroundColor: ['#143F90','#0075C9','#00A651','#00E08A','#7EC8FF','#A9C7FF','#FFD27E'],
+          borderColor: 'rgba(11,21,48,.85)',
+          borderWidth: 3,
+          hoverOffset: 12
+        }]
+      },
+      options: {
+        responsive: true,
+        cutout: '66%',
+        animation: reduce ? false : { animateRotate: true, duration: 1100 },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: 'rgba(15,31,69,.95)',
+            padding: 12, cornerRadius: 10,
+            titleFont: { family: 'Noto Sans KR', size: 13, weight: '700' },
+            bodyFont: { family: 'Inter', size: 12 },
+            callbacks: {
+              label: function(c){
+                var pct = (c.parsed / 3111 * 100).toFixed(1);
+                return ' ' + c.parsed.toLocaleString() + '억 원 (' + pct + '%)';
+              }
+            }
+          }
+        }
+      }
+    });
+  }
 
+  /* 개요 미니 게이지 (국립대 1위 · QS 473) */
+  function makeGauge(id, value, color){
+    var el = document.getElementById(id);
+    if(!el || typeof Chart === 'undefined') return;
+    new Chart(el, {
+      type:'doughnut',
+      data:{ datasets:[{ data:[value, 100-value], backgroundColor:[color,'rgba(0,91,170,.12)'], borderWidth:0, circumference:360, rotation:0 }] },
+      options:{
+        responsive:false, cutout:'76%',
+        animation: reduce ? false : { animateRotate:true, duration:1200 },
+        plugins:{ legend:{display:false}, tooltip:{enabled:false} }
+      }
+    });
+  }
+  function initGauges(){
+    makeGauge('rankGauge', 100, '#005BAA');
+    makeGauge('qsGauge', 62, '#00A651');
+  }
+
+  /* 숫자 카운터 애니메이션 */
+  function animateCount(el){
+    var target = parseFloat(el.getAttribute('data-count'));
+    var suffix = el.getAttribute('data-suffix') || '';
+    var span = el.querySelector('span') || el;
+    if(reduce){ span.textContent = target.toLocaleString() + suffix; return; }
+    var dur = 1300, start = null;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      span.textContent = Math.round(target * eased).toLocaleString() + (p === 1 ? suffix : '');
+      if(p < 1) requestAnimationFrame(step);
+      else span.textContent = target.toLocaleString() + suffix;
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* 행정 만족도 라인 (70→80→90) */
+  function initSatChart(){
+    var el = document.getElementById('satChart');
+    if(!el || typeof Chart === 'undefined') return;
+    var ctx = el.getContext('2d');
+    var grad = ctx.createLinearGradient(0,0,0,260);
+    grad.addColorStop(0,'rgba(126,200,255,.45)');
+    grad.addColorStop(1,'rgba(126,200,255,0)');
+    new Chart(el, {
+      type:'line',
+      data:{
+        labels:['2025','2026','2027'],
+        datasets:[{
+          data:[70,80,90],
+          borderColor:'#7EC8FF', borderWidth:3,
+          backgroundColor:grad, fill:true, tension:.35,
+          pointBackgroundColor:'#00E08A', pointBorderColor:'#fff', pointBorderWidth:2, pointRadius:6, pointHoverRadius:8
+        }]
+      },
+      options:{
+        responsive:true, maintainAspectRatio:false,
+        animation: reduce ? false : { duration:1100 },
+        plugins:{ legend:{display:false}, tooltip:{
+          backgroundColor:'rgba(15,31,69,.95)', padding:11, cornerRadius:9,
+          bodyFont:{family:'Inter',size:13,weight:'700'},
+          callbacks:{ label:function(c){ return ' 만족도 ' + c.parsed.y + '점'; } }
+        }},
+        scales:{
+          y:{ min:60, max:100, ticks:{color:'rgba(255,255,255,.55)',font:{family:'Inter',size:11}}, grid:{color:'rgba(255,255,255,.08)'} },
+          x:{ ticks:{display:false}, grid:{display:false} }
+        }
+      }
+    });
+  }
+
+  /* 4대 전략 + AI 인프라 레이더 (현재 vs 2027) */
+  function initRadarChart(){
+    var el = document.getElementById('radarChart');
+    if(!el || typeof Chart === 'undefined') return;
+    new Chart(el, {
+      type:'radar',
+      data:{
+        labels:['AI 철학','융합 연구','증강 교육','지능형 행정','AI 인프라'],
+        datasets:[
+          { label:'현재', data:[70,65,60,72,68], borderColor:'#7EC8FF', backgroundColor:'rgba(126,200,255,.18)', borderWidth:2, pointBackgroundColor:'#7EC8FF', pointRadius:3 },
+          { label:'2027 목표', data:[95,92,98,90,94], borderColor:'#00E08A', backgroundColor:'rgba(0,224,138,.18)', borderWidth:2, pointBackgroundColor:'#00E08A', pointRadius:3 }
+        ]
+      },
+      options:{
+        responsive:true, maintainAspectRatio:false,
+        animation: reduce ? false : { duration:1100 },
+        plugins:{ legend:{display:false}, tooltip:{
+          backgroundColor:'rgba(15,31,69,.95)', padding:11, cornerRadius:9,
+          titleFont:{family:'Noto Sans KR',size:12,weight:'700'}, bodyFont:{family:'Inter',size:12}
+        }},
+        scales:{ r:{
+          min:0, max:100,
+          angleLines:{color:'rgba(255,255,255,.12)'},
+          grid:{color:'rgba(255,255,255,.12)'},
+          pointLabels:{color:'rgba(255,255,255,.82)',font:{family:'Noto Sans KR',size:12,weight:'700'}},
+          ticks:{display:false, stepSize:25}
+        }}
+      }
+    });
+  }
+
+  function initCounters(){
+    var nodes = document.querySelectorAll('.impact-card .ic-n[data-count], .aura-kpi .ak-n[data-count]');
+    if(!('IntersectionObserver' in window)){ nodes.forEach(animateCount); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ animateCount(e.target); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.4 });
+    nodes.forEach(function(n){ io.observe(n); });
+  }
+
+  function initAll(){ initBudgetChart(); initSatChart(); initRadarChart(); initGauges(); initCounters(); }
+  if(document.readyState !== 'loading'){ initAll(); }
+  else document.addEventListener('DOMContentLoaded', initAll);
+})();
+</script>
 <script type="module" src="/src/scripts/main.js"></script>
 </body>
 </html>

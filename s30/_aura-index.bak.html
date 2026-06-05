@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>부산대학교 AX 대전환 · PNU-AX 마스터플랜 A.U.R.A. 2.0</title>
+  <meta name="description" content="부산대학교 전사적 AI 대전환 — PNU-AX 마스터플랜 A.U.R.A. 2.0. AI 철학·융합연구·증강교육·지능형 행정을 잇는 중심축 PNU Core AXIS." />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Three.js (ESM via import map) — vendored locally for offline / closed-network use -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./vendor/three.module.js"
+    }
+  }
+  </script>
+
+  <!-- UMD globals (vendored locally; optional, graceful fallback) -->
+  <script src="./vendor/gsap.min.js" defer></script>
+  <script src="./vendor/ScrollTrigger.min.js" defer></script>
+  <script src="./vendor/chart.umd.min.js" defer></script>
+</head>
+<body>
+  <!-- Fixed full-screen WebGL stage (behind all content) -->
+  <canvas id="webgl"></canvas>
+
+  <!-- Loading veil -->
+  <div id="loader" class="loader">
+    <div class="loader__core"></div>
+    <p class="loader__label">PNU CORE AXIS 부팅 중…</p>
+  </div>
+
+  <!-- Top HUD / progress rail -->
+  <header class="hud">
+    <div class="hud__brand">
+      <span class="hud__logo">PNU</span>
+      <span class="hud__sub">AX&nbsp;AURA</span>
+    </div>
+    <nav class="hud__nav">
+      <a href="#hero" data-nav="hero">소개</a>
+      <a href="#zone-a" data-nav="zone-a">A·철학</a>
+      <a href="#zone-u" data-nav="zone-u">U·연구</a>
+      <a href="#zone-r" data-nav="zone-r">R·교육</a>
+      <a href="#zone-a2" data-nav="zone-a2">A·행정</a>
+      <a href="#achievements" data-nav="achievements">성과</a>
+      <a href="#roadmap" data-nav="roadmap">로드맵</a>
+    </nav>
+    <div class="hud__progress" aria-hidden="true">
+      <div class="hud__progress-bar" id="progress-bar"></div>
+      <span class="hud__progress-pct" id="progress-pct">0%</span>
+    </div>
+  </header>
+
+  <!-- Scroll-snapping content container. Each .section is a full-viewport snap stop. -->
+  <main class="snap" id="snap">
+
+    <!-- ───────────────── HERO ───────────────── -->
+    <section class="section section--hero" id="hero" data-zone="hero">
+      <video class="hero__video" autoplay muted loop playsinline poster="assets/poster.jpg">
+        <source src="assets/background.mp4" type="video/mp4" />
+      </video>
+      <div class="hero__scrim"></div>
+      <div class="overlay overlay--center">
+        <p class="eyebrow">PUSAN NATIONAL UNIVERSITY · PNU-AX 마스터플랜 2025–2027</p>
+        <h1 class="hero__title">AX <span class="grad">AURA</span></h1>
+        <p class="hero__tagline">
+          교육·연구·행정·산학협력 전 영역을 아우르는 중장기 AX 통합전략<br/>
+          <strong>PNU-AX 마스터플랜 A.U.R.A. 2.0</strong>으로<br/>
+          고등교육의 새로운 표준을 제시합니다.
+        </p>
+        <ul class="aura-legend">
+          <li data-pillar="A"><b>A</b><span>AI Philosophy<em>AI 철학</em></span></li>
+          <li data-pillar="U"><b>U</b><span>Unified Research<em>융합 연구</em></span></li>
+          <li data-pillar="R"><b>R</b><span>Reinforced Education<em>증강 교육</em></span></li>
+          <li data-pillar="A2"><b>A</b><span>Adaptive Administration<em>지능형 행정</em></span></li>
+        </ul>
+        <div class="scroll-hint">
+          <span>SCROLL</span>
+          <span class="scroll-hint__mouse"><i></i></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────────── KPI / STRATEGY FRAMEWORK ───────────────── -->
+    <section class="section section--kpi" id="kpi" data-zone="kpi">
+      <div class="overlay overlay--center wide">
+        <p class="eyebrow">STRATEGY FRAMEWORK · 전략체계</p>
+        <h2 class="block-title">숫자로 보는 AX 대전환</h2>
+        <p class="block-sub">학내 전 부서가 참여하는 실행 중심 AX 추진 체계 · 추진기간 3년</p>
+        <div class="kpi-grid">
+          <div class="kpi-item">
+            <div class="kpi-num grad">100<span>억</span></div>
+            <div class="kpi-label">2년간 AX 전략 투자 예산</div>
+            <span class="kpi-badge ok">✓ 확정</span>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-num grad">4,000<span>명</span></div>
+            <div class="kpi-label">AI+X 증강인재 양성 목표</div>
+            <span class="kpi-badge">2027 목표</span>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-num grad">국내 최초</div>
+            <div class="kpi-label">University AI-MASTER 대학 AI 인증</div>
+            <span class="kpi-badge ok">✓ 2026.03 달성</span>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-num grad">8·22·47</div>
+            <div class="kpi-label">전략목표 · 전략과제 · 실행과제</div>
+            <span class="kpi-badge">3개년 로드맵</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────────── ZONE A · PHILOSOPHY ───────────────── -->
+    <section class="section section--zone" id="zone-a" data-zone="zone-a" data-pillar="A">
+      <div class="overlay overlay--left">
+        <span class="zone-tag">PILLAR A · PHILOSOPHY</span>
+        <h2 class="zone-title">AI 철학 <em>AI Philosophy</em></h2>
+        <h3 class="zone-struct">AX Core Tower · 가치의 중심 기둥</h3>
+        <p class="zone-copy">AI 기반 대학 철학과 리더십을 재정립하는 <strong>대전환의 가치 축</strong>. 대학의 모든 영역을 AI 기반으로 재설계하는 방향을 세우고 캠퍼스 전체로 송출합니다.</p>
+        <ul class="zone-points">
+          <li>AX 철학·정책 재정립</li>
+          <li>AI 기반 리더십 설정</li>
+          <li>전사적 AX 확산·관리</li>
+          <li>AI 시대 사회적 책임</li>
+          <li>AI 윤리헌장 수립</li>
+        </ul>
+        <blockquote class="zone-quote">“AI는 단순한 기술혁신을 넘어 국가 경쟁력을 좌우하는 구조적 변화의 중심에 있습니다.”<cite>— 최재원 부산대학교 총장</cite></blockquote>
+      </div>
+    </section>
+
+    <!-- ───────────────── ZONE U · RESEARCH ───────────────── -->
+    <section class="section section--zone" id="zone-u" data-zone="zone-u" data-pillar="U">
+      <div class="overlay overlay--right">
+        <span class="zone-tag">PILLAR U · RESEARCH</span>
+        <h2 class="zone-title">융합 연구 <em>Unified Research</em></h2>
+        <h3 class="zone-struct">장영실 AI융합연구원 · 연구 생태계의 축</h3>
+        <p class="zone-copy">AI 융합연구원을 중심으로 한 <strong>연구 생태계 구축</strong>. 학문의 경계를 넘는 융합연구로 동남권 AI 혁신의 거점이 됩니다.</p>
+        <ul class="zone-points">
+          <li>AI 융합연구원 설립·운영</li>
+          <li>AI 연구 Boost-Up 기반</li>
+          <li>AI 융합 주권(Sovereign AI) 강화</li>
+          <li>글로벌 연구네트워크 10개</li>
+          <li>AI 연구 공유·협력</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ───────────────── ZONE R · EDUCATION ───────────────── -->
+    <section class="section section--zone" id="zone-r" data-zone="zone-r" data-pillar="R">
+      <div class="overlay overlay--left">
+        <span class="zone-tag">PILLAR R · EDUCATION</span>
+        <h2 class="zone-title">증강 인재 양성 <em>Reinforced Education</em></h2>
+        <h3 class="zone-struct">AI 스마트 강의동 · 증강 학습의 축</h3>
+        <p class="zone-copy">AI 네이티브 교육으로 <strong>AI+X 증강인재 4,000명</strong>을 길러내는 축. 표준화된 AI 교육과 AI 기반 교수학습으로 학생 한 명 한 명의 성장을 설계합니다.</p>
+        <ul class="zone-points">
+          <li>AI 교육 표준 수립</li>
+          <li>AI+X 증강인재 <strong>4,000명</strong> 양성</li>
+          <li>AI 네이티브 교육 혁신</li>
+          <li>AI 기반 교수학습 역량 강화</li>
+          <li>스마트글라스 언어장벽 해소</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ───────────────── ZONE A2 · ADMINISTRATION ───────────────── -->
+    <section class="section section--zone" id="zone-a2" data-zone="zone-a2" data-pillar="A2">
+      <div class="overlay overlay--right">
+        <span class="zone-tag">PILLAR A · ADMINISTRATION</span>
+        <h2 class="zone-title">지능형 행정 <em>Adaptive Administration</em></h2>
+        <h3 class="zone-struct">지능형 서버 단지 · 산지니 AI</h3>
+        <p class="zone-copy">AI 기반 <strong>지능형 행정 체계</strong>와 AI 스마트캠퍼스. 행정이 스스로 적응하고 구성원의 요청에 응답하는 시스템으로 진화합니다.</p>
+        <ul class="zone-points">
+          <li>AI 행정 표준 수립</li>
+          <li>지능형 행정체계 구축</li>
+          <li>AI 기반 행정업무 효율화</li>
+          <li>행정 만족도 <strong>70 → 80 → 90점</strong></li>
+          <li>AI 스마트캠퍼스 구현</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ───────────────── CHARTS · TARGET STATUS ───────────────── -->
+    <section class="section section--charts" id="charts" data-zone="charts">
+      <div class="overlay overlay--center wide">
+        <p class="eyebrow">TARGET STATUS · AX 목표 현황</p>
+        <h2 class="block-title">핵심 KPI 달성 현황 및 계획</h2>
+        <div class="charts-grid">
+          <div class="chart-card">
+            <h4 class="chart-title">행정 효율화 만족도 <span>(점)</span></h4>
+            <div class="chart-wrap"><canvas id="chart-line" aria-label="행정 효율화 만족도 추이 차트"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <h4 class="chart-title">4대 전략 + AI 인프라 <span>현재 vs 2027 목표</span></h4>
+            <div class="chart-wrap"><canvas id="chart-radar" aria-label="4대 전략 레이더 차트"></canvas></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────────── ACHIEVEMENTS TIMELINE ───────────────── -->
+    <section class="section section--timeline" id="achievements" data-zone="achievements">
+      <div class="overlay overlay--center wide">
+        <p class="eyebrow">TRACK RECORD · 추진 성과</p>
+        <h2 class="block-title">이미 증명된 AX 대전환</h2>
+        <ol class="timeline">
+          <li class="tl-item">
+            <span class="tl-date">2025.07.31</span>
+            <div class="tl-body">
+              <h4 class="tl-title">A.U.R.A. 프로젝트 공식 선언</h4>
+              <p class="tl-desc">교육·행정 AI 대전환 발족식. 총장 직속 AX 선도위원회 구성, 2년 100억 원 투자, 3개년 로드맵 공개.</p>
+              <span class="tl-src">뉴시스</span>
+            </div>
+          </li>
+          <li class="tl-item">
+            <span class="tl-date">2025.12.09</span>
+            <div class="tl-body">
+              <h4 class="tl-title">2025 한국의 경영대상 AI 혁신 부문 <strong>대상</strong> — 대학 유일</h4>
+              <p class="tl-desc">KMAC 주관, 신설 AI 혁신 부문 수상기관 중 대학은 부산대가 유일. 장영실 AI융합연구원·산지니 AI·AI 스마트글라스·AX Philosophy가 평가 근거.</p>
+              <span class="tl-src">중앙일보</span>
+            </div>
+          </li>
+          <li class="tl-item">
+            <span class="tl-date">2025.12.24</span>
+            <div class="tl-body">
+              <h4 class="tl-title">지도교수상담 AI 도우미 국립대 최초 자체 구축</h4>
+              <p class="tl-desc">산지니 AI 기반. 성적·상담 요약, 상담 방향 제시, 취업 도우미. 생성정보는 저장·학습에 사용하지 않는 원칙.</p>
+              <span class="tl-src">중앙이코노미뉴스</span>
+            </div>
+          </li>
+          <li class="tl-item">
+            <span class="tl-date">2026.03.05</span>
+            <div class="tl-body">
+              <h4 class="tl-title">University AI-MASTER 국내 대학 최초 인증</h4>
+              <p class="tl-desc">한국인공지능산업협회 AI 신뢰성 인증. 시스템 신뢰성·알고리즘 윤리성·기술적 안정성 모두 ‘적합’. AX·정보화혁신본부 신설.</p>
+              <span class="tl-src">공식 보도자료</span>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ───────────────── KEY SERVICES ───────────────── -->
+    <section class="section section--services" id="services" data-zone="services">
+      <div class="overlay overlay--center wide">
+        <p class="eyebrow">LIVE SYSTEMS · 핵심 서비스·인프라</p>
+        <h2 class="block-title">AX 대전환을 이끄는 혁신 시스템</h2>
+        <div class="svc-grid">
+          <article class="svc-card">
+            <div class="svc-icon">🤖</div>
+            <h4 class="svc-title">산지니 AI</h4>
+            <p class="svc-desc">국립대 최초 LLM 기반 자체 구축 AI 플랫폼. 전 구성원·지역사회 대상 생성형 AI 서비스.</p>
+            <span class="svc-badge">🏆 국립대 최초 자체 구축</span>
+          </article>
+          <article class="svc-card">
+            <div class="svc-icon">⚗️</div>
+            <h4 class="svc-title">장영실 AI융합연구원</h4>
+            <p class="svc-desc">산학협력 AI 융합연구 허브. 동남권 AI 혁신 생태계의 거점.</p>
+            <span class="svc-badge">2025.12 개원</span>
+          </article>
+          <article class="svc-card">
+            <div class="svc-icon">🎓</div>
+            <h4 class="svc-title">지도교수상담 AI 도우미</h4>
+            <p class="svc-desc">성적·상담 요약, 상담 방향 제시, 취업 정보까지 초안을 자동 생성.</p>
+            <span class="svc-badge">국립대 최초 자체 개발</span>
+          </article>
+          <article class="svc-card">
+            <div class="svc-icon">🕶️</div>
+            <h4 class="svc-title">AI 통번역 스마트글라스</h4>
+            <p class="svc-desc">국내 최초 도입. 외국인 유학생·글로벌 연구자의 언어장벽 해소.</p>
+            <span class="svc-badge">🌐 국내 최초 도입</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────────── ROADMAP ───────────────── -->
+    <section class="section section--roadmap" id="roadmap" data-zone="roadmap">
+      <div class="overlay overlay--center wide">
+        <p class="eyebrow">3-YEAR ROADMAP · 향후 계획</p>
+        <h2 class="block-title">AX 대전환 3개년 로드맵</h2>
+        <div class="rm-grid">
+          <div class="rm-stage is-done">
+            <div class="rm-head"><span class="rm-year">2025</span><span class="rm-state">✓ 완료</span></div>
+            <h4 class="rm-phase">1단계 · 기반 구축</h4>
+            <ul class="rm-list">
+              <li>A.U.R.A. 선언 · 발족</li>
+              <li>AX·정보화혁신본부 신설</li>
+              <li>산지니 AI 구축</li>
+              <li>장영실 AI융합연구원 개원</li>
+              <li>한국의 경영대상 AI 혁신 대상</li>
+            </ul>
+          </div>
+          <div class="rm-stage is-active">
+            <div class="rm-head"><span class="rm-year">2026</span><span class="rm-state">진행 중</span></div>
+            <h4 class="rm-phase">2단계 · 확산·고도화</h4>
+            <ul class="rm-list">
+              <li>AI-MASTER 인증 획득 (완료)</li>
+              <li>AI 맞춤형 교과·비교과 추천</li>
+              <li>AI 학사행정 에이전트</li>
+              <li>AI 기반 LMS · 산지니 AI 고도화</li>
+              <li>글로벌 AI 연구 네트워크</li>
+            </ul>
+          </div>
+          <div class="rm-stage">
+            <div class="rm-head"><span class="rm-year">2027</span><span class="rm-state">목표</span></div>
+            <h4 class="rm-phase">3단계 · 선도 생태계 완성</h4>
+            <ul class="rm-list">
+              <li>AI+X 증강인재 4,000명</li>
+              <li>행정 만족도 90점</li>
+              <li>글로벌 AI 연구 네트워크 10개</li>
+              <li>동남권 AX 허브 대학 완성</li>
+              <li>AI 스마트캠퍼스 구현</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────────── OUTRO ───────────────── -->
+    <section class="section section--outro" id="outro" data-zone="outro">
+      <div class="overlay overlay--center">
+        <p class="eyebrow">THE AXIS CONTINUES</p>
+        <h2 class="outro__title">중심축은 <span class="grad">계속됩니다</span></h2>
+        <p class="outro__copy">A·U·R·A — 철학·연구·교육·행정의 네 축이 하나의 중심으로 연결될 때, 부산대학교는 AI 시대 고등교육의 새로운 표준이 됩니다.</p>
+        <div class="cta-row">
+          <a class="cta" href="#hero">다시 항해하기 ↑</a>
+        </div>
+        <footer class="outro__foot">© Pusan National University · PNU-AX 마스터플랜 A.U.R.A. 2.0</footer>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

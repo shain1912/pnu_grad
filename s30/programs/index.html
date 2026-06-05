@@ -1,17 +1,244 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>핵심 사업 — 부산대학교 AI 거점대학육성사업단 | ARISE PNU</title>
-<meta name="description" content="AI 교육 혁신 · AI 연구 강화 · 산학 협력 · AI 인프라 4대 핵심 사업">
+<meta name="description" content="AI 교육 혁신 · AI 연구 강화 · 산학 협력 · AI 인프라 — A.U.R.A 2.0 마스터플랜으로 AI 인재와 연구를 잇는 부산대학교 AI 거점대학육성사업단의 4대 핵심 사업.">
 <link rel="icon" type="image/jpeg" href="/s30/assets/pnu-symbol-color.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+4:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="/src/styles/main.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+/* ── 페이지 고유 CSS (programs) — main.css 미수정 ── */
+
+/* 섹션 앵커 오프셋 (고정 헤더 보정) */
+#education, #research, #industry, #infra { scroll-margin-top:120px; }
+
+/* 핵심 사업 인덱스 네비 (page-hero 하단) */
+.prog-jumpbar { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+.prog-jumpbar a {
+  display:flex; align-items:center; gap:9px; padding:11px 18px; border-radius:100px;
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18);
+  color:#fff; font-size:13px; font-weight:700; letter-spacing:-.01em; transition:all .2s;
+  backdrop-filter:blur(6px);
+}
+.prog-jumpbar a:hover { background:rgba(255,255,255,.18); transform:translateY(-2px); border-color:rgba(255,255,255,.4); }
+.prog-jumpbar a i { color:#7EC8FF; font-size:14px; }
+.prog-jumpbar a span.idx { font-family:'Inter',sans-serif; font-weight:900; color:#7EC8FF; }
+
+/* 분야별 이미지 카드 그리드 (산학) */
+.dom-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+.dom-card {
+  position:relative; border-radius:18px; overflow:hidden; min-height:300px;
+  border:1px solid var(--border); transition:all .25s; cursor:pointer;
+  box-shadow:0 6px 22px rgba(15,31,69,.06);
+}
+.dom-card:hover { transform:translateY(-4px); box-shadow:0 18px 44px rgba(0,91,170,.2); }
+.dom-card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .5s; }
+.dom-card:hover img { transform:scale(1.06); }
+.dom-card .dom-ov {
+  position:absolute; inset:0; padding:22px;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  background:linear-gradient(to top, rgba(11,26,62,.94) 0%, rgba(11,26,62,.45) 52%, transparent 82%);
+}
+.dom-tag {
+  align-self:flex-start; font-family:'Inter',sans-serif; font-size:10px; font-weight:800;
+  letter-spacing:.1em; text-transform:uppercase; color:#7EC8FF;
+  background:rgba(20,63,144,.4); border:1px solid rgba(126,200,255,.35);
+  padding:4px 11px; border-radius:100px; margin-bottom:auto;
+}
+.dom-title { font-size:18px; font-weight:900; color:#fff; line-height:1.25; margin-top:14px; }
+.dom-org { font-size:12px; color:#7EC8FF; font-weight:700; margin-top:6px; }
+.dom-desc { font-size:12.5px; color:rgba(255,255,255,.82); line-height:1.6; margin-top:8px; }
+
+/* 텍스트 + 이미지 split (연구·인프라) */
+.split-block { display:grid; grid-template-columns:1.05fr .95fr; gap:38px; align-items:center; }
+.split-block.rev { grid-template-columns:.95fr 1.05fr; }
+.split-img { position:relative; border-radius:22px; overflow:hidden; min-height:380px; box-shadow:0 20px 50px rgba(15,31,69,.16); }
+.split-img img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.split-img::after { content:''; position:absolute; inset:0; background:linear-gradient(150deg, rgba(20,63,144,.18), transparent 55%); }
+.split-img .img-cap {
+  position:absolute; left:18px; bottom:18px; z-index:2;
+  background:rgba(15,31,69,.82); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.16);
+  color:#fff; padding:8px 15px; border-radius:100px; font-size:12px; font-weight:700;
+  display:flex; align-items:center; gap:8px;
+}
+.img-cap i { color:#7EC8FF; }
+
+/* 강조 리스트 (체크) */
+.prog-list { display:flex; flex-direction:column; gap:13px; margin:22px 0 6px; }
+.prog-list li { list-style:none; display:flex; gap:12px; align-items:flex-start; font-size:14.5px; color:var(--text-b); line-height:1.6; }
+.prog-list li i {
+  flex-shrink:0; width:26px; height:26px; border-radius:8px;
+  background:var(--blue-tint); color:var(--pnu-blue);
+  display:flex; align-items:center; justify-content:center; font-size:12px; margin-top:1px;
+}
+.prog-list li.green i { background:#D1FAE5; color:var(--pnu-green); }
+.prog-list li strong { color:var(--ink); font-weight:800; }
+
+/* 미니 스탯 칩 (인라인) */
+.mini-stats { display:flex; flex-wrap:wrap; gap:14px; margin-top:8px; }
+.mini-stat { background:var(--blue-tint); border:1px solid var(--blue-light); border-radius:14px; padding:16px 20px; min-width:120px; }
+.mini-stat .n { font-family:'Inter',sans-serif; font-size:1.85rem; font-weight:900; color:var(--pnu-blue); letter-spacing:-.04em; line-height:1; }
+.mini-stat .n span { font-size:1rem; }
+.mini-stat .l { font-size:11.5px; color:var(--text-m); margin-top:6px; font-weight:600; }
+.mini-stat.green { background:#ECFDF5; border-color:#A7F3D0; }
+.mini-stat.green .n { color:var(--pnu-green); }
+
+/* 큰 강조 배너 (AI 대학 신설) */
+.spotlight {
+  display:grid; grid-template-columns:1fr auto; align-items:center; gap:28px;
+  background:linear-gradient(135deg,#0F1F45 0%, #143F90 60%, #0075C9 100%);
+  border-radius:22px; padding:36px 42px; margin-top:32px; position:relative; overflow:hidden;
+}
+.spotlight::after { content:''; position:absolute; right:-60px; top:-60px; width:240px; height:240px; border-radius:50%; background:radial-gradient(circle, rgba(126,200,255,.22), transparent 65%); }
+.spotlight-eyebrow { font-family:'Inter',sans-serif; font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#7EC8FF; margin-bottom:10px; }
+.spotlight-title { font-size:clamp(1.4rem,2.4vw,1.9rem); font-weight:900; color:#fff; line-height:1.25; letter-spacing:-.02em; }
+.spotlight-title em { font-style:normal; color:#7EC8FF; }
+.spot-chips { display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+.spot-chip { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.1); border:1px solid rgba(126,200,255,.32); color:#fff; border-radius:100px; padding:8px 15px; font-size:12.5px; font-weight:700; }
+.spot-chip i { color:#7EC8FF; }
+.spotlight-num { position:relative; text-align:center; padding-left:28px; border-left:1px solid rgba(255,255,255,.2); }
+.spotlight-num .big { font-family:'Inter',sans-serif; font-size:3.4rem; font-weight:900; color:#fff; letter-spacing:-.05em; line-height:1; }
+.spotlight-num .big span { font-size:1.4rem; }
+.spotlight-num .cap { font-size:12px; color:rgba(255,255,255,.78); margin-top:8px; }
+
+/* 인프라 인포그래픽 카드 */
+.infra-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:30px; }
+.infra-card { background:var(--white); border:1px solid var(--border); border-radius:18px; padding:26px 24px; position:relative; overflow:hidden; transition:all .25s; }
+.infra-card:hover { transform:translateY(-3px); box-shadow:0 14px 36px rgba(0,91,170,.12); border-color:var(--pnu-blue); }
+.infra-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--pnu-blue),var(--pnu-blue-sub)); }
+.infra-ico { width:50px; height:50px; border-radius:14px; background:var(--blue-tint); color:var(--pnu-blue); display:flex; align-items:center; justify-content:center; font-size:22px; margin-bottom:16px; }
+.infra-card h4 { font-size:16px; font-weight:800; color:var(--ink); line-height:1.3; margin-bottom:8px; }
+.infra-card p { font-size:13px; color:var(--text-b); line-height:1.6; margin-bottom:14px; }
+.infra-num { font-family:'Inter',sans-serif; font-size:1.7rem; font-weight:900; color:var(--pnu-blue); letter-spacing:-.04em; }
+.infra-num span { font-size:.9rem; color:var(--text-m); }
+.infra-status { display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:800; color:var(--pnu-green); margin-top:8px; }
+.infra-status.future { color:var(--pnu-blue-sub); }
+.infra-status i { font-size:8px; }
+
+/* 연구그룹 칩 */
+.lab-chips { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+.lab-chip { display:inline-flex; align-items:center; gap:8px; background:var(--white); border:1px solid var(--border); border-radius:100px; padding:9px 16px; font-size:13px; font-weight:700; color:var(--ink); transition:all .2s; }
+.lab-chip:hover { border-color:var(--pnu-blue); transform:translateY(-2px); }
+.lab-chip i { color:var(--pnu-blue); }
+
+/* 프로그램 타일 — 큰 숫자 + 칩 (글-제로) */
+.pt-big { font-family:'Inter',sans-serif; font-size:2.1rem; font-weight:900; color:var(--pnu-blue); letter-spacing:-.04em; line-height:1; margin:12px 0 14px; }
+.pt-big span { font-size:.85rem; color:var(--text-m); font-weight:700; }
+.pt-big.green { color:var(--pnu-green); }
+.pt-chips { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:14px; }
+.pt-chip { display:inline-flex; align-items:center; font-size:11.5px; font-weight:700; color:var(--text-b); background:var(--blue-tint); border:1px solid var(--blue-light); border-radius:100px; padding:5px 11px; }
+
+/* 섹션 인덱스 번호 라벨 */
+.sec-index { font-family:'Inter',sans-serif; font-size:13px; font-weight:900; color:var(--pnu-blue); letter-spacing:.1em; }
+
+/* ── 4대 핵심사업 SVG 인포그래픽 ── */
+.prog-flow-wrap { display:grid; grid-template-columns:1fr; gap:0; margin-top:40px; }
+.prog-flow-svg { width:100%; height:auto; display:block; }
+.prog-flow-svg .pf-node { transition:transform .3s; transform-box:fill-box; transform-origin:center; cursor:default; }
+.prog-flow-svg .pf-node:hover { transform:scale(1.05); }
+.prog-flow-svg .pf-link { stroke-dasharray:7 7; animation:pfFlow 1.4s linear infinite; }
+@keyframes pfFlow { to { stroke-dashoffset:-28; } }
+.prog-flow-svg .pf-letter { font-family:'Inter',sans-serif; font-weight:900; }
+.prog-flow-svg .pf-cap { font-family:'Noto Sans KR',sans-serif; font-weight:800; }
+.prog-flow-svg .pf-sub { font-family:'Noto Sans KR',sans-serif; font-weight:500; }
+
+/* ── Chart.js 패널 (예산/포트폴리오) ── */
+.chart-panel-grid { display:grid; grid-template-columns:1.15fr .85fr; gap:26px; margin-top:42px; align-items:stretch; }
+.chart-card { background:var(--white); border:1px solid var(--border); border-radius:22px; padding:30px 30px 26px; box-shadow:0 8px 30px rgba(15,31,69,.06); display:flex; flex-direction:column; }
+.chart-card.dark { background:linear-gradient(150deg,#0F1F45,#143F90 75%); border-color:transparent; color:#fff; position:relative; overflow:hidden; }
+.chart-card.dark::after { content:''; position:absolute; right:-70px; bottom:-70px; width:240px; height:240px; border-radius:50%; background:radial-gradient(circle,rgba(126,200,255,.18),transparent 65%); }
+.chart-card-eyebrow { font-family:'Inter',sans-serif; font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--pnu-blue); margin-bottom:8px; }
+.chart-card.dark .chart-card-eyebrow { color:#7EC8FF; }
+.chart-card-title { font-size:1.25rem; font-weight:900; color:var(--ink); letter-spacing:-.02em; line-height:1.3; }
+.chart-card.dark .chart-card-title { color:#fff; }
+.chart-card-sub { font-size:12.5px; color:var(--text-m); margin-top:7px; line-height:1.55; }
+.chart-card.dark .chart-card-sub { color:rgba(255,255,255,.78); }
+.chart-holder { position:relative; flex:1; min-height:240px; margin-top:18px; }
+.chart-source { font-size:10.5px; color:var(--text-m); margin-top:14px; letter-spacing:.01em; }
+.chart-card.dark .chart-source { color:rgba(255,255,255,.6); }
+.track-chips { display:flex; flex-wrap:wrap; gap:9px; margin:18px 0 22px; position:relative; z-index:2; }
+.tchip { display:inline-flex; align-items:center; gap:7px; background:rgba(255,255,255,.08); border:1px solid rgba(126,200,255,.3); color:#fff; border-radius:100px; padding:8px 14px; font-size:12.5px; font-weight:700; }
+.tchip i { color:#7EC8FF; font-size:12px; }
+.dark-stat-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:auto; position:relative; z-index:2; }
+.dark-stat { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); border-radius:14px; padding:16px 18px; }
+.dark-stat .n { font-family:'Inter',sans-serif; font-size:1.9rem; font-weight:900; color:#fff; letter-spacing:-.04em; line-height:1; }
+.dark-stat .n span { font-size:1rem; color:#7EC8FF; }
+.dark-stat .l { font-size:11px; color:rgba(255,255,255,.75); margin-top:7px; font-weight:600; }
+
+/* ── 카운터 임팩트 밴드 (다크) ── */
+.impact-band { background:linear-gradient(135deg,#0B1530 0%,#0F1F45 50%,#143F90 100%); position:relative; overflow:hidden; }
+.impact-band::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 80% 20%,rgba(126,200,255,.12),transparent 45%); pointer-events:none; }
+.impact-inner { position:relative; z-index:2; }
+.impact-head { text-align:center; margin-bottom:44px; }
+.impact-eyebrow { font-family:'Inter',sans-serif; font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:#7EC8FF; margin-bottom:14px; }
+.impact-title { font-size:clamp(1.6rem,3vw,2.3rem); font-weight:900; color:#fff; letter-spacing:-.025em; line-height:1.25; }
+.impact-title em { font-style:normal; background:linear-gradient(90deg,#7EC8FF,#00A651); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.counter-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+.counter-cell { text-align:center; padding:30px 18px; background:rgba(255,255,255,.045); border:1px solid rgba(255,255,255,.1); border-radius:20px; transition:all .3s; }
+.counter-cell:hover { transform:translateY(-5px); background:rgba(255,255,255,.08); border-color:rgba(126,200,255,.4); box-shadow:0 18px 44px rgba(0,0,0,.28); }
+.counter-ico { width:48px; height:48px; margin:0 auto 16px; border-radius:14px; background:rgba(126,200,255,.14); color:#7EC8FF; display:flex; align-items:center; justify-content:center; font-size:21px; }
+.counter-num { font-family:'Inter',sans-serif; font-size:clamp(2.9rem,5.2vw,4rem); font-weight:900; color:#fff; letter-spacing:-.05em; line-height:1; }
+.counter-num .suf { font-size:1.3rem; color:#7EC8FF; margin-left:2px; }
+.counter-lbl { font-size:13.5px; font-weight:800; color:#fff; margin-top:14px; }
+.counter-note { font-size:11.5px; color:rgba(255,255,255,.62); margin-top:6px; line-height:1.5; }
+
+/* ── 미니 차트 카드 (섹션 내 인라인) ── */
+.minichart-row { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:42px; }
+.minichart { background:var(--white); border:1px solid var(--border); border-radius:20px; padding:26px 26px 22px; box-shadow:0 8px 28px rgba(15,31,69,.05); position:relative; overflow:hidden; transition:all .25s; }
+.minichart:hover { transform:translateY(-3px); box-shadow:0 18px 42px rgba(0,91,170,.13); }
+.minichart::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--pnu-blue),var(--pnu-green)); }
+.minichart-eyebrow { font-family:'Inter',sans-serif; font-size:10.5px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--pnu-blue); margin-bottom:7px; }
+.minichart-title { font-size:1.1rem; font-weight:900; color:var(--ink); letter-spacing:-.02em; line-height:1.3; }
+.minichart-holder { position:relative; height:230px; margin-top:16px; }
+
+/* ── 글로우 강화 (다크 카드/스포트라이트) ── */
+.spotlight::before { content:''; position:absolute; left:-50px; bottom:-80px; width:260px; height:260px; border-radius:50%; background:radial-gradient(circle, rgba(0,166,81,.18), transparent 68%); pointer-events:none; }
+.spotlight-num .big { text-shadow:0 6px 30px rgba(126,200,255,.4); }
+
+/* ── 임팩트 카운터 숫자 글로우 강화 ── */
+.counter-num { text-shadow:0 4px 28px rgba(126,200,255,.25); }
+.counter-cell::after { content:''; position:absolute; inset:0; border-radius:20px; background:radial-gradient(circle at 50% 0%,rgba(126,200,255,.1),transparent 60%); opacity:0; transition:opacity .3s; pointer-events:none; }
+.counter-cell { position:relative; }
+.counter-cell:hover::after { opacity:1; }
+
+/* ── 다크 비교 차트 밴드 (행정 만족도) ── */
+.satis-band { background:linear-gradient(135deg,#0B1530,#0F1F45 55%,#143F90); position:relative; overflow:hidden; }
+.satis-band::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 15% 30%,rgba(0,166,81,.12),transparent 42%),radial-gradient(circle at 85% 70%,rgba(126,200,255,.12),transparent 42%); pointer-events:none; }
+.satis-inner { position:relative; z-index:2; display:grid; grid-template-columns:.85fr 1.15fr; gap:46px; align-items:center; }
+.satis-left .impact-eyebrow { text-align:left; margin-bottom:14px; }
+.satis-kpis { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:26px; }
+.satis-kpi { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.13); border-radius:16px; padding:20px; transition:all .3s; }
+.satis-kpi:hover { transform:translateY(-4px); border-color:rgba(126,200,255,.4); background:rgba(255,255,255,.1); }
+.satis-kpi .n { font-family:'Inter',sans-serif; font-size:2.3rem; font-weight:900; color:#fff; letter-spacing:-.05em; line-height:1; }
+.satis-kpi .n span { font-size:1.1rem; color:#7EC8FF; }
+.satis-kpi .l { font-size:11.5px; color:rgba(255,255,255,.74); margin-top:9px; font-weight:600; }
+.satis-chart-card { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:22px; padding:28px 30px; position:relative; }
+.satis-chart-holder { position:relative; height:300px; }
+.satis-title { font-size:clamp(1.5rem,2.6vw,2.05rem); font-weight:900; color:#fff; letter-spacing:-.025em; line-height:1.25; }
+.satis-title em { font-style:normal; background:linear-gradient(90deg,#7EC8FF,#00A651); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+
+@media (max-width:980px){
+  .minichart-row { grid-template-columns:1fr; }
+  .satis-inner { grid-template-columns:1fr; gap:30px; }
+  .chart-panel-grid { grid-template-columns:1fr; }
+  .counter-grid { grid-template-columns:repeat(2,1fr); }
+  .dom-grid, .infra-grid { grid-template-columns:repeat(2,1fr); }
+  .split-block, .split-block.rev { grid-template-columns:1fr; gap:24px; }
+  .spotlight { grid-template-columns:1fr; }
+  .spotlight-num { border-left:none; border-top:1px solid rgba(255,255,255,.2); padding-left:0; padding-top:20px; text-align:left; }
+}
+@media (max-width:640px){
+  .dom-grid, .infra-grid { grid-template-columns:1fr; }
+}
+</style>
 </head>
 <body>
 
+<!-- TOP BAR -->
 <div class="topbar">
   <div class="container">
     <div class="left">
@@ -28,10 +255,11 @@
   </div>
 </div>
 
+<!-- MAIN HEADER -->
 <header class="main-hdr">
   <div class="container hdr-inner">
     <a href="/s30/" class="brand">
-      <img src="/s30/assets/pnu-signature.jpg" alt="부산대학교" class="brand-logo">
+      <img src="/s30/assets/pnu-signature.jpg" alt="부산대학교 공식 시그니처" class="brand-logo">
       <div class="brand-divider"></div>
       <div>
         <div class="brand-text-ko">AI 거점대학육성사업단</div>
@@ -90,302 +318,556 @@
   </div>
 </header>
 
+<!-- PAGE HERO -->
 <section class="page-hero">
   <div class="container ph-inner">
     <div class="ph-left">
-      <div class="ph-eyebrow"><i class="fas fa-rocket"></i> Core Programs</div>
-      <h1 class="ph-title">핵심 사업 · <em>4대 영역</em>의<br>유기적 통합 전략</h1>
-      <p class="ph-sub">AI 교육 혁신 · AI 연구 강화 · 산학 협력 · AI 인프라 — 4개 핵심 사업이 A.U.R.A 2.0의 실행 엔진을 구성합니다.</p>
+      <div class="ph-eyebrow">KEY PROGRAMS · 핵심 사업</div>
+      <h1 class="ph-title">AI 인재와 연구를 잇는 <em>핵심 사업</em></h1>
+      <p class="ph-sub">교육 · 연구 · 산학 · 인프라 4대 축</p>
       <div class="breadcrumb">
         <a href="/s30/"><i class="fas fa-home"></i> 홈</a>
         <i class="fas fa-chevron-right"></i>
         <span class="current">핵심 사업</span>
       </div>
+      <div class="prog-jumpbar">
+        <a href="#education"><span class="idx">01</span><i class="fas fa-graduation-cap"></i> AI 교육 혁신</a>
+        <a href="#research"><span class="idx">02</span><i class="fas fa-microscope"></i> AI 연구 강화</a>
+        <a href="#industry"><span class="idx">03</span><i class="fas fa-handshake"></i> 산학 협력</a>
+        <a href="#infra"><span class="idx">04</span><i class="fas fa-server"></i> AI 인프라</a>
+      </div>
     </div>
-    <div class="ph-icon"><i class="fas fa-rocket"></i></div>
+    <div class="ph-icon"><i class="fas fa-cubes"></i></div>
   </div>
 </section>
 
-<!-- Quick Nav -->
-<div class="qnav">
+<!-- STATS BAND -->
+<section class="stats-band">
   <div class="container">
-    <div class="qnav-inner">
-      <a href="#education"><i class="fas fa-graduation-cap"></i> AI 교육 혁신</a>
-      <a href="#research"><i class="fas fa-microscope"></i> AI 연구 강화</a>
-      <a href="#industry"><i class="fas fa-handshake"></i> 산학 협력</a>
-      <a href="#infra"><i class="fas fa-server"></i> AI 인프라</a>
+    <div class="stats-grid">
+      <div class="stat-cell">
+        <div class="stat-cell-tag">Education</div>
+        <div class="stat-cell-num gold">424<span>명</span></div>
+        <div class="stat-cell-lbl">AI 대학 2027 신입생</div>
+        <div class="stat-cell-note">학부 입학 정원 (2027 신설)</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-tag">Bootcamp</div>
+        <div class="stat-cell-num">75<span>억</span></div>
+        <div class="stat-cell-lbl">AI 첨단산업 부트캠프</div>
+        <div class="stat-cell-note">7개 특화 트랙 · 산학 협력</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-tag">Research</div>
+        <div class="stat-cell-num">14<span>+</span></div>
+        <div class="stat-cell-lbl">AI 연구 그룹</div>
+        <div class="stat-cell-note">AILab·VIPLab·XRL·S3Lab</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-tag">Industry</div>
+        <div class="stat-cell-num">35<span>+</span></div>
+        <div class="stat-cell-lbl">산학 협력 파트너</div>
+        <div class="stat-cell-note">해양·의료·제조·모빌리티</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-tag">Infra</div>
+        <div class="stat-cell-num">267<span>억</span></div>
+        <div class="stat-cell-lbl">IT관 신축 사업비</div>
+        <div class="stat-cell-note">13,161㎡ · 2025 착공</div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- 1. AI 교육 혁신 -->
+<!-- ════════ 4대 축 인포그래픽 + 예산 차트 ════════ -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="section-header center">
+      <div class="s-eyebrow" style="justify-content:center">A.U.R.A 2.0 · Strategic Axes</div>
+      <div class="s-title">4대 축으로 <em>하나로 연결</em></div>
+    </div>
+
+    <!-- 커스텀 SVG 인포그래픽: 4대 축 흐름도 -->
+    <div class="prog-flow-wrap">
+      <svg class="prog-flow-svg" viewBox="0 0 1080 360" role="img" aria-label="A.U.R.A 2.0 4대 축 흐름도: 교육·연구·산학·인프라가 중심 거점으로 연결됨">
+        <defs>
+          <linearGradient id="pfHub" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#143F90"/><stop offset="1" stop-color="#0075C9"/>
+          </linearGradient>
+          <linearGradient id="pfBlue" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#0075C9"/><stop offset="1" stop-color="#005BAA"/>
+          </linearGradient>
+          <linearGradient id="pfGreen" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#10B981"/><stop offset="1" stop-color="#00A651"/>
+          </linearGradient>
+          <linearGradient id="pfNavy" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1E3A8A"/><stop offset="1" stop-color="#0F1F45"/>
+          </linearGradient>
+          <linearGradient id="pfSky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3B82F6"/><stop offset="1" stop-color="#1D4ED8"/>
+          </linearGradient>
+        </defs>
+        <!-- 연결선 -->
+        <g fill="none" stroke-width="3" stroke-linecap="round">
+          <path class="pf-link" d="M540 180 L195 110" stroke="#0075C9" opacity=".55"/>
+          <path class="pf-link" d="M540 180 L885 110" stroke="#00A651" opacity=".55" style="animation-delay:.3s"/>
+          <path class="pf-link" d="M540 180 L195 285" stroke="#1E3A8A" opacity=".55" style="animation-delay:.6s"/>
+          <path class="pf-link" d="M540 180 L885 285" stroke="#3B82F6" opacity=".55" style="animation-delay:.9s"/>
+        </g>
+        <!-- 중심 허브 -->
+        <g class="pf-node">
+          <circle cx="540" cy="180" r="74" fill="url(#pfHub)"/>
+          <circle cx="540" cy="180" r="74" fill="none" stroke="#7EC8FF" stroke-width="2" opacity=".5"/>
+          <text x="540" y="168" text-anchor="middle" class="pf-letter" font-size="30" fill="#fff">A.U.R.A</text>
+          <text x="540" y="196" text-anchor="middle" class="pf-sub" font-size="13" fill="#7EC8FF">2.0 마스터플랜</text>
+          <text x="540" y="216" text-anchor="middle" class="pf-sub" font-size="11" fill="rgba(255,255,255,.8)">2년 100억 투자</text>
+        </g>
+        <!-- 01 교육 (좌상) -->
+        <g class="pf-node">
+          <circle cx="160" cy="100" r="56" fill="url(#pfBlue)"/>
+          <text x="160" y="92" text-anchor="middle" class="pf-letter" font-size="24" fill="#fff">01</text>
+          <text x="160" y="116" text-anchor="middle" class="pf-cap" font-size="14" fill="#fff">AI 교육</text>
+          <text x="160" y="178" text-anchor="middle" class="pf-sub" font-size="12" fill="#0F1F45">신입생 424명 · 부트캠프 7트랙</text>
+        </g>
+        <!-- 02 연구 (우상) -->
+        <g class="pf-node">
+          <circle cx="920" cy="100" r="56" fill="url(#pfGreen)"/>
+          <text x="920" y="92" text-anchor="middle" class="pf-letter" font-size="24" fill="#fff">02</text>
+          <text x="920" y="116" text-anchor="middle" class="pf-cap" font-size="14" fill="#fff">AI 연구</text>
+          <text x="920" y="178" text-anchor="middle" class="pf-sub" font-size="12" fill="#0F1F45">연구그룹 14+ · 양자AI 47억</text>
+        </g>
+        <!-- 03 산학 (좌하) -->
+        <g class="pf-node">
+          <circle cx="160" cy="278" r="56" fill="url(#pfNavy)"/>
+          <text x="160" y="270" text-anchor="middle" class="pf-letter" font-size="24" fill="#fff">03</text>
+          <text x="160" y="294" text-anchor="middle" class="pf-cap" font-size="14" fill="#fff">산학 협력</text>
+          <text x="160" y="350" text-anchor="middle" class="pf-sub" font-size="12" fill="#0F1F45">파트너 35+ · 4대 산업 도메인</text>
+        </g>
+        <!-- 04 인프라 (우하) -->
+        <g class="pf-node">
+          <circle cx="920" cy="278" r="56" fill="url(#pfSky)"/>
+          <text x="920" y="270" text-anchor="middle" class="pf-letter" font-size="24" fill="#fff">04</text>
+          <text x="920" y="294" text-anchor="middle" class="pf-cap" font-size="14" fill="#fff">AI 인프라</text>
+          <text x="920" y="350" text-anchor="middle" class="pf-sub" font-size="12" fill="#0F1F45">IT관 267억 · 산지니 AI</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Chart.js: 국책사업 예산 구조 + 부트캠프 트랙 -->
+    <div class="chart-panel-grid">
+      <div class="chart-card">
+        <div class="chart-card-eyebrow">National Projects · 누적 3,111억</div>
+        <div class="chart-card-title">국책사업 예산 구조 · 3,111억</div>
+        <div class="chart-holder"><canvas id="budgetChart"></canvas></div>
+        <div class="chart-source">SOURCE: 부산대 기획처 · UPDATED 2026.05.26 (단위: 억 원)</div>
+      </div>
+      <div class="chart-card dark">
+        <div class="chart-card-eyebrow">Bootcamp · 7 Tracks</div>
+        <div class="chart-card-title">AI 첨단산업 부트캠프 · 7트랙</div>
+        <div class="track-chips">
+          <span class="tchip"><i class="fas fa-ship"></i> 해양</span>
+          <span class="tchip"><i class="fas fa-heart-pulse"></i> 의료</span>
+          <span class="tchip"><i class="fas fa-industry"></i> 제조</span>
+          <span class="tchip"><i class="fas fa-car"></i> 모빌리티</span>
+          <span class="tchip"><i class="fas fa-microchip"></i> 반도체</span>
+          <span class="tchip"><i class="fas fa-shield-halved"></i> 보안</span>
+          <span class="tchip"><i class="fas fa-cloud"></i> 클라우드</span>
+        </div>
+        <div class="dark-stat-row">
+          <div class="dark-stat"><div class="n">75<span>억</span></div><div class="l">신규 사업비</div></div>
+          <div class="dark-stat"><div class="n">7<span>트랙</span></div><div class="l">산업 특화 과정</div></div>
+          <div class="dark-stat"><div class="n">35<span>+</span></div><div class="l">산학 협력 파트너</div></div>
+          <div class="dark-stat"><div class="n">4,000<span>명</span></div><div class="l">AI+X 인재 (2027 목표)</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ 01 · AI 교육 혁신 ════════ -->
 <section class="section" id="education">
   <div class="container">
-    <div class="section-header">
-      <div class="s-eyebrow">01 · AI Education</div>
-      <h2 class="s-title">AI <em>교육 혁신</em></h2>
-      <p class="s-sub">전교 필수에서 마이크로디그리, AI 대학 신설까지 — 부산대만의 5단계 AI 교육 체계.</p>
+    <div class="section-header row">
+      <div>
+        <div class="s-eyebrow"><span class="sec-index">01</span> &nbsp;Reinforced Education</div>
+        <div class="s-title">AI 교육 <em>혁신</em></div>
+      </div>
+      <a href="/s30/roadmap/" class="more-link">교육 로드맵 <i class="fas fa-arrow-right"></i></a>
     </div>
 
-    <div class="prog-hero-card">
-      <div class="phc-image">
-        <span class="phc-badge"><i class="fas fa-graduation-cap"></i> AI 대학 2027</span>
-        <img src="/s30/assets/img/college-ai.jpg" alt="AI 대학" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg, var(--pnu-blue), var(--pnu-blue-dark))'">
-      </div>
-      <div class="phc-body">
-        <span class="phc-tag">Flagship</span>
-        <h3 class="phc-title">AI 대학 신설 · Pentomino 학사구조</h3>
-        <p class="phc-desc">2027년 3월 개원하는 AI 대학은 학부 입학 정원 424명 규모. Pentomino 학사구조로 전공·부전공·마이크로디그리·자유설계를 자유롭게 조합합니다.</p>
-        <div class="phc-stats">
-          <div class="phc-stat"><div class="n">424<span>명</span></div><div class="l">2027 신입생</div></div>
-          <div class="phc-stat"><div class="n">13<span>트랙</span></div><div class="l">마이크로디그리</div></div>
-          <div class="phc-stat"><div class="n">3<span>학점</span></div><div class="l">"AI와 디지털 사고" 전교 필수</div></div>
+    <div class="programs-grid">
+      <div class="program-tile">
+        <div class="pt-top"></div>
+        <div class="pt-icon">🎓</div>
+        <div class="pt-title">AI 융합 교육과정</div>
+        <div class="pt-big">13<span>트랙</span></div>
+        <div class="pt-chips">
+          <span class="pt-chip">Pentomino 학사구조</span>
+          <span class="pt-chip">마이크로디그리</span>
+          <span class="pt-chip">AI+X</span>
         </div>
-        <ul class="phc-features">
-          <li><i class="fas fa-check"></i> "AI와 디지털 사고" 전교 필수 과목 — 전국 최초 시행</li>
-          <li><i class="fas fa-check"></i> AI MASTER 5단계 역량 인증제 (Lv1–5)</li>
-          <li><i class="fas fa-check"></i> Pentomino 학사구조 · 13개 마이크로디그리 트랙</li>
-          <li><i class="fas fa-check"></i> LG전자 채용연계 스마트가전공학과 (등록금 전액 지원)</li>
-        </ul>
+        <div class="pt-tag">교육 혁신</div>
+      </div>
+      <div class="program-tile">
+        <div class="pt-top green"></div>
+        <div class="pt-icon">🧠</div>
+        <div class="pt-title">"AI와 디지털 사고"</div>
+        <div class="pt-big green">3<span>학점</span></div>
+        <div class="pt-chips">
+          <span class="pt-chip">전 학과 공통</span>
+          <span class="pt-chip">필수 교양</span>
+        </div>
+        <div class="pt-tag" style="background:#D1FAE5;color:var(--pnu-green)">전교 필수</div>
+      </div>
+      <div class="program-tile">
+        <div class="pt-top violet"></div>
+        <div class="pt-icon">📚</div>
+        <div class="pt-title">AI 리터러시 의무교육</div>
+        <div class="pt-big">전<span> 구성원</span></div>
+        <div class="pt-chips">
+          <span class="pt-chip">교수·직원·학생</span>
+          <span class="pt-chip">AI 윤리 v1 (2025)</span>
+        </div>
+        <div class="pt-tag" style="background:#DBEAFE;color:#1E3A5F">전 구성원</div>
+      </div>
+
+      <!-- Visual feature: AI Bootcamp -->
+      <div class="program-feature">
+        <img src="/s30/assets/img/bootcamp.jpg" alt="AI 첨단산업 부트캠프" class="pf-img" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg, #00A651 0%, #0a3d1e 100%)'">
+        <div class="pf-content">
+          <div class="pf-badge"><i class="fas fa-star"></i> 핵심 프로그램</div>
+          <div class="pf-title">AI 첨단산업 부트캠프<br>75억 신규 선정</div>
+          <div class="pf-stats">
+            <div class="pf-stat"><div class="n">75억</div><div class="l">신규 사업비</div></div>
+            <div class="pf-stat"><div class="n">7</div><div class="l">특화 트랙</div></div>
+            <div class="pf-stat"><div class="n">35+</div><div class="l">산학 파트너</div></div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="subprog-grid">
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-medal"></i></div>
-        <h5>AI MASTER 인증제</h5>
-        <p>리터러시 · 활용 · 응용 · 개발 · 전문가 5단계 역량 인증</p>
+    <!-- AI 대학 신설 스포트라이트 -->
+    <div class="spotlight">
+      <div>
+        <div class="spotlight-eyebrow">New College · 2027</div>
+        <div class="spotlight-title">AI 대학 신설 — <em>2027년 첫 신입생</em></div>
+        <div class="spot-chips">
+          <span class="spot-chip"><i class="fas fa-graduation-cap"></i> 학부 신설</span>
+          <span class="spot-chip"><i class="fas fa-layer-group"></i> AI+X 4,000명 (2027)</span>
+        </div>
       </div>
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-puzzle-piece"></i></div>
-        <h5>Pentomino 학사구조</h5>
-        <p>5개 모듈 자유 조합 · 전공·부전공·MD·자유설계·경력</p>
+      <div class="spotlight-num">
+        <div class="big">424<span>명</span></div>
+        <div class="cap">2027 학부 신입생 정원</div>
       </div>
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-fire"></i></div>
-        <h5>AI 첨단산업 부트캠프</h5>
-        <p>5년 75억 · 7개 트랙 · 35개사 협력 (2026.02 선정)</p>
+    </div>
+
+    <!-- 교육 미니 차트: 학사구조 트랙 + AI+X 인재 성장 -->
+    <div class="minichart-row">
+      <div class="minichart">
+        <div class="minichart-eyebrow">Academic Structure · Tracks</div>
+        <div class="minichart-title">학사구조 · 트랙 규모</div>
+        <div class="minichart-holder"><canvas id="trackBar"></canvas></div>
       </div>
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-language"></i></div>
-        <h5>AI 통번역 안경</h5>
-        <p>20개 언어 · 정확도 98% · 외국인 학생 지원</p>
-      </div>
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-user-graduate"></i></div>
-        <h5>적응형 학습 시스템</h5>
-        <p>학습자별 진도·취약점 분석 · LMS AI 조교 연동</p>
-      </div>
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-globe-asia"></i></div>
-        <h5>K-MOOC AI 강의</h5>
-        <p>무크선도대학 8년 · 29강좌 운영</p>
+      <div class="minichart">
+        <div class="minichart-eyebrow">Education · 2027 Target</div>
+        <div class="minichart-title">2027 교육 목표 규모</div>
+        <div class="minichart-holder"><canvas id="talentLine"></canvas></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 2. AI 연구 강화 -->
+<!-- ════════ 02 · AI 연구 강화 ════════ -->
 <section class="section section-alt" id="research">
   <div class="container">
-    <div class="section-header">
-      <div class="s-eyebrow">02 · AI Research</div>
-      <h2 class="s-title">AI <em>연구 강화</em></h2>
-      <p class="s-sub">양자·해양·의료·소재 등 국가 전략 분야 융합 연구 — 장영실 AI 융합연구원을 중심으로.</p>
+    <div class="section-header center">
+      <div class="s-eyebrow" style="justify-content:center"><span class="sec-index">02</span> &nbsp;Unified Research</div>
+      <div class="s-title">AI 연구 <em>강화</em></div>
     </div>
 
-    <div class="prog-hero-card reverse">
-      <div class="phc-body">
-        <span class="phc-tag green">Strategic Research</span>
-        <h3 class="phc-title">양자AI 47억 · 국내 최초 원천연구</h3>
-        <p class="phc-desc">옥종목 교수(물리학과)팀이 국내 최초 양자AI 원천연구 47억 원 사업에 선정(2025–2029). 위상초전도체 개발 및 양자 AI 알고리즘 설계가 핵심 과제입니다.</p>
-        <div class="phc-stats">
-          <div class="phc-stat"><div class="n">47<span>억</span></div><div class="l">5년 양자AI 사업</div></div>
-          <div class="phc-stat"><div class="n">14<span>+</span></div><div class="l">AI 연구 그룹</div></div>
-          <div class="phc-stat"><div class="n">480<span>+편</span></div><div class="l">연간 SCI 논문</div></div>
-        </div>
-        <ul class="phc-features">
-          <li><i class="fas fa-check"></i> 양자AI 47억 사업 (옥종목 · 2025–2029) — 국내 최초</li>
-          <li><i class="fas fa-check"></i> Nature Machine Intelligence 게재</li>
-          <li><i class="fas fa-check"></i> CVPR 2026 채택 (Vision AI)</li>
-          <li><i class="fas fa-check"></i> 장영실 AI 융합연구원 (2025.12.30 개원)</li>
+    <!-- 거점 + 연구실 이미지 -->
+    <div class="split-block" style="margin-top:42px">
+      <div>
+        <span class="feat-cat">Research Hub</span>
+        <h3 class="feat-title" style="font-size:clamp(1.5rem,2.2vw,1.9rem)">장영실 AI 융합연구원<br>융합 연구의 거점</h3>
+        <ul class="prog-list">
+          <li><i class="fas fa-flask"></i><span>개원 2025.12.30</span></li>
+          <li class="green"><i class="fas fa-rocket"></i><span>연구 AI Boost-Up</span></li>
+          <li><i class="fas fa-file-lines"></i><span>연간 논문 480+ · 교수진 58명</span></li>
         </ul>
+        <div class="lab-chips">
+          <span class="lab-chip"><i class="fas fa-robot"></i> AILab</span>
+          <span class="lab-chip"><i class="fas fa-eye"></i> VIPLab</span>
+          <span class="lab-chip"><i class="fas fa-vr-cardboard"></i> XRL</span>
+          <span class="lab-chip"><i class="fas fa-shield-halved"></i> S3Lab</span>
+          <span class="lab-chip"><i class="fas fa-layer-group"></i> 연구그룹 14+</span>
+        </div>
       </div>
-      <div class="phc-image">
-        <span class="phc-badge"><i class="fas fa-atom"></i> 양자AI</span>
-        <img src="/s30/assets/img/quantum.jpg" alt="Quantum AI" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg, #0F172A, #1a1a2e)'">
+      <div class="split-img">
+        <img src="/s30/assets/img/lab-research.jpg" alt="AI 융합 연구실" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,#143F90,#0075C9 70%)'">
+        <div class="img-cap"><i class="fas fa-flask"></i> 장영실 AI 융합연구원</div>
       </div>
     </div>
 
-    <div class="subprog-grid">
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-ship"></i></div>
-        <h5>해양 AI</h5>
-        <p>삼성중공업 협력 · 자율운항 · 디지털트윈</p>
+    <!-- 양자AI 강조 split (역방향) -->
+    <div class="split-block rev" style="margin-top:48px">
+      <div class="split-img">
+        <img src="/s30/assets/img/quantum.jpg" alt="양자 AI 연구" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,#1a1a2e,#0F172A)'">
+        <div class="img-cap"><i class="fas fa-atom"></i> 양자 · 위상초전도체</div>
       </div>
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-heartbeat"></i></div>
-        <h5>의료 AI</h5>
-        <p>은성의료재단 협력 · 영상 진단 · 임상결정지원</p>
+      <div>
+        <span class="feat-cat">Quantum AI · 국내 최초</span>
+        <h3 class="feat-title" style="font-size:clamp(1.5rem,2.2vw,1.9rem)">양자AI 47억원<br>국내 최초 원천연구</h3>
+        <div class="mini-stats" style="margin-top:22px">
+          <div class="mini-stat"><div class="n">47<span>억</span></div><div class="l">양자과학기술 원천연구</div></div>
+          <div class="mini-stat green"><div class="n">국내<span> 최초</span></div><div class="l">대학 원천연구 수행</div></div>
+          <div class="mini-stat"><div class="n">2025<span>–29</span></div><div class="l">MSIT 5개년 사업</div></div>
+        </div>
       </div>
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-cubes"></i></div>
-        <h5>소재 AI</h5>
-        <p>KIMS 협력 · 신소재 설계 가속화 · 물성 예측</p>
+    </div>
+
+    <!-- 연구 분야 ach 카드 -->
+    <div class="ach-grid" style="margin-top:48px">
+      <div class="ach-card gold">
+        <div class="ach-icon"><i class="fas fa-atom"></i></div>
+        <span class="ach-tag">Quantum</span>
+        <div class="ach-title">양자 AI 융합</div>
+        <div class="ach-num">47<span>억</span></div>
+        <div class="ach-num-lbl">국내 최초 (2025–2029)</div>
       </div>
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-industry"></i></div>
-        <h5>제조 AX</h5>
-        <p>한화에어로 · 동남권 제조 디지털 전환</p>
+      <div class="ach-card green">
+        <div class="ach-icon"><i class="fas fa-network-wired"></i></div>
+        <span class="ach-tag">Boost-Up</span>
+        <div class="ach-title">연구 AI Boost-Up</div>
+        <div class="ach-num">14<span>+</span></div>
+        <div class="ach-num-lbl">결집 AI 연구 그룹</div>
       </div>
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-car"></i></div>
-        <h5>모빌리티 AI</h5>
-        <p>자율주행 · ADAS · 차세대 EV 플랫폼</p>
+      <div class="ach-card violet">
+        <div class="ach-icon"><i class="fas fa-globe"></i></div>
+        <span class="ach-tag">Global Network</span>
+        <div class="ach-title">글로벌 연구 네트워크</div>
+        <div class="ach-num">10<span> (목표)</span></div>
+        <div class="ach-num-lbl">글로벌 연구 네트워크</div>
       </div>
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-eye"></i></div>
-        <h5>비전·로보틱스</h5>
-        <p>RoboCup 우승 팀 · VIPLab · S3Lab</p>
+    </div>
+
+    <!-- 연구 역량 미니 차트 -->
+    <div class="minichart-row">
+      <div class="minichart">
+        <div class="minichart-eyebrow">Research Groups · 분야 분포</div>
+        <div class="minichart-title">AI 연구 그룹 · 분야별 분포</div>
+        <div class="minichart-holder"><canvas id="labRadar"></canvas></div>
+      </div>
+      <div class="minichart">
+        <div class="minichart-eyebrow">Faculty · 58명 구성</div>
+        <div class="minichart-title">AI 교수진 · 학과 구성</div>
+        <div class="minichart-holder"><canvas id="facultyBar"></canvas></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 3. 산학 협력 -->
+<!-- ════════ 03 · 산학 협력 ════════ -->
 <section class="section" id="industry">
   <div class="container">
-    <div class="section-header">
-      <div class="s-eyebrow">03 · Industry Collaboration</div>
-      <h2 class="s-title"><em>산학</em> 협력</h2>
-      <p class="s-sub">Google · 삼성중공업 · LG전자 · 은성의료재단 · KIMS — 동남권 AX 생태계 35+ 파트너.</p>
+    <div class="section-header row">
+      <div>
+        <div class="s-eyebrow"><span class="sec-index">03</span> &nbsp;Industry Collaboration</div>
+        <div class="s-title">산학 <em>협력</em></div>
+      </div>
+      <a href="/s30/partners/#industry" class="more-link">파트너 전체 <i class="fas fa-arrow-right"></i></a>
     </div>
 
-    <div class="prog-hero-card">
-      <div class="phc-image">
-        <span class="phc-badge"><i class="fab fa-google"></i> Google Edu</span>
-        <img src="/s30/assets/img/google-edu.jpg" alt="Google Edu" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg, #4285F4 25%, #34A853 50%, #FBBC04 75%, #EA4335)'">
-      </div>
-      <div class="phc-body">
-        <span class="phc-tag violet">Flagship Partnership</span>
-        <h3 class="phc-title">Google for Education 국내 대학 최초 도입</h3>
-        <p class="phc-desc">2026년 5월 13일 80주년 기념일에 Google Korea와 협약 체결. 국내 대학 최초로 Google AI Ecosystem 전면 도입 및 Reference University 지정을 추진합니다.</p>
-        <div class="phc-stats">
-          <div class="phc-stat"><div class="n">3<span>건</span></div><div class="l">동시 산학 협약 (2025.12.30)</div></div>
-          <div class="phc-stat"><div class="n">35<span>+</span></div><div class="l">전략적 파트너</div></div>
-          <div class="phc-stat"><div class="n">30<span>명</span></div><div class="l">LG 계약학과</div></div>
+    <!-- 산학 프로젝트랩 피처 (handshake) -->
+    <div class="feat-card" style="margin-bottom:30px">
+      <div class="img-wrap">
+        <img src="/s30/assets/img/handshake.jpg" alt="산학 협력 협약" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,#143F90,#0075C9 70%)'">
+        <div class="badge-strip">
+          <span class="badge dark"><i class="fas fa-handshake"></i> 산학 프로젝트랩</span>
         </div>
-        <ul class="phc-features">
-          <li><i class="fas fa-check"></i> Google for Education 협약 (2026.05.13 · 80주년)</li>
-          <li><i class="fas fa-check"></i> 삼성중공업 · 은성의료재단 · KIMS 3건 동시 체결 (2025.12.30)</li>
-          <li><i class="fas fa-check"></i> LG 스마트가전공학과 (2027.03 신설 30명 · 등록금 전액)</li>
-          <li><i class="fas fa-check"></i> AWS · NVIDIA · 업스테이지 · NAVER Cloud</li>
-        </ul>
+      </div>
+      <div class="feat-body">
+        <span class="feat-cat">Project Lab · 35+ Partners</span>
+        <div class="feat-title">기업과 학생을 잇는<br>산학 프로젝트랩</div>
+        <div class="feat-meta">
+          <div class="feat-meta-cell"><div class="k">Partners</div><div class="v">35+ 산학 협력 기관</div></div>
+          <div class="feat-meta-cell"><div class="k">Domains</div><div class="v">해양·의료·제조·모빌리티</div></div>
+          <div class="feat-meta-cell"><div class="k">Bootcamp</div><div class="v">7개 특화 트랙</div></div>
+          <div class="feat-meta-cell"><div class="k">Format</div><div class="v">기업 과제형 프로젝트</div></div>
+        </div>
       </div>
     </div>
 
-    <div class="subprog-grid">
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-handshake"></i></div>
-        <h5>전략 협약 35+</h5>
-        <p>글로벌 빅테크 · 동남권 산업체 · 의료·소재 협력</p>
+    <!-- 분야별 이미지 카드 -->
+    <div class="dom-grid">
+      <div class="dom-card">
+        <img src="/s30/assets/img/marine-ai.jpg" alt="해양 AI" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,#0a3d62,#0075C9)'">
+        <div class="dom-ov">
+          <span class="dom-tag">Marine AI</span>
+          <div class="dom-title">해양 AI</div>
+          <div class="dom-org">삼성중공업 · 해양AI 센터</div>
+        </div>
       </div>
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-flask"></i></div>
-        <h5>공동 R&D</h5>
-        <p>해양·의료·소재·제조·모빌리티 5대 분야</p>
+      <div class="dom-card">
+        <img src="/s30/assets/img/medical-ai.jpg" alt="의료 AI" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,#0a3d62,#00A651)'">
+        <div class="dom-ov">
+          <span class="dom-tag">Medical AI</span>
+          <div class="dom-title">의료 AI</div>
+          <div class="dom-org">은성의료재단 · AX 헬스케어</div>
+        </div>
       </div>
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-briefcase"></i></div>
-        <h5>채용연계 계약학과</h5>
-        <p>LG전자 스마트가전 (2027) · 30명 · 등록금 전액 지원</p>
+      <div class="dom-card">
+        <img src="/s30/assets/img/mfg-ai.jpg" alt="제조 AI" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,#143F90,#0075C9)'">
+        <div class="dom-ov">
+          <span class="dom-tag">Manufacturing AI</span>
+          <div class="dom-title">제조 AI</div>
+          <div class="dom-org">한국재료연구원 KIMS · 소재AI</div>
+        </div>
       </div>
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-rocket"></i></div>
-        <h5>창업 지원</h5>
-        <p>AI 스타트업 12억 유치 · 인큐베이팅 18사</p>
-      </div>
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-share-alt"></i></div>
-        <h5>기술이전</h5>
-        <p>연 18억 (+42%) · 특허 63건 · 해외 12건</p>
-      </div>
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-calendar"></i></div>
-        <h5>데모데이·서밋</h5>
-        <p>2026 부산 AI 서밋 (Fei-Fei Li 기조) · 산학 데모데이</p>
+      <div class="dom-card">
+        <img src="/s30/assets/img/mobility-ai.jpg" alt="모빌리티 AI" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,#0F172A,#143F90)'">
+        <div class="dom-ov">
+          <span class="dom-tag">Mobility AI</span>
+          <div class="dom-title">모빌리티 AI</div>
+          <div class="dom-org">스마트 모빌리티 협력</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 4. AI 인프라 -->
+<!-- ════════ 04 · AI 인프라 ════════ -->
 <section class="section section-alt" id="infra">
   <div class="container">
-    <div class="section-header">
-      <div class="s-eyebrow">04 · AI Infrastructure</div>
-      <h2 class="s-title">AI <em>인프라</em></h2>
-      <p class="s-sub">IT관 267억 · 산지니 AI 플랫폼 · GPU 클러스터 — 국립대 최초 LLM 운영 인프라.</p>
+    <div class="section-header row">
+      <div>
+        <div class="s-eyebrow"><span class="sec-index">04</span> &nbsp;AI Infrastructure</div>
+        <div class="s-title">AI <em>인프라</em></div>
+      </div>
+      <a href="/s30/roadmap/" class="more-link">인프라 로드맵 <i class="fas fa-arrow-right"></i></a>
     </div>
 
-    <div class="prog-hero-card reverse">
-      <div class="phc-body">
-        <span class="phc-tag amber">Infrastructure</span>
-        <h3 class="phc-title">IT관 신축 · 산지니 AI 플랫폼</h3>
-        <p class="phc-desc">IT관(267억 · 13,161㎡ · 지하1지상10층 · 100% LED · 태양광 · BEMS)을 신축하고, 산지니 AI(국립대 최초 LLM 플랫폼)를 중심으로 GPU 클러스터를 확충합니다.</p>
-        <div class="phc-stats">
-          <div class="phc-stat"><div class="n">267<span>억</span></div><div class="l">IT관 신축</div></div>
-          <div class="phc-stat"><div class="n">13,161<span>㎡</span></div><div class="l">연면적</div></div>
-          <div class="phc-stat"><div class="n">100<span>%</span></div><div class="l">LED · 태양광 · BEMS</div></div>
+    <!-- IT관 신축 split -->
+    <div class="split-block" style="margin-top:42px">
+      <div class="split-img">
+        <img src="/s30/assets/img/it-building.jpg" alt="IT관 신축" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,#143F90,#0075C9 70%)'">
+        <div class="img-cap"><i class="fas fa-building"></i> IT관 신축 · 13,161㎡</div>
+      </div>
+      <div>
+        <span class="feat-cat">New Building · 2025 착공</span>
+        <h3 class="feat-title" style="font-size:clamp(1.5rem,2.2vw,1.9rem)">IT관 신축<br>AI 거점의 물리적 중심</h3>
+        <div class="mini-stats" style="margin-top:22px">
+          <div class="mini-stat"><div class="n">267<span>억</span></div><div class="l">총 신축 사업비</div></div>
+          <div class="mini-stat"><div class="n">13,161<span>㎡</span></div><div class="l">연면적</div></div>
+          <div class="mini-stat green"><div class="n">2025<span> 착공</span></div><div class="l">AI 거점사업단 입주</div></div>
         </div>
-        <ul class="phc-features">
-          <li><i class="fas fa-check"></i> IT관 신축 (지하1·지상10층 · 13,161㎡ · 100% LED·태양광·BEMS)</li>
-          <li><i class="fas fa-check"></i> 산지니 AI — 국립대 최초 LLM 운영 플랫폼 (2025.12)</li>
-          <li><i class="fas fa-check"></i> GPU 클러스터 확충 (목표 800장 · 총 500억원)</li>
-          <li><i class="fas fa-check"></i> LMS AI 조교 · 자동 출결 · 학습 분석 대시보드</li>
+      </div>
+    </div>
+
+    <!-- 인프라 4대 카드 -->
+    <div class="infra-grid">
+      <div class="infra-card">
+        <div class="infra-ico"><i class="fas fa-building"></i></div>
+        <h4>IT관 신축</h4>
+        <div class="infra-num">267<span>억 · 13,161㎡</span></div>
+        <div class="infra-status"><i class="fas fa-circle"></i> 2025 착공</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-ico"><i class="fas fa-robot"></i></div>
+        <h4>산지니 AI</h4>
+        <div class="infra-num">국립대<span> 최초</span></div>
+        <div class="infra-status"><i class="fas fa-circle"></i> 2025.12 구축</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-ico"><i class="fab fa-google"></i></div>
+        <h4>Google AI Ecosystem</h4>
+        <div class="infra-num">전면<span> 도입</span></div>
+        <div class="infra-status future"><i class="fas fa-circle"></i> 2026.06 도입</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-ico"><i class="fas fa-atom"></i></div>
+        <h4>양자컴퓨팅 시범</h4>
+        <div class="infra-num">시범<span> 인프라</span></div>
+        <div class="infra-status future"><i class="fas fa-circle"></i> 2027 예정</div>
+      </div>
+    </div>
+
+    <!-- 인프라 보조 이미지 + 요약 -->
+    <div class="split-block rev" style="margin-top:48px">
+      <div>
+        <span class="feat-cat">Adaptive Administration</span>
+        <h3 class="feat-title" style="font-size:clamp(1.5rem,2.2vw,1.9rem)">지능형 행정 인프라로<br>대학 운영을 고도화</h3>
+        <ul class="prog-list">
+          <li><i class="fas fa-robot"></i><span>산지니 AI · 국립대 최초 (2025.12)</span></li>
+          <li class="green"><i class="fab fa-google"></i><span>Google AI Ecosystem · 국내 최초 (2026.06)</span></li>
+          <li><i class="fas fa-glasses"></i><span>통번역 스마트글라스 · 20개 언어 · 98%</span></li>
         </ul>
       </div>
-      <div class="phc-image">
-        <span class="phc-badge"><i class="fas fa-building"></i> IT관 신축</span>
-        <img src="/s30/assets/img/it-building.jpg" alt="IT 건물" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg, var(--gold), #143F90)'">
-      </div>
-    </div>
-
-    <div class="subprog-grid">
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-microchip"></i></div>
-        <h5>GPU 클러스터</h5>
-        <p>현재 303+장 · 목표 800장 (H200·L40S·A10/A30) · 총 500억원</p>
-      </div>
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-cloud"></i></div>
-        <h5>AWS · NAVER Cloud</h5>
-        <p>크레딧 지원 · 학생·연구자 클라우드 무상</p>
-      </div>
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-brain"></i></div>
-        <h5>산지니 AI</h5>
-        <p>국립대 최초 LLM 플랫폼 · 내부 RAG · 행정 어시스턴트</p>
-      </div>
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-leaf"></i></div>
-        <h5>그린 인프라</h5>
-        <p>100% LED · 옥상 태양광 · BEMS 에너지 관리</p>
-      </div>
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-shield-alt"></i></div>
-        <h5>보안·거버넌스</h5>
-        <p>AI 데이터 보호 정책 · 윤리 가이드라인 v1</p>
-      </div>
-      <div class="subprog">
-        <div class="subprog-icon"><i class="fas fa-database"></i></div>
-        <h5>데이터 허브</h5>
-        <p>동남권 산업 데이터 통합 · 비식별 데이터셋 30+</p>
+      <div class="split-img">
+        <img src="/s30/assets/img/it-building-2.jpg" alt="AI 인프라 공간" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,#0F172A,#143F90)'">
+        <div class="img-cap"><i class="fas fa-server"></i> 통합 AI 인프라</div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ════════ 행정 만족도 다크 차트 밴드 ════════ -->
+<section class="section satis-band">
+  <div class="container satis-inner">
+    <div class="satis-left">
+      <div class="impact-eyebrow">Adaptive Administration · 행정 만족도</div>
+      <div class="satis-title">지능형 행정으로 <em>만족도 90까지</em></div>
+      <div class="satis-kpis">
+        <div class="satis-kpi"><div class="n">90<span>점</span></div><div class="l">2027 만족도 목표</div></div>
+        <div class="satis-kpi"><div class="n">20<span>개 언어</span></div><div class="l">통번역 스마트글라스</div></div>
+        <div class="satis-kpi"><div class="n">98<span>%</span></div><div class="l">통번역 정확도</div></div>
+        <div class="satis-kpi"><div class="n">100<span>억</span></div><div class="l">2년 AX 투자</div></div>
+      </div>
+    </div>
+    <div class="satis-chart-card">
+      <div class="satis-chart-holder"><canvas id="satisLine"></canvas></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ 임팩트 카운터 밴드 ════════ -->
+<section class="section impact-band">
+  <div class="container impact-inner">
+    <div class="impact-head">
+      <div class="impact-eyebrow">Programs Impact · 핵심 사업 성과</div>
+      <div class="impact-title">숫자로 보는 <em>핵심 사업의 임팩트</em></div>
+    </div>
+    <div class="counter-grid">
+      <div class="counter-cell">
+        <div class="counter-ico"><i class="fas fa-coins"></i></div>
+        <div class="counter-num"><span class="cval" data-target="3111">0</span><span class="suf">억</span></div>
+        <div class="counter-lbl">국책사업 누적 투자</div>
+        <div class="counter-note">8개 대형 국책사업 (2023–)</div>
+      </div>
+      <div class="counter-cell">
+        <div class="counter-ico"><i class="fas fa-chalkboard-teacher"></i></div>
+        <div class="counter-num"><span class="cval" data-target="58">0</span><span class="suf">명</span></div>
+        <div class="counter-lbl">AI 교수진</div>
+        <div class="counter-note">AI 핵심 분야 전 영역</div>
+      </div>
+      <div class="counter-cell">
+        <div class="counter-ico"><i class="fas fa-file-lines"></i></div>
+        <div class="counter-num"><span class="cval" data-target="480">0</span><span class="suf">+</span></div>
+        <div class="counter-lbl">연간 논문</div>
+        <div class="counter-note">융합 연구 성과 (편/년)</div>
+      </div>
+      <div class="counter-cell">
+        <div class="counter-ico"><i class="fas fa-user-graduate"></i></div>
+        <div class="counter-num"><span class="cval" data-target="4000">0</span><span class="suf">명</span></div>
+        <div class="counter-lbl">AI+X 증강 인재</div>
+        <div class="counter-note">2027 양성 목표</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="container">
     <div class="ft-top">
@@ -393,62 +875,181 @@
         <div class="ft-brand-row">
           <img src="/s30/assets/pnu-signature.jpg" alt="부산대학교" class="ft-logo-img" style="filter:brightness(0) invert(1)">
         </div>
-        <div class="ft-brand-name">
-          AI 거점대학육성사업단 · ARISE PNU
-          <small>arise-ai.pusan.ac.kr · A.U.R.A 2.0 마스터플랜</small>
-        </div>
+        <div class="ft-brand-name">AI 거점대학육성사업단 · ARISE PNU<small>arise-ai.pusan.ac.kr · A.U.R.A 2.0 마스터플랜</small></div>
         <div class="ft-desc" style="margin-top:16px"><em>"Arise PNU, 같이 더 높게"</em> — 동남권 AX 생태계의 중심 거점, 부산대학교 AI 거점대학육성사업단입니다.</div>
-        <div class="ft-addr">
-          📍 부산광역시 금정구 부산대학로 63번길 2 · IT관 3층 AI 거점사업단<br>
-          📞 051-510-0000 · ✉ arise@pusan.ac.kr<br>
-          ⏰ 평일 09:00 – 18:00
-        </div>
+        <div class="ft-addr">📍 부산광역시 금정구 부산대학로 63번길 2 · IT관 3층 AI 거점사업단<br>📞 051-510-0000 · ✉ arise@pusan.ac.kr<br>⏰ 평일 09:00 – 18:00</div>
         <div class="ft-sns" style="margin-top:24px">
-          <a href="#"><i class="fab fa-youtube"></i></a>
-          <a href="#"><i class="fab fa-x-twitter"></i></a>
-          <a href="#"><i class="fab fa-linkedin"></i></a>
-          <a href="#"><i class="fab fa-github"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
-      <div class="ft-col">
-        <h4>사업 소개</h4>
-        <a href="/s30/about/#overview">사업 개요 · 비전</a>
-        <a href="/s30/about/#aura">A.U.R.A 2.0</a>
-        <a href="/s30/about/#structure">추진 체계</a>
-        <a href="/s30/about/#governance">거버넌스</a>
-        <a href="/s30/roadmap/">3개년 로드맵</a>
+      <div class="ft-col"><h4>사업 소개</h4>
+        <a href="/s30/about/#overview">사업 개요 · 비전</a><a href="/s30/about/#aura">A.U.R.A 2.0</a><a href="/s30/about/#governance">거버넌스</a><a href="/s30/roadmap/">3개년 로드맵</a>
       </div>
-      <div class="ft-col">
-        <h4>핵심 사업</h4>
-        <a href="/s30/programs/#education">AI 교육 혁신</a>
-        <a href="/s30/programs/#research">AI 연구 강화</a>
-        <a href="/s30/programs/#industry">산학 협력</a>
-        <a href="/s30/programs/#infra">AI 인프라</a>
-        <a href="/s30/programs/#education">AI 부트캠프</a>
+      <div class="ft-col"><h4>핵심 사업</h4>
+        <a href="/s30/programs/#education">AI 교육 혁신</a><a href="/s30/programs/#research">AI 연구 강화</a><a href="/s30/programs/#industry">산학 협력</a><a href="/s30/programs/#infra">AI 인프라</a>
       </div>
-      <div class="ft-col">
-        <h4>관련 사이트</h4>
-        <a href="https://www.pusan.ac.kr" target="_blank">부산대학교 ↗</a>
-        <a href="https://ai.pusan.ac.kr" target="_blank">AI 대학 ↗</a>
-        <a href="https://airc.pusan.ac.kr" target="_blank">장영실연구원 ↗</a>
-        <a href="https://aiedu.pusan.ac.kr" target="_blank">AI 융합교육원 ↗</a>
-        <a href="https://uitc.pusan.ac.kr" target="_blank">AX·정보화혁신본부 ↗</a>
+      <div class="ft-col"><h4>관련 사이트</h4>
+        <a href="https://www.pusan.ac.kr" target="_blank">부산대학교 ↗</a><a href="https://ai.pusan.ac.kr" target="_blank">AI 대학 ↗</a><a href="https://airc.pusan.ac.kr" target="_blank">장영실연구원 ↗</a><a href="https://aiedu.pusan.ac.kr" target="_blank">AI 융합교육원 ↗</a><a href="https://uitc.pusan.ac.kr" target="_blank">AX·정보화혁신본부 ↗</a>
       </div>
     </div>
     <div class="ft-bottom">
       <div class="ft-copy">© 2026 Pusan National University ARISE-AI. All rights reserved.</div>
-      <div class="ft-policy">
-        <a href="#">개인정보처리방침</a>
-        <a href="#">이메일무단수집거부</a>
-        <a href="#">사이트맵</a>
-        <a href="#">접근성 정책</a>
-      </div>
+      <div class="ft-policy"><a href="#">개인정보처리방침</a><a href="#">이메일무단수집거부</a><a href="#">사이트맵</a><a href="#">접근성 정책</a></div>
     </div>
   </div>
 </footer>
-
-
 <script type="module" src="/src/scripts/main.js"></script>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ── Chart.js: 국책사업 예산 구조 (도넛) ──
+  function initBudget(){
+    var el = document.getElementById('budgetChart');
+    if(!el || typeof Chart === 'undefined') return;
+    var data = [
+      { l:'글로컬대학30', v:1500, c:'#005BAA' },
+      { l:'RISE', v:956, c:'#0075C9' },
+      { l:'반도체특성화대학', v:328, c:'#00A651' },
+      { l:'SW중심대학 2단계', v:142, c:'#3B82F6' },
+      { l:'AI 부트캠프', v:75, c:'#7EC8FF' },
+      { l:'AI융합대학원 2기', v:63, c:'#94A3B8' },
+      { l:'양자과학기술', v:47, c:'#1E3A8A' }
+    ];
+    new Chart(el, {
+      type:'doughnut',
+      data:{ labels:data.map(function(d){return d.l;}),
+        datasets:[{ data:data.map(function(d){return d.v;}),
+          backgroundColor:data.map(function(d){return d.c;}),
+          borderColor:'#fff', borderWidth:2, hoverOffset:8 }] },
+      options:{ responsive:true, maintainAspectRatio:false, cutout:'58%',
+        animation: reduce ? false : { animateRotate:true, duration:1100 },
+        plugins:{
+          legend:{ position:'right', labels:{ boxWidth:12, boxHeight:12, padding:11,
+            font:{ family:'Noto Sans KR', size:12, weight:'600' }, color:'#334155' } },
+          tooltip:{ callbacks:{ label:function(ctx){ return ' '+ctx.label+': '+ctx.parsed.toLocaleString()+'억 원'; } } }
+        } }
+    });
+  }
+  // ── 공통 차트 헬퍼 ──
+  function gridFont(){ return { family:'Noto Sans KR', size:12, weight:'600' }; }
+
+  // ── 부트캠프/학사 트랙 막대 ──
+  function initTrackBar(){
+    var el = document.getElementById('trackBar');
+    if(!el || typeof Chart === 'undefined') return;
+    new Chart(el, { type:'bar',
+      data:{ labels:['마이크로디그리','부트캠프','"AI와 디지털 사고"'],
+        datasets:[{ label:'트랙/단위', data:[13,7,3],
+          backgroundColor:['#005BAA','#00A651','#3B82F6'], borderRadius:7, maxBarThickness:46 }] },
+      options:{ responsive:true, maintainAspectRatio:false, indexAxis:'y',
+        animation: reduce ? false : { duration:1100 },
+        plugins:{ legend:{ display:false },
+          tooltip:{ callbacks:{ label:function(c){ return ' '+c.parsed.x+(c.dataIndex===2?' 학점':' 트랙'); } } } },
+        scales:{ x:{ beginAtZero:true, grid:{ color:'#eef2f7' }, ticks:{ font:gridFont(), color:'#64748b' } },
+          y:{ grid:{ display:false }, ticks:{ font:gridFont(), color:'#0F172A' } } } }
+    });
+  }
+
+  // ── AI+X 인재 성장 라인 ──
+  function initTalentLine(){
+    var el = document.getElementById('talentLine');
+    if(!el || typeof Chart === 'undefined') return;
+    new Chart(el, { type:'bar',
+      data:{ labels:['신입생 424명','AI+X 인재 4,000명'],
+        datasets:[{ label:'2027 목표(명)', data:[424,4000],
+          backgroundColor:['#0075C9','#00A651'], borderRadius:7, maxBarThickness:54 }] },
+      options:{ responsive:true, maintainAspectRatio:false, indexAxis:'y',
+        animation: reduce ? false : { duration:1200 },
+        plugins:{ legend:{ display:false },
+          tooltip:{ callbacks:{ label:function(c){ return ' '+c.parsed.x.toLocaleString()+'명 (2027 목표)'; } } } },
+        scales:{ x:{ beginAtZero:true, grid:{ color:'#eef2f7' }, ticks:{ font:gridFont(), color:'#64748b' } },
+          y:{ grid:{ display:false }, ticks:{ font:gridFont(), color:'#0F172A' } } } }
+    });
+  }
+
+  // ── 연구 그룹 분야 레이더 ──
+  function initLabRadar(){
+    var el = document.getElementById('labRadar');
+    if(!el || typeof Chart === 'undefined') return;
+    new Chart(el, { type:'radar',
+      data:{ labels:['AILab','VIPLab','XRL','S3Lab','양자AI','융합'],
+        datasets:[{ label:'연구 활동도', data:[9,8,7,7,6,8],
+          borderColor:'#005BAA', backgroundColor:'rgba(0,117,201,.18)',
+          borderWidth:2.5, pointBackgroundColor:'#00A651', pointRadius:4 }] },
+      options:{ responsive:true, maintainAspectRatio:false,
+        animation: reduce ? false : { duration:1100 },
+        plugins:{ legend:{ display:false } },
+        scales:{ r:{ beginAtZero:true, max:10, grid:{ color:'#e2e8f0' }, angleLines:{ color:'#e2e8f0' },
+          pointLabels:{ font:{ family:'Noto Sans KR', size:11.5, weight:'700' }, color:'#0F172A' },
+          ticks:{ display:false } } } }
+    });
+  }
+
+  // ── 교수진 학과 구성 막대 ──
+  function initFacultyBar(){
+    var el = document.getElementById('facultyBar');
+    if(!el || typeof Chart === 'undefined') return;
+    new Chart(el, { type:'bar',
+      data:{ labels:['정보컴퓨터','통계','데이터사이언스'],
+        datasets:[{ label:'인원(명)', data:[24,7,5],
+          backgroundColor:['#005BAA','#0075C9','#00A651'], borderRadius:7, maxBarThickness:64 }] },
+      options:{ responsive:true, maintainAspectRatio:false,
+        animation: reduce ? false : { duration:1100 },
+        plugins:{ legend:{ display:false },
+          tooltip:{ callbacks:{ label:function(c){ return ' '+c.parsed.y+'명'; } } } },
+        scales:{ x:{ grid:{ display:false }, ticks:{ font:gridFont(), color:'#0F172A' } },
+          y:{ beginAtZero:true, grid:{ color:'#eef2f7' }, ticks:{ font:gridFont(), color:'#64748b' } } } }
+    });
+  }
+
+  // ── 행정 만족도 라인 (다크 70→80→90) ──
+  function initSatisLine(){
+    var el = document.getElementById('satisLine');
+    if(!el || typeof Chart === 'undefined') return;
+    var ctx = el.getContext('2d');
+    var g = ctx.createLinearGradient(0,0,0,300);
+    g.addColorStop(0,'rgba(126,200,255,.34)'); g.addColorStop(1,'rgba(126,200,255,0)');
+    new Chart(el, { type:'line',
+      data:{ labels:['2025','2026','2027'],
+        datasets:[{ label:'행정 만족도', data:[70,80,90],
+          borderColor:'#7EC8FF', backgroundColor:g, fill:true, tension:.4,
+          borderWidth:3.5, pointRadius:6, pointBackgroundColor:'#00A651', pointBorderColor:'#fff', pointBorderWidth:2 }] },
+      options:{ responsive:true, maintainAspectRatio:false,
+        animation: reduce ? false : { duration:1300 },
+        plugins:{ legend:{ display:false },
+          tooltip:{ callbacks:{ label:function(c){ return ' 만족도 '+c.parsed.y+'점'; } } } },
+        scales:{ x:{ grid:{ color:'rgba(255,255,255,.08)' }, ticks:{ font:gridFont(), color:'rgba(255,255,255,.85)' } },
+          y:{ min:60, max:100, grid:{ color:'rgba(255,255,255,.08)' }, ticks:{ font:gridFont(), color:'rgba(255,255,255,.7)', callback:function(v){ return v+'점'; } } } } }
+    });
+  }
+
+  function initAll(){ initBudget(); initTrackBar(); initTalentLine(); initLabRadar(); initFacultyBar(); initSatisLine(); }
+  if(document.readyState !== 'loading') initAll();
+  else document.addEventListener('DOMContentLoaded', initAll);
+
+  // ── 카운터 애니메이션 (뷰포트 진입 시) ──
+  function runCounter(elm){
+    var target = parseInt(elm.getAttribute('data-target'),10) || 0;
+    if(reduce){ elm.textContent = target.toLocaleString(); return; }
+    var start = null, dur = 1600;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts-start)/dur, 1);
+      var eased = 1 - Math.pow(1-p, 3);
+      elm.textContent = Math.floor(eased*target).toLocaleString();
+      if(p<1) requestAnimationFrame(step); else elm.textContent = target.toLocaleString();
+    }
+    requestAnimationFrame(step);
+  }
+  var cells = document.querySelectorAll('.cval');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ runCounter(e.target); io.unobserve(e.target); } });
+    }, { threshold:.4 });
+    cells.forEach(function(c){ io.observe(c); });
+  } else { cells.forEach(runCounter); }
+})();
+</script>
 </body>
 </html>

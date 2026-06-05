@@ -1,17 +1,151 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>뉴스 · 공지사항 — 부산대학교 AI 거점대학육성사업단</title>
-<meta name="description" content="ARISE PNU 뉴스 · 공지사항 · 행사 · 자료실">
+<title>알림마당 — 부산대학교 AI 거점대학육성사업단 | ARISE PNU</title>
+<meta name="description" content="ARISE PNU 알림마당 — 뉴스·보도, 공지사항, 행사·일정, 자료실 통합 허브. Google for Education 국내 대학 최초 전면 도입, RoboCup 2025 우승 등 최신 소식.">
 <link rel="icon" type="image/jpeg" href="/s30/assets/pnu-symbol-color.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+4:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="/src/styles/main.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+/* 페이지 고유 CSS — main.css 미정의 항목만 (알림마당) */
+.news-toolbar { display:flex; justify-content:space-between; align-items:flex-end; gap:16px; flex-wrap:wrap; margin-bottom:18px; }
+.news-toolbar .nt-meta { font-size:12px; color:var(--text-m); font-family:'Inter',sans-serif; letter-spacing:.03em; }
+.news-toolbar .nt-meta strong { color:var(--ink); }
+/* 피처 뉴스 보강 메타 */
+.feature-news-inner .fn-meta i { opacity:.85; }
+/* 카드 이미지 폴백 카테고리별 그라데이션 */
+.nc-img.g-award { background:linear-gradient(160deg,#0d3b6e,#005BAA 55%,#1d7bcc); }
+.nc-img.g-partner { background:linear-gradient(160deg,#003c2c,#00A651 70%,#10B981); }
+.nc-img.g-research { background:linear-gradient(160deg,#1a1a2e,#0F172A); }
+.nc-img.g-event { background:linear-gradient(160deg,#143F90,#005BAA); }
+.nc-img.g-project { background:linear-gradient(160deg,#4285F4,#34A853); }
+.nc-img.g-notice { background:linear-gradient(160deg,#475569,#94A3B8); }
+/* 자료실 박스 다운로드 메타 */
+.sb-resource a .res-meta { margin-left:auto; font-size:10.5px; color:var(--text-m); font-weight:600; font-family:'Inter',sans-serif; }
+.sb-resource a:hover .res-meta { color:var(--pnu-blue); }
+/* 행사 카운트다운 미니배지 */
+.evt-badge { display:inline-block; margin-left:6px; padding:1px 7px; border-radius:100px; background:rgba(15,31,69,.1); font-size:10px; font-weight:800; color:#0F172A; font-family:'Inter',sans-serif; vertical-align:middle; }
+
+/* ===== 보도 임팩트 밴드 (다크 그라데이션) ===== */
+.press-band { background:linear-gradient(135deg,#0F1F45 0%,#143F90 55%,#005BAA 100%); position:relative; overflow:hidden; padding:64px 0 60px; }
+.press-band::before { content:""; position:absolute; inset:0; background:radial-gradient(circle at 85% 15%,rgba(0,117,201,.45),transparent 55%); pointer-events:none; }
+.press-band .container { position:relative; z-index:1; }
+.press-head { text-align:center; margin-bottom:40px; }
+.press-head .pb-eyebrow { font-family:'Inter',sans-serif; font-size:12px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#7FD0FF; margin-bottom:10px; }
+.press-head .pb-title { font-family:'Source Serif 4',serif; font-size:30px; font-weight:800; color:#fff; line-height:1.25; }
+.press-head .pb-title em { font-style:normal; background:linear-gradient(90deg,#7FD0FF,#5BE3A7); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.press-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+.press-cell { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:18px; padding:26px 20px; text-align:center; backdrop-filter:blur(6px); transition:transform .35s cubic-bezier(.2,.7,.3,1),border-color .35s,background .35s; }
+.press-cell:hover { transform:translateY(-6px); border-color:rgba(127,208,255,.6); background:rgba(255,255,255,.1); }
+.press-cell .pc-ico { width:46px; height:46px; margin:0 auto 14px; border-radius:13px; display:grid; place-items:center; background:linear-gradient(150deg,#0075C9,#00A651); color:#fff; font-size:19px; box-shadow:0 8px 22px rgba(0,117,201,.4); }
+.press-cell .pc-num { font-family:'Inter',sans-serif; font-size:42px; font-weight:900; line-height:1; color:#fff; letter-spacing:-.02em; }
+.press-cell .pc-num .pc-suf { font-size:22px; font-weight:800; color:#7FD0FF; margin-left:2px; }
+.press-cell .pc-lbl { margin-top:9px; font-size:13.5px; font-weight:700; color:#E2EAF5; }
+.press-cell .pc-note { margin-top:4px; font-size:11px; color:#9DB4D6; font-family:'Inter',sans-serif; letter-spacing:.02em; }
+
+/* ===== 뉴스 티커 ===== */
+.news-ticker { display:flex; align-items:stretch; margin-top:34px; border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,.14); background:rgba(0,0,0,.18); }
+.news-ticker .tk-tag { flex:0 0 auto; display:flex; align-items:center; gap:7px; padding:0 18px; background:linear-gradient(135deg,#E11D48,#f43f5e); color:#fff; font-family:'Inter',sans-serif; font-size:11.5px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
+.news-ticker .tk-tag .tk-dot { width:7px; height:7px; border-radius:50%; background:#fff; animation:blink 1.4s infinite; }
+.news-ticker .tk-viewport { flex:1; overflow:hidden; position:relative; }
+.news-ticker .tk-track { display:flex; gap:46px; white-space:nowrap; padding:13px 24px; animation:tkScroll 34s linear infinite; }
+.news-ticker .tk-track span { color:#E2EAF5; font-size:13px; font-weight:500; }
+.news-ticker .tk-track span i { color:#5BE3A7; margin-right:7px; font-size:11px; }
+.news-ticker:hover .tk-track { animation-play-state:paused; }
+@keyframes tkScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ===== 데이터 패널 (차트 + 도넛) ===== */
+.data-grid { display:grid; grid-template-columns:1.15fr .85fr; gap:26px; align-items:stretch; }
+.data-panel { background:#fff; border:1px solid var(--border); border-radius:20px; padding:28px 28px 24px; box-shadow:0 14px 40px rgba(15,31,69,.06); transition:box-shadow .35s,transform .35s; }
+.data-panel:hover { box-shadow:0 22px 56px rgba(15,31,69,.12); transform:translateY(-3px); }
+.data-panel .dp-eyebrow { font-family:'Inter',sans-serif; font-size:11.5px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--pnu-blue); }
+.data-panel .dp-title { font-family:'Source Serif 4',serif; font-size:21px; font-weight:800; color:var(--ink); margin:6px 0 4px; }
+.data-panel .dp-sub { font-size:12.5px; color:var(--text-m); margin-bottom:18px; }
+.chart-box { position:relative; height:280px; }
+/* 카테고리 도넛 SVG */
+.donut-wrap { display:flex; flex-direction:column; align-items:center; gap:18px; }
+.donut-svg { width:200px; height:200px; transform:rotate(-90deg); }
+.donut-svg circle { fill:none; stroke-width:22; stroke-linecap:round; transition:stroke-width .3s; }
+.donut-svg circle.dn-seg { stroke-dasharray:0 999; transition:stroke-dasharray 1.4s cubic-bezier(.3,.8,.3,1); }
+.donut-center { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; pointer-events:none; }
+.donut-stage { position:relative; width:200px; height:200px; }
+.donut-center .dc-num { font-family:'Inter',sans-serif; font-size:38px; font-weight:900; color:var(--ink); line-height:1; }
+.donut-center .dc-lbl { font-size:11px; font-weight:700; color:var(--text-m); letter-spacing:.1em; text-transform:uppercase; }
+.donut-legend { width:100%; display:flex; flex-direction:column; gap:9px; }
+.dl-row { display:flex; align-items:center; gap:10px; font-size:13px; }
+.dl-row .dl-dot { width:11px; height:11px; border-radius:3px; flex:0 0 auto; }
+.dl-row .dl-name { color:var(--text-b); font-weight:600; }
+.dl-row .dl-val { margin-left:auto; font-family:'Inter',sans-serif; font-weight:800; color:var(--ink); }
+.dl-row .dl-pct { font-family:'Inter',sans-serif; font-size:11px; font-weight:600; color:var(--text-m); width:38px; text-align:right; }
+
+/* ===== 임팩트 숫자 더 크게 (press cell 강화) ===== */
+.press-cell .pc-num { font-size:50px; }
+.press-cell .pc-num .pc-suf { font-size:25px; }
+.press-cell::after { content:""; position:absolute; }
+.press-cell { position:relative; }
+.press-cell .pc-ico::after { content:""; position:absolute; inset:-6px; border-radius:18px; background:radial-gradient(circle,rgba(0,117,201,.45),transparent 70%); filter:blur(8px); z-index:-1; }
+.press-cell .pc-ico { position:relative; }
+
+/* ===== 마일스톤 모멘텀 (다크 라인 차트 밴드) ===== */
+.momentum-band { background:linear-gradient(160deg,#0B1733 0%,#0F1F45 60%,#143F90 130%); position:relative; overflow:hidden; padding:70px 0 64px; }
+.momentum-band::before { content:""; position:absolute; inset:0; background:radial-gradient(circle at 12% 90%,rgba(0,166,81,.25),transparent 50%),radial-gradient(circle at 90% 10%,rgba(0,117,201,.30),transparent 50%); pointer-events:none; }
+.momentum-band .container { position:relative; z-index:1; }
+.momentum-head { text-align:center; margin-bottom:36px; }
+.momentum-head .mb-eyebrow { font-family:'Inter',sans-serif; font-size:12px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#7FD0FF; margin-bottom:10px; }
+.momentum-head .mb-title { font-family:'Source Serif 4',serif; font-size:30px; font-weight:800; color:#fff; }
+.momentum-head .mb-title em { font-style:normal; background:linear-gradient(90deg,#7FD0FF,#5BE3A7); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.momentum-card { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.12); border-radius:22px; padding:30px 30px 26px; backdrop-filter:blur(8px); box-shadow:0 24px 60px rgba(0,0,0,.35); }
+.momentum-chart { position:relative; height:300px; }
+.momentum-kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:26px; }
+.mk-cell { text-align:center; padding:18px 12px; border-radius:16px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); transition:transform .35s cubic-bezier(.2,.7,.3,1),background .35s; }
+.mk-cell:hover { transform:translateY(-5px); background:rgba(255,255,255,.09); }
+.mk-cell .mk-num { font-family:'Inter',sans-serif; font-size:34px; font-weight:900; color:#fff; line-height:1; }
+.mk-cell .mk-num em { font-style:normal; font-size:17px; color:#5BE3A7; }
+.mk-cell .mk-lbl { margin-top:7px; font-size:12px; font-weight:700; color:#B9C8E2; }
+
+/* ===== 영향력 게이지 (section-cream) ===== */
+.reach-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+.reach-cell { background:#fff; border:1px solid var(--border); border-radius:20px; padding:26px 22px 24px; text-align:center; box-shadow:0 12px 34px rgba(15,31,69,.05); transition:transform .35s cubic-bezier(.2,.7,.3,1),box-shadow .35s; }
+.reach-cell:hover { transform:translateY(-6px); box-shadow:0 24px 54px rgba(15,31,69,.13); }
+.gauge-stage { position:relative; width:130px; height:130px; margin:0 auto 12px; }
+.gauge-svg { width:130px; height:130px; transform:rotate(-90deg); }
+.gauge-svg circle { fill:none; stroke-width:11; stroke-linecap:round; }
+.gauge-svg circle.gg-seg { stroke-dasharray:0 999; transition:stroke-dasharray 1.5s cubic-bezier(.3,.8,.3,1); }
+.gauge-center { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; }
+.gauge-center .gc-num { font-family:'Inter',sans-serif; font-size:27px; font-weight:900; color:var(--ink); line-height:1; }
+.gauge-center .gc-num em { font-style:normal; font-size:14px; color:var(--pnu-blue); }
+.reach-cell .rc-lbl { font-size:13.5px; font-weight:800; color:var(--ink); }
+.reach-cell .rc-note { margin-top:4px; font-size:11px; color:var(--text-m); font-family:'Inter',sans-serif; letter-spacing:.02em; }
+.reach-cell .rc-ico { color:var(--pnu-blue); font-size:14px; margin-right:5px; }
+
+/* hover 마이크로 인터랙션: 뉴스카드 / 자료실 */
+.news-card{ transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s; }
+.news-card:hover{ transform:translateY(-4px); }
+.news-card .nc-img img{ transition:transform .6s cubic-bezier(.2,.7,.3,1); }
+.news-card:hover .nc-img img{ transform:scale(1.06); }
+.feature-news img{ transition:transform .8s cubic-bezier(.2,.7,.3,1); }
+.feature-news:hover img{ transform:scale(1.04); }
+
+@media (max-width:860px){
+  .press-grid{ grid-template-columns:repeat(2,1fr); }
+  .data-grid{ grid-template-columns:1fr; }
+  .momentum-kpis{ grid-template-columns:repeat(2,1fr); }
+  .reach-grid{ grid-template-columns:repeat(2,1fr); }
+}
+@media (prefers-reduced-motion: reduce){
+  .news-ticker .tk-track{ animation:none; }
+  .donut-svg circle.dn-seg{ transition:none; }
+  .gauge-svg circle.gg-seg{ transition:none; }
+}
+</style>
 </head>
 <body>
 
+<!-- TOP BAR -->
 <div class="topbar">
   <div class="container">
     <div class="left">
@@ -28,10 +162,11 @@
   </div>
 </div>
 
+<!-- MAIN HEADER -->
 <header class="main-hdr">
   <div class="container hdr-inner">
     <a href="/s30/" class="brand">
-      <img src="/s30/assets/pnu-signature.jpg" alt="부산대학교" class="brand-logo">
+      <img src="/s30/assets/pnu-signature.jpg" alt="부산대학교 공식 시그니처" class="brand-logo">
       <div class="brand-divider"></div>
       <div>
         <div class="brand-text-ko">AI 거점대학육성사업단</div>
@@ -90,307 +225,453 @@
   </div>
 </header>
 
+<!-- PAGE HERO -->
 <section class="page-hero">
   <div class="container ph-inner">
     <div class="ph-left">
-      <div class="ph-eyebrow"><i class="fas fa-newspaper"></i> News & Notice</div>
-      <h1 class="ph-title">뉴스 · <em>공지사항</em><br>알림마당</h1>
-      <p class="ph-sub">ARISE PNU의 최신 뉴스, 공지사항, 행사 일정과 자료실을 한 곳에서 확인하세요. 12+개의 최신 소식이 카테고리별로 정리되어 있습니다.</p>
+      <div class="ph-eyebrow">NEWS &amp; NOTICE · 알림마당</div>
+      <h1 class="ph-title">ARISE PNU <em>소식</em></h1>
+      <p class="ph-sub">뉴스 · 공지 · 행사 · 자료실</p>
       <div class="breadcrumb">
         <a href="/s30/"><i class="fas fa-home"></i> 홈</a>
         <i class="fas fa-chevron-right"></i>
         <span class="current">알림마당</span>
       </div>
     </div>
-    <div class="ph-icon"><i class="fas fa-newspaper"></i></div>
+    <div class="ph-icon"><i class="fas fa-bullhorn"></i></div>
   </div>
 </section>
 
-<!-- News layout -->
-<section class="section">
+<!-- PRESS IMPACT BAND (다크) -->
+<section class="press-band">
   <div class="container">
-    <div class="news-layout">
-      <!-- Main news column -->
-      <div>
-        <!-- Feature -->
-        <div class="feature-news">
-          <img src="/s30/assets/img/robocup.jpg" alt="RoboCup 2025" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,#0d3b6e,#005BAA 55%,#1d7bcc)'">
-          <div class="feature-news-inner">
-            <span class="fn-cat"><i class="fas fa-trophy"></i> Featured · 수상</span>
-            <h2 class="fn-title">RoboCup 2025 세계 챔피언십 — 부산대 'TidyBoy' 우승 (8/8 미션)</h2>
-            <p class="fn-desc">부산대 전기공학부 이승준 교수팀이 휴머노이드 'Anubis'로 37개국 1,500팀을 격파하고 세계 1위에 등극. 칭화·도쿄대·KCL 등 강팀을 차례로 제압했습니다.</p>
-            <div class="fn-meta">
-              <span><i class="fas fa-calendar"></i> 2025.08.21</span>
-              <span><i class="fas fa-eye"></i> 12,480 views</span>
-              <span><i class="fas fa-share-alt"></i> 1.2K shares</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Filter -->
-        <div class="filter-bar">
-          <button class="active">전체 <span class="count">12</span></button>
-          <button>수상 <span class="count">3</span></button>
-          <button>협약 <span class="count">3</span></button>
-          <button>연구 <span class="count">2</span></button>
-          <button>사업 <span class="count">2</span></button>
-          <button>공지 <span class="count">1</span></button>
-          <button>행사 <span class="count">1</span></button>
-        </div>
-
-        <!-- News cards -->
-        <div class="news-cards">
-          <div class="news-card">
-            <div class="nc-img">
-              <img src="/s30/assets/img/google-edu.jpg" alt="Google Edu" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-              <div class="nc-img-fallback" style="display:none"><i class="fab fa-google"></i></div>
-            </div>
-            <div class="nc-body">
-              <div class="nc-head">
-                <span class="nc-cat partner">협약</span>
-                <span class="nc-date">2026.05.13</span>
-              </div>
-              <h3 class="nc-title">Google for Education — 국내 대학 최초 전면 도입 협약 체결</h3>
-              <p class="nc-desc">부산대 80주년 기념일에 Google Korea와 협약. Workspace · Gemini · Vertex AI 전면 도입, Reference University 지정 추진.</p>
-            </div>
-          </div>
-
-          <div class="news-card">
-            <div class="nc-img">
-              <img src="/s30/assets/img/partnership.jpg" alt="Partnership" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-              <div class="nc-img-fallback" style="display:none"><i class="fas fa-handshake"></i></div>
-            </div>
-            <div class="nc-body">
-              <div class="nc-head">
-                <span class="nc-cat partner">협약</span>
-                <span class="nc-date">2025.12.30</span>
-              </div>
-              <h3 class="nc-title">삼성중공업·은성의료재단·한국재료연구원 산학 협약 3건 동시 체결</h3>
-              <p class="nc-desc">장영실 AI 융합연구원 개원식에서 해양AI·의료AI·소재AI 3대 전략 분야 협약 동시 체결.</p>
-            </div>
-          </div>
-
-          <div class="news-card">
-            <div class="nc-img">
-              <img src="/s30/assets/img/quantum.jpg" alt="Quantum" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-              <div class="nc-img-fallback" style="display:none"><i class="fas fa-atom"></i></div>
-            </div>
-            <div class="nc-body">
-              <div class="nc-head">
-                <span class="nc-cat research">연구</span>
-                <span class="nc-date">2025.06.15</span>
-              </div>
-              <h3 class="nc-title">국내 최초 양자AI 원천연구 47억원 선정 — 옥종목 교수팀</h3>
-              <p class="nc-desc">물리학과 옥종목 교수, 위상초전도체 개발 5개년 사업 선정 (2025–2029). 양자컴퓨팅 AI 알고리즘 설계가 핵심.</p>
-            </div>
-          </div>
-
-          <div class="news-card">
-            <div class="nc-img">
-              <img src="/s30/assets/img/bootcamp.jpg" alt="Bootcamp" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-              <div class="nc-img-fallback" style="display:none"><i class="fas fa-fire"></i></div>
-            </div>
-            <div class="nc-body">
-              <div class="nc-head">
-                <span class="nc-cat project">사업</span>
-                <span class="nc-date">2026.02.28</span>
-              </div>
-              <h3 class="nc-title">AI 첨단산업 부트캠프 신규 선정 — 5년 75억원</h3>
-              <p class="nc-desc">7개 특화 트랙 · 35개사 협력 · 2026년 1기 교육생 모집 시작.</p>
-            </div>
-          </div>
-
-          <div class="news-card">
-            <div class="nc-img">
-              <img src="/s30/assets/img/college-ai.jpg" alt="AI College" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-              <div class="nc-img-fallback" style="display:none"><i class="fas fa-graduation-cap"></i></div>
-            </div>
-            <div class="nc-body">
-              <div class="nc-head">
-                <span class="nc-cat partner">협약</span>
-                <span class="nc-date">2026.03.12</span>
-              </div>
-              <h3 class="nc-title">LG전자 채용연계 스마트가전공학과 신설 (2027) — 부산대 최초 대기업 계약학과</h3>
-              <p class="nc-desc">정원 30명 · 등록금 전액 지원 · 졸업 후 LG전자 입사 보장.</p>
-            </div>
-          </div>
-
-          <div class="news-card">
-            <div class="nc-img">
-              <img src="/s30/assets/img/medical-ai.jpg" alt="Medical AI" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-              <div class="nc-img-fallback" style="display:none"><i class="fas fa-heartbeat"></i></div>
-            </div>
-            <div class="nc-body">
-              <div class="nc-head">
-                <span class="nc-cat research">연구</span>
-                <span class="nc-date">준비 중</span>
-              </div>
-              <h3 class="nc-title">연구 성과 소식을 준비 중입니다</h3>
-              <p class="nc-desc">ARISE PNU 연구 성과 소식이 순차적으로 업데이트될 예정입니다.</p>
-            </div>
-          </div>
-
-          <div class="news-card">
-            <div class="nc-img">
-              <img src="/s30/assets/img/it-building.jpg" alt="IT Building" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-              <div class="nc-img-fallback" style="display:none"><i class="fas fa-building"></i></div>
-            </div>
-            <div class="nc-body">
-              <div class="nc-head">
-                <span class="nc-cat project">사업</span>
-                <span class="nc-date">2026.01.18</span>
-              </div>
-              <h3 class="nc-title">IT관 신축 착공식 (267억 · 13,161㎡ · 지하1지상10층)</h3>
-              <p class="nc-desc">100% LED·태양광·BEMS 적용한 그린 캠퍼스 거점. AI 대학·GPU 클러스터·산지니 AI 입주 예정 (2027 상반기 완공).</p>
-            </div>
-          </div>
-
-          <div class="news-card">
-            <div class="nc-img">
-              <img src="/s30/assets/img/marine-ai.jpg" alt="Marine AI" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-              <div class="nc-img-fallback" style="display:none"><i class="fas fa-ship"></i></div>
-            </div>
-            <div class="nc-body">
-              <div class="nc-head">
-                <span class="nc-cat research">연구</span>
-                <span class="nc-date">2026.04.22</span>
-              </div>
-              <h3 class="nc-title">비전 AI 연구 CVPR 2026 채택</h3>
-              <p class="nc-desc">자율운항 선박을 위한 해상 환경 인지 모델, 컴퓨터 비전 톱티어 CVPR 2026 채택. 삼성중공업 공동연구 성과.</p>
-            </div>
-          </div>
-
-          <div class="news-card">
-            <div class="nc-img">
-              <img src="/s30/assets/img/mfg-ai.jpg" alt="Manufacturing AI" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-              <div class="nc-img-fallback" style="display:none"><i class="fas fa-industry"></i></div>
-            </div>
-            <div class="nc-body">
-              <div class="nc-head">
-                <span class="nc-cat award">수상</span>
-                <span class="nc-date">준비 중</span>
-              </div>
-              <h3 class="nc-title">수상 소식을 준비 중입니다</h3>
-              <p class="nc-desc">ARISE PNU 수상 관련 소식이 순차적으로 업데이트될 예정입니다.</p>
-            </div>
-          </div>
-
-          <div class="news-card">
-            <div class="nc-img">
-              <img src="/s30/assets/img/mobility-ai.jpg" alt="Mobility AI" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-              <div class="nc-img-fallback" style="display:none"><i class="fas fa-car"></i></div>
-            </div>
-            <div class="nc-body">
-              <div class="nc-head">
-                <span class="nc-cat award">수상</span>
-                <span class="nc-date">준비 중</span>
-              </div>
-              <h3 class="nc-title">수상 소식을 준비 중입니다</h3>
-              <p class="nc-desc">ARISE PNU 수상 관련 소식이 순차적으로 업데이트될 예정입니다.</p>
-            </div>
-          </div>
-
-          <div class="news-card">
-            <div class="nc-img">
-              <img src="/s30/assets/img/it-building-2.jpg" alt="Notice" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-              <div class="nc-img-fallback" style="display:none"><i class="fas fa-bullhorn"></i></div>
-            </div>
-            <div class="nc-body">
-              <div class="nc-head">
-                <span class="nc-cat notice">공지</span>
-                <span class="nc-date">2026.05.18</span>
-              </div>
-              <h3 class="nc-title">2026년 사업단 사업비 집행 지침 개정 안내</h3>
-              <p class="nc-desc">A.U.R.A 2.0 출범에 따른 사업비 집행 지침 v2.0 개정. 6월 1일부터 적용.</p>
-            </div>
-          </div>
-
-          <div class="news-card">
-            <div class="nc-img">
-              <img src="/s30/assets/img/partnership.jpg" alt="Event" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-              <div class="nc-img-fallback" style="display:none"><i class="fas fa-calendar-alt"></i></div>
-            </div>
-            <div class="nc-body">
-              <div class="nc-head">
-                <span class="nc-cat event">행사</span>
-                <span class="nc-date">2026.05.20</span>
-              </div>
-              <h3 class="nc-title">2026 부산 AI 서밋 — Fei-Fei Li 기조 강연 확정 (6.15 · BEXCO)</h3>
-              <p class="nc-desc">Stanford HAI 소장 Fei-Fei Li 교수 방한, 부산 AI 서밋 기조 강연. 부산대학교 80주년 기념 행사.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pagination -->
-        <div class="pagination">
-          <button class="disabled"><i class="fas fa-chevron-left"></i></button>
-          <a class="active">1</a>
-          <a>2</a>
-          <a>3</a>
-          <a>4</a>
-          <a>5</a>
-          <button><i class="fas fa-chevron-right"></i></button>
-        </div>
+    <div class="press-head">
+      <div class="pb-eyebrow">Newsroom Impact · 2025–2026</div>
+      <div class="pb-title">한 해를 가른 <em>임팩트 있는 소식들</em></div>
+    </div>
+    <div class="press-grid">
+      <div class="press-cell">
+        <div class="pc-ico"><i class="fas fa-trophy"></i></div>
+        <div class="pc-num" data-count="28" data-suffix="+"><span class="pc-suf">+</span></div>
+        <div class="pc-lbl">국제 경진대회 수상</div>
+        <div class="pc-note">RoboCup · Kaggle · NeurIPS 등</div>
       </div>
+      <div class="press-cell">
+        <div class="pc-ico"><i class="fas fa-handshake"></i></div>
+        <div class="pc-num" data-count="35" data-suffix="+"><span class="pc-suf">+</span></div>
+        <div class="pc-lbl">산학·글로벌 협약</div>
+        <div class="pc-note">Google · NVIDIA · 삼성중공업 외</div>
+      </div>
+      <div class="press-cell">
+        <div class="pc-ico"><i class="fas fa-file-lines"></i></div>
+        <div class="pc-num" data-count="480" data-suffix="+"><span class="pc-suf">+</span></div>
+        <div class="pc-lbl">연간 논문 발표</div>
+        <div class="pc-note">AI 연구그룹 14+ 운영</div>
+      </div>
+      <div class="press-cell">
+        <div class="pc-ico"><i class="fas fa-won-sign"></i></div>
+        <div class="pc-num" data-count="3111"><span class="pc-suf">억</span></div>
+        <div class="pc-lbl">국책사업 누적 유치</div>
+        <div class="pc-note">8개 대형사업 · 2023–</div>
+      </div>
+    </div>
 
-      <!-- Sidebar -->
-      <div class="sidebar">
-        <div class="sb-box blue">
-          <div class="sb-head">
-            <div class="sb-title"><i class="fas fa-bullhorn"></i> 공지사항</div>
-            <a href="/s30/news/?cat=notice" class="sb-link">더보기 →</a>
-          </div>
-          <div class="sb-list">
-            <div class="sb-item"><div class="sb-item-title">2026 AI 첨단산업 부트캠프 1기 교육생 모집 (~6.30)</div><div class="sb-item-date">2026.05.25</div></div>
-            <div class="sb-item"><div class="sb-item-title">사업단 운영위원회 6월 정기회의 (6.10)</div><div class="sb-item-date">2026.05.22</div></div>
-            <div class="sb-item"><div class="sb-item-title">"AI 시대의 인재상" 특강 — Fei-Fei Li 기조 (6.15)</div><div class="sb-item-date">2026.05.20</div></div>
-            <div class="sb-item"><div class="sb-item-title">2026년 사업단 사업비 집행 지침 개정</div><div class="sb-item-date">2026.05.18</div></div>
-            <div class="sb-item"><div class="sb-item-title">AI 윤리 가이드라인 v2.0 공개 의견 수렴</div><div class="sb-item-date">2026.05.15</div></div>
-          </div>
-        </div>
-
-        <div class="sb-box amber">
-          <div class="sb-head">
-            <div class="sb-title"><i class="fas fa-calendar-alt"></i> 다가오는 행사</div>
-            <a href="/s30/news/?cat=event" class="sb-link">캘린더 →</a>
-          </div>
-          <div class="sb-list">
-            <div class="sb-item"><div class="sb-item-title">2026 부산 AI 서밋 · Fei-Fei Li 기조</div><div class="sb-item-date">2026.06.15 · BEXCO</div></div>
-            <div class="sb-item"><div class="sb-item-title">산학협력 데모데이 (35개사 참여)</div><div class="sb-item-date">2026.07.03 · IT관 강당</div></div>
-            <div class="sb-item"><div class="sb-item-title">AI 거점대학 사업단 컨소시엄</div><div class="sb-item-date">2026.07.18 · 그랜드조선</div></div>
-            <div class="sb-item"><div class="sb-item-title">AI 융합 콜로키움 · 인문 AI</div><div class="sb-item-date">2026.08.12 · 인문관 102</div></div>
-          </div>
-        </div>
-
-        <div class="sb-box">
-          <div class="sb-head">
-            <div class="sb-title"><i class="fas fa-folder-open"></i> 자료실</div>
-            <a href="/s30/news/?cat=resource" class="sb-link">더보기 →</a>
-          </div>
-          <div class="sb-resource">
-            <a href="#"><i class="fas fa-file-pdf"></i> A.U.R.A 2.0 백서 (PDF)</a>
-            <a href="#"><i class="fas fa-file-pdf"></i> 사업단 소개 브로슈어</a>
-            <a href="#"><i class="fas fa-file-powerpoint"></i> 발표 자료 템플릿</a>
-            <a href="#"><i class="fas fa-file-image"></i> 로고 · 시그니처</a>
-            <a href="#"><i class="fas fa-file-alt"></i> 사업비 집행 지침 v2.0</a>
-            <a href="#"><i class="fas fa-file-contract"></i> 산학협약 표준 양식</a>
-          </div>
-        </div>
-
-        <div class="newsletter">
-          <div class="nl-tag">Newsletter</div>
-          <div class="nl-h">ARISE PNU 소식을 받아보세요</div>
-          <div class="nl-d">월간 뉴스레터로 사업단의 최신 성과·행사·공지를 가장 먼저 만나보세요.</div>
-          <form class="nl-form" onsubmit="event.preventDefault();alert('구독 신청이 완료되었습니다.')">
-            <input type="email" placeholder="이메일 주소" required>
-            <button type="submit">구독</button>
-          </form>
+    <!-- NEWS TICKER -->
+    <div class="news-ticker">
+      <div class="tk-tag"><span class="tk-dot"></span> Breaking</div>
+      <div class="tk-viewport">
+        <div class="tk-track">
+          <span><i class="fas fa-circle"></i> Google for Education 국내 대학 최초 전면 도입 (2026.05.13)</span>
+          <span><i class="fas fa-circle"></i> University AI-MASTER 국내 대학 최초 인증 획득</span>
+          <span><i class="fas fa-circle"></i> RoboCup 2025 세계 챔피언십 우승 — 8/8 미션 완수</span>
+          <span><i class="fas fa-circle"></i> 양자AI 47억 국내 최초 원천연구 선정</span>
+          <span><i class="fas fa-circle"></i> 2025 한국의 경영대상 AI 혁신 부문 대상 (대학 유일)</span>
+          <span aria-hidden="true"><i class="fas fa-circle"></i> Google for Education 국내 대학 최초 전면 도입 (2026.05.13)</span>
+          <span aria-hidden="true"><i class="fas fa-circle"></i> University AI-MASTER 국내 대학 최초 인증 획득</span>
+          <span aria-hidden="true"><i class="fas fa-circle"></i> RoboCup 2025 세계 챔피언십 우승 — 8/8 미션 완수</span>
+          <span aria-hidden="true"><i class="fas fa-circle"></i> 양자AI 47억 국내 최초 원천연구 선정</span>
+          <span aria-hidden="true"><i class="fas fa-circle"></i> 2025 한국의 경영대상 AI 혁신 부문 대상 (대학 유일)</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- NEWS ANALYTICS (흰색) -->
+<section class="section">
+  <div class="container">
+    <div class="section-header center">
+      <div class="s-eyebrow">Newsroom Analytics</div>
+      <div class="s-title">소식으로 보는 <em>사업 동력</em></div>
+    </div>
+    <div class="data-grid">
+      <!-- BAR CHART -->
+      <div class="data-panel">
+        <div class="dp-eyebrow">Monthly Publishing</div>
+        <div class="dp-title">월별 소식 발행 추이</div>
+        <div class="dp-sub">2026년 1월–6월 · 알림마당 게시물 (단위: 건)</div>
+        <div class="chart-box"><canvas id="newsTrendChart"></canvas></div>
+      </div>
+      <!-- DONUT SVG -->
+      <div class="data-panel">
+        <div class="dp-eyebrow">By Category</div>
+        <div class="dp-title">분야별 게시물 분포</div>
+        <div class="dp-sub">전체 24건 · 카테고리 구성</div>
+        <div class="donut-wrap">
+          <div class="donut-stage">
+            <svg class="donut-svg" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="46" stroke="#EDF1F7"></circle>
+              <circle class="dn-seg" id="seg-news" cx="60" cy="60" r="46" stroke="#005BAA"></circle>
+              <circle class="dn-seg" id="seg-notice" cx="60" cy="60" r="46" stroke="#0075C9"></circle>
+              <circle class="dn-seg" id="seg-resource" cx="60" cy="60" r="46" stroke="#00A651"></circle>
+              <circle class="dn-seg" id="seg-event" cx="60" cy="60" r="46" stroke="#94A3B8"></circle>
+            </svg>
+            <div class="donut-center">
+              <div class="dc-num">24</div>
+              <div class="dc-lbl">Posts</div>
+            </div>
+          </div>
+          <div class="donut-legend">
+            <div class="dl-row"><span class="dl-dot" style="background:#005BAA"></span><span class="dl-name">뉴스·보도</span><span class="dl-val">9</span><span class="dl-pct">37.5%</span></div>
+            <div class="dl-row"><span class="dl-dot" style="background:#0075C9"></span><span class="dl-name">공지사항</span><span class="dl-val">8</span><span class="dl-pct">33.3%</span></div>
+            <div class="dl-row"><span class="dl-dot" style="background:#00A651"></span><span class="dl-name">자료실</span><span class="dl-val">4</span><span class="dl-pct">16.7%</span></div>
+            <div class="dl-row"><span class="dl-dot" style="background:#94A3B8"></span><span class="dl-name">행사·일정</span><span class="dl-val">3</span><span class="dl-pct">12.5%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MILESTONE MOMENTUM (다크 라인 차트) -->
+<section class="momentum-band">
+  <div class="container">
+    <div class="momentum-head">
+      <div class="mb-eyebrow">Milestone Momentum · 2025–2026</div>
+      <div class="mb-title">분기마다 <em>가속하는 성과</em></div>
+    </div>
+    <div class="momentum-card">
+      <div class="momentum-chart"><canvas id="momentumChart"></canvas></div>
+      <div class="momentum-kpis">
+        <div class="mk-cell"><div class="mk-num">9<em>건</em></div><div class="mk-lbl">국내·세계 최초</div></div>
+        <div class="mk-cell"><div class="mk-num">6<em>건</em></div><div class="mk-lbl">수상 · 인증</div></div>
+        <div class="mk-cell"><div class="mk-num">100<em>억</em></div><div class="mk-lbl">A.U.R.A 2.0 투자</div></div>
+        <div class="mk-cell"><div class="mk-num">12<em>억</em></div><div class="mk-lbl">기술이전·창업</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSROOM REACH (section-cream 게이지) -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="section-header center">
+      <div class="s-eyebrow">Newsroom Reach</div>
+      <div class="s-title">소식이 만든 <em>도달과 신뢰</em></div>
+    </div>
+    <div class="reach-grid">
+      <div class="reach-cell">
+        <div class="gauge-stage">
+          <svg class="gauge-svg" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="50" stroke="#E5ECF5"></circle>
+            <circle class="gg-seg" data-pct="88" cx="60" cy="60" r="50" stroke="#005BAA"></circle>
+          </svg>
+          <div class="gauge-center"><div class="gc-num" data-count="12840">0</div></div>
+        </div>
+        <div class="rc-lbl"><i class="fas fa-eye rc-ico"></i>헤드라인 조회</div>
+        <div class="rc-note">Google 전면도입 보도</div>
+      </div>
+      <div class="reach-cell">
+        <div class="gauge-stage">
+          <svg class="gauge-svg" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="50" stroke="#E5ECF5"></circle>
+            <circle class="gg-seg" data-pct="100" cx="60" cy="60" r="50" stroke="#00A651"></circle>
+          </svg>
+          <div class="gauge-center"><div class="gc-num"><span data-count="8">0</span><em>/8</em></div></div>
+        </div>
+        <div class="rc-lbl"><i class="fas fa-trophy rc-ico"></i>RoboCup 미션</div>
+        <div class="rc-note">완수율 100%</div>
+      </div>
+      <div class="reach-cell">
+        <div class="gauge-stage">
+          <svg class="gauge-svg" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="50" stroke="#E5ECF5"></circle>
+            <circle class="gg-seg" data-pct="90" cx="60" cy="60" r="50" stroke="#0075C9"></circle>
+          </svg>
+          <div class="gauge-center"><div class="gc-num"><span data-count="35">0</span><em>+</em></div></div>
+        </div>
+        <div class="rc-lbl"><i class="fas fa-handshake rc-ico"></i>협약 기관</div>
+        <div class="rc-note">산학·글로벌·공공</div>
+      </div>
+      <div class="reach-cell">
+        <div class="gauge-stage">
+          <svg class="gauge-svg" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="50" stroke="#E5ECF5"></circle>
+            <circle class="gg-seg" data-pct="100" cx="60" cy="60" r="50" stroke="#143F90"></circle>
+          </svg>
+          <div class="gauge-center"><div class="gc-num"><span data-count="100">0</span><em>%</em></div></div>
+        </div>
+        <div class="rc-lbl"><i class="fas fa-certificate rc-ico"></i>AI-MASTER 인증</div>
+        <div class="rc-note">국내 대학 최초</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS HUB (section-alt 리듬) -->
+<section class="section section-alt">
+  <div class="container">
+
+    <!-- FEATURE NEWS -->
+    <div class="feature-news">
+      <img src="/s30/assets/img/partnership.jpg" alt="Google for Education 전면 도입" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(165deg,#003c2c 0%,#00A651 65%,#10B981 100%)'">
+      <div class="feature-news-inner">
+        <div class="fn-cat"><i class="fas fa-star"></i> Headline · 헤드라인</div>
+        <div class="fn-title">Google for Education<br>국내 대학 최초 전면 도입</div>
+        <div class="fn-meta">
+          <span><i class="fas fa-calendar"></i> 2026.05.13</span>
+          <span><i class="fas fa-tag"></i> 글로벌 협약</span>
+          <span><i class="fas fa-flag"></i> 국내 최초</span>
+          <span><i class="fas fa-eye"></i> 12,840</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div class="news-toolbar">
+      <div>
+        <div class="s-eyebrow">All Updates</div>
+        <div class="s-title" style="font-size:26px">전체 <em>소식</em></div>
+      </div>
+      <div class="nt-meta"><strong>최종 업데이트</strong> 2026.06.05 · <strong>총 24</strong>건의 게시물</div>
+    </div>
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar">
+      <button class="active">전체 <span class="count">24</span></button>
+      <button>공지사항 <span class="count">8</span></button>
+      <button>뉴스·보도 <span class="count">9</span></button>
+      <button>행사·일정 <span class="count">3</span></button>
+      <button>자료실 <span class="count">4</span></button>
+    </div>
+
+    <!-- LAYOUT -->
+    <div class="news-layout">
+
+      <!-- LEFT: NEWS CARDS -->
+      <div>
+        <div class="news-cards">
+
+          <!-- 1. RoboCup -->
+          <article class="news-card">
+            <div class="nc-img g-award">
+              <img src="/s30/assets/img/robocup.jpg" alt="RoboCup 2025 우승" onerror="this.style.display='none'">
+            </div>
+            <div class="nc-body">
+              <div class="nc-head">
+                <span class="nc-cat award"><i class="fas fa-trophy"></i> 수상</span>
+                <span class="nc-date">2025.08.21</span>
+              </div>
+              <h3 class="nc-title">RoboCup 2025 세계 챔피언십 우승</h3>
+            </div>
+          </article>
+
+          <!-- 2. 장영실연구원 개원 + 협약 3건 -->
+          <article class="news-card">
+            <div class="nc-img g-partner">
+              <img src="/s30/assets/img/handshake.jpg" alt="장영실 AI융합연구원 개원" onerror="this.style.display='none'">
+            </div>
+            <div class="nc-body">
+              <div class="nc-head">
+                <span class="nc-cat partner"><i class="fas fa-handshake"></i> 협약</span>
+                <span class="nc-date">2025.12.30</span>
+              </div>
+              <h3 class="nc-title">장영실 AI융합연구원 개원 · 협약 3건</h3>
+            </div>
+          </article>
+
+          <!-- 3. 양자AI 47억 -->
+          <article class="news-card">
+            <div class="nc-img g-research">
+              <img src="/s30/assets/img/quantum.jpg" alt="양자AI 원천연구" onerror="this.style.display='none'">
+            </div>
+            <div class="nc-body">
+              <div class="nc-head">
+                <span class="nc-cat research"><i class="fas fa-atom"></i> 연구</span>
+                <span class="nc-date">2025.06.15</span>
+              </div>
+              <h3 class="nc-title">양자AI 원천연구 47억원 선정</h3>
+            </div>
+          </article>
+
+          <!-- 4. AI 부트캠프 선정 -->
+          <article class="news-card">
+            <div class="nc-img g-event">
+              <img src="/s30/assets/img/bootcamp.jpg" alt="AI 부트캠프 선정" onerror="this.style.display='none'">
+            </div>
+            <div class="nc-body">
+              <div class="nc-head">
+                <span class="nc-cat event"><i class="fas fa-rocket"></i> 사업</span>
+                <span class="nc-date">2026.02.28</span>
+              </div>
+              <h3 class="nc-title">AI 첨단산업 부트캠프 75억 · 7트랙</h3>
+            </div>
+          </article>
+
+          <!-- 5. LG전자 계약학과 -->
+          <article class="news-card">
+            <div class="nc-img g-partner">
+              <img src="/s30/assets/img/meeting.jpg" alt="LG전자 계약학과 신설" onerror="this.style.display='none'">
+            </div>
+            <div class="nc-body">
+              <div class="nc-head">
+                <span class="nc-cat partner"><i class="fas fa-handshake"></i> 협약</span>
+                <span class="nc-date">2026.03.12</span>
+              </div>
+              <h3 class="nc-title">LG전자 스마트가전공학과 신설 (2027)</h3>
+            </div>
+          </article>
+
+          <!-- 6. AI-MASTER 인증 -->
+          <article class="news-card">
+            <div class="nc-img g-project">
+              <img src="/s30/assets/img/data-analytics.jpg" alt="University AI-MASTER 인증" onerror="this.style.display='none'">
+            </div>
+            <div class="nc-body">
+              <div class="nc-head">
+                <span class="nc-cat project"><i class="fas fa-certificate"></i> 인증</span>
+                <span class="nc-date">2026.03.05</span>
+              </div>
+              <h3 class="nc-title">University AI-MASTER 국내 최초 인증</h3>
+            </div>
+          </article>
+
+          <!-- 7. 경영대상 -->
+          <article class="news-card">
+            <div class="nc-img g-award">
+              <img src="/s30/assets/img/college-ai.jpg" alt="한국의 경영대상 AI 혁신 부문 대상" onerror="this.style.display='none'">
+            </div>
+            <div class="nc-body">
+              <div class="nc-head">
+                <span class="nc-cat award"><i class="fas fa-medal"></i> 수상</span>
+                <span class="nc-date">2025.12.09</span>
+              </div>
+              <h3 class="nc-title">한국의 경영대상 AI 혁신 대상 (대학 유일)</h3>
+            </div>
+          </article>
+
+          <!-- 8. 산지니 AI 국립대 최초 -->
+          <article class="news-card">
+            <div class="nc-img g-research">
+              <img src="/s30/assets/img/lab-research.jpg" alt="산지니 AI 국립대 최초 자체구축" onerror="this.style.display='none'">
+            </div>
+            <div class="nc-body">
+              <div class="nc-head">
+                <span class="nc-cat research"><i class="fas fa-microchip"></i> 연구</span>
+                <span class="nc-date">2025.12</span>
+              </div>
+              <h3 class="nc-title">산지니 AI · 국립대 최초 LLM 자체구축</h3>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- PAGINATION -->
+        <div class="pagination">
+          <span class="disabled"><i class="fas fa-chevron-left"></i></span>
+          <a class="active">1</a>
+          <a>2</a>
+          <a>3</a>
+          <a><i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+
+      <!-- RIGHT: SIDEBAR -->
+      <aside class="sidebar">
+
+        <!-- 공지사항 -->
+        <div class="sb-box blue">
+          <div class="sb-head">
+            <div class="sb-title"><i class="fas fa-bullhorn" style="color:var(--pnu-blue);margin-right:6px"></i> 공지사항</div>
+            <a href="/s30/news/?cat=notice" class="sb-link">더보기 →</a>
+          </div>
+          <div class="sb-list">
+            <div class="sb-item">
+              <div class="sb-item-title">2026 AI 첨단산업 부트캠프 1기 교육생 모집 (~6.30)</div>
+              <div class="sb-item-date">2026.05.25</div>
+            </div>
+            <div class="sb-item">
+              <div class="sb-item-title">사업단 운영위원회 6월 정기회의 개최 (6.10)</div>
+              <div class="sb-item-date">2026.05.22</div>
+            </div>
+            <div class="sb-item">
+              <div class="sb-item-title">"AI 시대의 인재상" 초청 특강 개최 안내 (6.15)</div>
+              <div class="sb-item-date">2026.05.20</div>
+            </div>
+            <div class="sb-item">
+              <div class="sb-item-title">2026년 사업단 사업비 집행 지침 개정 안내</div>
+              <div class="sb-item-date">2026.05.18</div>
+            </div>
+            <div class="sb-item">
+              <div class="sb-item-title">AI 윤리·사용 가이드라인 개정 의견 수렴 안내</div>
+              <div class="sb-item-date">2026.05.15</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 다가오는 행사 -->
+        <div class="sb-box amber">
+          <div class="sb-head">
+            <div class="sb-title"><i class="fas fa-calendar-alt" style="margin-right:6px"></i> 다가오는 행사</div>
+            <a href="/s30/news/?cat=event" class="sb-link">캘린더 →</a>
+          </div>
+          <div class="sb-list">
+            <div class="sb-item">
+              <div class="sb-item-title">ARISE PNU AI 비전 초청 특강 <span class="evt-badge">D-10</span></div>
+              <div class="sb-item-date">2026.06.15 · IT관</div>
+            </div>
+            <div class="sb-item">
+              <div class="sb-item-title">산학협력 데모데이 (35개사 참여)</div>
+              <div class="sb-item-date">2026.07.03 · IT관 강당</div>
+            </div>
+            <div class="sb-item">
+              <div class="sb-item-title">AI 거점대학 사업단 컨소시엄 워크숍</div>
+              <div class="sb-item-date">2026.07.18 · 부산</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 자료실 -->
+        <div class="sb-box">
+          <div class="sb-head">
+            <div class="sb-title"><i class="fas fa-download" style="color:var(--pnu-blue);margin-right:6px"></i> 자료실</div>
+            <a href="/s30/news/?cat=resource" class="sb-link">전체 →</a>
+          </div>
+          <div class="sb-resource">
+            <a href="/s30/about/#aura"><i class="fas fa-file-pdf"></i> A.U.R.A 2.0 마스터플랜 백서<span class="res-meta">PDF</span></a>
+            <a href="#"><i class="fas fa-file-lines"></i> AI 거점대학 사업 안내서<span class="res-meta">PDF</span></a>
+            <a href="#"><i class="fas fa-image"></i> ARISE PNU 로고 · BI 키트<span class="res-meta">ZIP</span></a>
+            <a href="#"><i class="fas fa-file-shield"></i> AI 윤리·사용 가이드라인 v1<span class="res-meta">PDF</span></a>
+          </div>
+        </div>
+
+        <!-- 뉴스레터 -->
+        <div class="newsletter">
+          <div class="nl-tag">Newsletter</div>
+          <div class="nl-h">ARISE PNU 소식을<br>가장 먼저 받아보세요</div>
+          <div class="nl-d">성과 · 공지 · 행사 · 월 1회</div>
+          <form class="nl-form" onsubmit="return false">
+            <input type="email" placeholder="이메일 주소" aria-label="이메일 주소">
+            <button type="submit">구독</button>
+          </form>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="container">
     <div class="ft-top">
@@ -398,63 +679,210 @@
         <div class="ft-brand-row">
           <img src="/s30/assets/pnu-signature.jpg" alt="부산대학교" class="ft-logo-img" style="filter:brightness(0) invert(1)">
         </div>
-        <div class="ft-brand-name">
-          AI 거점대학육성사업단 · ARISE PNU
-          <small>arise-ai.pusan.ac.kr · A.U.R.A 2.0 마스터플랜</small>
-        </div>
+        <div class="ft-brand-name">AI 거점대학육성사업단 · ARISE PNU<small>arise-ai.pusan.ac.kr · A.U.R.A 2.0 마스터플랜</small></div>
         <div class="ft-desc" style="margin-top:16px"><em>"Arise PNU, 같이 더 높게"</em> — 동남권 AX 생태계의 중심 거점, 부산대학교 AI 거점대학육성사업단입니다.</div>
-        <div class="ft-addr">
-          📍 부산광역시 금정구 부산대학로 63번길 2 · IT관 3층 AI 거점사업단<br>
-          📞 051-510-0000 · ✉ arise@pusan.ac.kr<br>
-          ⏰ 평일 09:00 – 18:00
-        </div>
+        <div class="ft-addr">📍 부산광역시 금정구 부산대학로 63번길 2 · IT관 3층 AI 거점사업단<br>📞 051-510-0000 · ✉ arise@pusan.ac.kr<br>⏰ 평일 09:00 – 18:00</div>
         <div class="ft-sns" style="margin-top:24px">
-          <a href="#"><i class="fab fa-youtube"></i></a>
-          <a href="#"><i class="fab fa-x-twitter"></i></a>
-          <a href="#"><i class="fab fa-linkedin"></i></a>
-          <a href="#"><i class="fab fa-github"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
-      <div class="ft-col">
-        <h4>사업 소개</h4>
-        <a href="/s30/about/#overview">사업 개요 · 비전</a>
-        <a href="/s30/about/#aura">A.U.R.A 2.0</a>
-        <a href="/s30/about/#structure">추진 체계</a>
-        <a href="/s30/about/#governance">거버넌스</a>
-        <a href="/s30/roadmap/">3개년 로드맵</a>
+      <div class="ft-col"><h4>사업 소개</h4>
+        <a href="/s30/about/#overview">사업 개요 · 비전</a><a href="/s30/about/#aura">A.U.R.A 2.0</a><a href="/s30/about/#governance">거버넌스</a><a href="/s30/roadmap/">3개년 로드맵</a>
       </div>
-      <div class="ft-col">
-        <h4>핵심 사업</h4>
-        <a href="/s30/programs/#education">AI 교육 혁신</a>
-        <a href="/s30/programs/#research">AI 연구 강화</a>
-        <a href="/s30/programs/#industry">산학 협력</a>
-        <a href="/s30/programs/#infra">AI 인프라</a>
-        <a href="/s30/programs/#education">AI 부트캠프</a>
+      <div class="ft-col"><h4>핵심 사업</h4>
+        <a href="/s30/programs/#education">AI 교육 혁신</a><a href="/s30/programs/#research">AI 연구 강화</a><a href="/s30/programs/#industry">산학 협력</a><a href="/s30/programs/#infra">AI 인프라</a>
       </div>
-      <div class="ft-col">
-        <h4>관련 사이트</h4>
-        <a href="https://www.pusan.ac.kr" target="_blank">부산대학교 ↗</a>
-        <a href="https://ai.pusan.ac.kr" target="_blank">AI 대학 ↗</a>
-        <a href="https://airc.pusan.ac.kr" target="_blank">장영실연구원 ↗</a>
-        <a href="https://aiedu.pusan.ac.kr" target="_blank">AI 융합교육원 ↗</a>
-        <a href="https://uitc.pusan.ac.kr" target="_blank">AX·정보화혁신본부 ↗</a>
+      <div class="ft-col"><h4>관련 사이트</h4>
+        <a href="https://www.pusan.ac.kr" target="_blank">부산대학교 ↗</a><a href="https://ai.pusan.ac.kr" target="_blank">AI 대학 ↗</a><a href="https://airc.pusan.ac.kr" target="_blank">장영실연구원 ↗</a><a href="https://aiedu.pusan.ac.kr" target="_blank">AI 융합교육원 ↗</a><a href="https://uitc.pusan.ac.kr" target="_blank">AX·정보화혁신본부 ↗</a>
       </div>
     </div>
     <div class="ft-bottom">
       <div class="ft-copy">© 2026 Pusan National University ARISE-AI. All rights reserved.</div>
-      <div class="ft-policy">
-        <a href="#">개인정보처리방침</a>
-        <a href="#">이메일무단수집거부</a>
-        <a href="#">사이트맵</a>
-        <a href="#">접근성 정책</a>
-      </div>
+      <div class="ft-policy"><a href="#">개인정보처리방침</a><a href="#">이메일무단수집거부</a><a href="#">사이트맵</a><a href="#">접근성 정책</a></div>
     </div>
   </div>
 </footer>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // ---- 카운터 애니메이션 ----
+  function animateCounter(el){
+    var target = parseFloat(el.getAttribute('data-count')) || 0;
+    var suf = el.querySelector('.pc-suf');
+    var dur = 1500, start = null;
+    function fmt(n){ return Math.round(n).toLocaleString('en-US'); }
+    if (reduce){ el.insertBefore(document.createTextNode(fmt(target)), suf || null); return; }
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts - start)/dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      var txt = fmt(target * eased);
+      if (el.firstChild && el.firstChild.nodeType === 3) el.firstChild.nodeValue = txt;
+      else el.insertBefore(document.createTextNode(txt), suf || null);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
 
+  // ---- 도넛 SVG 채우기 ----
+  function drawDonut(){
+    var r = 46, C = 2 * Math.PI * r; // 둘레 ≈ 289
+    var segs = [
+      {id:'seg-news', val:9},
+      {id:'seg-notice', val:8},
+      {id:'seg-resource', val:4},
+      {id:'seg-event', val:3}
+    ];
+    var total = 24, offset = 0;
+    segs.forEach(function(s){
+      var el = document.getElementById(s.id);
+      if(!el) return;
+      var len = (s.val/total) * C;
+      var gap = 2; // 세그먼트 사이 간격
+      el.setAttribute('stroke-dashoffset', -offset);
+      // 살짝 줄여서 간격 표현
+      var draw = Math.max(len - gap, 0);
+      if (reduce){ el.style.transition='none'; el.setAttribute('stroke-dasharray', draw + ' ' + (C - draw)); }
+      else { setTimeout(function(){ el.setAttribute('stroke-dasharray', draw + ' ' + (C - draw)); }, 60); }
+      offset += len;
+    });
+  }
 
+  // ---- Chart.js 막대 차트 ----
+  function drawChart(){
+    var cv = document.getElementById('newsTrendChart');
+    if(!cv || typeof Chart === 'undefined') return;
+    var ctx = cv.getContext('2d');
+    var grad = ctx.createLinearGradient(0,0,0,280);
+    grad.addColorStop(0,'rgba(0,117,201,.95)');
+    grad.addColorStop(1,'rgba(0,166,81,.85)');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['1월','2월','3월','4월','5월','6월'],
+        datasets: [{
+          label: '게시물 (건)',
+          data: [2, 4, 5, 3, 6, 4],
+          backgroundColor: grad,
+          borderRadius: 8,
+          maxBarThickness: 46
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        animation: reduce ? false : { duration: 1100, easing: 'easeOutQuart' },
+        plugins: {
+          legend: { display:false },
+          tooltip: { backgroundColor:'#0F1F45', padding:11, titleFont:{family:'Inter',weight:'700'}, bodyFont:{family:'Inter'}, displayColors:false,
+            callbacks:{ label:function(c){ return c.parsed.y + '건 발행'; } } }
+        },
+        scales: {
+          x: { grid:{display:false}, ticks:{ color:'#475569', font:{family:'Inter',weight:'600',size:12} } },
+          y: { beginAtZero:true, ticks:{ stepSize:2, color:'#94A3B8', font:{family:'Inter',size:11} }, grid:{color:'#EEF2F7'} }
+        }
+      }
+    });
+  }
+
+  // ---- 게이지 SVG 채우기 ----
+  function drawGauges(){
+    var r = 50, C = 2 * Math.PI * r;
+    document.querySelectorAll('.gg-seg').forEach(function(el){
+      var pct = parseFloat(el.getAttribute('data-pct')) || 0;
+      var draw = (pct/100) * C;
+      if (reduce){ el.style.transition='none'; el.setAttribute('stroke-dasharray', draw + ' ' + (C - draw)); }
+      else { setTimeout(function(){ el.setAttribute('stroke-dasharray', draw + ' ' + (C - draw)); }, 60); }
+    });
+  }
+
+  // ---- 간단 카운터 (게이지 중앙 숫자) ----
+  function countUp(el){
+    var target = parseFloat(el.getAttribute('data-count')) || 0;
+    var dur = 1500, start = null;
+    function fmt(n){ return Math.round(n).toLocaleString('en-US'); }
+    if (reduce){ el.textContent = fmt(target); return; }
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts - start)/dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(target * eased);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  // ---- Chart.js 모멘텀 라인 (분기별 성과 누적) ----
+  function drawMomentum(){
+    var cv = document.getElementById('momentumChart');
+    if(!cv || typeof Chart === 'undefined') return;
+    var ctx = cv.getContext('2d');
+    var fill = ctx.createLinearGradient(0,0,0,300);
+    fill.addColorStop(0,'rgba(127,208,255,.42)');
+    fill.addColorStop(1,'rgba(127,208,255,0)');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['2025 Q2','2025 Q3','2025 Q4','2026 Q1','2026 Q2'],
+        datasets: [{
+          label: '누적 주요 성과 (건)',
+          data: [1, 2, 8, 13, 16],
+          borderColor: '#7FD0FF',
+          borderWidth: 3,
+          backgroundColor: fill,
+          fill: true,
+          tension: .4,
+          pointBackgroundColor: '#5BE3A7',
+          pointBorderColor: '#fff',
+          pointBorderWidth: 2,
+          pointRadius: 5,
+          pointHoverRadius: 7
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        animation: reduce ? false : { duration: 1300, easing: 'easeOutQuart' },
+        plugins: {
+          legend: { display:false },
+          tooltip: { backgroundColor:'#0B1733', padding:11, titleFont:{family:'Inter',weight:'700'}, bodyFont:{family:'Inter'}, displayColors:false,
+            callbacks:{ label:function(c){ return '누적 ' + c.parsed.y + '건'; } } }
+        },
+        scales: {
+          x: { grid:{color:'rgba(255,255,255,.07)'}, ticks:{ color:'#9DB4D6', font:{family:'Inter',weight:'600',size:12} } },
+          y: { beginAtZero:true, ticks:{ stepSize:4, color:'#7E93B8', font:{family:'Inter',size:11} }, grid:{color:'rgba(255,255,255,.08)'} }
+        }
+      }
+    });
+  }
+
+  // ---- 뷰포트 진입 시 트리거 ----
+  function onView(el, cb){
+    if(!('IntersectionObserver' in window)){ cb(); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ cb(); io.disconnect(); } });
+    }, {threshold:.35});
+    io.observe(el);
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('.pc-num[data-count]').forEach(function(el){
+      onView(el, function(){ animateCounter(el); });
+    });
+    var donut = document.querySelector('.donut-stage');
+    if(donut) onView(donut, drawDonut);
+    var chart = document.getElementById('newsTrendChart');
+    if(chart) onView(chart, drawChart);
+    var mom = document.getElementById('momentumChart');
+    if(mom) onView(mom, drawMomentum);
+    document.querySelectorAll('.reach-grid').forEach(function(grid){
+      onView(grid, function(){
+        drawGauges();
+        grid.querySelectorAll('.gc-num [data-count], .gc-num[data-count]').forEach(countUp);
+      });
+    });
+  });
+})();
+</script>
 <script type="module" src="/src/scripts/main.js"></script>
 </body>
 </html>
