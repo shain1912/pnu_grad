@@ -24,18 +24,20 @@ const canvas = document.getElementById('webgl');
 const renderer = new THREE.WebGLRenderer({
   canvas,
   antialias: true,
+  alpha: true,                 // let the CSS gradient sky show through
   powerPreference: 'high-performance',
 });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setClearColor(0x000000, 0); // transparent clear → CSS sky behind
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.05;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 
 /* ---------- Scene ---------- */
 const scene = new THREE.Scene();
-scene.background = new THREE.Color('#e8eef9');
-scene.fog = new THREE.FogExp2('#e8eef9', 0.0042);
+scene.background = null;                 // sky = CSS gradient on #webgl (renderer alpha)
+scene.fog = new THREE.FogExp2('#dde6f3', 0.0038); // fade distant geometry into the sky tone
 
 /* ---------- Camera ---------- */
 const camera = new THREE.PerspectiveCamera(
@@ -56,6 +58,15 @@ const rim = new THREE.DirectionalLight('#00a651', 0.55);
 rim.position.set(-50, 30, -40);
 scene.add(rim);
 scene.add(new THREE.HemisphereLight('#dce6fb', '#aab8d8', 0.65));
+
+/* ---------- Ground plane (tinted floor → creates a horizon) ---------- */
+const ground = new THREE.Mesh(
+  new THREE.PlaneGeometry(5000, 5000),
+  new THREE.MeshStandardMaterial({ color: '#d3deef', roughness: 0.97, metalness: 0.0 })
+);
+ground.rotation.x = -Math.PI / 2;
+ground.position.y = -0.6;
+scene.add(ground);
 
 /* ---------- Ground grid (campus floor) ---------- */
 const grid = new THREE.GridHelper(1600, 160, '#8fa0cf', '#c4cfe8');
