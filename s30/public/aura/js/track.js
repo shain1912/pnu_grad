@@ -17,8 +17,8 @@ export function createTrack(scene) {
   // -------------------------------------------------------------------------
   // Palette (dark futuristic)
   // -------------------------------------------------------------------------
-  const CYAN = 0x39e0ff;
-  const VIOLET = 0x7b5cff;
+  const CYAN = 0x7ec8ff;
+  const VIOLET = 0x00e08a;
   const WHITE_HOT = 0xeaffff;
 
   // -------------------------------------------------------------------------

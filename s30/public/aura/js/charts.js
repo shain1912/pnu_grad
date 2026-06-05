@@ -7,8 +7,8 @@ export function initCharts() {
   const Chart = window.Chart;
   if (!Chart) return;
 
-  const CYAN = '#39e0ff';
-  const VIOLET = '#7b5cff';
+  const CYAN = '#7ec8ff';
+  const VIOLET = '#00e08a';
   const INK = '#aab6d6';
   const GRID = 'rgba(155, 190, 255, 0.12)';
 

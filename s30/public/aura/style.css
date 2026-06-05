@@ -17,15 +17,15 @@
    ============================================================= */
 :root {
   /* --- Base palette (dark, default) --- */
-  --bg-0: #05060f;            /* deepest void                */
-  --bg-1: #0a0b1a;            /* panel base                  */
+  --bg-0: #060b1c;            /* deepest void                */
+  --bg-1: #0c1530;            /* panel base                  */
   --ink: #eaf2ff;             /* primary text                */
   --ink-soft: #aab6d6;        /* secondary text              */
   --ink-faint: #6f7aa0;       /* tertiary / labels           */
 
   /* --- Accent gradient: cyan → violet --- */
-  --accent-1: #39e0ff;
-  --accent-2: #7b5cff;
+  --accent-1: #7ec8ff;
+  --accent-2: #00e08a;
   --grad-accent: linear-gradient(108deg, var(--accent-1) 0%, var(--accent-2) 100%);
 
   /* --- Glass surfaces --- */
@@ -53,7 +53,7 @@
 [data-theme="light"] {
   --bg-0: #eef2fb;
   --bg-1: #f7f9ff;
-  --ink: #0b1330;
+  --ink: #0e1a3a;
   --ink-soft: #3c466b;
   --ink-faint: #6f7aa0;
   --glass-bg: rgba(255, 255, 255, 0.55);
@@ -112,7 +112,7 @@ img, video { display: block; max-width: 100%; }
   display: block;
   /* faint vignette baked under the canvas in case the scene is sparse */
   background:
-    radial-gradient(120% 90% at 50% 0%, #0c1230 0%, var(--bg-0) 60%);
+    radial-gradient(120% 90% at 50% 0%, #0e1a3a 0%, var(--bg-0) 60%);
 }
 
 /* =============================================================
@@ -127,7 +127,7 @@ img, video { display: block; max-width: 100%; }
   justify-items: center;
   gap: 1.6rem;
   background:
-    radial-gradient(60% 60% at 50% 45%, #0a1130 0%, var(--bg-0) 100%);
+    radial-gradient(60% 60% at 50% 45%, #0a1430 0%, var(--bg-0) 100%);
   transition: opacity 0.9s var(--ease), visibility 0.9s;
 }
 .loader.is-hidden {
@@ -675,10 +675,10 @@ img, video { display: block; max-width: 100%; }
    --pillar custom property and a translucent --pillar-soft, then
    tint that zone's tag, struct text, bullets, quote bar and the
    overlay card's accent edge + glow. Keeps the dark-glass base. */
-.section--zone[data-pillar="A"]  { --pillar: #f59e0b; --pillar-soft: rgba(245, 158, 11, 0.14); --pillar-glow: rgba(245, 158, 11, 0.45); }
+.section--zone[data-pillar="A"]  { --pillar: #00a651; --pillar-soft: rgba(245, 158, 11, 0.14); --pillar-glow: rgba(245, 158, 11, 0.45); }
 .section--zone[data-pillar="U"]  { --pillar: #3b82f6; --pillar-soft: rgba(59, 130, 246, 0.14); --pillar-glow: rgba(59, 130, 246, 0.45); }
 .section--zone[data-pillar="R"]  { --pillar: #10b981; --pillar-soft: rgba(16, 185, 129, 0.14); --pillar-glow: rgba(16, 185, 129, 0.45); }
-.section--zone[data-pillar="A2"] { --pillar: #8b5cf6; --pillar-soft: rgba(139, 92, 246, 0.14); --pillar-glow: rgba(139, 92, 246, 0.45); }
+.section--zone[data-pillar="A2"] { --pillar: #3b82f6; --pillar-soft: rgba(139, 92, 246, 0.14); --pillar-glow: rgba(139, 92, 246, 0.45); }
 
 /* Soft pillar glow on the overlay card border within a coded zone */
 .section--zone[data-pillar] .overlay {
@@ -754,10 +754,10 @@ img, video { display: block; max-width: 100%; }
   max-width: 680px;
 }
 /* Reuse the same 4 pillar hues on each <li> */
-.aura-legend li[data-pillar="A"]  { --pillar: #f59e0b; --pillar-soft: rgba(245, 158, 11, 0.12); --pillar-glow: rgba(245, 158, 11, 0.4); }
+.aura-legend li[data-pillar="A"]  { --pillar: #00a651; --pillar-soft: rgba(245, 158, 11, 0.12); --pillar-glow: rgba(245, 158, 11, 0.4); }
 .aura-legend li[data-pillar="U"]  { --pillar: #3b82f6; --pillar-soft: rgba(59, 130, 246, 0.12); --pillar-glow: rgba(59, 130, 246, 0.4); }
 .aura-legend li[data-pillar="R"]  { --pillar: #10b981; --pillar-soft: rgba(16, 185, 129, 0.12); --pillar-glow: rgba(16, 185, 129, 0.4); }
-.aura-legend li[data-pillar="A2"] { --pillar: #8b5cf6; --pillar-soft: rgba(139, 92, 246, 0.12); --pillar-glow: rgba(139, 92, 246, 0.4); }
+.aura-legend li[data-pillar="A2"] { --pillar: #3b82f6; --pillar-soft: rgba(139, 92, 246, 0.12); --pillar-glow: rgba(139, 92, 246, 0.4); }
 
 .aura-legend li {
   flex: 1 1 0;

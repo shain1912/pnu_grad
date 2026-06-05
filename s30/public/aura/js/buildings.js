@@ -15,9 +15,9 @@ import * as THREE from 'three';
 
 /* ---------- Shared palette ---------- */
 const PALETTE = {
-  cyan: 0x39e0ff,
-  violet: 0x7b5cff,
-  amber: 0xffb24d,
+  cyan: 0x7ec8ff,
+  violet: 0x00e08a,
+  amber: 0x00e08a,
   steel: 0x1a2240,
   panel: 0x10162e,
   dark: 0x0a0e20,
@@ -37,7 +37,7 @@ function structMat(color = PALETTE.steel) {
 /** Emissive accent material — glows in the chosen color. */
 function glowMat(color, intensity = 1.6) {
   return new THREE.MeshStandardMaterial({
-    color: 0x0a0a14,
+    color: 0x070e22,
     emissive: color,
     emissiveIntensity: intensity,
     metalness: 0.2,
