@@ -1866,7 +1866,7 @@
           </div>
           <div class="proc-body">
             <h5>자격 확인 — 이수 학기·성적·학점 기준 자가 점검</h5>
-            <p>소속 학과(부)의 <strong>4학기 이상 7학기 이내</strong> 이수 여부 / 학기별 이수학점 충족 여부 /
+            <p>소속 학과(부)의 <strong>4학기 이상</strong> 이수 여부 (상한 폐지) / 학기별 이수학점 충족 여부 /
               총 평점평균 <strong>3.0점 이상</strong> (당해 학기 계절수업은 반영되지 않습니다).</p>
             <span class="proc-tag">학년별 1학기 = 수료학점의 1/2 · 2학기 = 학년 수료학점</span>
           </div>
@@ -2724,7 +2724,7 @@
   .el-viz-grid { grid-template-columns: 1fr; }
 }
 
-/* ── ① 이수학기 범위 바 (1~8학기, 4~7 강조) ── */
+/* ── ① 이수학기 범위 바 (1~8+, 4학기 이상 강조 · 상한 폐지) ── */
 .el-track {
   position: relative;
   display: grid;
@@ -2986,9 +2986,9 @@
   <div class="el-stats-grid">
     <div class="stat">
       <div class="stat-eyebrow">01 · Eligible Term</div>
-      <div class="stat-number"><span data-count="4">4</span>~<span data-count="7">7</span><span class="unit">학기</span></div>
+      <div class="stat-number"><span data-count="4">4</span><span class="unit">학기 이상</span></div>
       <div class="stat-label">이수 중인 학생 지원 가능</div>
-      <div class="stat-foot">학부 4~7학기</div>
+      <div class="stat-foot">학부 4학기 이상 (상한 폐지)</div>
     </div>
     <div class="stat">
       <div class="stat-eyebrow">02 · Required GPA</div>
@@ -3013,14 +3013,14 @@
   <!-- 인포그래픽 3종 -->
   <div class="el-viz-grid">
 
-    <!-- ① 이수학기 범위 바 (1~8, 4~7 강조) -->
-    <div class="el-viz" role="img" aria-label="이수학기 자격 범위: 1학기부터 8학기 중 4학기에서 7학기까지가 지원 가능 구간입니다.">
+    <!-- ① 이수학기 범위 바 (1~8+, 4학기 이상 강조 · 상한 폐지) -->
+    <div class="el-viz" role="img" aria-label="이수학기 자격 범위: 4학기 이상이면 지원 가능합니다. 상한이 폐지되어 8학기 이상도 지원할 수 있습니다.">
       <div class="el-viz-head">
         <span class="el-viz-ico" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
         </span>
         <span class="el-viz-title">이수학기 범위</span>
-        <span class="el-viz-val">4~7학기</span>
+        <span class="el-viz-val">4학기 이상</span>
       </div>
       <div class="el-track" aria-hidden="true">
         <div class="el-track-cell">1</div>
@@ -3030,12 +3030,12 @@
         <div class="el-track-cell is-active">5</div>
         <div class="el-track-cell is-active">6</div>
         <div class="el-track-cell is-active">7</div>
-        <div class="el-track-cell">8</div>
+        <div class="el-track-cell is-active">8+</div>
       </div>
       <div class="el-track-foot" aria-hidden="true">
         <span>1학기</span>
-        <span><strong>지원 가능 구간</strong></span>
-        <span>8학기</span>
+        <span><strong>4학기 이상 지원 가능 (상한 폐지)</strong></span>
+        <span>8학기+</span>
       </div>
     </div>
 
@@ -3056,7 +3056,7 @@
     </div>
 
     <!-- ③ 전환 졸업평점 비교 막대 3개 -->
-    <div class="el-viz" role="img" aria-label="전환 졸업평점 요건: 6학기 졸업 4.0 이상, 7학기 졸업 3.5 이상, 8학기 졸업 3.25 이상.">
+    <div class="el-viz" role="img" aria-label="전환 졸업평점 요건: 6학기 졸업 4.0 이상, 7학기 졸업 3.5 이상, 8학기 이상 졸업 3.0 이상.">
       <div class="el-viz-head">
         <span class="el-viz-ico" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="10" width="3" height="8" rx="1"/><rect x="12" y="6" width="3" height="12" rx="1"/><rect x="17" y="13" width="3" height="5" rx="1"/></svg>
@@ -3076,9 +3076,9 @@
           <span class="el-cmp-val">3.5↑</span>
         </div>
         <div class="el-cmp-row">
-          <span class="el-cmp-label">8학기</span>
+          <span class="el-cmp-label">8학기+</span>
           <span class="el-cmp-bar-wrap"><span class="el-cmp-bar" style="width:66%"></span></span>
-          <span class="el-cmp-val">3.25↑</span>
+          <span class="el-cmp-val">3.0↑</span>
         </div>
       </div>
     </div>
@@ -3103,7 +3103,7 @@
               <span class="el-row-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
               </span>
-              <span class="el-row-text">소속 학과(부)·전공의 <strong>4학기 이상 7학기 이내</strong> 이수자 (당해 학기 계절수업 반영 불가)</span>
+              <span class="el-row-text">소속 학과(부)·전공의 <strong>4학기 이상</strong> 이수자 (상한 폐지 · 당해 학기 계절수업 반영 불가)</span>
             </dd>
           </div>
           <div class="elig-row">
@@ -3162,7 +3162,7 @@
           </div>
           <div class="elig-row">
             <dt>졸업평점</dt>
-            <dd>6학기 <strong>4.0↑</strong> / 7학기 <strong>3.5↑</strong> / 8학기 <strong>3.25↑</strong></dd>
+            <dd>6학기 <strong>4.0↑</strong> / 7학기 <strong>3.5↑</strong> / 8학기 이상 <strong>3.0↑</strong></dd>
           </div>
         </dl>
       </div>
@@ -3243,7 +3243,7 @@
           <span class="faq-icon">+</span>
         </summary>
         <div class="faq-a">
-          <div class="faq-a-inner">연계과정자의 이수학점 총 평점 평균이 <strong>6학기 졸업 4.0 이상 / 7학기 졸업 3.5 이상 / 8학기 졸업 3.25 이상</strong>이어야 합니다. 또한 영어 표준외국어능력시험 졸업요건 및 각종 교육인증제 해당 학생은 인증요건을 모두 충족해야 합니다.</div>
+          <div class="faq-a-inner">연계과정자의 이수학점 총 평점 평균이 <strong>6학기 졸업 4.0 이상 / 7학기 졸업 3.5 이상 / 8학기 이상 졸업 3.0 이상</strong>이어야 합니다(규정 개정 — 8학기 졸업 기준 3.25→3.0 완화). 또한 영어 표준외국어능력시험 졸업요건 및 각종 교육인증제 해당 학생은 인증요건을 모두 충족해야 합니다.</div>
         </div>
       </details>
 
@@ -3538,6 +3538,7 @@ window.init_eligibility = function () {
   </div>
   <ul class="scho-notes">
     <li>8학기 이수자(정규졸업 예정자)는 학사 졸업 전체평점평균 3.8 이상(소수점 셋째자리 절사)일 경우에만 지급</li>
+    <li><strong>8학기 초과 졸업자는 장학금 지급 대상에서 제외</strong> (규정 개정 신설 — 입학 자격에는 영향 없음)</li>
     <li>계약학과 선발 학생은 지급 제외</li>
     <li>등록기간에 자비 등록 후 학기 중 개별 계좌로 지급</li>
   </ul>
@@ -3612,6 +3613,7 @@ window.init_eligibility = function () {
 <!-- CTA -->
 <div class="bn-cta">
   <button class="btn btn-md btn-primary" data-apply>지금 희망 제출하기 →</button>
+  <a class="btn btn-md btn-outline" href="/scholarship.html">내 장학 해당 여부 확인 →</a>
 </div>
 
     </div>
