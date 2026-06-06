@@ -9,6 +9,10 @@ services:
     env_file: .env
     ports:
       - "80:3001"
+    volumes:
+      # Sheets Service Account 키 — 이미지에서 제외됨(.dockerignore)이라 호스트 파일을 마운트.
+      # GOOGLE_SHEETS_SA_KEY_PATH=./credentials/sheets-sa.json (cwd=/app/backend) 와 일치.
+      - ./sheets-sa.json:/app/backend/credentials/sheets-sa.json:ro
     depends_on:
       postgres:
         condition: service_healthy

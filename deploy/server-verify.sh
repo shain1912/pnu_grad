@@ -18,7 +18,7 @@ for i in $(seq 1 20); do
 done
 
 echo "=== local HTTP (:80) ==="
-for p in /health /api/departments / /s30/ /admission.html /login; do
+for p in /health /api/departments / /s30/ /admission-v3-dark.html /login; do
   code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 6 "http://localhost:80$p")
   echo "  $p -> $code"
 done

@@ -51,6 +51,8 @@ echo "=== [3/5] 스택 배치 ==="
 mkdir -p "$STACK"
 cp "$BUNDLE/docker-compose.prod.yml" "$STACK/docker-compose.yml"
 cp "$BUNDLE/env.prod" "$STACK/.env"
+# Sheets SA 키 — compose가 ./sheets-sa.json 으로 컨테이너에 마운트 (이미지엔 미포함)
+[ -f "$BUNDLE/sheets-sa.json" ] && cp "$BUNDLE/sheets-sa.json" "$STACK/sheets-sa.json"
 
 echo "=== [4/5] 기동 ==="
 cd "$STACK"

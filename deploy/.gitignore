@@ -1,4 +1,5 @@
 .env
+sheets-sa.json
 certs/*.pem
 certs/*.key
 certs/*.crt

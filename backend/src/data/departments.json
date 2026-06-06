@@ -1,1298 +1,3093 @@
 [
  {
+  "id": 1,
   "gyeyeol": "인문·사회",
   "name": "국어국문학과",
+  "recruit": true,
+  "homepage": "https://bkorea.pusan.ac.kr/bkorea/index.do",
+  "hashtags": [
+   "#고전수필",
+   "#구비문학",
+   "#국어음운론",
+   "#현대소설",
+   "#근대문학",
+   "#현대희곡",
+   "#영상문학",
+   "#국어통사론",
+   "#문학비평",
+   "#고전소설",
+   "#고전시가",
+   "#현대시",
+   "#국어사",
+   "#국어형태론"
+  ],
   "bk21": true,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "고전문학",
-    "recruit": true
-   },
-   {
-    "name": "국어학",
-    "recruit": true
-   },
-   {
-    "name": "현대문학",
-    "recruit": true
-   }
-  ],
-  "id": 1,
-  "bk21_desc": "트랜스-로컬 한국어문학 미래인재 양성 교육연구단",
-  "bk21_url": "bktlkorean.pusan.ac.kr"
+  "majors": [],
+  "bk21_name": "트랜스-로컬 한국어문학 미래인재 양성 교육연구단",
+  "bk21_url": "https://bktlkorean.pusan.ac.kr"
  },
  {
-  "gyeyeol": "인문·사회",
-  "name": "중어중문학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "중국어학",
-    "recruit": true
-   },
-   {
-    "name": "중국문학",
-    "recruit": true
-   }
-  ],
-  "id": 2
- },
- {
+  "id": 2,
   "gyeyeol": "인문·사회",
   "name": "일어일문학과",
-  "bk21": false,
   "recruit": true,
-  "majors": [
-   {
-    "name": "일어학",
-    "recruit": true
-   },
-   {
-    "name": "일문학",
-    "recruit": true
-   }
-  ],
-  "id": 3
+  "homepage": "https://japan.pusan.ac.kr/japan/index.do",
+  "hashtags": [],
+  "bk21": false,
+  "majors": []
  },
  {
+  "id": 3,
   "gyeyeol": "인문·사회",
   "name": "영어영문학과",
-  "bk21": false,
   "recruit": true,
-  "majors": [
-   {
-    "name": "영어영문학",
-    "recruit": true
-   },
-   {
-    "name": "번역학",
-    "recruit": false
-   },
-   {
-    "name": "영어학",
-    "recruit": true
-   },
-   {
-    "name": "영문학",
-    "recruit": true
-   }
+  "homepage": "https://pnuenglish.pusan.ac.kr/pnuenglish/index.do",
+  "hashtags": [
+   "#의미론",
+   "#영미문화연구",
+   "#응용언어학",
+   "#미국소설",
+   "#영어통사론",
+   "#영미시",
+   "#음성학",
+   "#실험음운론",
+   "#사회언어학",
+   "#현대영미희곡"
   ],
-  "id": 4
+  "bk21": false,
+  "majors": []
  },
  {
-  "gyeyeol": "인문·사회",
-  "name": "불어불문학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "불어학",
-    "recruit": true
-   },
-   {
-    "name": "불문학",
-    "recruit": true
-   }
-  ],
-  "id": 5
- },
- {
-  "gyeyeol": "인문·사회",
-  "name": "독어독문학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "독어학",
-    "recruit": true
-   },
-   {
-    "name": "독문학",
-    "recruit": true
-   }
-  ],
-  "id": 6
- },
- {
-  "gyeyeol": "인문·사회",
-  "name": "노어노문학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "노어학",
-    "recruit": false
-   },
-   {
-    "name": "노문학",
-    "recruit": true
-   }
-  ],
-  "id": 7
- },
- {
+  "id": 4,
   "gyeyeol": "인문·사회",
   "name": "한문학과",
+  "recruit": true,
+  "homepage": "https://hanmun.pusan.ac.kr/hanmun/index.do",
+  "hashtags": [
+   "#여말선초한문학",
+   "#한시",
+   "#조선조한문학",
+   "#경학",
+   "#한국한문학사",
+   "#한문학비평론"
+  ],
   "bk21": true,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "한문학",
-    "recruit": true
-   }
-  ],
-  "id": 8,
-  "bk21_desc": "한문고전 번역 기반 동아시아_로컬지식학 전문가 교육연구팀",
-  "bk21_url": "hanmunbk4local.pusan.ac.kr/hanmunbk4local/index.do"
+  "majors": [],
+  "bk21_name": "한문고전 번역 기반 동아시아_로컬지식학 전문가 교육연구팀",
+  "bk21_url": "https://hanmunbk4local.pusan.ac.kr/hanmunbk4local/index.do"
  },
  {
-  "gyeyeol": "인문·사회",
-  "name": "언어학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "언어학",
-    "recruit": true
-   }
-  ],
-  "id": 9
- },
- {
+  "id": 5,
   "gyeyeol": "인문·사회",
   "name": "사학과",
+  "recruit": true,
+  "homepage": "https://history.pusan.ac.kr/history/index.do",
+  "hashtags": [
+   "#한국과학사",
+   "#서양중세사",
+   "#동양근현대사",
+   "#동양중세사",
+   "#한국근현대사",
+   "#서양근대사(여성사)",
+   "#일본근대사",
+   "#한국근세사(조선시대사)",
+   "#서양현대사(러시아사)"
+  ],
   "bk21": false,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "한국사",
-    "recruit": true
-   },
-   {
-    "name": "동양사",
-    "recruit": true
-   },
-   {
-    "name": "서양사",
-    "recruit": true
-   }
-  ],
-  "id": 10
+  "majors": []
  },
  {
+  "id": 6,
   "gyeyeol": "인문·사회",
-  "name": "철학과",
-  "bk21": true,
+  "name": "독어독문학과",
   "recruit": true,
-  "majors": [
-   {
-    "name": "동양철학",
-    "recruit": true
-   },
-   {
-    "name": "서양철학",
-    "recruit": true
-   },
-   {
-    "name": "사회철학",
-    "recruit": true
-   }
+  "homepage": "https://german.pusan.ac.kr/german/index.do",
+  "hashtags": [
+   "#독어학",
+   "#통사론",
+   "#사회언어학",
+   "#응용언어학",
+   "#독문학",
+   "#문화학",
+   "#문예학",
+   "#독일어권문학및문화연구"
   ],
-  "id": 11,
-  "bk21_desc": "복합위기대응철학 융합인재 교육연구팀",
-  "bk21_url": "philosophybk21.pusan.ac.kr/philosophybk21/index.do"
+  "bk21": false,
+  "majors": []
  },
  {
+  "id": 7,
+  "gyeyeol": "인문·사회",
+  "name": "노어노문학과",
+  "recruit": true,
+  "homepage": "https://russia.pusan.ac.kr/russia/index.do",
+  "hashtags": [
+   "#20세기러시아문학",
+   "#문예학이론",
+   "#러시아문학",
+   "#러시아어형태론",
+   "#러시아소설",
+   "#러시아어인지언어학"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 8,
+  "gyeyeol": "인문·사회",
+  "name": "언어정보학과",
+  "recruit": true,
+  "homepage": "https://linguistics.pusan.ac.kr/linguistics/index.do",
+  "hashtags": [
+   "#의미론",
+   "#언어병리학",
+   "#의공학",
+   "#응용언어학",
+   "#역사비교언어학",
+   "#통사론"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 9,
+  "gyeyeol": "인문·사회",
+  "name": "불어불문학과",
+  "recruit": true,
+  "homepage": "https://french.pusan.ac.kr/french/index.do",
+  "hashtags": [
+   "#불어학",
+   "#불소설"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 10,
+  "gyeyeol": "인문·사회",
+  "name": "중어중문학과",
+  "recruit": true,
+  "homepage": "https://china.pusan.ac.kr/china/index.do",
+  "hashtags": [
+   "#중국고전문학이론",
+   "#중국역사언어학",
+   "#중국현대문학",
+   "#중국문화",
+   "#중국고전소설",
+   "#콘텐츠스토리텔링",
+   "#중국어문법",
+   "#중국어사",
+   "#중국어교육",
+   "#통역번역학"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 11,
   "gyeyeol": "인문·사회",
   "name": "고고학과",
-  "bk21": true,
   "recruit": true,
-  "majors": [
-   {
-    "name": "고고학",
-    "recruit": true
-   }
+  "homepage": "https://archaeology.pusan.ac.kr/archaeology/index.do",
+  "hashtags": [
+   "#한국고대고고학",
+   "#삼국시대고고학",
+   "#동양고고학",
+   "#불교고고학",
+   "#선사고고학",
+   "#신석기시대고고학",
+   "#이론고고학",
+   "#한국선사고고학",
+   "#청동기시대고고학",
+   "#삼한시대고고학"
   ],
-  "id": 12,
-  "bk21_desc": "동아시아 SAP 융합 인재 양성 사업팀: Science, Archaeology, Public",
-  "bk21_url": "bk21-sap.pusan.ac.kr"
+  "bk21": true,
+  "majors": [],
+  "bk21_name": "동아시아 SAP 융합 인재 양성 사업팀: Science, Archaeology, Public",
+  "bk21_url": "https://bk21-sap.pusan.ac.kr"
  },
  {
+  "id": 12,
+  "gyeyeol": "인문·사회",
+  "name": "철학과",
+  "recruit": true,
+  "homepage": "https://philosophy.pusan.ac.kr/philosophy/index.do",
+  "hashtags": [
+   "#독일관념론",
+   "#정치철학",
+   "#한국철학",
+   "#미학",
+   "#사회철학",
+   "#인도철학",
+   "#불교철학",
+   "#서양근대철학",
+   "#중국유가철학",
+   "#중국철학",
+   "#영미과학철학",
+   "#언어분석철학",
+   "#문화철학",
+   "#현대프랑스철학"
+  ],
+  "bk21": true,
+  "majors": [],
+  "bk21_name": "복합위기대응철학 융합인재 교육연구팀",
+  "bk21_url": "https://philosophybk21.pusan.ac.kr/philosophybk21/index.do"
+ },
+ {
+  "id": 13,
   "gyeyeol": "인문·사회",
   "name": "행정학과",
-  "bk21": false,
   "recruit": true,
-  "majors": [
-   {
-    "name": "행정학",
-    "recruit": true
-   }
+  "homepage": "https://pub-adm.pusan.ac.kr/pub-adm/index.do",
+  "hashtags": [
+   "#정책이론",
+   "#지방행정",
+   "#인사행정론",
+   "#행정통제",
+   "#공공감사",
+   "#지역개발",
+   "#공공행정",
+   "#데이터기반의사결정",
+   "#공공안전",
+   "#공공부문인적자원관리",
+   "#재정정책",
+   "#복지정책",
+   "#경제정책"
   ],
-  "id": 13
+  "bk21": false,
+  "majors": []
  },
  {
+  "id": 14,
   "gyeyeol": "인문·사회",
   "name": "정치외교학과",
+  "recruit": true,
+  "homepage": "https://polsci.pusan.ac.kr/polsci/index.do",
+  "hashtags": [
+   "#외교정책론",
+   "#중국정치론",
+   "#의회및선거론",
+   "#디지털정치연구",
+   "#한국정치론",
+   "#한국현대정치사",
+   "#국제정치",
+   "#비교정치",
+   "#방법론",
+   "#빅데이터분석"
+  ],
   "bk21": false,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "정치외교학",
-    "recruit": true
-   }
-  ],
-  "id": 14
+  "majors": []
  },
  {
-  "gyeyeol": "인문·사회",
-  "name": "사회복지학과",
-  "bk21": true,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "사회복지학",
-    "recruit": true
-   }
-  ],
   "id": 15,
-  "bk21_desc": "4차산업혁명시대 지역사회의 성장과 공존을 선도하는 사회복지 미래인재 양성단",
-  "bk21_url": ""
- },
- {
   "gyeyeol": "인문·사회",
   "name": "사회학과",
-  "bk21": false,
   "recruit": true,
-  "majors": [
-   {
-    "name": "사회학",
-    "recruit": true
-   }
+  "homepage": "https://soc.pusan.ac.kr/soc/index.do",
+  "hashtags": [
+   "#노동사회학",
+   "#젠더사회학",
+   "#일본지역연구",
+   "#문화사회학",
+   "#사회변동론",
+   "#사회이론",
+   "#도시사회학",
+   "#환경사회학",
+   "#인권사회학",
+   "#소수자연구",
+   "#장애연구",
+   "#생태평화연구",
+   "#가족사회학",
+   "#사회정책"
   ],
-  "id": 16
+  "bk21": false,
+  "majors": []
  },
  {
+  "id": 16,
   "gyeyeol": "인문·사회",
   "name": "심리학과",
+  "recruit": true,
+  "homepage": "https://psy.pusan.ac.kr/psy/index.do",
+  "hashtags": [
+   "#공학심리학",
+   "#인간공학",
+   "#산업및조직심리학",
+   "#상담심리학",
+   "#인지심리학",
+   "#인지신경과학",
+   "#언어심리학",
+   "#임상심리학",
+   "#계량심리학",
+   "#지각심리학",
+   "#임상신경심리학",
+   "#상담및심리치료"
+  ],
   "bk21": false,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "심리학",
-    "recruit": true
-   }
-  ],
-  "id": 17
+  "majors": []
  },
  {
-  "gyeyeol": "인문·사회",
-  "name": "문헌정보학과",
-  "bk21": true,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "문헌정보학",
-    "recruit": true
-   },
-   {
-    "name": "기록관리학",
-    "recruit": true
-   }
-  ],
-  "id": 18,
-  "bk21_desc": "생활밀착형 정보서비스 전문인력 교육연구단",
-  "bk21_url": "bk21-pnulis.pusan.ac.kr/bk21-pnulis/index.do"
- },
- {
+  "id": 17,
   "gyeyeol": "인문·사회",
   "name": "미디어커뮤니케이션학과",
-  "bk21": false,
   "recruit": true,
-  "majors": [
-   {
-    "name": "언론학",
-    "recruit": true
-   }
+  "homepage": "https://comm.pusan.ac.kr/comm/index.do",
+  "hashtags": [
+   "#방송미디어",
+   "#비판커뮤니케이션",
+   "#광고",
+   "#설득커뮤니케이션",
+   "#PR(홍보)",
+   "#건강·보건위험과학커뮤니케이션",
+   "#양적방법론",
+   "#커뮤니케이션이론",
+   "#디지털저널리즘",
+   "#뉴미디어테크놀로지",
+   "#정치커뮤니케이션",
+   "#문화연구",
+   "#질적연구방법론",
+   "#뉴미디어산업",
+   "#매스커뮤니케이션"
   ],
-  "id": 19
- },
- {
-  "gyeyeol": "인문·사회",
-  "name": "법학과",
   "bk21": false,
-  "recruit": true,
-  "majors": [],
-  "id": 20
+  "majors": []
  },
  {
+  "id": 18,
+  "gyeyeol": "인문·사회",
+  "name": "사회복지학과",
+  "recruit": true,
+  "homepage": "https://swf.pusan.ac.kr/swf/index.do",
+  "hashtags": [
+   "#사회복지조사론",
+   "#사회복지서비스론",
+   "#사회복지프로그램평가론",
+   "#사회복지실천",
+   "#정신보건사회복지",
+   "#의료사회사업",
+   "#사회복지윤리와철학",
+   "#사회서비스",
+   "#사회복지실천기술",
+   "#노인복지실천",
+   "#사회복지자료분석론",
+   "#인간행동과사회환경",
+   "#가족복지론",
+   "#지역사회복지론",
+   "#사회문제론",
+   "#사회복지행정론",
+   "#사회복지법제론",
+   "#빈곤및소득불평등",
+   "#사회복지정책분석",
+   "#노인복지",
+   "#건강불평등",
+   "#예방건강서비스"
+  ],
+  "bk21": true,
+  "majors": [],
+  "bk21_name": "4차산업혁명시대 지역사회의 성장과 공존을 선도하는 사회복지 미래인재 양성단",
+  "bk21_url": "https://bk21four-4thirsocialwelfare.pusan.ac.kr"
+ },
+ {
+  "id": 19,
+  "gyeyeol": "인문·사회",
+  "name": "문헌정보학과",
+  "recruit": true,
+  "homepage": "https://lais.pusan.ac.kr/lais/index.do",
+  "hashtags": [
+   "#서지학",
+   "#정보자료",
+   "#미디어",
+   "#도서관경영",
+   "#기록관운영",
+   "#편목",
+   "#메타데이터",
+   "#정보공학",
+   "#디지털리터러시",
+   "#어린이서비스",
+   "#정보서비스",
+   "#기록학"
+  ],
+  "bk21": true,
+  "majors": [],
+  "bk21_name": "생활밀착형 정보서비스 전문인력 교육연구단",
+  "bk21_url": "https://bk21-pnulis.pusan.ac.kr/bk21-pnulis/index.do"
+ },
+ {
+  "id": 20,
   "gyeyeol": "인문·사회",
   "name": "국어교육학과",
-  "bk21": false,
   "recruit": true,
-  "majors": [
-   {
-    "name": "국어교육학",
-    "recruit": true
-   }
+  "homepage": "https://koredu.pusan.ac.kr/koredu/index.do",
+  "hashtags": [
+   "#국어교육론",
+   "#화법교육",
+   "#독서교육",
+   "#작문교육",
+   "#문학교육",
+   "#국어과교육과정",
+   "#국어교수학습방법",
+   "#고전문학이론교육",
+   "#고전시가교육",
+   "#국어교육학연구",
+   "#의사소통교육",
+   "#국어교육현장문학텍스트독법지도"
   ],
-  "id": 21
+  "bk21": true,
+  "majors": [],
+  "bk21_name": "교육의 사회적 책임 연구단",
+  "bk21_url": "https://bkesr.pusan.ac.kr"
  },
  {
-  "gyeyeol": "인문·사회",
-  "name": "외국어교육학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "영어교육학",
-    "recruit": true
-   },
-   {
-    "name": "불어교육학",
-    "recruit": true
-   },
-   {
-    "name": "독어교육학",
-    "recruit": true
-   }
-  ],
-  "id": 22
- },
- {
+  "id": 21,
   "gyeyeol": "인문·사회",
   "name": "교육학과",
+  "recruit": true,
+  "homepage": "https://ed.pusan.ac.kr/ed/index.do",
+  "hashtags": [
+   "#교육사",
+   "#교육철학",
+   "#교육과정",
+   "#교육방법",
+   "#교육심리",
+   "#상담심리",
+   "#교육행정",
+   "#교육사회학",
+   "#평생교육",
+   "#교육공학",
+   "#교육평가",
+   "#교사교육",
+   "#학교상담"
+  ],
   "bk21": true,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "교육사및교육철학",
-    "recruit": true
-   },
-   {
-    "name": "교육과정및교육방법",
-    "recruit": true
-   },
-   {
-    "name": "교육심리및상담심리",
-    "recruit": true
-   },
-   {
-    "name": "교육행정·교육사회·평생교육",
-    "recruit": true
-   }
-  ],
-  "id": 23,
-  "bk21_desc": "교육의 사회적 책임 연구단",
-  "bk21_url": "bkesr.pusan.ac.kr"
- },
- {
-  "gyeyeol": "인문·사회",
-  "name": "유아교육학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "유아교육학",
-    "recruit": true
-   }
-  ],
-  "id": 24
- },
- {
-  "gyeyeol": "인문·사회",
-  "name": "특수교육학과",
-  "bk21": true,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "특수교육학",
-    "recruit": true
-   }
-  ],
-  "id": 25,
-  "bk21_desc": "학교-지역사회를 연계한 장애인 전환 및 평생교육 지원팀",
+  "majors": [],
+  "bk21_name": "학교-지역사회를 연계한 장애인 전환 및 평생교육 지원팀",
   "bk21_url": "https://bk21four-se.pusan.ac.kr/bk21plus_se/36057/subview.do"
  },
  {
+  "id": 22,
   "gyeyeol": "인문·사회",
-  "name": "사회교육학과",
-  "bk21": false,
+  "name": "유아교육학과",
   "recruit": true,
-  "majors": [
-   {
-    "name": "일반사회교육학",
-    "recruit": true
-   },
-   {
-    "name": "역사교육학",
-    "recruit": true
-   },
-   {
-    "name": "지리교육학",
-    "recruit": true
-   }
+  "homepage": "https://child.pusan.ac.kr/child/index.do",
+  "hashtags": [
+   "#아동발달",
+   "#가족관계",
+   "#가족상담",
+   "#가족생활교육",
+   "#노인심리",
+   "#부모교육",
+   "#양육행동",
+   "#다문화가족",
+   "#아동학대예방",
+   "#가족빅데이터",
+   "#인간발달",
+   "#가족정책"
   ],
-  "id": 26
+  "bk21": false,
+  "majors": []
  },
  {
+  "id": 23,
+  "gyeyeol": "인문·사회",
+  "name": "특수교육학과",
+  "recruit": true,
+  "homepage": "https://special.pusan.ac.kr/special/index.do",
+  "hashtags": [
+   "#특수교육학",
+   "#장애아동발달",
+   "#개별화교육",
+   "#시각장애교육",
+   "#청각장애교육",
+   "#지적장애교육",
+   "#정서행동장애교육",
+   "#학습장애교육",
+   "#특수유아교육",
+   "#특수교육공학",
+   "#특수교육상담",
+   "#특수교육법및윤리",
+   "#장애인통합교육"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 24,
   "gyeyeol": "인문·사회",
   "name": "윤리교육학과",
-  "bk21": false,
   "recruit": true,
-  "majors": [],
-  "id": 27
+  "homepage": "https://ethics.pusan.ac.kr/ethics/index.do",
+  "hashtags": [
+   "#윤리교육학",
+   "#정치이론",
+   "#통일교육론",
+   "#민주주의론",
+   "#서양현대윤리",
+   "#도덕과교과교육",
+   "#서양윤리사상",
+   "#윤리와논술",
+   "#서양윤리교재연구",
+   "#가치교육",
+   "#공동체윤리",
+   "#인성교육"
+  ],
+  "bk21": false,
+  "majors": []
  },
  {
+  "id": 25,
+  "gyeyeol": "인문·사회",
+  "name": "사회교육학과",
+  "recruit": true,
+  "homepage": "https://socialedu.pusan.ac.kr/socialedu/index.do",
+  "hashtags": [
+   "#일반사회교육학",
+   "#사회과교육과정",
+   "#교수학습이론",
+   "#사회학",
+   "#정치학",
+   "#경제학",
+   "#법학",
+   "#문화인류학",
+   "#민주시민교육",
+   "#사회과학방법론"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 26,
+  "gyeyeol": "인문·사회",
+  "name": "무역학과",
+  "recruit": true,
+  "homepage": "https://pnutrade.pusan.ac.kr/pnutrade/index.do",
+  "hashtags": [
+   "#국제무역학",
+   "#국제통상",
+   "#무역이론",
+   "#국제금융",
+   "#국제경영",
+   "#무역정책",
+   "#글로벌물류",
+   "#무역상무",
+   "#국제경제학",
+   "#통상법",
+   "#글로벌마케팅"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 27,
+  "gyeyeol": "인문·사회",
+  "name": "경제학과",
+  "recruit": true,
+  "homepage": "https://pnuecon.pusan.ac.kr/pnuecon/index.do",
+  "hashtags": [
+   "#경제학",
+   "#미시경제학",
+   "#거시경제학",
+   "#계량경제학",
+   "#경제사",
+   "#경제학설사",
+   "#국제경제학",
+   "#지역경제학",
+   "#경제정책",
+   "#경제분석"
+  ],
+  "bk21": true,
+  "majors": [],
+  "bk21_name": "지역선도 균형발전을 위한 혁신인재 양성 교육연구단",
+  "bk21_url": "https://bk21four-econ.pusan.ac.kr/"
+ },
+ {
+  "id": 28,
+  "gyeyeol": "인문·사회",
+  "name": "공공정책학과",
+  "recruit": true,
+  "homepage": "https://ppm.pusan.ac.kr/ppm/index.do",
+  "hashtags": [
+   "#공공정책학",
+   "#공공행정",
+   "#정책분석",
+   "#정책평가",
+   "#공공관리",
+   "#지방자치",
+   "#지역정책",
+   "#공공데이터분석",
+   "#공공경제",
+   "#사회문제해양적갈등관리",
+   "#정부혁신"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 29,
   "gyeyeol": "인문·사회",
   "name": "경영학과",
-  "bk21": true,
   "recruit": true,
-  "majors": [
-   {
-    "name": "경영정보",
-    "recruit": true
-   },
-   {
-    "name": "국제경영",
-    "recruit": true
-   },
-   {
-    "name": "마케팅",
-    "recruit": true
-   },
-   {
-    "name": "OM(OperationsManagement)",
-    "recruit": true
-   },
-   {
-    "name": "인사∙조직",
-    "recruit": true
-   },
-   {
-    "name": "재무금융",
-    "recruit": true
-   },
-   {
-    "name": "회계학",
-    "recruit": true
-   },
-   {
-    "name": "디지털금융",
-    "recruit": true
-   },
-   {
-    "name": "디지털마케팅",
-    "recruit": true
-   }
+  "homepage": "https://biz.pusan.ac.kr/biz/index.do",
+  "hashtags": [
+   "#경영학",
+   "#경영정보시스템",
+   "#국제경영",
+   "#마케팅",
+   "#운영관리",
+   "#인사조직",
+   "#재무관리",
+   "#회계학",
+   "#기술경영",
+   "#전략경영"
   ],
-  "id": 28,
-  "bk21_desc": "부산 금융중심지 선진화를 위한 빅데이터 기반 디지털 금융 교육연구 사업단",
+  "bk21": true,
+  "majors": [],
+  "bk21_name": "부산 금융중심지 선진화를 위한 빅데이터 기반 디지털 금융 교육연구 사업단",
   "bk21_url": "https://pusanbizbk21.quv.kr/"
  },
  {
-  "gyeyeol": "인문·사회",
-  "name": "무역학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [],
-  "id": 29
- },
- {
-  "gyeyeol": "인문·사회",
-  "name": "경제학과",
-  "bk21": true,
-  "recruit": true,
-  "majors": [],
   "id": 30,
-  "bk21_desc": "지역선도 균형발전을 위한 혁신인재 양성 교육연구단",
-  "bk21_url": "bk21four-econ.pusan.ac.kr/"
- },
- {
-  "gyeyeol": "인문·사회",
-  "name": "공공정책학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [],
-  "id": 31
- },
- {
-  "gyeyeol": "인문·사회",
-  "name": "관광컨벤션학과",
-  "bk21": true,
-  "recruit": true,
-  "majors": [],
-  "id": 32,
-  "bk21_desc": "글로벌 해양관광컨벤션 특화도시개발 교육연구팀",
-  "bk21_url": "bk21four-convention.pusan.ac.kr/bk21plus_convention/index.do"
- },
- {
   "gyeyeol": "인문·사회",
   "name": "아동가족학과",
-  "bk21": false,
   "recruit": true,
-  "majors": [],
-  "id": 33
+  "homepage": "https://cdfs.pusan.ac.kr/cdfs/index.do",
+  "hashtags": [
+   "#아동가족학",
+   "#아동발달",
+   "#가족학",
+   "#아동복지",
+   "#가족상담",
+   "#가족치료",
+   "#부모교육",
+   "#아동심리",
+   "#가족정책",
+   "#영유아발달지원"
+  ],
+  "bk21": false,
+  "majors": []
  },
  {
-  "gyeyeol": "자연과학",
-  "name": "수학과",
-  "bk21": true,
+  "id": 31,
+  "gyeyeol": "인문·사회",
+  "name": "법학과",
   "recruit": true,
+  "homepage": "https://collegeoflaw.pusan.ac.kr/collegeoflaw/index.do",
+  "hashtags": [
+   "#법학전문대학원",
+   "#로스쿨",
+   "#금융법",
+   "#해운통상법",
+   "#국제법",
+   "#민사법",
+   "#형사법",
+   "#공법",
+   "#법률실무",
+   "#리걸클리닉",
+   "#전문법조인양성"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 32,
+  "gyeyeol": "인문·사회",
+  "name": "식품자원경제학과",
+  "recruit": true,
+  "homepage": "https://agecon.pusan.ac.kr/agecon/index.do",
+  "hashtags": [
+   "#식품자원경제학과",
+   "#농업경제",
+   "#식품경제",
+   "#자원경제",
+   "#환경경제",
+   "#농업정책",
+   "#식품산업",
+   "#농촌개발",
+   "#경제분석",
+   "#지속가능성"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 33,
+  "gyeyeol": "인문·사회",
+  "name": "관광컨벤션학과",
+  "recruit": true,
+  "homepage": "https://convention.pusan.ac.kr/convention/index.do",
+  "hashtags": [
+   "#컨벤션전시경영학과",
+   "#MICE산업",
+   "#컨벤션기획",
+   "#전시마케팅",
+   "#이벤트경영",
+   "#관광경영",
+   "#국제회의",
+   "#글로벌비즈니스",
+   "#이벤트기획",
+   "#MICE전문가"
+  ],
+  "bk21": true,
+  "majors": [],
+  "bk21_name": "글로벌 해양관광컨벤션 특화도시개발 교육연구팀",
+  "bk21_url": "https://bk21four-convention.pusan.ac.kr/bk21plus_convention/index.do"
+ },
+ {
+  "id": 34,
+  "gyeyeol": "인문·사회",
+  "name": "외국어교육학과",
+  "recruit": true,
+  "homepage": "https://englishedu.pusan.ac.kr/englishedupnu/index.do",
+  "hashtags": [
+   "#영어교육",
+   "#영미소설",
+   "#문법교육",
+   "#현대영미희곡",
+   "#음성학",
+   "#언어학"
+  ],
+  "bk21": false,
   "majors": [
    {
-    "name": "수학",
-    "recruit": true
-   },
-   {
-    "name": "산업수학",
-    "recruit": true
+    "name": "영어교육학",
+    "recruit": true,
+    "homepage": "https://englishedu.pusan.ac.kr/englishedupnu/index.do",
+    "hashtags": [
+     "#영어교육",
+     "#영미소설",
+     "#문법교육",
+     "#현대영미희곡",
+     "#음성학",
+     "#언어학"
+    ]
    }
-  ],
-  "id": 34,
-  "bk21_desc": "수리과학 인재양성 교육연구단",
-  "bk21_url": "bk21fourmath.pusan.ac.kr"
+  ]
  },
  {
+  "id": 35,
+  "gyeyeol": "인문·사회",
+  "name": "불어교육과",
+  "recruit": true,
+  "homepage": "https://fredu.pusan.ac.kr/fredu/index.do",
+  "hashtags": [
+   "#불어교수법"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 36,
+  "gyeyeol": "인문·사회",
+  "name": "독어교육과",
+  "recruit": true,
+  "homepage": "https://geredu.pusan.ac.kr/geredu/index.do",
+  "hashtags": [
+   "#독어학(사전학)"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 37,
+  "gyeyeol": "자연과학",
+  "name": "수학과",
+  "recruit": true,
+  "homepage": "https://math.pusan.ac.kr/math/index.do",
+  "hashtags": [
+   "#역문제",
+   "#자료동화",
+   "#해양/대기수치모델링",
+   "#과학계산",
+   "#수치해석",
+   "#대수기하학",
+   "#사교위상수학",
+   "#NumberTheory",
+   "#편미분방정식",
+   "#시스템생물학",
+   "#약동학/약력학(PKPD)",
+   "#종양과면역모델",
+   "#확률과정및확률미분방정식",
+   "#파라미터추정",
+   "#베이지안추론",
+   "#과학시스템시뮬레이션",
+   "#FinancialMathematics",
+   "#StochasticDifferentialEquation",
+   "#기하군론",
+   "#매듭이론",
+   "#Groupactionsonmanifolds",
+   "#SymplecticGeometry",
+   "#응용해석학",
+   "#쌍곡방정식",
+   "#특수함수",
+   "#다변수복소함수론",
+   "#ComplexGeometry",
+   "#GeometricAnalysis"
+  ],
+  "bk21": true,
+  "majors": [],
+  "bk21_name": "수리과학 인재양성 교육연구단",
+  "bk21_url": "https://bk21fourmath.pusan.ac.kr"
+ },
+ {
+  "id": 38,
+  "gyeyeol": "자연과학",
+  "name": "통계학과",
+  "recruit": true,
+  "homepage": "https://stat.pusan.ac.kr/stat/index.do",
+  "hashtags": [
+   "#다변량통계학",
+   "#텍스트마이닝",
+   "#고차원자료시각화기법",
+   "#수리통계학",
+   "#데이터마이닝",
+   "#유전통계학",
+   "#생물정보학",
+   "#빅데이터분석",
+   "#함수형자료분석",
+   "#통계적기계학습",
+   "#생존분석",
+   "#머신러닝",
+   "#이미지분석",
+   "#데이터과학",
+   "#법과학",
+   "#계산통계",
+   "#기하적자료분석",
+   "#통계적학습",
+   "#공간통계학",
+   "#베이지안통계학",
+   "#보험통계학"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 39,
   "gyeyeol": "자연과학",
   "name": "물리학과",
-  "bk21": true,
   "recruit": true,
+  "homepage": "https://phys.pusan.ac.kr/phys/index.do",
+  "hashtags": [
+   "#고체물리실험",
+   "#입자물리이론",
+   "#광학실험",
+   "#핵물리실험(중이온물리)",
+   "#통계물리이론",
+   "#고체물리이론",
+   "#천체물리이론"
+  ],
+  "bk21": true,
   "majors": [],
-  "id": 35,
-  "bk21_desc": "혁신융합형 물리인재 교육연구단",
-  "bk21_url": "bk4-physics.pusan.ac.kr"
+  "bk21_name": "혁신융합형 물리인재 교육연구단",
+  "bk21_url": "https://bk4-physics.pusan.ac.kr"
  },
  {
+  "id": 40,
   "gyeyeol": "자연과학",
   "name": "화학과",
-  "bk21": true,
   "recruit": true,
+  "homepage": "https://chem.pusan.ac.kr/chem/index.do",
+  "hashtags": [
+   "#무기화학",
+   "#나노촉매",
+   "#나노소재",
+   "#전극소재",
+   "#기능성소재",
+   "#환경및에너지촉매",
+   "#흡착제",
+   "#무기합성",
+   "#유기합성",
+   "#유기금속화학",
+   "#주족원소화학",
+   "#생무기화학",
+   "#무기나노입자",
+   "#금속유기구조체",
+   "#전기전도성재료",
+   "#광촉매",
+   "#전기화학촉매",
+   "#물리화학",
+   "#분자구조동역학",
+   "#용액상반응동역학",
+   "#광화학NO운송체",
+   "#광전기화학",
+   "#펨토초적외선분광법",
+   "#분석화학",
+   "#전기화학",
+   "#전기화학센서",
+   "#생체대사물분석",
+   "#환경시료분석",
+   "#에너지변환",
+   "#바이오센서",
+   "#촉매반응",
+   "#랩온어칩",
+   "#분자진단",
+   "#가스센서",
+   "#물분해",
+   "#이산화탄소환원",
+   "#전기분석화학",
+   "#결정구조분석",
+   "#리튬이온전지",
+   "#차세대이차전지",
+   "#전극소재합성",
+   "#전기화학적분석",
+   "#분광학적분석",
+   "#다중물리시뮬레이션",
+   "#생화학",
+   "#대사체학",
+   "#생물정보학",
+   "#바이오마커",
+   "#핵자기공명분광법",
+   "#질량분석법",
+   "#비코딩RNA",
+   "#전사체",
+   "#프로테옴",
+   "#백신플랫폼",
+   "#세포밖소포체",
+   "#나노항생제",
+   "#mRNA",
+   "#비코딩RNA조절및저해",
+   "#RNA바인딩단백질",
+   "#화학생물학",
+   "#단백질RNA상호작용",
+   "#단백질생화학",
+   "#구조생화학",
+   "#cryoEM",
+   "#유기화학",
+   "#유기반도체소재",
+   "#고분자합성",
+   "#유기전계발광다이오드",
+   "#유기포토레지스트",
+   "#기능성고분자",
+   "#유기화학유기재료",
+   "#표면코팅",
+   "#생체모방화학",
+   "#화학복합재",
+   "#바이오이미징",
+   "#이종특이성저분자",
+   "#저분자스위치",
+   "#유도진화",
+   "#단백질공학",
+   "#유전자코드확장",
+   "#광촉매화학",
+   "#친환경유기합성법",
+   "#천연물전합성",
+   "#생리활성분자합성"
+  ],
+  "bk21": true,
   "majors": [],
-  "id": 36,
-  "bk21_desc": "분자소재 교육 연구단",
+  "bk21_name": "분자소재 교육 연구단",
   "bk21_url": "https://bk21four-chem.pusan.ac.kr/bk21plus_chem/index.do"
  },
  {
+  "id": 41,
   "gyeyeol": "자연과학",
   "name": "생명시스템학과",
-  "bk21": true,
   "recruit": true,
+  "homepage": "https://biology.pusan.ac.kr/biology/index.do",
+  "hashtags": [
+   "#미생물학",
+   "#암생물학",
+   "#유전학",
+   "#생명과학",
+   "#신경과학",
+   "#바이오의약품학",
+   "#기계생물학",
+   "#분자세포이미징",
+   "#생물학",
+   "#영장류학",
+   "#분자생물학",
+   "#동물계통분류학",
+   "#유전체학",
+   "#생화학",
+   "#생물물리학",
+   "#해양생명과학",
+   "#식물계통분류학",
+   "#해양생물학",
+   "#분자세포생물학",
+   "#세포생물학",
+   "#발생생물학",
+   "#식물분자생물학",
+   "#식물분자유전학",
+   "#식물생리학",
+   "#식물호르몬학",
+   "#해부학",
+   "#일반생리학",
+   "#면역학",
+   "#감염생물학",
+   "#식물생명공학",
+   "#식물병리학",
+   "#곤충학"
+  ],
+  "bk21": true,
   "majors": [],
-  "id": 37,
-  "bk21_desc": "장수·해양 바이오 혁신인력 양성 교육연구단",
-  "bk21_url": "bk21four-bio.pusan.ac.kr/"
+  "bk21_name": "장수·해양 바이오 혁신인력 양성 교육연구단",
+  "bk21_url": "https://bk21four-bio.pusan.ac.kr/"
  },
  {
+  "id": 42,
+  "gyeyeol": "자연과학",
+  "name": "지구과학교육과",
+  "recruit": true,
+  "homepage": "https://earth.pusan.ac.kr/earth/index.do",
+  "hashtags": [
+   "#유체지구과학및실습",
+   "#지구운체역학",
+   "#중력분석및실습",
+   "#고급지구과학Ⅱ",
+   "#기상측기",
+   "#지구과학교육론",
+   "#지구과학논리및논술",
+   "#지구과학교재연구및지도법",
+   "#과학논리와논술",
+   "#공통과학교재연구및지도법",
+   "#공통과학교육연구",
+   "#고체지구물리학",
+   "#해양학",
+   "#지체구조론",
+   "#관측천문학",
+   "#외부은하",
+   "#활동성은하",
+   "#블랙홀",
+   "#구조지질학",
+   "#분지해석학",
+   "#신기지구조론",
+   "#암석학및광물학",
+   "#화성암석학",
+   "#지구화학",
+   "#화산학",
+   "#이론우주론(우주거대구조,"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 43,
   "gyeyeol": "자연과학",
   "name": "지구환경시스템학부",
-  "bk21": true,
   "recruit": true,
+  "homepage": "https://geology.pusan.ac.kr/geology/index.do",
+  "hashtags": [
+   "#구조지질학",
+   "#응용지구화학",
+   "#퇴적지질학",
+   "#지구물리학",
+   "#원격탐사학",
+   "#광물학",
+   "#화산학",
+   "#층서퇴적학",
+   "#수리지질학",
+   "#제4기고해양",
+   "#고기후변화",
+   "#안정동위원소",
+   "#극지해양",
+   "#위성물리해양",
+   "#PhysicalOceanography",
+   "#InternalWaves",
+   "#OceanDynamics",
+   "#대기대순환",
+   "#대기오염모델링",
+   "#기후역학",
+   "#구름물리",
+   "#환경기상",
+   "#대기화학모델링",
+   "#위험기상"
+  ],
+  "bk21": true,
   "majors": [
    {
     "name": "지질환경과학",
-    "recruit": true
+    "recruit": true,
+    "homepage": "https://geology.pusan.ac.kr/geology/index.do",
+    "hashtags": [
+     "#구조지질학",
+     "#응용지구화학",
+     "#퇴적지질학",
+     "#지구물리학",
+     "#원격탐사학",
+     "#광물학",
+     "#화산학",
+     "#층서퇴적학",
+     "#수리지질학"
+    ]
    },
    {
     "name": "해양학",
-    "recruit": true
+    "recruit": true,
+    "homepage": "https://ocean.pusan.ac.kr/ocean/index.do",
+    "hashtags": [
+     "#제4기고해양",
+     "#고기후변화",
+     "#안정동위원소",
+     "#극지해양",
+     "#위성물리해양",
+     "#PhysicalOceanography",
+     "#InternalWaves",
+     "#OceanDynamics"
+    ]
    },
    {
     "name": "대기과학",
-    "recruit": true
+    "recruit": true,
+    "homepage": "https://atmos.pusan.ac.kr/atmos/index.do",
+    "hashtags": [
+     "#대기대순환",
+     "#대기오염모델링",
+     "#기후역학",
+     "#구름물리",
+     "#환경기상",
+     "#대기화학모델링",
+     "#위험기상"
+    ]
    }
   ],
-  "id": 38,
-  "bk21_desc": "지구환경시스템 교육연구단",
+  "bk21_name": "지구환경시스템 교육연구단",
   "bk21_url": "https://bk21sees.pusan.ac.kr"
  },
  {
-  "gyeyeol": "자연과학",
-  "name": "약학과",
-  "bk21": true,
-  "recruit": true,
-  "majors": [],
-  "id": 39,
-  "bk21_desc": "BIT 융합기술기반 대사염증표적 혁신신약개발 교육연구단",
-  "bk21_url": ""
- },
- {
-  "gyeyeol": "자연과학",
-  "name": "제약학과",
-  "bk21": true,
-  "recruit": true,
-  "majors": [],
-  "id": 40,
-  "bk21_desc": "제약 4.0 미래인재 양성 교육연구팀",
-  "bk21_url": "bk21four-mp.pusan.ac.kr"
- },
- {
-  "gyeyeol": "자연과학",
-  "name": "지구과학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [],
-  "id": 41
- },
- {
+  "id": 44,
   "gyeyeol": "자연과학",
   "name": "수학교육학과",
+  "recruit": true,
+  "homepage": "https://mathedu.pusan.ac.kr/mathedu/index.do",
+  "hashtags": [
+   "#대수학",
+   "#정수론",
+   "#수학교육",
+   "#기하학",
+   "#해석학",
+   "#편미분방정식",
+   "#위상수학",
+   "#균질동역학"
+  ],
   "bk21": false,
-  "recruit": false,
-  "majors": [],
-  "id": 42
+  "majors": []
  },
  {
+  "id": 45,
   "gyeyeol": "자연과학",
   "name": "과학교육학과",
-  "bk21": false,
   "recruit": true,
+  "homepage": "https://physedu.pusan.ac.kr/physedu/index.do",
+  "hashtags": [
+   "#엑스선및중성자산란결정구조분석",
+   "#물리교육학",
+   "#우주론",
+   "#양자중력",
+   "#응집물질물리학",
+   "#물리교육",
+   "#생물물리",
+   "#나노박막물성",
+   "#산화물소재물성",
+   "#화학교육",
+   "#유기화학",
+   "#무기화학",
+   "#고분자화학",
+   "#물리화학",
+   "#에너지화학공학",
+   "#식물생리학",
+   "#생화학",
+   "#동물생리학",
+   "#동물발생학",
+   "#생명과학교재및연구법",
+   "#교수학습론",
+   "#생명과학논리및논술",
+   "#분자생물학",
+   "#미생물학",
+   "#분류학",
+   "#생태학",
+   "#생명과학교육론",
+   "#교재론",
+   "#고급생물학",
+   "#면역학"
+  ],
+  "bk21": false,
   "majors": [
    {
     "name": "물리교육학",
-    "recruit": true
+    "recruit": true,
+    "homepage": "https://physedu.pusan.ac.kr/physedu/index.do",
+    "hashtags": [
+     "#엑스선및중성자산란결정구조분석",
+     "#물리교육학",
+     "#우주론",
+     "#양자중력",
+     "#물리교육학",
+     "#응집물질물리학",
+     "#물리교육",
+     "#생물물리",
+     "#물리교육학",
+     "#나노박막물성",
+     "#산화물소재물성"
+    ]
    },
    {
     "name": "화학교육학",
-    "recruit": true
+    "recruit": true,
+    "homepage": "https://chemedu.pusan.ac.kr/chemedu/index.do",
+    "hashtags": [
+     "#화학교육",
+     "#유기화학",
+     "#무기화학",
+     "#고분자화학",
+     "#물리화학",
+     "#에너지화학공학",
+     "#무기화학"
+    ]
    },
    {
     "name": "생물교육학",
-    "recruit": true
-   },
-   {
-    "name": "지구과학교육학",
-    "recruit": true
+    "recruit": true,
+    "homepage": "https://edubio.pusan.ac.kr/edubio/index.do",
+    "hashtags": [
+     "#식물생리학",
+     "#생화학",
+     "#동물생리학",
+     "#동물발생학",
+     "#생명과학교재및연구법",
+     "#교수학습론",
+     "#생명과학논리및논술",
+     "#분자생물학",
+     "#미생물학",
+     "#분류학",
+     "#생태학",
+     "#생명과학교육론",
+     "#교재론",
+     "#고급생물학",
+     "#면역학"
+    ]
    }
-  ],
-  "id": 43
+  ]
  },
  {
+  "id": 46,
   "gyeyeol": "자연과학",
-  "name": "화학소재학과",
-  "bk21": true,
+  "name": "약학과",
   "recruit": true,
+  "homepage": "https://pharmacy.pusan.ac.kr/pharmacy/index.do",
+  "hashtags": [
+   "#신경생화학",
+   "#미생물학",
+   "#임상약학",
+   "#병태생리학",
+   "#독성학",
+   "#암생물학",
+   "#생약학",
+   "#생명약학",
+   "#생물정보학",
+   "#시스템생물학",
+   "#약물역학",
+   "#약학데이터사이언스",
+   "#생리학"
+  ],
+  "bk21": true,
   "majors": [],
-  "id": 44
+  "bk21_name": "제약 4.0 미래인재 양성 교육연구팀",
+  "bk21_url": "https://bk21four-mp.pusan.ac.kr"
  },
  {
+  "id": 47,
+  "gyeyeol": "자연과학",
+  "name": "제약학과",
+  "recruit": true,
+  "homepage": "https://pharmacy.pusan.ac.kr/pharmacy/index.do",
+  "hashtags": [
+   "#약품분석학",
+   "#유기합성화학",
+   "#생물의약화학",
+   "#임상약학",
+   "#약제학",
+   "#약전학",
+   "#물리약학",
+   "#제제공학",
+   "#유기화학",
+   "#의약화학",
+   "#생물약제학",
+   "#약동학",
+   "#약리학",
+   "#점막면역학",
+   "#천연물화학"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 48,
+  "gyeyeol": "자연과학",
+  "name": "간호학과",
+  "recruit": true,
+  "homepage": "https://nursing.pusan.ac.kr/nursing/index.do",
+  "hashtags": [
+   "#모바일헬스케어",
+   "#간호중재개발",
+   "#건강한생활양식",
+   "#증상관리",
+   "#건강증진과간호시스템",
+   "#리더십",
+   "#건강증진",
+   "#의료관련감염관리",
+   "#예측모형의타당도평가",
+   "#성인간호학(호흡기계)",
+   "#중환자간호",
+   "#간호이론",
+   "#지역사회정신간호",
+   "#만성정신질환간호",
+   "#산후우울",
+   "#디지털헬스케어",
+   "#뇌심혈관계건강문제와간호중재",
+   "#중환자및가족간호",
+   "#증상과학",
+   "#기본간호술기",
+   "#간호교육",
+   "#면역질환과감염질환관리",
+   "#통합의학과간호",
+   "#고위험임부간호",
+   "#생애전환기여성건강",
+   "#질적연구",
+   "#치매간호",
+   "#의료인공지능",
+   "#청소년건강문제행동(전자담배,",
+   "#eHealthliteracy",
+   "#digitalhealth",
+   "#가족간호(부모교육)",
+   "#생식건강",
+   "#다문화간호",
+   "#시뮬레이션교육",
+   "#간호인력역량개발",
+   "#간호성과평가",
+   "#근거기반간호",
+   "#약물복용이행",
+   "#모바일헬스",
+   "#자연언어처리(NLP)",
+   "#인간-컴퓨터상호작용(HCI)",
+   "#지식표현과의사결정지원에의통합",
+   "#지식발견",
+   "#기계학습(Machinelearning)",
+   "#건강관련삶의질",
+   "#이주민건강관리",
+   "#체계적문헌고찰",
+   "#회복탄력성",
+   "#지역사회회복탄력성",
+   "#재난간호",
+   "#환자안전",
+   "#이차피해",
+   "#복합만성질환",
+   "#중환자재활",
+   "#바이오마커",
+   "#후성유전체학",
+   "#취약계층(여성,청소년,난민)정신건강",
+   "#트라우마",
+   "#우울",
+   "#자살",
+   "#환자안전교육",
+   "#환자참여",
+   "#환자안전의사소통",
+   "#중환자실간호사",
+   "#청소년문제행동",
+   "#영유아건강관리"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 49,
+  "gyeyeol": "자연과학",
+  "name": "실내환경디자인학과",
+  "recruit": true,
+  "homepage": "https://hid.pusan.ac.kr/hid/index.do",
+  "hashtags": [
+   "#실내디자인",
+   "#환경행태연구",
+   "#실내건축디자인",
+   "#실내건축",
+   "#환경디자인",
+   "#도시환경디자인스튜디오",
+   "#실내환경계획",
+   "#설계",
+   "#환경심리행태",
+   "#실내환경디자인"
+  ],
+  "bk21": true,
+  "majors": [],
+  "bk21_name": "지역 스토리텔링 콘텐츠 디자인 전문인력 양성팀",
+  "bk21_url": "https://bk21lscd.pusan.ac.kr"
+ },
+ {
+  "id": 50,
   "gyeyeol": "자연과학",
   "name": "의류학과",
-  "bk21": false,
   "recruit": true,
-  "majors": [],
-  "id": 45
+  "homepage": "https://fashion.pusan.ac.kr/fashion/index.do",
+  "hashtags": [
+   "#의복구성",
+   "#기능복설계및제작",
+   "#스마트의류",
+   "#패션소재",
+   "#피복과학",
+   "#패션마케팅",
+   "#소비자심리와행동",
+   "#한국패션문화상품의국제마케팅",
+   "#패션드레이핑",
+   "#남성복구성",
+   "#패션리테일링",
+   "#패션머천다이징",
+   "#패션디자인",
+   "#텍스타일디자인"
+  ],
+  "bk21": false,
+  "majors": []
  },
  {
+  "id": 51,
   "gyeyeol": "자연과학",
   "name": "식품영양학과",
-  "bk21": true,
   "recruit": true,
-  "majors": [
-   {
-    "name": "식품영양학",
-    "recruit": true
-   },
-   {
-    "name": "임상영양학",
-    "recruit": true
-   }
+  "homepage": "https://fsn.pusan.ac.kr/fsn/index.do",
+  "hashtags": [
+   "#식품생화학",
+   "#관능검사및소비자행동학",
+   "#식품과학",
+   "#곡물및전분과학",
+   "#영양학",
+   "#식품가공학"
   ],
-  "id": 46,
-  "bk21_desc": "정밀영양시대 대비 글로벌 미래인재 양성팀",
+  "bk21": true,
+  "majors": [],
+  "bk21_name": "정밀영양시대 대비 글로벌 미래인재 양성팀",
   "bk21_url": "https://prnutr.pusan.ac.kr/PrNutr/index.do"
  },
  {
-  "gyeyeol": "자연과학",
-  "name": "실내환경디자인학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [],
-  "id": 47
- },
- {
-  "gyeyeol": "공학",
-  "name": "사회환경시스템공학과",
-  "bk21": true,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "토목공학",
-    "recruit": true
-   },
-   {
-    "name": "환경공학",
-    "recruit": true
-   }
-  ],
-  "id": 48,
-  "bk21_desc": "스마트 해양도시 인프라 교육연구단",
-  "bk21_url": "https://i-soc.pusan.ac.kr"
- },
- {
-  "gyeyeol": "공학",
-  "name": "건축공학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [],
-  "id": 49
- },
- {
-  "gyeyeol": "공학",
-  "name": "건축학과",
-  "bk21": true,
-  "recruit": true,
-  "majors": [],
-  "id": 50,
-  "bk21_desc": "쇠퇴도시 유휴공간을 활용한 생활SOC 혁신디자인 교육연구단",
-  "bk21_url": ""
- },
- {
-  "gyeyeol": "공학",
-  "name": "기계공학부",
-  "bk21": true,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "에너지시스템",
-    "recruit": true
-   },
-   {
-    "name": "기계시스템설계",
-    "recruit": true
-   },
-   {
-    "name": "지능형제조시스템",
-    "recruit": true
-   },
-   {
-    "name": "제어자동화시스템",
-    "recruit": true
-   },
-   {
-    "name": "원자력시스템",
-    "recruit": true
-   }
-  ],
-  "id": 51,
-  "bk21_desc": "첨단 기계부품소재 고급인력 교육연구단",
-  "bk21_url": "bk21four-me.pusan.ac.kr"
- },
- {
-  "gyeyeol": "공학",
-  "name": "응용화학공학부",
-  "bk21": true,
-  "recruit": true,
-  "majors": [],
   "id": 52,
-  "bk21_desc": "MICE(멀티스케일 융합 화공) 교육연구단",
-  "bk21_url": "mice.pusan.ac.kr/mice/index.do"
- },
- {
-  "gyeyeol": "공학",
-  "name": "전기전자공학과",
-  "bk21": true,
-  "recruit": true,
-  "majors": [],
-  "id": 53,
-  "bk21_desc": "4차 산업혁명 ICT 창의융합 교육연구단",
-  "bk21_url": ""
- },
- {
-  "gyeyeol": "공학",
-  "name": "조선‧해양공학과",
-  "bk21": true,
-  "recruit": true,
-  "majors": [],
-  "id": 54,
-  "bk21_desc": "친환경 스마트 조선해양공학 교육연구단",
-  "bk21_url": "naoe.pusan.ac.kr/naoe/59048/subview.do"
- },
- {
-  "gyeyeol": "공학",
-  "name": "재료공학과",
-  "bk21": true,
-  "recruit": true,
-  "majors": [],
-  "id": 55,
-  "bk21_desc": "글로벌 하이테크 소재부품 인력양성사업단",
-  "bk21_url": "bk21four-mse.pusan.ac.kr/bk21four-mse/index.do"
- },
- {
-  "gyeyeol": "공학",
-  "name": "산업공학과",
-  "bk21": true,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "산업공학",
-    "recruit": true
-   },
-   {
-    "name": "산업데이터공학융합",
-    "recruit": true
-   }
-  ],
-  "id": 56,
-  "bk21_desc": "글로벌 공급망 혁신을 위한 산업 빅데이터 교육연구단",
-  "bk21_url": ""
- },
- {
-  "gyeyeol": "공학",
-  "name": "항공우주공학과",
-  "bk21": true,
-  "recruit": true,
-  "majors": [],
-  "id": 57,
-  "bk21_desc": "드론 신산업 혁신인재 교육연구단",
-  "bk21_url": ""
- },
- {
-  "gyeyeol": "공학",
-  "name": "도시공학과",
-  "bk21": true,
-  "recruit": true,
-  "majors": [],
-  "id": 58,
-  "bk21_desc": "복합위험사회의 도시 레질리언스 강화를 위한 도시계획 전문가 양성 교육팀",
-  "bk21_url": "bk21four-urban.pusan.ac.kr/bk21four-urban/index.do"
- },
- {
-  "gyeyeol": "공학",
-  "name": "탄소중립기후변화학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "통합기후시스템과학",
-    "recruit": true
-   },
-   {
-    "name": "수소미래에너지융합",
-    "recruit": true
-   }
-  ],
-  "id": 59
- },
- {
-  "gyeyeol": "공학",
-  "name": "융합학부",
-  "bk21": false,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "하이브리드소재응용",
-    "recruit": true
-   },
-   {
-    "name": "그린수송시스템설계",
-    "recruit": true
-   },
-   {
-    "name": "과학기술혁신",
-    "recruit": true
-   }
-  ],
-  "id": 60
- },
- {
-  "gyeyeol": "공학",
-  "name": "반도체공학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [],
-  "id": 61
- },
- {
-  "gyeyeol": "공학",
-  "name": "후각디스플레이공학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [],
-  "id": 62
- },
- {
-  "gyeyeol": "공학",
-  "name": "정보융합공학과",
-  "bk21": true,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "컴퓨터공학",
-    "recruit": true
-   },
-   {
-    "name": "AI",
-    "recruit": true
-   },
-   {
-    "name": "의생명융합",
-    "recruit": true
-   }
-  ],
-  "id": 63,
-  "bk21_desc": "동남권 4차산업혁명 리더양성사업단",
-  "bk21_url": "bk4-ice.pusan.ac.kr"
- },
- {
-  "gyeyeol": "공학",
-  "name": "디자인테크놀로지학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [],
-  "id": 64
- },
- {
-  "gyeyeol": "예술",
-  "name": "음악학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "성악",
-    "recruit": true
-   },
-   {
-    "name": "피아노",
-    "recruit": true
-   },
-   {
-    "name": "관현악",
-    "recruit": false
-   },
-   {
-    "name": "반주",
-    "recruit": true
-   },
-   {
-    "name": "작곡",
-    "recruit": true
-   },
-   {
-    "name": "음악학",
-    "recruit": false
-   },
-   {
-    "name": "음악예술기획운영",
-    "recruit": true
-   }
-  ],
-  "id": 65
- },
- {
-  "gyeyeol": "예술",
-  "name": "한국음악학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "현악‧성악",
-    "recruit": true
-   },
-   {
-    "name": "관악‧타악",
-    "recruit": true
-   },
-   {
-    "name": "이론",
-    "recruit": true
-   },
-   {
-    "name": "작곡‧지휘",
-    "recruit": true
-   }
-  ],
-  "id": 66
- },
- {
-  "gyeyeol": "예술",
-  "name": "미술학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "한국화",
-    "recruit": true
-   },
-   {
-    "name": "서양화",
-    "recruit": true
-   },
-   {
-    "name": "조소",
-    "recruit": true
-   }
-  ],
-  "id": 67
- },
- {
-  "gyeyeol": "예술",
-  "name": "무용학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [],
-  "id": 68
- },
- {
-  "gyeyeol": "예술",
-  "name": "디자인학과",
-  "bk21": true,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "시각디자인",
-    "recruit": true
-   },
-   {
-    "name": "애니메이션",
-    "recruit": true
-   }
-  ],
-  "id": 69,
-  "bk21_desc": "지역 스토리텔링 콘텐츠 디자인 전문인력 양성팀",
-  "bk21_url": "bk21lscd.pusan.ac.kr"
- },
- {
-  "gyeyeol": "예술",
-  "name": "조형학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "가구목조형",
-    "recruit": true
-   },
-   {
-    "name": "도예",
-    "recruit": true
-   },
-   {
-    "name": "섬유조형",
-    "recruit": true
-   },
-   {
-    "name": "금속조형",
-    "recruit": true
-   }
-  ],
-  "id": 70
- },
- {
-  "gyeyeol": "예술",
-  "name": "예술문화영상학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [],
-  "id": 71
- },
- {
-  "gyeyeol": "체육",
-  "name": "체육학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [],
-  "id": 72
- },
- {
-  "gyeyeol": "체육",
-  "name": "스포츠과학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [],
-  "id": 73
- },
- {
-  "gyeyeol": "자연과학",
-  "name": "간호학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [],
-  "id": 74
- },
- {
-  "gyeyeol": "의학",
-  "name": "의학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [
-   {
-    "name": "(법의학)",
-    "recruit": false
-   },
-   {
-    "name": "(기초형태군)",
-    "recruit": true
-   },
-   {
-    "name": "(기초기능군)",
-    "recruit": true
-   },
-   {
-    "name": "(내과군)",
-    "recruit": true
-   },
-   {
-    "name": "(외과군)",
-    "recruit": true
-   }
-  ],
-  "id": 75
- },
- {
-  "gyeyeol": "의학",
-  "name": "융합의과학과",
-  "bk21": true,
-  "recruit": true,
-  "majors": [],
-  "id": 76,
-  "bk21_desc": "부산대학교 GRAND 융합의과학 교육연구단",
-  "bk21_url": "grandbk.pusan.ac.kr"
- },
- {
-  "gyeyeol": "의학",
-  "name": "치의학과",
-  "bk21": true,
-  "recruit": true,
-  "majors": [],
-  "id": 77,
-  "bk21_desc": "치의생명과학 교육연구팀",
-  "bk21_url": "https://bk21four-pnusd.pusan.ac.kr/bk21four-pnusd/index..do"
- },
- {
-  "gyeyeol": "의학",
-  "name": "한의학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [],
-  "id": 78
- },
- {
-  "gyeyeol": "의학",
-  "name": "융합한의과학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [],
-  "id": 79
- },
- {
-  "gyeyeol": "인문·사회",
-  "name": "식품자원경제학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [],
-  "id": 80
- },
- {
   "gyeyeol": "자연과학",
   "name": "식물생명과학과",
-  "bk21": true,
   "recruit": true,
+  "homepage": "https://plant.pusan.ac.kr/plant/index.do",
+  "hashtags": [
+   "#식물유전공학",
+   "#식물분자면역학",
+   "#벼연구",
+   "#기능성작물",
+   "#작물발달생물학",
+   "#식물육종학"
+  ],
+  "bk21": true,
   "majors": [],
-  "id": 81,
-  "bk21_desc": "스마트팜 혁신 인재양성 교육연구단",
-  "bk21_url": ""
+  "bk21_name": "스마트팜 혁신 인재양성 교육연구단",
+  "bk21_url": "https://bk21fourmath.pusan.ac.kr"
  },
  {
+  "id": 53,
   "gyeyeol": "자연과학",
   "name": "원예생명과학과",
-  "bk21": false,
   "recruit": true,
-  "majors": [],
-  "id": 82
+  "homepage": "https://horticulture.pusan.ac.kr/horticulture/index.do",
+  "hashtags": [
+   "#약용작물학",
+   "#채소원예학",
+   "#식물조직배양학",
+   "#식물생장조절론",
+   "#종자학",
+   "#조원학",
+   "#시설원예학",
+   "#잔디학",
+   "#수확후생리학",
+   "#원예산물저장이용학",
+   "#과수원예학",
+   "#식물유전학",
+   "#식물분자생물학",
+   "#식물생명공학",
+   "#일반생물학",
+   "#유기화학",
+   "#생화학",
+   "#작물생리학",
+   "#화훼작물학",
+   "#관상원예학"
+  ],
+  "bk21": false,
+  "majors": []
  },
  {
+  "id": 54,
   "gyeyeol": "자연과학",
   "name": "동물생명자원과학과",
-  "bk21": false,
   "recruit": true,
-  "majors": [],
-  "id": 83
+  "homepage": "https://animal.pusan.ac.kr/animal/index.do",
+  "hashtags": [
+   "#축산가공",
+   "#동물번식생리",
+   "#동물육종학",
+   "#반추동물영양학",
+   "#기능유전체학",
+   "#단위동물영양학"
+  ],
+  "bk21": false,
+  "majors": []
  },
  {
-  "gyeyeol": "자연과학",
-  "name": "생명환경화학과",
-  "bk21": false,
-  "recruit": true,
-  "majors": [],
-  "id": 84
- },
- {
+  "id": 55,
   "gyeyeol": "자연과학",
   "name": "식품공학과",
-  "bk21": false,
   "recruit": true,
-  "majors": [],
-  "id": 85
+  "homepage": "https://fst.pusan.ac.kr/fst/index.do",
+  "hashtags": [
+   "#식품미생물학",
+   "#식품공학",
+   "#식품가공학",
+   "#식품분석학",
+   "#식품화학/생리학"
+  ],
+  "bk21": false,
+  "majors": []
  },
  {
-  "gyeyeol": "공학",
-  "name": "바이오소재과학과",
-  "bk21": true,
+  "id": 56,
+  "gyeyeol": "자연과학",
+  "name": "생명환경화학과",
   "recruit": true,
+  "homepage": "https://pnu-lseb.pusan.ac.kr/pnu-lseb/index.do",
+  "hashtags": [
+   "#곤충생태학",
+   "#환경생태학",
+   "#분자생물학",
+   "#효소학",
+   "#천연물화학",
+   "#바이오소재공학",
+   "#기기분석학",
+   "#일반미생물학",
+   "#응용미생물학",
+   "#환경미생물학",
+   "#미생물생리학",
+   "#발효배양공학",
+   "#토양학",
+   "#분석화학",
+   "#일반화학",
+   "#바이오캡스톤디자인",
+   "#생화학",
+   "#인체유전생리학",
+   "#유전공학",
+   "#생물공학",
+   "#일반생물",
+   "#생물유전체학",
+   "#작물생리학"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 57,
+  "gyeyeol": "자연과학",
+  "name": "바이오소재학과",
+  "recruit": true,
+  "homepage": "https://bm.pusan.ac.kr/bm/index.do",
+  "hashtags": [
+   "#면역학",
+   "#생명과학개론",
+   "#미생물학",
+   "#생리학",
+   "#분자생물학",
+   "#세포배양",
+   "#면역학특론",
+   "#Endocrinology",
+   "#toxicology",
+   "#biochemistry",
+   "#tissueengineering",
+   "#소프트나노재료",
+   "#자기조립물질",
+   "#나노기공막",
+   "#조직접착제",
+   "#마이크로바늘",
+   "#생체모사고분자",
+   "#접착코팅재료",
+   "#전달체용콜로이드",
+   "#세포모사",
+   "#인공세포",
+   "#합성생물학",
+   "#나노생물의약",
+   "#생체촉매반응",
+   "#염증성질환",
+   "#마이크로바이옴",
+   "#세포외소포",
+   "#바이오마커",
+   "#면역조절제"
+  ],
+  "bk21": true,
   "majors": [],
-  "id": 86,
-  "bk21_desc": "실버질환 맞춤형 바이오소재 활용플랫폼 혁신 인력양성팀",
+  "bk21_name": "실버질환 맞춤형 바이오소재 활용플랫폼 혁신 인력양성팀",
   "bk21_url": "https://bmbk.pusan.ac.kr"
  },
  {
-  "gyeyeol": "공학",
-  "name": "바이오산업기계공학과",
-  "bk21": false,
+  "id": 58,
+  "gyeyeol": "자연과학",
+  "name": "화학소재학과",
   "recruit": true,
+  "homepage": "https://amide.pusan.ac.kr/amide/index.do",
+  "hashtags": [
+   "#고분자화학",
+   "#유기화학",
+   "#무기화학",
+   "#화학교육",
+   "#에너지화학공학",
+   "#물리화학",
+   "#계산이론"
+  ],
+  "bk21": true,
   "majors": [],
-  "id": 87
+  "bk21_name": "에너지융합기술교육연구단",
+  "bk21_url": "https://bk4-physics.pusan.ac.kr"
  },
  {
+  "id": 59,
   "gyeyeol": "공학",
-  "name": "바이오환경에너지학과",
-  "bk21": false,
+  "name": "기계공학부",
   "recruit": true,
+  "homepage": "https://me.pusan.ac.kr/new/main/",
+  "hashtags": [
+   "#제어자동화시스템",
+   "#에너지시스템",
+   "#지능형제조시스템",
+   "#기계시스템설계",
+   "#원자력시스템"
+  ],
+  "bk21": true,
   "majors": [],
-  "id": 88
+  "bk21_name": "첨단 기계부품소재 고급인력 교육연구단",
+  "bk21_url": "https://bk21four-me.pusan.ac.kr"
  },
  {
+  "id": 60,
   "gyeyeol": "공학",
-  "name": "IT응용공학과",
-  "bk21": false,
+  "name": "건축공학과",
   "recruit": true,
-  "majors": [],
-  "id": 89
+  "homepage": "https://archieng.pusan.ac.kr/archieng/index.do",
+  "hashtags": [
+   "#건축시공및재료",
+   "#건축구조",
+   "#철근콘크리트구조",
+   "#내진구조",
+   "#합성구조",
+   "#건축환경및설비",
+   "#건설관리",
+   "#건축설비",
+   "#내진공학",
+   "#진동제어구조시스템",
+   "#강합성구조",
+   "#전산구조해석",
+   "#구조신뢰성공학",
+   "#첨단건설방재",
+   "#안전관리",
+   "#건축재료"
+  ],
+  "bk21": false,
+  "majors": []
  },
  {
+  "id": 61,
+  "gyeyeol": "공학",
+  "name": "건축학과",
+  "recruit": true,
+  "homepage": "https://archi.pusan.ac.kr/archi/index.do",
+  "hashtags": [
+   "#도시건축",
+   "#건축계획",
+   "#건축이론",
+   "#건축설계",
+   "#주거학",
+   "#친환경도시건축계획",
+   "#요소기술개발",
+   "#AI기반방재건축계획",
+   "#기후변화대응도시건축계획",
+   "#도시설계",
+   "#건축설계계획",
+   "#건축이론및설계",
+   "#친환경건축",
+   "#건축역사",
+   "#도시설계및도시재생"
+  ],
+  "bk21": true,
+  "majors": [],
+  "bk21_name": "쇠퇴도시 유휴공간을 활용한 생활SOC 혁신디자인 교육연구단",
+  "bk21_url": ""
+ },
+ {
+  "id": 62,
+  "gyeyeol": "공학",
+  "name": "산업공학과",
+  "recruit": true,
+  "homepage": "https://ie.pusan.ac.kr/ie/index.do",
+  "hashtags": [
+   "#인공지능",
+   "#기계학습",
+   "#데이터마이닝",
+   "#리스크어낼리틱스",
+   "#기후에너지시스템모델링",
+   "#시뮬레이션",
+   "#차세대생산시스템",
+   "#디지털제조혁신",
+   "#기술개발",
+   "#공급망설계",
+   "#응용통계",
+   "#AI",
+   "#빅데이터",
+   "#프로세스애널리틱스",
+   "#스마트항만",
+   "#스마트제조",
+   "#시스템최적화",
+   "#휴리스틱",
+   "#생산물류시스템분석및최적화",
+   "#ICT융합",
+   "#OR",
+   "#재난대응체계",
+   "#공급계획",
+   "#구매계획",
+   "#에너지",
+   "#수송네트워크최적화",
+   "#인간공학적제품평가및설계",
+   "#휴먼에러",
+   "#산업안전",
+   "#스마트팩토리",
+   "#스마트생산시스템",
+   "#제조물류"
+  ],
+  "bk21": true,
+  "majors": [],
+  "bk21_name": "글로벌 공급망 혁신을 위한 산업 빅데이터 교육연구단",
+  "bk21_url": ""
+ },
+ {
+  "id": 63,
+  "gyeyeol": "공학",
+  "name": "항공우주공학과",
+  "recruit": true,
+  "homepage": "https://aerospace.pusan.ac.kr/aerospace/index.do",
+  "hashtags": [
+   "#항공기구조탄성",
+   "#항공기연소및추진",
+   "#비행역학및유도제어",
+   "#항공기구조해석및최적설계",
+   "#머신러닝",
+   "#축소기저법",
+   "#공기역학",
+   "#위성시스템",
+   "#전산유체역학",
+   "#우주추진",
+   "#플라즈마",
+   "#비행유도제어",
+   "#궤도해석",
+   "#항공역학",
+   "#항공구조역학",
+   "#터보기계및열전달"
+  ],
+  "bk21": true,
+  "majors": [],
+  "bk21_name": "드론 신산업 혁신인재 교육연구단",
+  "bk21_url": "https://bk4-physics.pusan.ac.kr"
+ },
+ {
+  "id": 64,
+  "gyeyeol": "공학",
+  "name": "조선해양공학과",
+  "recruit": true,
+  "homepage": "https://naoe.pusan.ac.kr/naoe/index.do",
+  "hashtags": [
+   "#진동",
+   "#소음공학",
+   "#선체추진",
+   "#친환경선박",
+   "#피로",
+   "#파괴",
+   "#조선해양에너지시뮬레이션",
+   "#해양유체역학",
+   "#해양파공학",
+   "#조선해양설계",
+   "#해양플랜트시스템",
+   "#유체역학",
+   "#난류유동",
+   "#CFD",
+   "#열유체",
+   "#분석화학",
+   "#공업화학",
+   "#해양신재생에너지",
+   "#선박운동조종",
+   "#스마트선박제어",
+   "#조선해양위험도평가관리"
+  ],
+  "bk21": true,
+  "majors": [],
+  "bk21_name": "친환경 스마트 조선해양공학 교육연구단",
+  "bk21_url": "https://naoe.pusan.ac.kr/naoe/59048/subview.do"
+ },
+ {
+  "id": 65,
+  "gyeyeol": "공학",
+  "name": "재료공학부",
+  "recruit": true,
+  "homepage": "https://mse.pusan.ac.kr/mse/index.do",
+  "hashtags": [
+   "#유리",
+   "#광학재료",
+   "#전자소자",
+   "#박막공학",
+   "#계면공학",
+   "#재료공학",
+   "#플라즈마공학",
+   "#기능성박막재료",
+   "#전기화학",
+   "#이차전지",
+   "#첨단세라믹스기반하이브리드소재설계및신뢰성",
+   "#용접야금",
+   "#철강재료",
+   "#전산재료공학",
+   "#기능성나노소재",
+   "#에너지나노소재",
+   "#유연전자소자",
+   "#탄소촉매",
+   "#플라즈마화학",
+   "#에너지소재",
+   "#비철금속",
+   "#금속복합재료",
+   "#이차원소재",
+   "#형상기억합금",
+   "#재료공정설계",
+   "#적층제조"
+  ],
+  "bk21": true,
+  "majors": [],
+  "bk21_name": "글로벌 하이테크 소재부품 인력양성사업단",
+  "bk21_url": "https://bk21four-mse.pusan.ac.kr/bk21four-mse/index.do"
+ },
+ {
+  "id": 66,
+  "gyeyeol": "공학",
+  "name": "도시공학과",
+  "recruit": true,
+  "homepage": "https://urban.pusan.ac.kr/urban/index.do",
+  "hashtags": [
+   "#지속가능한토지이용계획",
+   "#스마트성장",
+   "#기후적응",
+   "#공간계획",
+   "#지역경제개발",
+   "#도시회복력",
+   "#지역격차",
+   "#사회적혁신",
+   "#사회적인프라",
+   "#도시역학",
+   "#지역계획",
+   "#협력적계획",
+   "#도시교통",
+   "#스마트모빌리티",
+   "#교통계획",
+   "#지속가능한교통시스템",
+   "#교통운영및관리",
+   "#교통안전",
+   "#교통정보",
+   "#CITS",
+   "#모빌리티빅데이터",
+   "#인공지능"
+  ],
+  "bk21": true,
+  "majors": [],
+  "bk21_name": "복합위험사회의 도시 레질리언스 강화를 위한 도시계획 전문가 양성 교육팀",
+  "bk21_url": "https://bk21four-urban.pusan.ac.kr/bk21four-urban/index.do"
+ },
+ {
+  "id": 67,
   "gyeyeol": "공학",
   "name": "조경학과",
-  "bk21": false,
   "recruit": true,
-  "majors": [],
-  "id": 90
+  "homepage": "https://la.pusan.ac.kr/la/index.do",
+  "hashtags": [
+   "#조경역사및이론",
+   "#농촌계획",
+   "#조경관리",
+   "#조경시공",
+   "#조경정책",
+   "#조경수목및생태",
+   "#GIS",
+   "#조경설계",
+   "#환경설계",
+   "#데이터기반조경계획",
+   "#도시및지역계획",
+   "#조경계획및설계",
+   "#도시설계",
+   "#도시건강"
+  ],
+  "bk21": false,
+  "majors": []
  },
  {
+  "id": 68,
   "gyeyeol": "공학",
   "name": "나노융합기술학과",
-  "bk21": true,
   "recruit": true,
-  "majors": [],
-  "id": 91
+  "homepage": "https://bk21-nano.pusan.ac.kr/bk21_nano/index.do",
+  "hashtags": [
+   "#공작기계/시스템설계",
+   "#물리학",
+   "#물리화학",
+   "#응용물리학",
+   "#기계공학",
+   "#미생물학",
+   "#재료공학",
+   "#전기전자공학",
+   "#화학",
+   "#에너지공학",
+   "#화학공학",
+   "#에너지시스템공학"
+  ],
+  "bk21": false,
+  "majors": []
  },
  {
+  "id": 69,
   "gyeyeol": "공학",
-  "name": "나노메카트로닉스공학과",
-  "bk21": true,
+  "name": "나노메카트로닉스 공학과",
   "recruit": true,
+  "homepage": "https://nanomecha.pusan.ac.kr/nanomecha/index.do",
+  "hashtags": [
+   "#재료공학",
+   "#Nanomaterials&Process",
+   "#세라믹합성",
+   "#응집물리",
+   "#TransportTheory",
+   "#Pharmacokinetics",
+   "#NanomaterialEngineering",
+   "#ThinFilmDeposition&Processing",
+   "#계산화학",
+   "#ComputationalChemistry",
+   "#금속소재성형공정설계및평가",
+   "#Design&evaluationofmetalformingprocesses",
+   "#신소재성형및전산모사",
+   "#AdvancedMaterialsForming&FE-analysis",
+   "#센서",
+   "#재료기능화",
+   "#반도체소자",
+   "#화합물반도체소자/공정/패키지",
+   "#마이크로LED",
+   "#적외선이미지센서",
+   "#반도체공정",
+   "#MEMS/NEMS센서"
+  ],
+  "bk21": true,
   "majors": [],
-  "id": 92,
-  "bk21_desc": "미래 자동차 융복합 부품 전문인력 양성 사업단",
+  "bk21_name": "미래 자동차 융복합 부품 전문인력 양성 사업단",
   "bk21_url": ""
  },
  {
+  "id": 70,
+  "gyeyeol": "공학",
+  "name": "IT응용공학과",
+  "recruit": true,
+  "homepage": "https://ite.pusan.ac.kr/ite/index.do",
+  "hashtags": [
+   "#Bio전자시스템실험실",
+   "#무선통신공학",
+   "#신호및영상분석실험실",
+   "#네트워크시스템실험실",
+   "#데이터실험실",
+   "#사물인터넷실험실",
+   "#AI시스템실험실",
+   "#실시간시스템연구실",
+   "#정밀제어S/W실험실"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 71,
+  "gyeyeol": "공학",
+  "name": "바이오환경에너지학과",
+  "recruit": true,
+  "homepage": "",
+  "hashtags": [],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 72,
   "gyeyeol": "공학",
   "name": "인지메카트로닉스공학과",
-  "bk21": true,
   "recruit": true,
+  "homepage": "https://globalcogno.pusan.ac.kr/globalcogno/index.do",
+  "hashtags": [
+   "#초미세가공",
+   "#3차원패터닝",
+   "#나노물질비선형",
+   "#양자포토닉스",
+   "#바이러스면역학",
+   "#전자전산공학",
+   "#생분석화학",
+   "#스마트생체재료",
+   "#재생치료",
+   "#재료공학",
+   "#탄소기반나노구조체합성",
+   "#전기소자제작",
+   "#광생체공학",
+   "#광계측센서",
+   "#나노광자학",
+   "#Opticalsensors",
+   "#Nano-photonics",
+   "#생체의료영상",
+   "#BiomedicalImaging",
+   "#나노화학",
+   "#전기화학",
+   "#분석화학",
+   "#바이오광의료영상",
+   "#정밀측정",
+   "#opticalimagingandinspection",
+   "#LaserDesign",
+   "#Manufacture",
+   "#LaserApplications"
+  ],
+  "bk21": true,
   "majors": [],
-  "id": 93,
-  "bk21_desc": "인지메카트로닉스 기반 개인맞춤형 헬스케어 교육연구단",
+  "bk21_name": "인지메카트로닉스 기반 개인맞춤형 헬스케어 교육연구단",
   "bk21_url": ""
+ },
+ {
+  "id": 73,
+  "gyeyeol": "공학",
+  "name": "바이오산업기계공학과",
+  "recruit": true,
+  "homepage": "https://bime.pusan.ac.kr/bime/index.do",
+  "hashtags": [
+   "#농식품가공기계",
+   "#수송포장공학",
+   "#물류포장공학",
+   "#바이오산물안전공학",
+   "#Bio-productSafetyEngineering",
+   "#토양센싱",
+   "#정밀농업",
+   "#노외기계시스템",
+   "#나노농업",
+   "#생물재료공학"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 74,
+  "gyeyeol": "공학",
+  "name": "사회환경시스템공학과",
+  "recruit": true,
+  "homepage": "https://civil.pusan.ac.kr/civil/index.do",
+  "hashtags": [
+   "#수공학",
+   "#수문학",
+   "#구조공학",
+   "#토질및기초공학",
+   "#지반공학",
+   "#상하수도학",
+   "#강재료공학",
+   "#해양항만학",
+   "#지진내진공학",
+   "#지형정보공학및원격탐사",
+   "#측량측지",
+   "#건설재료공학",
+   "#건설관리",
+   "#지형공간정보공학",
+   "#수자원및수질관리",
+   "#환경복원및유해물질제어",
+   "#환경분석화학",
+   "#환경미생물학",
+   "#생태공학",
+   "#대기오염물질분석",
+   "#수계오염물질분석",
+   "#오염물질제거",
+   "#분리막공정",
+   "#광에너지상향전환",
+   "#대기환경오염물질측정",
+   "#대기환경오염물질저감기술",
+   "#대기환경오염물질기기개발",
+   "#고도수처리",
+   "#물재이용공정",
+   "#수환경인공지능",
+   "#열화학공정",
+   "#폐기물에너지전환",
+   "#이산화탄소에너지전환"
+  ],
+  "bk21": true,
+  "majors": [
+   {
+    "name": "토목공학",
+    "recruit": true,
+    "homepage": "https://civil.pusan.ac.kr/civil/index.do",
+    "hashtags": [
+     "#수공학",
+     "#수문학",
+     "#구조공학",
+     "#토질및기초공학",
+     "#지반공학",
+     "#상하수도학",
+     "#강재료공학",
+     "#해양항만학",
+     "#지진내진공학",
+     "#지형정보공학및원격탐사",
+     "#측량측지",
+     "#건설재료공학",
+     "#건설관리",
+     "#지형공간정보공학"
+    ]
+   },
+   {
+    "name": "환경공학",
+    "recruit": true,
+    "homepage": "https://pnuenv.pusan.ac.kr/pnuenv/index.do",
+    "hashtags": [
+     "#수자원및수질관리",
+     "#환경복원및유해물질제어",
+     "#환경분석화학",
+     "#환경미생물학",
+     "#생태공학",
+     "#대기오염물질분석",
+     "#수계오염물질분석",
+     "#오염물질제거",
+     "#분리막공정",
+     "#광에너지상향전환",
+     "#대기환경오염물질측정",
+     "#대기환경오염물질저감기술",
+     "#대기환경오염물질기기개발",
+     "#고도수처리",
+     "#물재이용공정",
+     "#수환경인공지능",
+     "#열화학공정",
+     "#폐기물에너지전환",
+     "#이산화탄소에너지전환"
+    ]
+   }
+  ],
+  "bk21_name": "스마트 해양도시 인프라 교육연구단",
+  "bk21_url": "https://i-soc.pusan.ac.kr"
+ },
+ {
+  "id": 75,
+  "gyeyeol": "공학",
+  "name": "응용화학공학부",
+  "recruit": true,
+  "homepage": "https://polymer.pusan.ac.kr/polymer/index.do",
+  "hashtags": [
+   "#전고체고분자전지",
+   "#방열복합재료",
+   "#고기능성필름",
+   "#구조제어고분자합성",
+   "#계면고분자소재개발",
+   "#고분자합성",
+   "#생체의료용고분자",
+   "#3D프린팅",
+   "#고기능성배리어필름개발",
+   "#스마트소재",
+   "#4D프린팅",
+   "#이차전지바인더",
+   "#고분자재활용",
+   "#고분자및복합재료공정",
+   "#동적결합고분자",
+   "#점접착제",
+   "#고분자박막",
+   "#코팅",
+   "#기능성고분자",
+   "#복합소재",
+   "#기능성고분자및고분자물성",
+   "#광중합",
+   "#광반응성고분자"
+  ],
+  "bk21": true,
+  "majors": [],
+  "bk21_name": "MICE(멀티스케일 융합 화공) 교육연구단",
+  "bk21_url": "https://mice.pusan.ac.kr/mice/index.do"
+ },
+ {
+  "id": 76,
+  "gyeyeol": "공학",
+  "name": "전기전자공학과",
+  "recruit": true,
+  "homepage": "https://eec.pusan.ac.kr/eehome/index.do",
+  "hashtags": [
+   "#지능시스템",
+   "#전력변환",
+   "#기체전자공학",
+   "#전기기기및전자기응용",
+   "#플라즈마시뮬레이션",
+   "#RF/Analog/mmWave집적회로IC",
+   "#에너지공학",
+   "#전력경제및스마트그리드",
+   "#고주파집적회로및시스템",
+   "#전력전자",
+   "#무선및자동차통신망",
+   "#인공지능및자율로봇",
+   "#반도체디스플레이",
+   "#초전도응용전기기기",
+   "#전력시스템",
+   "#회로및시스템",
+   "#영상신호처리",
+   "#디지털영상포렌식",
+   "#통신시스템",
+   "#통신및신호처리",
+   "#광소자",
+   "#반도체소자",
+   "#공정",
+   "#OxideTFT",
+   "#제어",
+   "#임베디드시스템",
+   "#디지털시스템설계",
+   "#시스템반도체",
+   "#SoC",
+   "#차세대반도체소자및물성",
+   "#RF/초고주파시스템",
+   "#인쇄전자",
+   "#로보틱스및자동화",
+   "#로봇조작",
+   "#RFIC",
+   "#PMIC설계",
+   "#아날로그및혼성신호집적회로설계",
+   "#바이오전자",
+   "#바이오광학",
+   "#Robotics",
+   "#기계시스템자동화",
+   "#컴퓨터비전및신호처리",
+   "#다기능성포토닉스",
+   "#차세대광전소자",
+   "#기계학습",
+   "#인공지능",
+   "#연합학습",
+   "#기계학습-통신융합연구",
+   "#유기반도체",
+   "#뉴로모픽소자",
+   "#유연전자소자",
+   "#자율주행/로보틱스",
+   "#제조AI",
+   "#머신러닝"
+  ],
+  "bk21": true,
+  "majors": [
+   {
+    "name": "전기공학",
+    "recruit": true,
+    "homepage": "https://eec.pusan.ac.kr/eehome/index.do",
+    "hashtags": [
+     "#지능시스템",
+     "#전력변환",
+     "#기체전자공학",
+     "#전기기기및전자기응용",
+     "#플라즈마시뮬레이션",
+     "#RF/Analog/mmWave집적회로IC",
+     "#에너지공학",
+     "#전력경제및스마트그리드",
+     "#고주파집적회로및시스템",
+     "#전력전자",
+     "#무선및자동차통신망",
+     "#인공지능및자율로봇",
+     "#반도체디스플레이",
+     "#초전도응용전기기기",
+     "#전력시스템"
+    ]
+   },
+   {
+    "name": "전자공학",
+    "recruit": true,
+    "homepage": "https://ee.pusan.ac.kr/ee/index.do",
+    "hashtags": [
+     "#회로및시스템",
+     "#영상신호처리",
+     "#디지털영상포렌식",
+     "#통신시스템",
+     "#통신및신호처리",
+     "#광소자",
+     "#반도체소자",
+     "#공정",
+     "#OxideTFT",
+     "#제어",
+     "#임베디드시스템",
+     "#디지털시스템설계",
+     "#시스템반도체",
+     "#SoC",
+     "#차세대반도체소자및물성",
+     "#RF/초고주파시스템",
+     "#인쇄전자",
+     "#로보틱스및자동화",
+     "#로봇조작",
+     "#RFIC",
+     "#PMIC설계",
+     "#아날로그및혼성신호집적회로설계",
+     "#바이오전자",
+     "#바이오광학",
+     "#Robotics",
+     "#기계시스템자동화",
+     "#컴퓨터비전및신호처리",
+     "#다기능성포토닉스",
+     "#차세대광전소자",
+     "#기계학습",
+     "#인공지능",
+     "#연합학습",
+     "#기계학습-통신융합연구",
+     "#유기반도체",
+     "#뉴로모픽소자",
+     "#유연전자소자",
+     "#자율주행/로보틱스",
+     "#제조AI",
+     "#머신러닝"
+    ]
+   }
+  ],
+  "bk21_name": "4차 산업혁명 ICT 창의융합 교육연구단",
+  "bk21_url": "https://bk21four-ee.pusan.ac.kr/bk21four-ee/index.do"
+ },
+ {
+  "id": 77,
+  "gyeyeol": "공학",
+  "name": "융합학부",
+  "recruit": true,
+  "homepage": "https://gscs.pusan.ac.kr/gscs/index.do",
+  "hashtags": [
+   "#하이브리드나노소재",
+   "#신소재공학",
+   "#수송기계첨단구조및재료",
+   "#신소재성형공정설계",
+   "#수송기계부품구조건전성평가"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 78,
+  "gyeyeol": "공학",
+  "name": "정보융합공학과",
+  "recruit": true,
+  "homepage": "https://bce.pusan.ac.kr/bce/index.do",
+  "hashtags": [
+   "#인공지능",
+   "#기계학습",
+   "#생물정보",
+   "#화학정보",
+   "#의료영상처리",
+   "#의료인공지능",
+   "#딥러닝모델",
+   "#신호처리",
+   "#바이오프린팅",
+   "#조직공학",
+   "#바이오리액터",
+   "#세포/조직생체역학",
+   "#생명정보학",
+   "#공간/단일세포체학",
+   "#다중체학",
+   "#계산/수리생물학",
+   "#응용수학",
+   "#의료/임상데이터분석",
+   "#바이러스역학",
+   "#임상·인지신경과학",
+   "#뇌영상분석",
+   "#디지털헬스케어",
+   "#MEMS/NEMS",
+   "#Bioelectronics",
+   "#Nano-fabrication",
+   "#유전자교정",
+   "#유전자치료제",
+   "#바이오(메디컬)이미징",
+   "#광학현미경",
+   "#디지탈영상처리",
+   "#바이오센서",
+   "#체외진단기기",
+   "#보건의료데이터사이언스",
+   "#생물통계학",
+   "#보건학/역학",
+   "#환경보건",
+   "#생체재료공학",
+   "#체내삽입형임플란트",
+   "#환자맞춤형의료기기",
+   "#머신러닝",
+   "#데이터마이닝",
+   "#바이오인포매틱스",
+   "#컴퓨터비전",
+   "#소프트웨어공학",
+   "#VisualComputing",
+   "#Biometrics",
+   "#컴퓨터시스템",
+   "#네트워크",
+   "#이동통신",
+   "#멀티미디어통신",
+   "#분산처리",
+   "#사물인터넷",
+   "#차세대이동통신",
+   "#프로그래밍언어",
+   "#컴파일러",
+   "#가상현실",
+   "#증강현실",
+   "#휴먼컴퓨터인터랙션",
+   "#의료(바이오)영상및시스템",
+   "#소프트웨어보안",
+   "#임베디드시스템보안",
+   "#모바일시스템보안",
+   "#클라우드시스템보안",
+   "#로봇보안",
+   "#블록체인보안",
+   "#웹보안",
+   "#인공지능시스템",
+   "#임베디드시스템",
+   "#인공지능반도체",
+   "#온디바이스AI",
+   "#데이터사이언스",
+   "#빅데이터처리및분석",
+   "#데이터베이스",
+   "#기능성게임",
+   "#디지털트윈",
+   "#Sim2Real전이학습",
+   "#PhysicalAI",
+   "#로보틱스AI",
+   "#심층대체모델",
+   "#도메인최적화",
+   "#부호및정보이론",
+   "#휴대방송시스템",
+   "#디지털전송시스템",
+   "#수중신호처리",
+   "#스마트공장",
+   "#무선네트워크",
+   "#지능형네트워크",
+   "#클라우드컴퓨팅",
+   "#엣지컴퓨팅",
+   "#생성형AI기반보안취약성자동탐지",
+   "#AI보안",
+   "#sLLM",
+   "#블록체인플랫폼및서비스",
+   "#블록체인보안기술",
+   "#클라우드기반블록체인",
+   "#사이버해킹",
+   "#암호VLSI칩",
+   "#SW보안",
+   "#양자내성암호",
+   "#양자컴퓨터",
+   "#컴퓨터그래픽스",
+   "#기하모델링",
+   "#3D알고리즘",
+   "#2D객체검출",
+   "#3D객체검출",
+   "#객체분할",
+   "#3DDepth인식",
+   "#3D복원",
+   "#SLAM",
+   "#이미지초해상화",
+   "#Few-ShotLearning",
+   "#SignLanguageRecognition",
+   "#무선센서네트워크",
+   "#능동형RFID기술",
+   "#실시간위치인식기술",
+   "#시각동기",
+   "#사이버융합보안",
+   "#금융보안",
+   "#산업시설보안",
+   "#해킹",
+   "#방어기술",
+   "#역공학",
+   "#테스팅",
+   "#신약개발AI",
+   "#LLMinGenomics",
+   "#운영체제",
+   "#차세대메모리기술",
+   "#스토리지",
+   "#파일시스템",
+   "#모바일컴퓨팅",
+   "#클라우드플랫폼",
+   "#클라우드서비스중개방법",
+   "#클라우드서비스개발",
+   "#하이브리드클라우드구축",
+   "#서버리스컴퓨팅",
+   "#한글프로그래밍언어",
+   "#임베디드컴파일러",
+   "#안드로이드앱분석",
+   "#군집로봇프로그래밍",
+   "#함수형병렬프로그래밍",
+   "#5G/6G이동통신",
+   "#사이버물리시스템",
+   "#무선네트워킹",
+   "#공간및시공간정보시스템",
+   "#머신비전",
+   "#의생명데이터분석",
+   "#영상시멘틱기술",
+   "#가상증강현실",
+   "#디지털휴먼",
+   "#메타버스",
+   "#HCI",
+   "#멀티모달기반영상처리및생성",
+   "#추천시스템",
+   "#자연어처리",
+   "#멀티모달데이터마이닝",
+   "#소프트웨어품질보증",
+   "#소프트웨어테스팅",
+   "#소프트웨어개발방법론",
+   "#바이오AI",
+   "#금융AI",
+   "#FoodAI",
+   "#이상행위탐지",
+   "#프라이버시보전AI",
+   "#LLMinCyberSecurity",
+   "#생성형AI취약성",
+   "#클라우드보안",
+   "#SW플랫폼보안",
+   "#악성코드",
+   "#예측모델링",
+   "#최적화",
+   "#WirelessAI",
+   "#Future5G",
+   "#B5G",
+   "#NetworkOptimization"
+  ],
+  "bk21": true,
+  "majors": [
+   {
+    "name": "의생명융합",
+    "recruit": true,
+    "homepage": "https://bce.pusan.ac.kr/bce/index.do",
+    "hashtags": [
+     "#인공지능",
+     "#기계학습",
+     "#생물정보",
+     "#화학정보",
+     "#의료영상처리",
+     "#의료인공지능",
+     "#딥러닝모델",
+     "#신호처리",
+     "#바이오프린팅",
+     "#조직공학",
+     "#바이오리액터",
+     "#세포/조직생체역학",
+     "#생명정보학",
+     "#공간/단일세포체학",
+     "#다중체학",
+     "#계산/수리생물학",
+     "#응용수학",
+     "#의료/임상데이터분석",
+     "#바이러스역학",
+     "#임상·인지신경과학",
+     "#뇌영상분석",
+     "#디지털헬스케어",
+     "#MEMS/NEMS",
+     "#Bioelectronics",
+     "#Nano-fabrication",
+     "#유전자교정",
+     "#유전자치료제",
+     "#바이오(메디컬)이미징",
+     "#광학현미경",
+     "#디지탈영상처리",
+     "#바이오센서",
+     "#체외진단기기",
+     "#보건의료데이터사이언스",
+     "#생물통계학",
+     "#보건학/역학",
+     "#환경보건",
+     "#생체재료공학",
+     "#체내삽입형임플란트",
+     "#환자맞춤형의료기기"
+    ]
+   },
+   {
+    "name": "AI",
+    "recruit": true,
+    "homepage": "https://ai.pusan.ac.kr/ai/index.do",
+    "hashtags": [
+     "#머신러닝",
+     "#데이터마이닝",
+     "#바이오인포매틱스",
+     "#컴퓨터비전",
+     "#의료영상처리",
+     "#소프트웨어공학",
+     "#VisualComputing",
+     "#Biometrics",
+     "#컴퓨터시스템",
+     "#네트워크",
+     "#이동통신",
+     "#멀티미디어통신",
+     "#분산처리",
+     "#사물인터넷",
+     "#차세대이동통신",
+     "#프로그래밍언어",
+     "#컴파일러",
+     "#임상·인지신경과학",
+     "#뇌영상분석",
+     "#디지털헬스케어",
+     "#가상현실",
+     "#증강현실",
+     "#휴먼컴퓨터인터랙션",
+     "#인공지능",
+     "#기계학습",
+     "#생물정보",
+     "#화학정보",
+     "#의료(바이오)영상및시스템",
+     "#신호처리",
+     "#MEMS/NEMS",
+     "#Bioelectronics",
+     "#Nano-fabrication"
+    ]
+   },
+   {
+    "name": "컴퓨터공학",
+    "recruit": true,
+    "homepage": "https://cse.pusan.ac.kr/cse/index.do",
+    "hashtags": [
+     "#컴퓨터비전",
+     "#의료영상처리",
+     "#머신러닝",
+     "#소프트웨어보안",
+     "#임베디드시스템보안",
+     "#모바일시스템보안",
+     "#클라우드시스템보안",
+     "#로봇보안",
+     "#블록체인보안",
+     "#웹보안",
+     "#인공지능시스템",
+     "#임베디드시스템",
+     "#인공지능반도체",
+     "#온디바이스AI",
+     "#데이터사이언스",
+     "#빅데이터처리및분석",
+     "#데이터베이스",
+     "#데이터마이닝",
+     "#기능성게임",
+     "#디지털트윈",
+     "#Sim2Real전이학습",
+     "#PhysicalAI",
+     "#로보틱스AI",
+     "#심층대체모델",
+     "#도메인최적화",
+     "#부호및정보이론",
+     "#휴대방송시스템",
+     "#디지털전송시스템",
+     "#수중신호처리",
+     "#사물인터넷",
+     "#스마트공장",
+     "#무선네트워크",
+     "#지능형네트워크",
+     "#멀티미디어통신",
+     "#클라우드컴퓨팅",
+     "#엣지컴퓨팅",
+     "#생성형AI기반보안취약성자동탐지",
+     "#AI보안",
+     "#sLLM",
+     "#블록체인플랫폼및서비스",
+     "#블록체인보안기술",
+     "#클라우드기반블록체인",
+     "#사이버해킹",
+     "#암호VLSI칩",
+     "#SW보안",
+     "#양자내성암호",
+     "#양자컴퓨터",
+     "#컴퓨터그래픽스",
+     "#기하모델링",
+     "#3D알고리즘",
+     "#2D객체검출",
+     "#3D객체검출",
+     "#객체분할",
+     "#3DDepth인식",
+     "#3D복원",
+     "#SLAM",
+     "#이미지초해상화",
+     "#Few-ShotLearning",
+     "#SignLanguageRecognition",
+     "#무선센서네트워크",
+     "#능동형RFID기술",
+     "#실시간위치인식기술",
+     "#시각동기",
+     "#사이버융합보안",
+     "#금융보안",
+     "#산업시설보안",
+     "#해킹",
+     "#방어기술",
+     "#역공학",
+     "#테스팅",
+     "#신약개발AI",
+     "#LLMinGenomics",
+     "#운영체제",
+     "#차세대메모리기술",
+     "#스토리지",
+     "#파일시스템",
+     "#모바일컴퓨팅",
+     "#클라우드플랫폼",
+     "#클라우드서비스중개방법",
+     "#클라우드서비스개발",
+     "#하이브리드클라우드구축",
+     "#서버리스컴퓨팅",
+     "#한글프로그래밍언어",
+     "#임베디드컴파일러",
+     "#안드로이드앱분석",
+     "#군집로봇프로그래밍",
+     "#함수형병렬프로그래밍",
+     "#5G/6G이동통신",
+     "#사이버물리시스템",
+     "#무선네트워킹",
+     "#공간및시공간정보시스템",
+     "#머신비전",
+     "#의생명데이터분석",
+     "#영상시멘틱기술",
+     "#가상증강현실",
+     "#디지털휴먼",
+     "#메타버스",
+     "#HCI",
+     "#멀티모달기반영상처리및생성",
+     "#추천시스템",
+     "#자연어처리",
+     "#멀티모달데이터마이닝",
+     "#소프트웨어품질보증",
+     "#소프트웨어테스팅",
+     "#소프트웨어개발방법론",
+     "#바이오AI",
+     "#금융AI",
+     "#FoodAI",
+     "#이상행위탐지",
+     "#프라이버시보전AI",
+     "#LLMinCyberSecurity",
+     "#생성형AI취약성",
+     "#클라우드보안",
+     "#SW플랫폼보안",
+     "#악성코드",
+     "#네트워크",
+     "#예측모델링",
+     "#최적화",
+     "#WirelessAI",
+     "#Future5G",
+     "#B5G",
+     "#NetworkOptimization"
+    ]
+   }
+  ],
+  "bk21_name": "동남권 4차산업혁명 리더양성사업단",
+  "bk21_url": "https://bk4-ice.pusan.ac.kr"
+ },
+ {
+  "id": 79,
+  "gyeyeol": "공학",
+  "name": "탄소중립기후변화학과",
+  "recruit": true,
+  "homepage": "https://hn.pusan.ac.kr/hn/index.do",
+  "hashtags": [
+   "#AtmosphericScience",
+   "#IBSCenterforClimatePhysics",
+   "#ResearchCenterforClimateSciences",
+   "#ClimateSystem"
+  ],
+  "bk21": false,
+  "majors": [
+   {
+    "name": "수소미래에너지융합",
+    "recruit": true,
+    "homepage": "https://hn.pusan.ac.kr/hn/index.do"
+   },
+   {
+    "name": "통합기후시스템과학",
+    "recruit": true,
+    "hashtags": [
+     "#AtmosphericScience",
+     "#IBSCenterforClimatePhysics",
+     "#ResearchCenterforClimateSciences",
+     "#ClimateSystem"
+    ]
+   }
+  ]
+ },
+ {
+  "id": 80,
+  "gyeyeol": "공학",
+  "name": "반도체공학과",
+  "recruit": true,
+  "homepage": "https://semi.pusan.ac.kr/semi/index.do",
+  "hashtags": [
+   "#반도체소자및공정",
+   "#반도체소자및물성",
+   "#다기능성포토닉스및차세대광전소자",
+   "#반도체공정및재료",
+   "#반도체시뮬레이션",
+   "#TCAD",
+   "#아날로그및혼성집적회로설계",
+   "#VLSI설계",
+   "#System-on-a-Chip설계",
+   "#전력반도체소자",
+   "#화합물반도체기반차세대센서및전지"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 81,
+  "gyeyeol": "공학",
+  "name": "디자인테크놀로지학과",
+  "recruit": true,
+  "homepage": "",
+  "hashtags": [],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 82,
+  "gyeyeol": "공학",
+  "name": "후각디스플레이공학과",
+  "recruit": true,
+  "homepage": "",
+  "hashtags": [],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 83,
+  "gyeyeol": "예술",
+  "name": "음악학과",
+  "recruit": true,
+  "homepage": "https://music.pusan.ac.kr/music/index.do",
+  "hashtags": [
+   "#피아노",
+   "#관현악",
+   "#성악",
+   "#작곡"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 84,
+  "gyeyeol": "예술",
+  "name": "한국음악학과",
+  "recruit": true,
+  "homepage": "https://gukak.pusan.ac.kr/gukak/index.do",
+  "hashtags": [
+   "#거문고",
+   "#작곡",
+   "#가야금",
+   "#피리"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 85,
+  "gyeyeol": "예술",
+  "name": "미술학과",
+  "recruit": true,
+  "homepage": "https://pnuart.pusan.ac.kr/pnuart/index.do",
+  "hashtags": [
+   "#한국화",
+   "#서양화",
+   "#조소"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 86,
+  "gyeyeol": "예술",
+  "name": "디자인학과",
+  "recruit": true,
+  "homepage": "https://design.pusan.ac.kr/design/index.do",
+  "hashtags": [
+   "#타이포그래피",
+   "#멀티미디어디자인",
+   "#광고디자인",
+   "#인터랙티브경험디자인",
+   "#애니메이션",
+   "#만화",
+   "#웹툰",
+   "#3D애니메이션",
+   "#영상콘텐츠",
+   "#미디어아트",
+   "#HCI",
+   "#감성공학",
+   "#인공지능",
+   "#공간컴퓨팅",
+   "#양자역학응용",
+   "#UX",
+   "#디지털콘텐츠디자인",
+   "#인터랙션디자인"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 87,
+  "gyeyeol": "예술",
+  "name": "무용학과",
+  "recruit": true,
+  "homepage": "https://dance.pusan.ac.kr/dance/index.do",
+  "hashtags": [],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 88,
+  "gyeyeol": "예술",
+  "name": "조형학과",
+  "recruit": true,
+  "homepage": "https://plarts.pusan.ac.kr/plarts/index.do",
+  "hashtags": [
+   "#섬유예술",
+   "#금속조형",
+   "#미학",
+   "#도자예술",
+   "#가구목조형"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 89,
+  "gyeyeol": "예술",
+  "name": "예술문화영상학과",
+  "recruit": true,
+  "homepage": "https://artimage.pusan.ac.kr/artimage/index.do",
+  "hashtags": [
+   "#영화비평",
+   "#영화편집",
+   "#작가연구",
+   "#영화미학",
+   "#영화제작",
+   "#미학",
+   "#예술학",
+   "#미술이론",
+   "#매체이론",
+   "#분석미학",
+   "#예술철학",
+   "#비평철학",
+   "#문화정책",
+   "#예술경영",
+   "#문화기획",
+   "#영화이론",
+   "#영화사회학"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 90,
+  "gyeyeol": "체육",
+  "name": "체육학과",
+  "recruit": true,
+  "homepage": "https://physicaledu.pusan.ac.kr/physicaledu/index.do",
+  "hashtags": [
+   "#스포츠사회학",
+   "#체육측정평가",
+   "#스포츠경영학",
+   "#스포츠커리어디자인",
+   "#스포츠마케팅",
+   "#배드민턴",
+   "#골프",
+   "#특수체육",
+   "#여가레크레이션",
+   "#운동생리학",
+   "#트레이닝방법론",
+   "#운동처방",
+   "#수영",
+   "#스포츠교육학",
+   "#체육교과교육론",
+   "#체육교과교재및연구법",
+   "#운동역학",
+   "#스포츠동작분석",
+   "#축구",
+   "#스포츠심리학",
+   "#운동학습론"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 91,
+  "gyeyeol": "체육",
+  "name": "스포츠과학과",
+  "recruit": true,
+  "homepage": "https://sportscience.pusan.ac.kr/sportscience/index.do",
+  "hashtags": [
+   "#스포츠의학",
+   "#스포츠임상심리학",
+   "#스포츠건강심리학",
+   "#스포츠경영",
+   "#건강관리",
+   "#빅데이터",
+   "#건강증진",
+   "#선수트레이닝",
+   "#스포츠생체역학"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 92,
+  "gyeyeol": "의학",
+  "name": "의학과",
+  "recruit": true,
+  "homepage": "https://medicine.pusan.ac.kr/medicine/index.do",
+  "hashtags": [],
+  "bk21": true,
+  "majors": [],
+  "bk21_name": "치의생명과학 교육연구팀",
+  "bk21_url": "https://bk21four-pnusd.pusan.ac.kr/bk21four-pnusd/index.do"
+ },
+ {
+  "id": 93,
+  "gyeyeol": "의학",
+  "name": "치의학과",
+  "recruit": true,
+  "homepage": "https://dent.pusan.ac.kr/newdent/index.do",
+  "hashtags": [
+   "#치과보존학",
+   "#응용해부학",
+   "#체질인류학",
+   "#구강해부학",
+   "#치과보철학",
+   "#치과교정학",
+   "#교육공학",
+   "#구강악안면외과학",
+   "#치과마취통증",
+   "#치과마취통증학",
+   "#구강·병원미생물학",
+   "#세포분자면역학",
+   "#치주과학",
+   "#조직재생학",
+   "#줄기세포생물학",
+   "#두개악안면세포및발생생물학",
+   "#생리학",
+   "#면역학",
+   "#세포생물학",
+   "#소아치과학",
+   "#구강병리학",
+   "#미생물학",
+   "#분자생물학",
+   "#구강생리학",
+   "#치과약리학",
+   "#치과생체재료학",
+   "#치아수복학",
+   "#구강내과",
+   "#종양생물학",
+   "#생화학",
+   "#구강내과학",
+   "#신경생물학",
+   "#한의학",
+   "#영상치의학",
+   "#구강악안면방사선학"
+  ],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 94,
+  "gyeyeol": "의학",
+  "name": "한의학과",
+  "recruit": true,
+  "homepage": "https://kmed.pusan.ac.kr/kmed/index.do",
+  "hashtags": [],
+  "bk21": false,
+  "majors": []
+ },
+ {
+  "id": 95,
+  "gyeyeol": "의학",
+  "name": "융합의과학과",
+  "recruit": true,
+  "homepage": "",
+  "hashtags": [],
+  "bk21": true,
+  "majors": [],
+  "bk21_name": "부산대학교 GRAND 융합의과학 교육연구단",
+  "bk21_url": "https://grandbk.pusan.ac.kr"
+ },
+ {
+  "id": 96,
+  "gyeyeol": "의학",
+  "name": "융합한의과학과",
+  "recruit": true,
+  "homepage": "https://kmed.pusan.ac.kr/kmed/index.do",
+  "hashtags": [],
+  "bk21": true,
+  "majors": [],
+  "bk21_name": "건강노화 한의치료기술 사업팀",
+  "bk21_url": "https://bk21four-kmed.pusan.ac.kr/"
  }
 ]

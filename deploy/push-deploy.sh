@@ -17,6 +17,7 @@ time $SCP "$B/docker-29.5.3.tgz" "$B/docker-compose-linux-x86_64" "$B/images.tar
      "$D/server-install.sh" "$D/docker-compose.prod.yml" \
      $HOST:'~/pnug-deploy/'
 $SCP "$D/.env" $HOST:'~/pnug-deploy/env.prod'
+$SCP "$D/sheets-sa.json" $HOST:'~/pnug-deploy/sheets-sa.json'
 
 echo "=== extract source -> ~/pnu-grad ==="
 $SSH $HOST 'tar xzf ~/pnug-deploy/pnu-grad-src.tgz -C ~ && echo extracted: && ls -d ~/pnu-grad'

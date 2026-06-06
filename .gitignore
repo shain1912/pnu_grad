@@ -21,3 +21,10 @@ caddy/access.log.*
 # Caddy data/config — Windows에선 보통 %AppData%\Caddy 사용하지만 혹시 모를 누락 방지
 caddy/data/
 caddy/config/
+
+# 로컬 미리보기/도구 작업물 (커밋 제외)
+.devmock/
+.shot/
+# shadcn CLI 루트 툴링 (앱 아님)
+/package.json
+/package-lock.json

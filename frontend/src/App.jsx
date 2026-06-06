@@ -5,7 +5,7 @@ import AdminLogin from './pages/AdminLogin.jsx';
 import AdminDashboard from './pages/AdminDashboard.jsx';
 
 function RedirectToAdmission() {
-  useEffect(() => { window.location.replace('/admission.html'); }, []);
+  useEffect(() => { window.location.replace('/admission-v3-dark.html'); }, []);
   return <div className="container">이동 중...</div>;
 }
 

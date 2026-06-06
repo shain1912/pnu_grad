@@ -7,7 +7,7 @@
 ## 도메인 용어
 
 ### 응답 (response)
-신청자가 시안 페이지의 신청 모달을 통해 제출한 **사전 신청서 1건**. 코드에서는 `responses` + `answers` 두 테이블에 분리 저장된다(설문 도메인 모델 재사용). 캐논 용어는 **"응답"**.
+신청자가 시안 페이지의 신청 모달을 통해 제출한 **사전 신청서 1건**. 코드에서는 PostgreSQL의 `responses` + `answers` 두 테이블에 분리 저장된다(설문 도메인 모델 재사용). 캐논 용어는 **"응답"**.
 
 **수집·저장 항목은 최소화**한다 — 검증된 이메일(OAuth, `@pusan.ac.kr`) + 희망 트랙(①학·석사 / ②학·석박사통합 / ③전환) + **3지망**(각 학과+전공)만 저장. 학번·이름·평점·이수학기 등은 수집·저장하지 않는다(이메일로 내부 식별 가능, 평점·학점·학기는 별도 **자격 확인**에서 자가 입력만 — 미저장). → [`docs/adr/0005`](./docs/adr/0005-response-data-minimization-3choices.md)
 
@@ -31,7 +31,7 @@
 - 같은 백엔드의 `/admin` 경로에서 처리. 신청자(`token` 쿠키)와 관리자(`admin_token` 쿠키) 격리
 - API 네임스페이스: `/api/admin/*`
 - 신청자 페이지에서 admin 페이지로 가는 메뉴는 노출하지 않음 (URL을 아는 사람만 진입)
-- 계정 저장: SQLite `admins(id, username, password_hash, created_at, last_login_at)`, **bcryptjs** 해시
+- 계정 저장: PostgreSQL `admins(id, username, password_hash, created_at, last_login_at)`, **bcryptjs** 해시
 - 초기 1명: `.env`의 `ADMIN_BOOTSTRAP_USERNAME/PASSWORD`로 `init-db.js`에서 시드. 시드 후 `.env`에서 제거 권장
 - PW 변경: MVP는 별도 CLI 스크립트. 향후 admin UI에 폼 (선택)
 
@@ -39,20 +39,25 @@
 `@pusan.ac.kr` 이메일 도메인 검증. 백엔드 `isAllowedDomain()`가 단일 진실. 시안 클라이언트는 우회할 수 없다.
 
 ### 시트 미러 (sheet mirror)
-응답이 SQLite에 INSERT된 직후 Google Sheets의 응답 시트에 1행 append되는 일방향 동기화. 시트는 **read-only 거울**이며 SoT 아님.
+응답이 PostgreSQL에 INSERT된 직후 Google Sheets의 응답 시트에 1행 append되는 일방향 동기화. 시트는 **read-only 거울**이며 SoT 아님.
 
 ---
 
 ## 저장 모델
 
 ### 진실 공급원 (SoT)
-**로컬 SQLite (`backend/data.sqlite`)** 가 모든 응답·사용자·설문 구성·관리자 계정의 단일 SoT.
+**PostgreSQL** 가 모든 응답·사용자·설문 구성·관리자 계정의 단일 SoT.
+
+- 연결: `backend/src/db.js`의 `pg.Pool`. `DATABASE_URL` 우선, 없으면 `PGHOST/PGPORT/PGUSER/PGPASSWORD/PGDATABASE` 개별 변수
+- 배포: Docker compose의 `postgres:16-alpine` 서비스(`pgdata` 볼륨에 영속). 자세한 건 [`deploy/docker-compose.prod.yml`](./deploy/docker-compose.prod.yml)
+- 스키마: `db.js`의 `initSchema()`가 부팅 시 `CREATE TABLE IF NOT EXISTS`로 보장. 타임스탬프는 `timestamptz`(원본 문자열로 파싱 — CSV·시트 미러 출력 안정성)
+- 호환 셰임: `db.js`가 위치 플레이스홀더 `?`를 Postgres `$n`으로 변환하고 `prepare().get/all/run`을 **비동기**로 노출(호출부는 `await`만 추가)
 
 ### Google Sheets 미러
-- 일방향 동기화 (SQLite → Sheets). 시트에서 SQLite로 역방향 sync 없음
+- 일방향 동기화 (PostgreSQL → Sheets). 시트에서 DB로 역방향 sync 없음
 - Sheets API 장애가 응답 자체를 차단하지 않는다 (fail open)
-- 시트가 망가지면 SQLite로부터 언제든 재생성 가능
-- 1인 1응답·도메인 게이트는 SQLite 레벨에서 강제
+- 시트가 망가지면 PostgreSQL로부터 언제든 재생성 가능
+- 1인 1응답·도메인 게이트는 DB 레벨에서 강제 (`UNIQUE (survey_id, user_id)`)
 
 ### 미러 타이밍
 **Fire-and-forget**. 응답 트랜잭션 commit 직후 `mirrorToSheet().catch(log)` 비동기 호출. 응답 latency에 영향 없음.
@@ -109,4 +114,4 @@
 
 ## 컴플라이언스 짚어둘 것
 
-- **PII 최소화 (ADR 0005)** — 이제 Sheets/SQLite에 **이메일 + 트랙 + 3지망(학과·전공)** 만 저장한다. 학번·이름·평점·학기는 수집하지 않는다. 그래도 `@pusan.ac.kr` 이메일은 개인 식별자이므로 Google Cloud 저장 적합성은 여전히 **사용자 책임으로 확인**(금지 시 시트 미러 제거 + CSV 다운로드만).
+- **PII 최소화 (ADR 0005)** — 이제 Sheets/PostgreSQL에 **이메일 + 트랙 + 3지망(학과·전공)** 만 저장한다. 학번·이름·평점·학기는 수집하지 않는다. 그래도 `@pusan.ac.kr` 이메일은 개인 식별자이므로 Google Cloud 저장 적합성은 여전히 **사용자 책임으로 확인**(금지 시 시트 미러 제거 + CSV 다운로드만).

@@ -8,7 +8,7 @@ echo.
 echo  Backend  : http://localhost:3001
 echo  Frontend : http://localhost:5173
 echo.
-echo  Index    : http://localhost:5173/admission.html
+echo  Index    : http://localhost:5173/admission-v3-dark.html
 echo  Admin    : http://localhost:5173/admin/login
 echo.
 echo  Two cmd windows will open. Ctrl+C in each to stop.
@@ -19,6 +19,6 @@ start "PNU-GRAD Backend (3001)" cmd /k "cd /d %~dp0backend && node --experimenta
 start "PNU-GRAD Frontend (5173)" cmd /k "cd /d %~dp0frontend && npm run dev"
 
 timeout /t 3 >nul
-start "" "http://localhost:5173/admission.html"
+start "" "http://localhost:5173/admission-v3-dark.html"
 
 exit /b 0
