@@ -3,123 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3개년 추진 로드맵 — 부산대학교 AI 거점대학육성사업단 | ARISE PNU</title>
-<meta name="description" content="2025–2027 추진 로드맵 · 기반구축 → 실행 → 확산 · 총 사업비 3,111억 예산 구조 · AI+X 증강인재 4,000명 · 2030 Top 200 KPI 목표">
+<title>3개년 로드맵 — 부산대학교 AI 거점대학육성사업단 | ARISE PNU</title>
+<meta name="description" content="기반구축 → 실행 → 확산. 2025–2027 정책·교육·연구·행정·인프라 5축 추진 로드맵 · 국책사업 3,111억 · 2030 Top 200.">
 <link rel="icon" type="image/jpeg" href="/s30/assets/pnu-symbol-color.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+4:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="/s30/assets/vendor/fonts/google-fonts-ital.css">
+<link rel="stylesheet" href="/s30/assets/vendor/fa/css/all.min.css">
 <link rel="stylesheet" href="/src/styles/main.css">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-<style>
-/* 페이지 고유 CSS — main.css는 건드리지 않음 */
-
-/* === 단계 진행 SVG 인포그래픽 (3개년 게이지 트랙) === */
-.rm-progress { margin-top:46px; padding:30px 30px 26px; border-radius:22px; background:rgba(255,255,255,.04); border:1px solid rgba(126,200,255,.18); backdrop-filter:blur(4px); }
-.rm-progress-head { display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:8px; }
-.rm-progress-head .rp-t { font-family:'Inter',sans-serif; font-size:11px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:#7EC8FF; }
-.rm-progress-head .rp-n { font-family:'Inter',sans-serif; font-size:11px; font-weight:700; color:rgba(255,255,255,.55); letter-spacing:.05em; }
-.rm-progress svg { width:100%; height:auto; display:block; overflow:visible; }
-.rp-flow { stroke-dasharray:6 8; animation:rpflow 1.4s linear infinite; }
-@keyframes rpflow { to { stroke-dashoffset:-28; } }
-.rp-node-lbl { font-family:'Inter',sans-serif; font-weight:800; }
-@media(prefers-reduced-motion:reduce){ .rp-flow{ animation:none; } }
-
-/* === 예산 도넛 차트 레이아웃 === */
-.budget-split { display:grid; grid-template-columns:340px 1fr; gap:46px; align-items:center; margin-top:8px; }
-.budget-donut-wrap { position:relative; }
-.budget-donut-center { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; pointer-events:none; }
-.budget-donut-center .bd-num { font-family:'Source Serif 4',serif; font-size:38px; font-weight:800; color:var(--pnu-blue-dark); letter-spacing:-.02em; line-height:1; }
-.budget-donut-center .bd-lbl { font-family:'Inter',sans-serif; font-size:10.5px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--text-m); margin-top:8px; }
-@media(max-width:860px){ .budget-split { grid-template-columns:1fr; gap:30px; } .budget-donut-wrap { max-width:320px; margin:0 auto; } }
-
-.rm-photostrip { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:40px; }
-.rm-photo { position:relative; border-radius:18px; overflow:hidden; height:200px; box-shadow:0 14px 34px rgba(8,16,40,.4); }
-.rm-photo img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease; }
-.rm-photo:hover img { transform:scale(1.06); }
-.rm-photo .rm-photo-ov { position:absolute; inset:0; background:linear-gradient(180deg, transparent 35%, rgba(8,16,40,.86)); display:flex; flex-direction:column; justify-content:flex-end; padding:18px 20px; }
-.rm-photo .rm-photo-yr { font-family:'Inter',sans-serif; font-size:11px; font-weight:800; letter-spacing:.14em; color:var(--gold); text-transform:uppercase; }
-.rm-photo .rm-photo-cap { font-size:13.5px; font-weight:700; color:#fff; line-height:1.4; margin-top:4px; }
-@media(max-width:720px){ .rm-photostrip { grid-template-columns:1fr; } }
-
-/* KPI 카드 (ach-grid 재사용 + 진행 게이지) */
-.kpi-track { height:8px; border-radius:6px; background:var(--bg-off); overflow:hidden; margin-top:16px; }
-.kpi-fill { height:100%; border-radius:6px; background:linear-gradient(90deg, var(--pnu-blue-dark), var(--pnu-blue-sub)); }
-.ach-card.green .kpi-fill { background:linear-gradient(90deg, #047857, var(--pnu-green)); }
-.ach-card.gold .kpi-fill { background:linear-gradient(90deg, #143F90, var(--gold)); }
-.ach-card.violet .kpi-fill { background:linear-gradient(90deg, #0F172A, #1E3A5F); }
-.kpi-meta { display:flex; justify-content:space-between; font-family:'Inter',sans-serif; font-size:10.5px; font-weight:700; color:var(--text-m); letter-spacing:.04em; margin-top:8px; }
-
-/* 예산 합계 캡슐 */
-.budget-total { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-top:30px; padding:20px 26px; border-radius:14px; background:linear-gradient(135deg, var(--blue-tint), #fff); border:1px solid var(--blue-light); }
-.budget-total .bt-num { font-family:'Source Serif 4',serif; font-size:30px; font-weight:800; color:var(--pnu-blue-dark); letter-spacing:-.02em; }
-.budget-total .bt-lbl { font-size:13px; color:var(--text-m); }
-.budget-total .bt-note { margin-left:auto; font-family:'Inter',sans-serif; font-size:10.5px; color:var(--text-m); letter-spacing:.04em; text-align:right; }
-
-/* KPI 칩 (ach-desc 문단 대체) */
-.kpi-chips { display:flex; flex-wrap:wrap; gap:6px; margin:14px 0 4px; }
-.kpi-chips span { font-family:'Inter',sans-serif; font-size:11px; font-weight:700; letter-spacing:.02em; color:var(--pnu-blue-dark); background:var(--blue-tint); border:1px solid var(--blue-light); border-radius:999px; padding:4px 10px; }
-.ach-card.green .kpi-chips span { color:#047857; background:#ECFDF5; border-color:#A7F3D0; }
-
-/* 비전 칩 플로우 (vision-desc 문단 대체) */
-.vision-chips { display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-top:22px; }
-.vision-chips .vc { font-family:'Inter',sans-serif; font-size:12.5px; font-weight:800; letter-spacing:.02em; color:#fff; background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.22); border-radius:999px; padding:7px 16px; }
-.vision-chips .vc-gold { color:#0F1F45; background:var(--gold); border-color:var(--gold); box-shadow:0 0 0 0 rgba(59,130,246,.5); animation:vcGlow 2.6s ease-in-out infinite; }
-.vision-chips i { color:rgba(255,255,255,.5); font-size:11px; }
-@keyframes vcGlow { 0%,100%{ box-shadow:0 0 0 0 rgba(59,130,246,.55);} 50%{ box-shadow:0 0 26px 4px rgba(59,130,246,.35);} }
-
-/* === 5축 진척 미니바 (로드맵 섹션, 글-제로 인포그래픽) === */
-.rm-axisbars { margin-top:46px; display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
-.rm-axis { padding:20px 18px 18px; border-radius:16px; background:rgba(255,255,255,.045); border:1px solid rgba(126,200,255,.16); transition:transform .35s ease, border-color .35s ease, background .35s ease; }
-.rm-axis:hover { transform:translateY(-5px); border-color:rgba(126,200,255,.45); background:rgba(255,255,255,.07); }
-.rm-axis .rax-ico { width:40px; height:40px; border-radius:11px; display:flex; align-items:center; justify-content:center; font-size:16px; color:#fff; background:linear-gradient(135deg, rgba(0,117,201,.9), rgba(20,63,144,.9)); box-shadow:0 8px 22px rgba(0,91,170,.35); margin-bottom:14px; }
-.rm-axis.x-green .rax-ico { background:linear-gradient(135deg,#00A651,#047857); box-shadow:0 8px 22px rgba(0,166,81,.32); }
-.rm-axis.x-gold  .rax-ico { background:linear-gradient(135deg,#3B82F6,#143F90); }
-.rm-axis .rax-lbl { font-family:'Inter',sans-serif; font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:#7EC8FF; }
-.rm-axis .rax-pct { font-family:'Source Serif 4',serif; font-size:30px; font-weight:800; color:#fff; line-height:1; margin-top:6px; letter-spacing:-.02em; }
-.rm-axis .rax-pct span { font-size:14px; color:rgba(255,255,255,.55); }
-.rm-axis .rax-track { height:7px; border-radius:6px; background:rgba(255,255,255,.1); overflow:hidden; margin-top:14px; }
-.rm-axis .rax-fill { height:100%; width:0; border-radius:6px; background:linear-gradient(90deg,#0075C9,#7EC8FF); transition:width 1.2s cubic-bezier(.16,1,.3,1); }
-.rm-axis.x-green .rax-fill { background:linear-gradient(90deg,#047857,#34D399); }
-.rm-axis.x-gold  .rax-fill { background:linear-gradient(90deg,#143F90,#3B82F6); }
-@media(max-width:860px){ .rm-axisbars { grid-template-columns:repeat(2,1fr); } }
-@media(max-width:480px){ .rm-axisbars { grid-template-columns:1fr; } }
-@media(prefers-reduced-motion:reduce){ .rm-axis .rax-fill { transition:none; } .vision-chips .vc-gold { animation:none; } }
-
-/* === 누적 펀딩 타임라인 SVG === */
-.fund-timeline { margin-top:44px; padding:30px 28px 22px; border-radius:20px; background:linear-gradient(135deg,#fff,var(--blue-tint)); border:1px solid var(--blue-light); box-shadow:0 18px 44px rgba(0,91,170,.08); }
-.fund-timeline .ft-head { display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:6px; margin-bottom:10px; }
-.fund-timeline .ft-t { font-family:'Inter',sans-serif; font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--pnu-blue); }
-.fund-timeline .ft-n { font-family:'Inter',sans-serif; font-size:11px; font-weight:700; color:var(--text-m); letter-spacing:.04em; }
-.fund-timeline svg { width:100%; height:auto; display:block; overflow:visible; }
-
-/* === 임팩트 미니 다크밴드 (배경 리듬) === */
-.impact-strip { background:linear-gradient(135deg,var(--pnu-navy),var(--pnu-blue-dark)); padding:64px 0; position:relative; overflow:hidden; }
-.impact-strip::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle at 15% 30%, rgba(0,117,201,.25) 0, transparent 45%),radial-gradient(circle at 85% 70%, rgba(0,166,81,.16) 0, transparent 48%); pointer-events:none; }
-.impact-grid { position:relative; display:grid; grid-template-columns:repeat(4,1fr); gap:28px; }
-.impact-cell { text-align:center; position:relative; }
-.impact-cell::after { content:''; position:absolute; top:14%; right:-14px; height:72%; width:1px; background:rgba(255,255,255,.14); }
-.impact-cell:last-child::after { display:none; }
-.impact-cell .ic-tag { font-family:'Inter',sans-serif; font-size:10.5px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#7EC8FF; }
-.impact-cell .ic-num { font-family:'Source Serif 4',serif; font-weight:800; font-size:clamp(2.6rem,5vw,3.9rem); line-height:.95; letter-spacing:-.03em; margin-top:10px; background:linear-gradient(180deg,#fff,#9CC8FF); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
-.impact-cell .ic-num span { font-size:.42em; -webkit-text-fill-color:rgba(255,255,255,.6); }
-.impact-cell.gold .ic-num { background:linear-gradient(180deg,#fff,#3B82F6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
-.impact-cell .ic-lbl { font-size:12.5px; font-weight:700; color:rgba(255,255,255,.82); margin-top:12px; }
-.impact-cell .ic-sub { font-family:'Inter',sans-serif; font-size:10.5px; color:rgba(255,255,255,.5); margin-top:5px; letter-spacing:.03em; }
-@media(max-width:760px){ .impact-grid { grid-template-columns:repeat(2,1fr); gap:36px 20px; } .impact-cell:nth-child(2)::after{ display:none; } }
-
-/* === KPI 차트 듀얼 패널 === */
-.kpi-charts { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:40px; }
-.kpi-chart-card { background:var(--white); border:1px solid var(--border); border-radius:18px; padding:24px 24px 18px; box-shadow:0 6px 24px rgba(15,31,69,.05); transition:transform .3s ease, box-shadow .3s ease; }
-.kpi-chart-card:hover { transform:translateY(-3px); box-shadow:0 16px 38px rgba(0,91,170,.12); }
-.kpi-chart-card .kc-head { display:flex; align-items:baseline; justify-content:space-between; gap:8px; margin-bottom:6px; }
-.kpi-chart-card .kc-eyebrow { font-family:'Inter',sans-serif; font-size:10.5px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--pnu-blue); }
-.kpi-chart-card .kc-title { font-size:15px; font-weight:800; color:var(--ink); }
-.kpi-chart-card .kc-pill { font-family:'Inter',sans-serif; font-size:10px; font-weight:800; letter-spacing:.05em; color:#047857; background:#ECFDF5; border:1px solid #A7F3D0; border-radius:999px; padding:3px 9px; }
-.kpi-chart-canvas { position:relative; height:230px; margin-top:8px; }
-.ach-num { font-size:40px !important; }
-.ach-num span { font-size:18px !important; }
-@media(max-width:860px){ .kpi-charts { grid-template-columns:1fr; } }
-</style>
+<link rel="stylesheet" href="/src/styles/programs.css">
+<script src="/aura/vendor/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -132,7 +23,7 @@
       <span class="slogan-strip" style="margin-left:14px">Arise PNU, 같이 더 높게</span>
     </div>
     <div class="right">
-      <a href="https://www.pusan.ac.kr" target="_blank"><i class="fas fa-external-link-alt" style="font-size:9px;margin-right:4px"></i>부산대학교</a>
+      <a href="https://www.pusan.ac.kr" target="_blank">부산대학교</a>
       <a href="https://ai.pusan.ac.kr" target="_blank">AI 대학</a>
       <a href="https://airc.pusan.ac.kr" target="_blank">장영실연구원</a>
       <a href="#">로그인</a>
@@ -156,36 +47,36 @@
         <a href="/s30/about/" class="nav-link active">사업 소개 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
           <a href="/s30/about/"><div class="d-i"><i class="fas fa-flag"></i></div>사업 개요 · 비전</a>
-          <a href="/s30/about/aura"><div class="d-i"><i class="fas fa-sitemap"></i></div>A.U.R.A 2.0 마스터플랜</a>
-          <a href="/s30/about/governance"><div class="d-i"><i class="fas fa-users-cog"></i></div>거버넌스</a>
+          <a href="/s30/aura/"><div class="d-i"><i class="fas fa-sitemap"></i></div>A.U.R.A 2.0 마스터플랜</a>
+          <a href="/s30/about/governance/"><div class="d-i"><i class="fas fa-users-cog"></i></div>거버넌스</a>
           <a href="/s30/roadmap/"><div class="d-i"><i class="fas fa-bullseye"></i></div>3개년 로드맵</a>
         </div>
       </div>
       <div class="nav-item">
         <a href="/s30/programs/" class="nav-link">핵심 사업 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/programs/#education"><div class="d-i"><i class="fas fa-graduation-cap"></i></div>AI 교육 혁신</a>
-          <a href="/s30/programs/#research"><div class="d-i"><i class="fas fa-microscope"></i></div>AI 연구 강화</a>
-          <a href="/s30/programs/#industry"><div class="d-i"><i class="fas fa-handshake"></i></div>산학 협력</a>
-          <a href="/s30/programs/#infra"><div class="d-i"><i class="fas fa-server"></i></div>AI 인프라</a>
+          <a href="/s30/programs/education/"><div class="d-i"><i class="fas fa-graduation-cap"></i></div>AI 교육 혁신</a>
+          <a href="/s30/programs/research/"><div class="d-i"><i class="fas fa-microscope"></i></div>AI 연구 강화</a>
+          <a href="/s30/programs/industry/"><div class="d-i"><i class="fas fa-handshake"></i></div>산학 협력</a>
+          <a href="/s30/programs/infra/"><div class="d-i"><i class="fas fa-server"></i></div>AI 인프라</a>
         </div>
       </div>
       <div class="nav-item">
         <a href="/s30/achievements/" class="nav-link">성과 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/achievements/#robocup"><div class="d-i"><i class="fas fa-trophy"></i></div>RoboCup 2025 우승</a>
-          <a href="/s30/achievements/#quantum"><div class="d-i"><i class="fas fa-atom"></i></div>양자AI 47억 사업</a>
-          <a href="/s30/achievements/#papers"><div class="d-i"><i class="fas fa-file-alt"></i></div>논문 · 특허</a>
-          <a href="/s30/achievements/#transfer"><div class="d-i"><i class="fas fa-exchange-alt"></i></div>기술이전 · 창업</a>
+          <a href="/s30/achievements/robocup/"><div class="d-i"><i class="fas fa-trophy"></i></div>RoboCup 2025 우승</a>
+          <a href="/s30/achievements/quantum/"><div class="d-i"><i class="fas fa-atom"></i></div>양자AI 47억 사업</a>
+          <a href="/s30/achievements/papers/"><div class="d-i"><i class="fas fa-file-alt"></i></div>논문 · 특허</a>
+          <a href="/s30/achievements/transfer/"><div class="d-i"><i class="fas fa-exchange-alt"></i></div>기술이전 · 창업</a>
         </div>
       </div>
       <div class="nav-item">
         <a href="/s30/partners/" class="nav-link">파트너십 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/partners/#google"><div class="d-i"><i class="fab fa-google"></i></div>Google for Education</a>
-          <a href="/s30/partners/#industry"><div class="d-i"><i class="fas fa-industry"></i></div>산학 협약 (35+)</a>
-          <a href="/s30/partners/#global"><div class="d-i"><i class="fas fa-globe"></i></div>글로벌 협력</a>
-          <a href="/s30/partners/#govt"><div class="d-i"><i class="fas fa-landmark"></i></div>정부·공공기관</a>
+          <a href="/s30/partners/google/"><div class="d-i"><i class="fab fa-google"></i></div>Google for Education</a>
+          <a href="/s30/partners/industry/"><div class="d-i"><i class="fas fa-industry"></i></div>산학 협약 (35+)</a>
+          <a href="/s30/partners/global/"><div class="d-i"><i class="fas fa-globe"></i></div>글로벌 협력</a>
+          <a href="/s30/partners/govt/"><div class="d-i"><i class="fas fa-landmark"></i></div>정부·공공기관</a>
         </div>
       </div>
       <div class="nav-item">
@@ -203,279 +94,177 @@
   </div>
 </header>
 
+<main class="prog">
+
 <!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="container ph-inner">
-    <div class="ph-left">
-      <div class="ph-eyebrow">3-YEAR ROADMAP · 추진 로드맵</div>
-      <h1 class="ph-title">기반구축 → 실행 → <em>확산</em></h1>
-      <p class="ph-sub">2025 → 2027 · 3,111억 · 2030 Top 200</p>
-      <div class="breadcrumb">
-        <a href="/s30/"><i class="fas fa-home"></i> 홈</a>
-        <i class="fas fa-chevron-right"></i>
-        <a href="/s30/about/">사업 소개</a>
-        <i class="fas fa-chevron-right"></i>
-        <span class="current">3개년 로드맵</span>
-      </div>
-    </div>
-    <div class="ph-icon"><i class="fas fa-bullseye"></i></div>
+<section class="prog-hero" data-screen-label="로드맵 · Hero">
+  <img class="prog-hero__img" src="/s30/assets/img/it-building.jpg" alt="3개년 추진 로드맵">
+  <div class="prog-hero__veil"></div>
+  <div class="container prog-hero__crumb">
+    <a href="/s30/">홈</a><i>›</i><a href="/s30/about/">사업 소개</a><i>›</i><span>3개년 로드맵</span>
   </div>
-</section>
-
-<!-- 1) 3개년 타임라인 (네이비 로드맵) -->
-<section class="roadmap-section">
+  <div class="container prog-hero__inner">
+    <div class="prog-hero__kicker">3-Year Roadmap · 추진 로드맵</div>
+    <h1 class="prog-hero__title">기반구축 → 실행 → <b>확산</b></h1>
+    <div class="prog-hero__en">2025 → 2027 · 정책 · 교육 · 연구 · 행정 · 인프라 5축</div>
+  </div>
   <div class="container" style="position:relative">
-    <div class="section-header center">
-      <div class="s-eyebrow" style="color:#7EC8FF;justify-content:center">2025 → 2027</div>
-      <div class="s-title" style="color:#fff">3개년 <em style="color:var(--gold)">단계별 추진 로드맵</em></div>
-      <div class="s-sub" style="color:rgba(255,255,255,.7);margin:0 auto">정책 · 교육 · 연구 · 행정 · 인프라 5축</div>
+    <div class="prog-hero__facts">
+      <div class="prog-hero__fact"><div class="n">3,111<small>억</small></div><div class="l">국책사업 누적</div></div>
+      <div class="prog-hero__fact"><div class="n">5<small>축</small></div><div class="l">추진 영역</div></div>
+      <div class="prog-hero__fact"><div class="n">Top 200</div><div class="l">2030 목표</div></div>
     </div>
+  </div>
+</section>
 
-    <div class="rm-timeline">
-      <div class="rm-col">
-        <div class="rm-marker">25</div>
-        <div class="rm-year">2025</div>
-        <div class="rm-phase">기반 구축 · Foundation</div>
-        <div class="rm-item"><div class="rm-item-cat">정책</div><div class="rm-item-text">A.U.R.A 선언 · AX 선도위원회 발족 · AI 윤리 가이드라인 v1</div></div>
-        <div class="rm-item"><div class="rm-item-cat">교육</div><div class="rm-item-text">산지니 AI 론칭 (국립대 최초) · 지도교수상담 AI 도우미</div></div>
-        <div class="rm-item"><div class="rm-item-cat">연구</div><div class="rm-item-text">장영실 AI 융합연구원 개원 (12.30) · 양자AI 47억 선정</div></div>
-        <div class="rm-item"><div class="rm-item-cat">행정</div><div class="rm-item-text">AX·정보화혁신본부 신설 · 경영대상 AI 혁신 대상 수상</div></div>
-        <div class="rm-item"><div class="rm-item-cat">인프라</div><div class="rm-item-text">IT관 신축 착공 (267억 · 13,161㎡)</div></div>
-      </div>
-
-      <div class="rm-col active">
-        <div class="rm-marker">26</div>
-        <div class="rm-year">2026</div>
-        <div class="rm-phase">실행 · Implementation</div>
-        <div class="rm-item"><div class="rm-item-cat">정책</div><div class="rm-item-text">AI 거점대학 본 선정 신청 (7월) · AI-MASTER 인증</div></div>
-        <div class="rm-item"><div class="rm-item-cat">교육</div><div class="rm-item-text">AI 부트캠프 1기 개강 (75억 · 7트랙)</div></div>
-        <div class="rm-item"><div class="rm-item-cat">연구</div><div class="rm-item-text">융합 연구 고도화 · 글로벌 연구네트워크 확대</div></div>
-        <div class="rm-item"><div class="rm-item-cat">행정</div><div class="rm-item-text">LMS AI 조교 · AI 행정 시스템 확대</div></div>
-        <div class="rm-item"><div class="rm-item-cat">인프라</div><div class="rm-item-text">Google AI Ecosystem 전면 도입 (6월)</div></div>
-      </div>
-
-      <div class="rm-col future">
-        <div class="rm-marker">27</div>
-        <div class="rm-year">2027</div>
-        <div class="rm-phase">확산 · Expansion</div>
-        <div class="rm-item"><div class="rm-item-cat">정책</div><div class="rm-item-text">성과 공유 · 동남권 AX 허브 모델 확산</div></div>
-        <div class="rm-item"><div class="rm-item-cat">교육</div><div class="rm-item-text">AI 대학 첫 신입생 입학 (424명)</div></div>
-        <div class="rm-item"><div class="rm-item-cat">연구</div><div class="rm-item-text">AI 융합 성과 글로벌 확산 · 연구네트워크 10개</div></div>
-        <div class="rm-item"><div class="rm-item-cat">행정</div><div class="rm-item-text">AI 기반 전 행정 자동화 · 만족도 90 달성</div></div>
-        <div class="rm-item"><div class="rm-item-cat">인프라</div><div class="rm-item-text">양자 컴퓨팅 시범 인프라 가동</div></div>
-      </div>
-    </div>
-
-    <!-- 단계 진행 SVG 인포그래픽 (커스텀 다이어그램) -->
-    <div class="rm-progress">
-      <div class="rm-progress-head">
-        <span class="rp-t">Roadmap Progress · 단계별 진척</span>
-        <span class="rp-n">기반 구축 완료 → 실행 단계 진행 중 (2026)</span>
-      </div>
-      <svg viewBox="0 0 960 132" role="img" aria-label="2025 기반구축에서 2027 확산까지 3개년 진척 다이어그램">
-        <defs>
-          <linearGradient id="rpTrack" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stop-color="#00A651"/>
-            <stop offset="50%" stop-color="#0075C9"/>
-            <stop offset="100%" stop-color="#3B82F6"/>
-          </linearGradient>
-        </defs>
-        <!-- base track -->
-        <line x1="80" y1="56" x2="880" y2="56" stroke="rgba(255,255,255,.14)" stroke-width="6" stroke-linecap="round"/>
-        <!-- progress fill (2025 done + into 2026) -->
-        <line x1="80" y1="56" x2="480" y2="56" stroke="url(#rpTrack)" stroke-width="6" stroke-linecap="round"/>
-        <line class="rp-flow" x1="80" y1="56" x2="480" y2="56" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".6"/>
-        <!-- 2025 node (done) -->
-        <circle cx="80" cy="56" r="16" fill="#00A651"/>
-        <text x="80" y="61" text-anchor="middle" class="rp-node-lbl" font-size="13" fill="#fff">✓</text>
-        <text x="80" y="22" text-anchor="middle" class="rp-node-lbl" font-size="15" fill="#fff">2025</text>
-        <text x="80" y="92" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="rgba(255,255,255,.62)">기반 구축</text>
-        <text x="80" y="108" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#00A651">COMPLETE</text>
-        <!-- 2026 node (active) -->
-        <circle cx="480" cy="56" r="20" fill="#0075C9" stroke="#fff" stroke-width="3"/>
-        <circle cx="480" cy="56" r="29" fill="none" stroke="rgba(126,200,255,.45)" stroke-width="2"/>
-        <text x="480" y="61" text-anchor="middle" class="rp-node-lbl" font-size="13" fill="#fff">●</text>
-        <text x="480" y="18" text-anchor="middle" class="rp-node-lbl" font-size="16" fill="var(--gold)">2026</text>
-        <text x="480" y="98" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#fff">실행</text>
-        <text x="480" y="114" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#7EC8FF">IN PROGRESS</text>
-        <!-- 2027 node (future) -->
-        <circle cx="880" cy="56" r="16" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.4)" stroke-width="2"/>
-        <text x="880" y="61" text-anchor="middle" class="rp-node-lbl" font-size="12" fill="rgba(255,255,255,.7)">★</text>
-        <text x="880" y="22" text-anchor="middle" class="rp-node-lbl" font-size="15" fill="rgba(255,255,255,.85)">2027</text>
-        <text x="880" y="92" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="rgba(255,255,255,.62)">확산</text>
-        <text x="880" y="108" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="rgba(255,255,255,.5)">TARGET</text>
-      </svg>
-    </div>
-
-    <!-- 5축 진척 미니바 (정책·교육·연구·행정·인프라) -->
-    <div class="rm-axisbars">
-      <div class="rm-axis">
-        <div class="rax-ico"><i class="fas fa-flag"></i></div>
-        <div class="rax-lbl">정책 · Policy</div>
-        <div class="rax-pct">70<span>%</span></div>
-        <div class="rax-track"><div class="rax-fill" data-w="70"></div></div>
-      </div>
-      <div class="rm-axis x-green">
-        <div class="rax-ico"><i class="fas fa-graduation-cap"></i></div>
-        <div class="rax-lbl">교육 · Education</div>
-        <div class="rax-pct">62<span>%</span></div>
-        <div class="rax-track"><div class="rax-fill" data-w="62"></div></div>
-      </div>
-      <div class="rm-axis">
-        <div class="rax-ico"><i class="fas fa-microscope"></i></div>
-        <div class="rax-lbl">연구 · Research</div>
-        <div class="rax-pct">55<span>%</span></div>
-        <div class="rax-track"><div class="rax-fill" data-w="55"></div></div>
-      </div>
-      <div class="rm-axis x-green">
-        <div class="rax-ico"><i class="fas fa-robot"></i></div>
-        <div class="rax-lbl">행정 · Admin</div>
-        <div class="rax-pct">78<span>%</span></div>
-        <div class="rax-track"><div class="rax-fill" data-w="78"></div></div>
-      </div>
-      <div class="rm-axis x-gold">
-        <div class="rax-ico"><i class="fas fa-server"></i></div>
-        <div class="rax-lbl">인프라 · Infra</div>
-        <div class="rax-pct">46<span>%</span></div>
-        <div class="rax-track"><div class="rax-fill" data-w="46"></div></div>
-      </div>
-    </div>
-
-    <!-- 단계별 비주얼 (실제 이미지 3장 + onerror 폴백) -->
-    <div class="rm-photostrip">
-      <div class="rm-photo">
-        <img src="/s30/assets/img/it-building.jpg" alt="2025 IT관 신축 착공" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,#0d3b6e,#005BAA)'">
-        <div class="rm-photo-ov">
-          <div class="rm-photo-yr">2025 · Foundation</div>
-          <div class="rm-photo-cap">IT관 신축 착공 · 장영실 AI 융합연구원 개원</div>
+<!-- 01 · 3개년 단계별 로드맵 -->
+<section class="sec sec--navy">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">01</div>
+        <div class="sec-head__t">
+          <span class="kick">2025 → 2027</span>
+          <h2>3개년 <em>단계별 추진 로드맵</em></h2>
         </div>
       </div>
-      <div class="rm-photo">
-        <img src="/s30/assets/img/bootcamp.jpg" alt="2026 AI 부트캠프 실행" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,#00A651,#0a3d1e)'">
-        <div class="rm-photo-ov">
-          <div class="rm-photo-yr">2026 · Implementation</div>
-          <div class="rm-photo-cap">AI 부트캠프 1기 · Google AI Ecosystem 전면 도입</div>
+      <div class="sec-head__note">기반 구축 완료 → 실행 단계 진행 중 (2026)</div>
+    </div>
+    <div class="phases">
+      <div class="phase">
+        <div class="ph-year">2025</div>
+        <div class="ph-name">기반 구축 · Foundation</div>
+        <div class="ph-row"><div class="ph-cat">정책</div><div class="ph-txt">A.U.R.A 선언 · AX 선도위원회 발족</div></div>
+        <div class="ph-row"><div class="ph-cat">교육</div><div class="ph-txt">산지니 AI 론칭 (국립대 최초)</div></div>
+        <div class="ph-row"><div class="ph-cat">연구</div><div class="ph-txt">장영실 AI 융합연구원 개원 · 양자AI 47억</div></div>
+        <div class="ph-row"><div class="ph-cat">행정</div><div class="ph-txt">AX·정보화혁신본부 신설 · 경영대상</div></div>
+        <div class="ph-row"><div class="ph-cat">인프라</div><div class="ph-txt">IT관 신축 착공 (267억 · 13,161㎡)</div></div>
+      </div>
+      <div class="phase active">
+        <div class="ph-year">2026</div>
+        <div class="ph-name">실행 · Implementation</div>
+        <div class="ph-row"><div class="ph-cat">정책</div><div class="ph-txt">본 선정 신청 (7월) · AI-MASTER 인증</div></div>
+        <div class="ph-row"><div class="ph-cat">교육</div><div class="ph-txt">AI 부트캠프 1기 개강 (75억 · 7트랙)</div></div>
+        <div class="ph-row"><div class="ph-cat">연구</div><div class="ph-txt">융합 연구 고도화 · 글로벌 네트워크 확대</div></div>
+        <div class="ph-row"><div class="ph-cat">행정</div><div class="ph-txt">LMS AI 조교 · AI 행정 시스템 확대</div></div>
+        <div class="ph-row"><div class="ph-cat">인프라</div><div class="ph-txt">Google AI Ecosystem 전면 도입 (6월)</div></div>
+      </div>
+      <div class="phase">
+        <div class="ph-year">2027</div>
+        <div class="ph-name">확산 · Expansion</div>
+        <div class="ph-row"><div class="ph-cat">정책</div><div class="ph-txt">성과 공유 · 동남권 AX 허브 모델 확산</div></div>
+        <div class="ph-row"><div class="ph-cat">교육</div><div class="ph-txt">AI 대학 첫 신입생 입학 (424명)</div></div>
+        <div class="ph-row"><div class="ph-cat">연구</div><div class="ph-txt">AI 융합 성과 글로벌 확산 · 네트워크 10개</div></div>
+        <div class="ph-row"><div class="ph-cat">행정</div><div class="ph-txt">AI 기반 전 행정 자동화 · 만족도 90</div></div>
+        <div class="ph-row"><div class="ph-cat">인프라</div><div class="ph-txt">양자 컴퓨팅 시범 인프라 가동</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · 5축 진척률 -->
+<section class="sec sec--tint">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">02</div>
+        <div class="sec-head__t">
+          <span class="kick">Roadmap Progress</span>
+          <h2>5축 <em>단계별 진척</em></h2>
         </div>
       </div>
-      <div class="rm-photo">
-        <img src="/s30/assets/img/graduation.jpg" alt="2027 AI 대학 첫 신입생 확산" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,#143F90,#3B82F6)'">
-        <div class="rm-photo-ov">
-          <div class="rm-photo-yr">2027 · Expansion</div>
-          <div class="rm-photo-cap">AI 대학 첫 신입생 424명 · 동남권 AX 허브 완성</div>
+      <div class="sec-head__note">2026 실행 단계 기준</div>
+    </div>
+    <div class="pbars">
+      <div class="pbar"><div class="pl">행정 · Admin</div><div class="pt"><div class="pf" style="width:78%"></div></div><div class="pv">78%</div></div>
+      <div class="pbar"><div class="pl">정책 · Policy</div><div class="pt"><div class="pf d" style="width:70%"></div></div><div class="pv">70%</div></div>
+      <div class="pbar"><div class="pl">교육 · Education</div><div class="pt"><div class="pf s" style="width:62%"></div></div><div class="pv">62%</div></div>
+      <div class="pbar"><div class="pl">연구 · Research</div><div class="pt"><div class="pf s" style="width:55%"></div></div><div class="pv">55%</div></div>
+      <div class="pbar"><div class="pl">인프라 · Infra</div><div class="pt"><div class="pf d" style="width:46%"></div></div><div class="pv">46%</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · 단계별 비주얼 -->
+<section class="sec">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">03</div>
+        <div class="sec-head__t">
+          <span class="kick">Phase Visuals</span>
+          <h2>단계별 <em>핵심 장면</em></h2>
+        </div>
+      </div>
+    </div>
+    <div class="photocards">
+      <div class="photocard">
+        <div class="pc-img"><img src="/s30/assets/img/it-building.jpg" alt="2025 IT관 신축 착공"><div class="pc-tag">2025 · Foundation</div></div>
+        <div class="pc-body">
+          <div class="pc-badge">기반 구축</div>
+          <div class="pc-name">IT관 신축 착공</div>
+          <div class="pc-meta"><span>장영실 AI 융합연구원 개원</span></div>
+        </div>
+      </div>
+      <div class="photocard">
+        <div class="pc-img"><img src="/s30/assets/img/bootcamp.jpg" alt="2026 AI 부트캠프"><div class="pc-tag">2026 · Implementation</div></div>
+        <div class="pc-body">
+          <div class="pc-badge">실행</div>
+          <div class="pc-name">AI 부트캠프 1기</div>
+          <div class="pc-meta"><span>Google AI Ecosystem 전면 도입</span></div>
+        </div>
+      </div>
+      <div class="photocard">
+        <div class="pc-img"><img src="/s30/assets/img/graduation.jpg" alt="2027 AI 대학 첫 신입생"><div class="pc-tag">2027 · Expansion</div></div>
+        <div class="pc-body">
+          <div class="pc-badge">확산</div>
+          <div class="pc-name">AI 대학 첫 신입생 424명</div>
+          <div class="pc-meta"><span>동남권 AX 허브 완성</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 2) 예산 구조 -->
-<section class="section section-cream">
+<!-- 04 · 사업 운영 기간 -->
+<section class="sec sec--navy">
   <div class="container">
-    <div class="section-header row">
-      <div>
-        <div class="s-eyebrow">Funding Architecture</div>
-        <div class="s-title">로드맵을 뒷받침하는 <em>3,111억</em> 예산 구조</div>
-        <div class="s-sub">8개 국책사업 누적 · 2023–</div>
-      </div>
-      <div style="font-size:11px;color:var(--text-m);text-align:right;font-family:'Inter',sans-serif;letter-spacing:.04em">
-        <strong style="color:var(--ink)">SOURCE</strong>: 부산대학교 기획처<br>
-        <strong style="color:var(--ink)">UPDATED</strong>: 2026.05.26
-      </div>
-    </div>
-
-    <div class="budget-split">
-      <div class="budget-donut-wrap">
-        <canvas id="budgetDonut" width="340" height="340" aria-label="3,111억 예산 구조 도넛 차트" role="img"></canvas>
-        <div class="budget-donut-center">
-          <div class="bd-num">3,111<span style="font-size:18px">억</span></div>
-          <div class="bd-lbl">8개 국책사업</div>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">04</div>
+        <div class="sec-head__t">
+          <span class="kick">Funding Timeline</span>
+          <h2>국책사업 <em>운영 기간</em></h2>
         </div>
       </div>
-    <div class="budget-flow">
-      <div class="bar-row">
-        <div class="bar-label">글로컬대학 30<small>2023 — 2027 · 교육부</small></div>
-        <div class="bar-track"><div class="bar-fill b1">1,500억</div></div>
-        <div class="bar-value">48.2%</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">RISE 사업<small>2025 — 2029 · 교육부 × 부산시</small></div>
-        <div class="bar-track"><div class="bar-fill b2">956억</div></div>
-        <div class="bar-value">30.7%</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">반도체 특성화대학<small>KIAT</small></div>
-        <div class="bar-track"><div class="bar-fill b3">328억</div></div>
-        <div class="bar-value">10.5%</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">SW 중심대학 2단계<small>MSIT</small></div>
-        <div class="bar-track"><div class="bar-fill b4">142억</div></div>
-        <div class="bar-value">4.6%</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">AI 첨단산업 부트캠프<small>교육부 × KIAT</small></div>
-        <div class="bar-track"><div class="bar-fill b5">75억</div></div>
-        <div class="bar-value">2.4%</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">AI 융합 대학원 2기<small>IITP</small></div>
-        <div class="bar-track"><div class="bar-fill b6">63억</div></div>
-        <div class="bar-value">2.0%</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">양자과학기술 원천연구<small>2025 — 2029 · MSIT (국내 최초)</small></div>
-        <div class="bar-track"><div class="bar-fill b7">47억</div></div>
-        <div class="bar-value">1.5%</div>
-      </div>
+      <div class="sec-head__note">2023 — 2029 · 8개 국책사업 병행</div>
     </div>
-    </div><!-- /budget-split -->
-
-    <div class="budget-total">
-      <span class="bt-num">3,111억 원</span>
-      <span class="bt-lbl">8개 국책사업 누적 · 본 선정 신청 2026.07</span>
-      <span class="bt-note"><strong style="color:var(--ink)">SOURCE</strong> 부산대 기획처<br><strong style="color:var(--ink)">UPDATED</strong> 2026.05.26</span>
-    </div>
-
-    <!-- 사업기간 운영 타임라인 (간트형 SVG) -->
-    <div class="fund-timeline">
-      <div class="ft-head">
-        <span class="ft-t">Funding Timeline · 사업 운영 기간</span>
-        <span class="ft-n">2023 — 2029 · 8개 국책사업 병행</span>
-      </div>
-      <svg viewBox="0 0 960 232" role="img" aria-label="2023부터 2029까지 국책사업 운영 기간 간트 차트">
+    <div class="panel">
+      <svg viewBox="0 0 960 232" role="img" aria-label="2023부터 2029까지 국책사업 운영 기간 간트 차트" style="width:100%;height:auto">
         <defs>
           <linearGradient id="gA" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#143F90"/><stop offset="1" stop-color="#005BAA"/></linearGradient>
           <linearGradient id="gB" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#005BAA"/><stop offset="1" stop-color="#0075C9"/></linearGradient>
           <linearGradient id="gC" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0075C9"/><stop offset="1" stop-color="#3B82F6"/></linearGradient>
-          <linearGradient id="gD" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#047857"/><stop offset="1" stop-color="#00A651"/></linearGradient>
+          <linearGradient id="gD" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#143F90"/><stop offset="1" stop-color="#0EA5E9"/></linearGradient>
         </defs>
-        <!-- year grid (2023..2029 -> x 150..900 step 125) -->
-        <g font-family="Inter" font-size="11" font-weight="700" fill="#94A3B8" text-anchor="middle">
-          <line x1="150" y1="20" x2="150" y2="206" stroke="#E2E8F0"/><text x="150" y="226">2023</text>
-          <line x1="275" y1="20" x2="275" y2="206" stroke="#E2E8F0"/><text x="275" y="226">2024</text>
-          <line x1="400" y1="20" x2="400" y2="206" stroke="#E2E8F0"/><text x="400" y="226">2025</text>
-          <line x1="525" y1="20" x2="525" y2="206" stroke="#E2E8F0"/><text x="525" y="226">2026</text>
-          <line x1="650" y1="20" x2="650" y2="206" stroke="#E2E8F0"/><text x="650" y="226">2027</text>
-          <line x1="775" y1="20" x2="775" y2="206" stroke="#E2E8F0"/><text x="775" y="226">2028</text>
-          <line x1="900" y1="20" x2="900" y2="206" stroke="#E2E8F0"/><text x="900" y="226">2029</text>
+        <g font-family="Inter" font-size="11" font-weight="700" fill="#7e9bc4" text-anchor="middle">
+          <line x1="150" y1="20" x2="150" y2="206" stroke="rgba(255,255,255,.12)"/><text x="150" y="226">2023</text>
+          <line x1="275" y1="20" x2="275" y2="206" stroke="rgba(255,255,255,.12)"/><text x="275" y="226">2024</text>
+          <line x1="400" y1="20" x2="400" y2="206" stroke="rgba(255,255,255,.12)"/><text x="400" y="226">2025</text>
+          <line x1="525" y1="20" x2="525" y2="206" stroke="rgba(255,255,255,.12)"/><text x="525" y="226">2026</text>
+          <line x1="650" y1="20" x2="650" y2="206" stroke="rgba(255,255,255,.12)"/><text x="650" y="226">2027</text>
+          <line x1="775" y1="20" x2="775" y2="206" stroke="rgba(255,255,255,.12)"/><text x="775" y="226">2028</text>
+          <line x1="900" y1="20" x2="900" y2="206" stroke="rgba(255,255,255,.12)"/><text x="900" y="226">2029</text>
         </g>
-        <!-- now marker 2026.05 (~x 555) -->
-        <line x1="555" y1="14" x2="555" y2="206" stroke="#3B82F6" stroke-width="1.5" stroke-dasharray="3 4"/>
-        <text x="555" y="11" text-anchor="middle" font-family="Inter" font-size="9.5" font-weight="800" fill="#3B82F6">NOW</text>
+        <line x1="555" y1="14" x2="555" y2="206" stroke="#7EC8FF" stroke-width="1.5" stroke-dasharray="3 4"/>
+        <text x="555" y="11" text-anchor="middle" font-family="Inter" font-size="9.5" font-weight="800" fill="#7EC8FF">NOW</text>
         <g font-family="Inter" font-size="11" font-weight="700">
-          <!-- 글로컬 2023-2027 1500억 -->
           <rect x="150" y="30" width="500" height="18" rx="9" fill="url(#gA)"/><text x="158" y="43" fill="#fff">글로컬대학30 · 1,500억</text>
-          <!-- RISE 2025-2029 956억 -->
           <rect x="400" y="56" width="500" height="18" rx="9" fill="url(#gB)"/><text x="408" y="69" fill="#fff">RISE · 956억</text>
-          <!-- 반도체특성화 2023-2027 328억 -->
           <rect x="150" y="82" width="500" height="18" rx="9" fill="url(#gB)" opacity=".85"/><text x="158" y="95" fill="#fff">반도체 특성화대학 · 328억</text>
-          <!-- SW중심대학 2단계 2022-2027 142억 -->
           <rect x="150" y="108" width="500" height="18" rx="9" fill="url(#gC)"/><text x="158" y="121" fill="#fff">SW 중심대학 2단계 · 142억</text>
-          <!-- 부트캠프 2026-2028 75억 -->
           <rect x="525" y="134" width="250" height="18" rx="9" fill="url(#gC)" opacity=".9"/><text x="533" y="147" fill="#fff">AI 부트캠프 · 75억</text>
-          <!-- AI융합대학원 2기 2024-2027 63억 -->
           <rect x="275" y="160" width="375" height="18" rx="9" fill="url(#gC)" opacity=".8"/><text x="283" y="173" fill="#fff">AI 융합 대학원 2기 · 63억</text>
-          <!-- 양자과기 2025-2029 47억 -->
           <rect x="400" y="186" width="500" height="18" rx="9" fill="url(#gD)"/><text x="408" y="199" fill="#fff">양자과학기술 · 47억 (국내 최초)</text>
         </g>
       </svg>
@@ -483,198 +272,44 @@
   </div>
 </section>
 
-<!-- 2.5) 임팩트 미니 다크밴드 (배경 리듬) -->
-<section class="impact-strip">
+<!-- 05 · 핵심 성과 목표 -->
+<section class="sec">
   <div class="container">
-    <div class="impact-grid">
-      <div class="impact-cell gold">
-        <div class="ic-tag">Cumulative</div>
-        <div class="ic-num" data-count="3111">3,111<span>억</span></div>
-        <div class="ic-lbl">국책사업 누적 투자</div>
-        <div class="ic-sub">8개 대형 사업 · 2023–</div>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">05</div>
+        <div class="sec-head__t">
+          <span class="kick">2027 KPI Targets</span>
+          <h2>로드맵이 향하는 <em>핵심 성과 목표</em></h2>
+        </div>
       </div>
-      <div class="impact-cell">
-        <div class="ic-tag">A.U.R.A 2.0</div>
-        <div class="ic-num" data-count="100">100<span>억</span></div>
-        <div class="ic-lbl">2년 AX 집중 투자</div>
-        <div class="ic-sub">전략 8 · 과제 22 · 실행 47</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch">
+      <div class="chart" style="border-radius:var(--r-lg)">
+        <h3>행정 만족도 70 → 80 → 90</h3>
+        <div class="cap">Adaptive Administration · +20 / 3Y</div>
+        <div class="chart__box" style="height:240px"><canvas id="kpiSatis"></canvas></div>
       </div>
-      <div class="impact-cell">
-        <div class="ic-tag">Talent 2027</div>
-        <div class="ic-num" data-count="4000">4,000<span>명</span></div>
-        <div class="ic-lbl">AI+X 증강 인재</div>
-        <div class="ic-sub">마이크로디그리 13 · 부트캠프 7트랙</div>
-      </div>
-      <div class="impact-cell gold">
-        <div class="ic-tag">Vision 2030</div>
-        <div class="ic-num">Top 200</div>
-        <div class="ic-lbl">세계 대학 진입 목표</div>
-        <div class="ic-sub">100주년(2046) Top 100</div>
+      <div class="dstrip" style="grid-template-columns:1fr 1fr;gap:18px">
+        <div class="dstrip__c"><div class="dstrip__tag">Cumulative</div><div class="dstrip__n blue">3,111<small>억</small></div><div class="dstrip__l">국책사업 누적 투자</div></div>
+        <div class="dstrip__c s"><div class="dstrip__tag">A.U.R.A 2.0</div><div class="dstrip__n">100<small>억</small></div><div class="dstrip__l">2년 AX 집중 투자</div></div>
+        <div class="dstrip__c d"><div class="dstrip__tag">Talent 2027</div><div class="dstrip__n">4,000<small>명</small></div><div class="dstrip__l">AI+X 증강 인재</div></div>
+        <div class="dstrip__c a"><div class="dstrip__tag">Vision 2030</div><div class="dstrip__n accent" style="font-size:34px">Top 200</div><div class="dstrip__l">세계 대학 진입 · 2046 Top 100</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 3) KPI 목표 -->
-<section class="section">
+<!-- 결론 밴드 -->
+<section class="closing">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">2027 KPI Targets</div>
-      <div class="s-title">로드맵이 향하는 <em>핵심 성과 목표</em></div>
-      <div class="s-sub" style="text-align:center">A.U.R.A 2.0 · 2027–2030 정량 목표</div>
-    </div>
-
-    <!-- KPI 차트 듀얼 패널 (행정 만족도 라인 + 4축 레이더) -->
-    <div class="kpi-charts">
-      <div class="kpi-chart-card">
-        <div class="kc-head">
-          <div>
-            <div class="kc-eyebrow">Adaptive Administration</div>
-            <div class="kc-title">행정 만족도 70 → 80 → 90</div>
-          </div>
-          <span class="kc-pill">+20 / 3Y</span>
-        </div>
-        <div class="kpi-chart-canvas"><canvas id="kpiSatis" aria-label="행정 만족도 2025 70 2026 80 2027 90 라인 차트" role="img"></canvas></div>
-      </div>
-      <div class="kpi-chart-card">
-        <div class="kc-head">
-          <div>
-            <div class="kc-eyebrow">A.U.R.A 4축 + 인프라</div>
-            <div class="kc-title">현재 진척 vs 2027 목표</div>
-          </div>
-          <span class="kc-pill">5 AXES</span>
-        </div>
-        <div class="kpi-chart-canvas"><canvas id="kpiRadar" aria-label="정책 교육 연구 행정 인프라 5축 현재 대 2027 목표 레이더 차트" role="img"></canvas></div>
-      </div>
-    </div>
-
-    <div class="ach-grid">
-      <div class="ach-card violet">
-        <div class="ach-icon"><i class="fas fa-user-graduate"></i></div>
-        <div class="ach-tag">Reinforced Education</div>
-        <div class="ach-title">AI+X 증강 인재</div>
-        <div class="kpi-chips"><span>Pentomino</span><span>마이크로디그리 13</span><span>부트캠프 7트랙</span></div>
-        <div class="ach-num" data-count="4000">4,000<span>명</span></div>
-        <div class="ach-num-lbl">2027 누적 양성 목표</div>
-        <div class="kpi-track"><div class="kpi-fill" style="width:62%"></div></div>
-        <div class="kpi-meta"><span>진행 중</span><span>TARGET 2027</span></div>
-      </div>
-
-      <div class="ach-card green">
-        <div class="ach-icon"><i class="fas fa-face-smile"></i></div>
-        <div class="ach-tag">Adaptive Administration</div>
-        <div class="ach-title">행정 만족도</div>
-        <div class="kpi-chips"><span>산지니 AI</span><span>LMS AI 조교</span><span>다국어 통번역</span></div>
-        <div class="ach-num" data-count="90">90<span>점</span></div>
-        <div class="ach-num-lbl">2027 목표 (2025 기준 70)</div>
-        <div class="kpi-track"><div class="kpi-fill" style="width:78%"></div></div>
-        <div class="kpi-meta"><span>70 → 80 → 90</span><span>TARGET 2027</span></div>
-      </div>
-
-      <div class="ach-card">
-        <div class="ach-icon"><i class="fas fa-globe"></i></div>
-        <div class="ach-tag">Unified Research</div>
-        <div class="ach-title">글로벌 연구 네트워크</div>
-        <div class="kpi-chips"><span>Stanford</span><span>ETRI</span><span>KIMS</span></div>
-        <div class="ach-num" data-count="10">10<span>개</span></div>
-        <div class="ach-num-lbl">2027 글로벌 연구네트워크 목표</div>
-        <div class="kpi-track"><div class="kpi-fill" style="width:55%"></div></div>
-        <div class="kpi-meta"><span>구축 중</span><span>TARGET 2027</span></div>
-      </div>
-
-      <div class="ach-card gold">
-        <div class="ach-icon"><i class="fas fa-ranking-star"></i></div>
-        <div class="ach-tag">Global Ranking</div>
-        <div class="ach-title">세계 대학 순위</div>
-        <div class="kpi-chips"><span>QS 473</span><span>→ Top 200</span><span>2046 Top 100</span></div>
-        <div class="ach-num">Top 200</div>
-        <div class="ach-num-lbl">2030 글로벌 진입 목표</div>
-        <div class="kpi-track"><div class="kpi-fill" style="width:46%"></div></div>
-        <div class="kpi-meta"><span>QS 473 → Top 200</span><span>TARGET 2030</span></div>
-      </div>
-    </div>
-
-    <!-- 보조 스탯 밴드 -->
-    <div style="margin-top:24px">
-      <div class="stats-band" style="border-radius:20px;overflow:hidden">
-        <div class="container">
-          <div class="stats-grid">
-            <div class="stat-cell">
-              <div class="stat-cell-tag">Funding</div>
-              <div class="stat-cell-num" data-count="3111">3,111<span>억</span></div>
-              <div class="stat-cell-lbl">국책 사업 누적 (2023–)</div>
-              <div class="stat-cell-note">8개 대형 사업 동시 운영</div>
-            </div>
-            <div class="stat-cell">
-              <div class="stat-cell-tag">A.U.R.A 2.0</div>
-              <div class="stat-cell-num">8·22·47</div>
-              <div class="stat-cell-lbl">전략목표·전략과제·실행과제</div>
-              <div class="stat-cell-note">2년 100억 투자</div>
-            </div>
-            <div class="stat-cell">
-              <div class="stat-cell-tag">Enrollment</div>
-              <div class="stat-cell-num gold" data-count="424">424<span>명</span></div>
-              <div class="stat-cell-lbl">AI 대학 2027 신입생</div>
-              <div class="stat-cell-note">학부 입학 정원 (2027)</div>
-            </div>
-            <div class="stat-cell">
-              <div class="stat-cell-tag">Faculty</div>
-              <div class="stat-cell-num" data-count="58">58<span>명</span></div>
-              <div class="stat-cell-lbl">AI 핵심 교수진</div>
-              <div class="stat-cell-note">AI 핵심 분야 전 영역</div>
-            </div>
-            <div class="stat-cell">
-              <div class="stat-cell-tag">Target 2030</div>
-              <div class="stat-cell-num">Top 200</div>
-              <div class="stat-cell-lbl">글로벌 진입 목표</div>
-              <div class="stat-cell-note">100주년(2046) Top 100</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <span class="kick">Roadmap 2025 → 2027</span>
+    <h2>기반 구축에서 동남권 AX 허브까지</h2>
+    <p>국책사업 3,111억 · A.U.R.A 2.0 집중 투자 · 2030 QS Top 200</p>
   </div>
 </section>
 
-<!-- 4) 마무리 비전 밴드 + CTA -->
-<section class="vision-band">
-  <div class="container">
-    <div class="vision-inner">
-      <div>
-        <div class="vision-eyebrow">A.U.R.A 2.0 · Master Plan</div>
-        <h2 class="vision-title">기반에서 <em>확산</em>으로,<br>동남권 AX 허브의 완성</h2>
-        <div class="vision-chips">
-          <span class="vc">2025 기반</span><i class="fas fa-arrow-right"></i>
-          <span class="vc">2026 실행</span><i class="fas fa-arrow-right"></i>
-          <span class="vc">2027 확산</span><i class="fas fa-arrow-right"></i>
-          <span class="vc vc-gold">2030 Top 200</span>
-        </div>
-        <div class="cta-row" style="margin-top:28px">
-          <a href="/s30/about/aura" class="cta-primary">A.U.R.A 2.0 마스터플랜 <i class="fas fa-arrow-right"></i></a>
-          <a href="/s30/about/" class="cta-ghost"><i class="fas fa-flag"></i> 사업 개요 보기</a>
-        </div>
-      </div>
-      <div class="vision-timeline">
-        <div class="vt-item">
-          <div class="vt-year">2025</div>
-          <div class="vt-text"><strong>기반 구축 · Foundation</strong>A.U.R.A 선언 · 장영실 연구원 개원 · 산지니 AI · IT관 착공</div>
-        </div>
-        <div class="vt-item">
-          <div class="vt-year">2026</div>
-          <div class="vt-text"><strong>실행 · Implementation</strong>AI-MASTER 인증 · 부트캠프 1기 · Google 전면 도입 · 본 선정 신청</div>
-        </div>
-        <div class="vt-item">
-          <div class="vt-year">2027</div>
-          <div class="vt-text"><strong>확산 · Expansion</strong>AI 대학 신입생 424명 · 행정 만족도 90 · 연구네트워크 10개</div>
-        </div>
-        <div class="vt-item">
-          <div class="vt-year">2030</div>
-          <div class="vt-text"><strong>글로벌 진입 · Beyond</strong>세계 대학 Top 200 진입 · 100주년(2046) Top 100 비전</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+</main>
 
 <!-- FOOTER -->
 <footer class="site-footer">
@@ -687,15 +322,12 @@
         <div class="ft-brand-name">AI 거점대학육성사업단 · ARISE PNU<small>arise-ai.pusan.ac.kr · A.U.R.A 2.0 마스터플랜</small></div>
         <div class="ft-desc" style="margin-top:16px"><em>"Arise PNU, 같이 더 높게"</em> — 동남권 AX 생태계의 중심 거점, 부산대학교 AI 거점대학육성사업단입니다.</div>
         <div class="ft-addr">📍 부산광역시 금정구 부산대학로 63번길 2 · IT관 3층 AI 거점사업단<br>📞 051-510-0000 · ✉ arise@pusan.ac.kr<br>⏰ 평일 09:00 – 18:00</div>
-        <div class="ft-sns" style="margin-top:24px">
-          <a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fab fa-instagram"></i></a>
-        </div>
       </div>
       <div class="ft-col"><h4>사업 소개</h4>
-        <a href="/s30/about/">사업 개요 · 비전</a><a href="/s30/about/aura">A.U.R.A 2.0</a><a href="/s30/about/governance">거버넌스</a><a href="/s30/roadmap/">3개년 로드맵</a>
+        <a href="/s30/about/">사업 개요 · 비전</a><a href="/s30/aura/">A.U.R.A 2.0</a><a href="/s30/about/governance/">거버넌스</a><a href="/s30/roadmap/">3개년 로드맵</a>
       </div>
       <div class="ft-col"><h4>핵심 사업</h4>
-        <a href="/s30/programs/#education">AI 교육 혁신</a><a href="/s30/programs/#research">AI 연구 강화</a><a href="/s30/programs/#industry">산학 협력</a><a href="/s30/programs/#infra">AI 인프라</a>
+        <a href="/s30/programs/education/">AI 교육 혁신</a><a href="/s30/programs/research/">AI 연구 강화</a><a href="/s30/programs/industry/">산학 협력</a><a href="/s30/programs/infra/">AI 인프라</a>
       </div>
       <div class="ft-col"><h4>관련 사이트</h4>
         <a href="https://www.pusan.ac.kr" target="_blank">부산대학교 ↗</a><a href="https://ai.pusan.ac.kr" target="_blank">AI 대학 ↗</a><a href="https://airc.pusan.ac.kr" target="_blank">장영실연구원 ↗</a><a href="https://aiedu.pusan.ac.kr" target="_blank">AI 융합교육원 ↗</a><a href="https://uitc.pusan.ac.kr" target="_blank">AX·정보화혁신본부 ↗</a>
@@ -707,146 +339,19 @@
     </div>
   </div>
 </footer>
-<script type="module" src="/src/scripts/main.js"></script>
+
 <script>
 (function(){
-  // ===== 예산 구조 도넛 차트 (키트 팩트 기반) =====
-  var c = document.getElementById('budgetDonut');
-  if (c && window.Chart) {
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    new Chart(c.getContext('2d'), {
-      type: 'doughnut',
-      data: {
-        labels: ['글로컬대학30 1,500억','RISE 956억','반도체특성화 328억','SW중심대학 142억','부트캠프 75억','AI융합대학원 63억','양자과기 47억'],
-        datasets: [{
-          data: [1500, 956, 328, 142, 75, 63, 47],
-          backgroundColor: ['#143F90','#005BAA','#0075C9','#3B82F6','#60A5FA','#00A651','#34D399'],
-          borderColor: '#ffffff',
-          borderWidth: 2,
-          hoverOffset: 10
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        cutout: '68%',
-        animation: reduce ? false : { animateRotate: true, duration: 1100 },
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            callbacks: {
-              label: function(ctx){
-                var pct = ((ctx.parsed / 3111) * 100).toFixed(1);
-                return ' ' + ctx.label + ' (' + pct + '%)';
-              }
-            }
-          }
-        }
-      }
-    });
-  }
-
-  var reduceC = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // ===== KPI ① 행정 만족도 라인 (70 → 80 → 90) =====
-  var sc = document.getElementById('kpiSatis');
-  if (sc && window.Chart) {
-    var ctxS = sc.getContext('2d');
-    var grad = ctxS.createLinearGradient(0, 0, 0, 230);
-    grad.addColorStop(0, 'rgba(0,117,201,.30)');
-    grad.addColorStop(1, 'rgba(0,117,201,.02)');
-    new Chart(ctxS, {
-      type: 'line',
-      data: {
-        labels: ['2025', '2026', '2027'],
-        datasets: [{
-          data: [70, 80, 90],
-          borderColor: '#005BAA',
-          backgroundColor: grad,
-          borderWidth: 3,
-          fill: true,
-          tension: 0.35,
-          pointBackgroundColor: ['#94A3B8', '#0075C9', '#3B82F6'],
-          pointBorderColor: '#fff',
-          pointBorderWidth: 2,
-          pointRadius: 6,
-          pointHoverRadius: 8
-        }]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        animation: reduceC ? false : { duration: 1100 },
-        plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(c){ return ' 만족도 ' + c.parsed.y + '점'; } } } },
-        scales: {
-          y: { min: 60, max: 100, ticks: { stepSize: 10, color: '#94A3B8', font: { family: 'Inter', size: 11 } }, grid: { color: '#EEF2F7' } },
-          x: { ticks: { color: '#64748B', font: { family: 'Inter', size: 12, weight: '700' } }, grid: { display: false } }
-        }
-      }
-    });
-  }
-
-  // ===== KPI ② 5축 레이더 (현재 vs 2027 목표) =====
-  var rc = document.getElementById('kpiRadar');
-  if (rc && window.Chart) {
-    new Chart(rc.getContext('2d'), {
-      type: 'radar',
-      data: {
-        labels: ['정책', '교육', '연구', '행정', '인프라'],
-        datasets: [
-          { label: '2027 목표', data: [100, 100, 100, 100, 100], borderColor: 'rgba(148,163,184,.7)', backgroundColor: 'rgba(148,163,184,.10)', borderWidth: 1.5, borderDash: [4, 4], pointRadius: 0 },
-          { label: '현재 진척', data: [70, 62, 55, 78, 46], borderColor: '#005BAA', backgroundColor: 'rgba(0,91,170,.18)', borderWidth: 2.5, pointBackgroundColor: '#0075C9', pointBorderColor: '#fff', pointBorderWidth: 1.5, pointRadius: 4 }
-        ]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        animation: reduceC ? false : { duration: 1100 },
-        plugins: { legend: { position: 'bottom', labels: { font: { family: 'Inter', size: 11, weight: '700' }, color: '#475569', boxWidth: 12, padding: 14 } } },
-        scales: { r: { min: 0, max: 100, ticks: { display: false, stepSize: 25 }, grid: { color: '#E2E8F0' }, angleLines: { color: '#E2E8F0' }, pointLabels: { font: { family: 'Noto Sans KR', size: 12, weight: '700' }, color: '#0F172A' } } }
-      }
-    });
-  }
-
-  // ===== 5축 진척 미니바 fill (스크롤 진입 시) =====
-  var axIo = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if (e.isIntersecting){
-        var w = e.target.getAttribute('data-w');
-        e.target.style.width = (reduceC ? w : w) + '%';
-        axIo.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.5 });
-  document.querySelectorAll('.rax-fill').forEach(function(el){ axIo.observe(el); });
-
-  // ===== 숫자 카운트업 (스탯/KPI) =====
-  var reduce2 = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function animateNum(el){
-    var raw = el.getAttribute('data-count');
-    var target = parseFloat(raw);
-    if (isNaN(target)) return;
-    if (reduce2){ el.firstChild ? null : 0; }
-    var dur = 1300, start = null;
-    var span = el.querySelector('span');
-    var suffix = span ? span.outerHTML : '';
-    function fmt(v){ return Math.round(v).toLocaleString('en-US'); }
-    if (reduce2){ el.innerHTML = fmt(target) + suffix; return; }
-    function step(ts){
-      if (!start) start = ts;
-      var p = Math.min((ts - start) / dur, 1);
-      var eased = 1 - Math.pow(1 - p, 3);
-      el.innerHTML = fmt(target * eased) + suffix;
-      if (p < 1) requestAnimationFrame(step);
-      else el.innerHTML = fmt(target) + suffix;
-    }
-    requestAnimationFrame(step);
-  }
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if (e.isIntersecting){ animateNum(e.target); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.4 });
-  document.querySelectorAll('[data-count]').forEach(function(el){ io.observe(el); });
+  if(typeof Chart==='undefined')return;
+  var s=document.getElementById('kpiSatis');
+  if(s) new Chart(s,{ type:'line',
+    data:{ labels:['2025','2026','2027'],
+      datasets:[{ label:'행정 만족도', data:[70,80,90], borderColor:'#005BAA', backgroundColor:'rgba(0,91,170,.08)', borderWidth:3, fill:true, tension:.3, pointBackgroundColor:'#0075C9', pointRadius:6, pointHoverRadius:8 }] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}},
+      scales:{ y:{ min:60, max:100, ticks:{ stepSize:10, color:'#64748B' }, grid:{ color:'#E2E8F0' } },
+        x:{ ticks:{ color:'#0F172A', font:{ weight:'700' } }, grid:{ display:false } } } } });
 })();
 </script>
+<script type="module" src="/src/scripts/main.js"></script>
 </body>
 </html>

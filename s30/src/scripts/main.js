@@ -1,3 +1,5 @@
+import './motion.js';
+
 (function(){
   // Language toggle (KOR|ENG)
   // Lang toggle: .lang-toggle/.lang-btn class OR sidebar/footer EN link

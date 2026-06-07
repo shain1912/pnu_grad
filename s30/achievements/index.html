@@ -6,10 +6,10 @@
 <title>성과 · TRACK RECORD — 부산대학교 AI 거점대학육성사업단 | ARISE PNU</title>
 <meta name="description" content="RoboCup 2025 세계 챔피언십 우승 · 양자AI 47억 국내 최초 · University AI-MASTER 국내 대학 최초 인증 · 국제 수상 28+ · 연간 논문 480+편. 이미 증명된 세계 수준의 AX 성과.">
 <link rel="icon" type="image/jpeg" href="/s30/assets/pnu-symbol-color.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+4:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="/s30/assets/vendor/fonts/google-fonts.css" rel="stylesheet">
+<link rel="stylesheet" href="/s30/assets/vendor/fa/css/all.min.css">
 <link rel="stylesheet" href="/src/styles/main.css">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="/aura/vendor/chart.umd.min.js"></script>
 <style>
 /* ===== 성과 페이지 고유 CSS (main.css 미수정) ===== */
 
@@ -81,8 +81,8 @@
 
 /* 기술이전 인포그래픽 */
 .transfer-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
-.transfer-card { background:var(--white); border:1px solid var(--border); border-radius:18px; padding:30px 24px; text-align:center; position:relative; overflow:hidden; transition:transform .25s, box-shadow .25s; }
-.transfer-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,91,170,.12); }
+.transfer-card { background:var(--white); border:1px solid var(--border); border-radius:18px; padding:30px 24px; text-align:center; position:relative; overflow:hidden; box-shadow:0 1px 2px rgba(15,31,69,.05); transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .4s ease; }
+.transfer-card:hover { transform:translateY(-5px); box-shadow:0 20px 40px -20px rgba(0,91,170,.28); border-color:rgba(0,117,201,.34); }
 .transfer-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--pnu-blue),var(--pnu-green)); }
 .tc-icon { width:54px; height:54px; margin:0 auto 16px; border-radius:14px; background:var(--blue-tint); color:var(--pnu-blue); display:flex; align-items:center; justify-content:center; font-size:22px; }
 .tc-num { font-family:'Inter',sans-serif; font-size:38px; font-weight:900; color:var(--ink); letter-spacing:-.04em; line-height:1; }
@@ -156,8 +156,8 @@
 @media(max-width:480px){ .firsts-strip { grid-template-columns:1fr; } .firsts-cell { border-right:none; border-bottom:1px solid rgba(255,255,255,.1); } }
 
 /* ===== awards 카드 hover 글로우/리프트 강화 ===== */
-.ach-grid .ach-card { transition:transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s; }
-.ach-grid .ach-card:hover { transform:translateY(-6px); box-shadow:0 22px 50px rgba(15,31,69,.16); }
+.ach-grid .ach-card { box-shadow:0 1px 2px rgba(15,31,69,.05); transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .4s ease; }
+.ach-grid .ach-card:hover { transform:translateY(-5px); box-shadow:0 20px 40px -20px rgba(0,91,170,.28); border-color:rgba(0,117,201,.34); }
 
 /* ===== 연구 성장 추세 차트 패널 (papers, 라이트) ===== */
 .trend-panel { display:grid; grid-template-columns:1fr 1.45fr; gap:36px; align-items:center; margin-bottom:44px;
@@ -234,6 +234,45 @@
   .transfer-grid { grid-template-columns:1fr; }
   .q-stats { grid-template-columns:1fr; }
 }
+
+/* ===== 카드/스탯 DEPTH + HOVER (additive) ===== */
+/* 다크 히어로 스탯 셀 (.ach-band 스탯밴드) */
+.ach-band .stat-cell {
+  transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .4s ease;
+}
+.ach-band .stat-cell:hover {
+  transform:translateY(-5px); box-shadow:0 22px 44px -20px rgba(11,22,46,.42);
+}
+/* 다크 FIRSTS 스트립 셀 */
+.firsts-cell {
+  transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), background .3s;
+}
+.firsts-cell:hover {
+  transform:translateY(-5px); box-shadow:0 22px 44px -20px rgba(11,22,46,.42);
+}
+/* 다크 양자 스탯 카드 */
+.q-stat {
+  transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .4s ease;
+}
+.q-stat:hover {
+  transform:translateY(-5px); box-shadow:0 22px 44px -20px rgba(11,22,46,.42);
+}
+/* 다크 논문 통계 카드 */
+.papers-stat-card {
+  box-shadow:0 18px 48px rgba(0,91,170,.25);
+  transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .4s ease;
+}
+.papers-stat-card:hover {
+  transform:translateY(-5px); box-shadow:0 22px 44px -20px rgba(11,22,46,.42);
+}
+/* 큰 숫자 정렬 안정화 */
+.stat-cell-num, .firsts-cell .fs-num, .q-stat .n, .tc-num, .ach-num,
+.papers-stat-card .big, .ib-val, .ib-mega .m-num, .fund-total, .trend-kpi .n {
+  font-variant-numeric:tabular-nums;
+}
+@media (prefers-reduced-motion: reduce){
+  .transfer-card, .ach-grid .ach-card, .ach-band .stat-cell, .firsts-cell, .q-stat, .papers-stat-card { transition:none !important; }
+}
 </style>
 </head>
 <body>
@@ -279,28 +318,28 @@
       <div class="nav-item">
         <a href="/s30/programs/" class="nav-link">핵심 사업 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/programs/#education"><div class="d-i"><i class="fas fa-graduation-cap"></i></div>AI 교육 혁신</a>
-          <a href="/s30/programs/#research"><div class="d-i"><i class="fas fa-microscope"></i></div>AI 연구 강화</a>
-          <a href="/s30/programs/#industry"><div class="d-i"><i class="fas fa-handshake"></i></div>산학 협력</a>
-          <a href="/s30/programs/#infra"><div class="d-i"><i class="fas fa-server"></i></div>AI 인프라</a>
+          <a href="/s30/programs/education/"><div class="d-i"><i class="fas fa-graduation-cap"></i></div>AI 교육 혁신</a>
+          <a href="/s30/programs/research/"><div class="d-i"><i class="fas fa-microscope"></i></div>AI 연구 강화</a>
+          <a href="/s30/programs/industry/"><div class="d-i"><i class="fas fa-handshake"></i></div>산학 협력</a>
+          <a href="/s30/programs/infra/"><div class="d-i"><i class="fas fa-server"></i></div>AI 인프라</a>
         </div>
       </div>
       <div class="nav-item">
         <a href="/s30/achievements/" class="nav-link active">성과 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/achievements/#robocup"><div class="d-i"><i class="fas fa-trophy"></i></div>RoboCup 2025 우승</a>
-          <a href="/s30/achievements/#quantum"><div class="d-i"><i class="fas fa-atom"></i></div>양자AI 47억 사업</a>
-          <a href="/s30/achievements/#papers"><div class="d-i"><i class="fas fa-file-alt"></i></div>논문 · 특허</a>
-          <a href="/s30/achievements/#transfer"><div class="d-i"><i class="fas fa-exchange-alt"></i></div>기술이전 · 창업</a>
+          <a href="/s30/achievements/robocup/"><div class="d-i"><i class="fas fa-trophy"></i></div>RoboCup 2025 우승</a>
+          <a href="/s30/achievements/quantum/"><div class="d-i"><i class="fas fa-atom"></i></div>양자AI 47억 사업</a>
+          <a href="/s30/achievements/papers/"><div class="d-i"><i class="fas fa-file-alt"></i></div>논문 · 특허</a>
+          <a href="/s30/achievements/transfer/"><div class="d-i"><i class="fas fa-exchange-alt"></i></div>기술이전 · 창업</a>
         </div>
       </div>
       <div class="nav-item">
         <a href="/s30/partners/" class="nav-link">파트너십 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/partners/#google"><div class="d-i"><i class="fab fa-google"></i></div>Google for Education</a>
-          <a href="/s30/partners/#industry"><div class="d-i"><i class="fas fa-industry"></i></div>산학 협약 (35+)</a>
-          <a href="/s30/partners/#global"><div class="d-i"><i class="fas fa-globe"></i></div>글로벌 협력</a>
-          <a href="/s30/partners/#govt"><div class="d-i"><i class="fas fa-landmark"></i></div>정부·공공기관</a>
+          <a href="/s30/partners/google/"><div class="d-i"><i class="fab fa-google"></i></div>Google for Education</a>
+          <a href="/s30/partners/industry/"><div class="d-i"><i class="fas fa-industry"></i></div>산학 협약 (35+)</a>
+          <a href="/s30/partners/global/"><div class="d-i"><i class="fas fa-globe"></i></div>글로벌 협력</a>
+          <a href="/s30/partners/govt/"><div class="d-i"><i class="fas fa-landmark"></i></div>정부·공공기관</a>
         </div>
       </div>
       <div class="nav-item">
@@ -792,7 +831,7 @@
         <a href="/s30/about/">사업 개요 · 비전</a><a href="/s30/about/aura">A.U.R.A 2.0</a><a href="/s30/about/governance">거버넌스</a><a href="/s30/roadmap/">3개년 로드맵</a>
       </div>
       <div class="ft-col"><h4>핵심 사업</h4>
-        <a href="/s30/programs/#education">AI 교육 혁신</a><a href="/s30/programs/#research">AI 연구 강화</a><a href="/s30/programs/#industry">산학 협력</a><a href="/s30/programs/#infra">AI 인프라</a>
+        <a href="/s30/programs/education/">AI 교육 혁신</a><a href="/s30/programs/research/">AI 연구 강화</a><a href="/s30/programs/industry/">산학 협력</a><a href="/s30/programs/infra/">AI 인프라</a>
       </div>
       <div class="ft-col"><h4>관련 사이트</h4>
         <a href="https://www.pusan.ac.kr" target="_blank">부산대학교 ↗</a><a href="https://ai.pusan.ac.kr" target="_blank">AI 대학 ↗</a><a href="https://airc.pusan.ac.kr" target="_blank">장영실연구원 ↗</a><a href="https://aiedu.pusan.ac.kr" target="_blank">AI 융합교육원 ↗</a><a href="https://uitc.pusan.ac.kr" target="_blank">AX·정보화혁신본부 ↗</a>

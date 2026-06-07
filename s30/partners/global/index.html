@@ -4,116 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>글로벌 협력 — 부산대학교 AI 거점대학육성사업단 | ARISE PNU</title>
-<meta name="description" content="Stanford · ETRI · 한국재료연구원(KIMS) 등 글로벌·국가연구기관 협력. 2027 글로벌 AI 연구 네트워크 10개 목표 · AI 통번역 스마트글라스 20개 언어 98% · QS 473위 국제화 캠퍼스.">
+<meta name="description" content="Stanford · ETRI · KIMS 글로벌 AI 연구 네트워크 — 2027 글로벌 10개 목표 · 20개 언어 AI 통번역 · QS 473위.">
 <link rel="icon" type="image/jpeg" href="/s30/assets/pnu-symbol-color.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+4:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/s30/assets/vendor/fonts/google-fonts-ital.css">
+<link rel="stylesheet" href="/s30/assets/vendor/fa/css/all.min.css">
 <link rel="stylesheet" href="/src/styles/main.css">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-<style>
-/* 페이지 고유 CSS만. main.css는 건드리지 않음. 그라데이션 금지 — 평면 팔레트만. */
-
-/* 대형 KPI 밴드 */
-.gk-band{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px}
-.gk-cell{position:relative;background:#fff;border:1px solid var(--border);border-radius:18px;padding:26px 20px;text-align:center;box-shadow:0 4px 18px rgba(15,31,69,.05);transition:transform .22s,box-shadow .22s,border-color .22s;overflow:hidden}
-.gk-cell::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--pnu-blue);opacity:0;transition:opacity .22s}
-.gk-cell.green::before{background:var(--pnu-green)}
-.gk-cell:hover{transform:translateY(-5px);box-shadow:0 16px 38px rgba(0,91,170,.13);border-color:var(--blue-light)}
-.gk-cell:hover::before{opacity:1}
-.gk-cell .n{font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(2rem,3.4vw,2.7rem);color:var(--pnu-blue);line-height:1;letter-spacing:-.04em}
-.gk-cell .n span{font-size:.45em;font-weight:800}
-.gk-cell.green .n{color:var(--pnu-green)}
-.gk-cell.navy .n{color:var(--pnu-navy)}
-.gk-cell .l{font-size:12.5px;color:var(--text-m);margin-top:10px;font-weight:700;line-height:1.4}
-
-/* 글로벌 노드 맵 (다크 평면) */
-.gmap-wrap{background:var(--pnu-navy);border-radius:26px;padding:18px;box-shadow:0 22px 56px rgba(15,31,69,.2);overflow:hidden}
-.gmap-wrap svg{width:100%;height:auto;display:block}
-.gmap-link{stroke:#2c4a86;stroke-width:1.6;fill:none;stroke-dasharray:7 6;animation:gmapFlow 2.4s linear infinite}
-.gmap-hub-glow{transform-box:fill-box;transform-origin:center;animation:gmapPulse 2.8s ease-in-out infinite}
-@keyframes gmapFlow{to{stroke-dashoffset:-26}}
-@keyframes gmapPulse{0%,100%{opacity:.18}50%{opacity:.5}}
-@media(prefers-reduced-motion:reduce){.gmap-link,.gmap-hub-glow{animation:none}}
-
-/* 기관 배지 그리드 */
-.inst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.inst-card{position:relative;background:#fff;border:1px solid var(--border);border-radius:18px;padding:24px 22px;transition:transform .22s,box-shadow .22s,border-color .22s}
-.inst-card:hover{transform:translateY(-5px);box-shadow:0 16px 38px rgba(0,91,170,.12);border-color:var(--blue-light)}
-.inst-top{display:flex;align-items:center;gap:14px;margin-bottom:14px}
-.inst-ic{width:52px;height:52px;border-radius:13px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;background:var(--pnu-blue)}
-.inst-ic.navy{background:var(--pnu-navy)}
-.inst-ic.green{background:var(--pnu-green)}
-.inst-ic.blue-sub{background:var(--pnu-blue-sub)}
-.inst-name{font-size:16px;font-weight:900;color:var(--ink);letter-spacing:-.02em;line-height:1.2}
-.inst-loc{font-size:11px;font-weight:700;color:var(--text-m);margin-top:3px}
-.inst-chips{display:flex;flex-wrap:wrap;gap:7px}
-.inst-chip{font-size:11px;font-weight:700;padding:5px 11px;border-radius:999px;background:var(--blue-tint);color:var(--pnu-blue-dark);border:1px solid var(--blue-light)}
-.inst-chip.g{background:#E7F7EE;color:#08824a;border-color:#bfe9d2}
-.inst-flag{position:absolute;top:18px;right:18px;font-size:11px;font-weight:800;letter-spacing:.04em;color:var(--text-m);font-family:'Inter',sans-serif}
-
-/* 국제화 인포 (글라스 통번역) */
-.intl-wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
-.intl-ring{position:relative;background:#fff;border:1px solid var(--border);border-radius:24px;padding:30px;box-shadow:0 18px 48px rgba(15,31,69,.1);min-height:340px;display:flex;align-items:center;justify-content:center}
-.intl-ring-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none}
-.intl-ring-center .n{font-family:'Inter',sans-serif;font-weight:900;font-size:2.8rem;color:var(--pnu-blue);line-height:1;letter-spacing:-.04em}
-.intl-ring-center .n span{font-size:.4em;font-weight:800}
-.intl-ring-center .l{font-size:12px;color:var(--text-m);font-weight:700;margin-top:5px}
-.intl-side h3{font-size:clamp(1.4rem,2.2vw,1.85rem);font-weight:900;color:var(--ink);letter-spacing:-.03em;line-height:1.25;margin-bottom:20px}
-.intl-side h3 em{font-style:normal;color:var(--pnu-blue)}
-.intl-feat{display:flex;flex-direction:column;gap:12px}
-.intl-row{display:flex;align-items:center;gap:14px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:14px;transition:transform .2s,box-shadow .2s,border-color .2s}
-.intl-row:hover{transform:translateX(5px);border-color:var(--pnu-blue);box-shadow:0 6px 18px rgba(0,91,170,.08)}
-.intl-row .ir-ic{width:42px;height:42px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:17px;color:#fff;background:var(--pnu-blue-sub)}
-.intl-row .ir-ic.green{background:var(--pnu-green)}
-.intl-row .ir-t{flex:1}
-.intl-row .ir-t .t{font-size:14px;font-weight:800;color:var(--ink)}
-.intl-row .ir-t .d{font-size:11.5px;color:var(--text-m);margin-top:2px}
-.intl-row .ir-v{font-family:'Inter',sans-serif;font-weight:900;font-size:1.3rem;color:var(--pnu-blue);letter-spacing:-.03em}
-.intl-row .ir-v.green{color:var(--pnu-green)}
-
-/* 협력 마일스톤 타임라인 (평면) */
-.gtl{position:relative;max-width:860px;margin:0 auto;padding-left:6px}
-.gtl::before{content:'';position:absolute;left:21px;top:8px;bottom:8px;width:2px;background:var(--blue-light)}
-.gtl-item{position:relative;padding:0 0 30px 64px}
-.gtl-item:last-child{padding-bottom:0}
-.gtl-dot{position:absolute;left:10px;top:2px;width:24px;height:24px;border-radius:50%;background:#fff;border:3px solid var(--pnu-blue);display:flex;align-items:center;justify-content:center;z-index:2}
-.gtl-dot i{font-size:9px;color:var(--pnu-blue)}
-.gtl-item.green .gtl-dot{border-color:var(--pnu-green)}
-.gtl-item.green .gtl-dot i{color:var(--pnu-green)}
-.gtl-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 22px;box-shadow:0 4px 16px rgba(15,31,69,.05);transition:transform .2s,box-shadow .2s;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.gtl-card:hover{transform:translateX(5px);box-shadow:0 12px 28px rgba(0,91,170,.1)}
-.gtl-date{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:800;letter-spacing:.04em;color:var(--pnu-blue);margin-bottom:5px}
-.gtl-item.green .gtl-date{color:var(--pnu-green)}
-.gtl-t{font-size:15px;font-weight:900;color:var(--ink);letter-spacing:-.02em}
-.gtl-badge{font-size:10.5px;font-weight:800;letter-spacing:.03em;padding:5px 11px;border-radius:999px;background:var(--blue-tint);color:var(--pnu-blue-dark);white-space:nowrap;flex-shrink:0}
-.gtl-item.green .gtl-badge{background:#E7F7EE;color:#08824a}
-
-/* 다크 임팩트 밴드 (평면 네이비) */
-.gimpact{position:relative;background:var(--pnu-navy);color:#fff;padding:70px 0;overflow:hidden}
-.gimpact::before{content:'';position:absolute;inset:0;background-color:rgba(126,200,255,.04);opacity:.5}
-.gimpact-inner{position:relative;z-index:2}
-.gimpact-eyebrow{font-family:'Inter',sans-serif;font-weight:800;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#7EC8FF;text-align:center;margin-bottom:10px}
-.gimpact-title{text-align:center;font-size:clamp(1.5rem,2.4vw,2rem);font-weight:900;letter-spacing:-.03em;line-height:1.2;margin-bottom:42px}
-.gimpact-title em{font-style:normal;color:#5fe0a4}
-.gimpact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.gimpact-cell{text-align:center;padding:30px 18px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(126,200,255,.16);transition:transform .25s,border-color .25s}
-.gimpact-cell:hover{transform:translateY(-6px);border-color:rgba(126,200,255,.45)}
-.gimpact-cell .ic{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:19px;color:#fff;background:var(--pnu-blue-sub)}
-.gimpact-cell .ic.green{background:var(--pnu-green)}
-.gimpact-cell .n{font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(2.2rem,4vw,3rem);line-height:1;letter-spacing:-.04em;color:#fff}
-.gimpact-cell .n span{font-size:.42em;font-weight:800;color:#7EC8FF}
-.gimpact-cell .l{font-size:12.5px;font-weight:700;color:rgba(255,255,255,.78);margin-top:12px;line-height:1.4}
-.gimpact-cell .tag{display:inline-block;margin-top:10px;font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#5fe0a4;font-family:'Inter',sans-serif}
-
-.gchart-box{background:#fff;border:1px solid var(--border);border-radius:24px;padding:30px 28px;box-shadow:0 18px 48px rgba(15,31,69,.08);height:320px;position:relative}
-
-@media(max-width:980px){
-  .intl-wrap{grid-template-columns:1fr}
-  .inst-grid{grid-template-columns:1fr 1fr}
-  .gk-band,.gimpact-grid{grid-template-columns:repeat(2,1fr)}
-  .gtl-card{flex-direction:column;align-items:flex-start}
-}
-@media(max-width:560px){.inst-grid{grid-template-columns:1fr}}
-</style>
+<link rel="stylesheet" href="/src/styles/programs.css">
+<script src="/aura/vendor/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -147,128 +44,135 @@
     </a>
     <nav class="main-nav">
       <div class="nav-item">
-        <a href="/s30/about/" class="nav-link">사업 소개 </a>
+        <a href="/s30/about/" class="nav-link">사업 소개 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/about/"><div class="d-i"></div>사업 개요 · 비전</a>
-          <a href="/s30/aura/"><div class="d-i"></div>A.U.R.A 2.0 마스터플랜</a>
-          <a href="/s30/about/governance/"><div class="d-i"></div>거버넌스</a>
-          <a href="/s30/roadmap/"><div class="d-i"></div>3개년 로드맵</a>
+          <a href="/s30/about/"><div class="d-i"><i class="fas fa-flag"></i></div>사업 개요 · 비전</a>
+          <a href="/s30/aura/"><div class="d-i"><i class="fas fa-sitemap"></i></div>A.U.R.A 2.0 마스터플랜</a>
+          <a href="/s30/about/governance/"><div class="d-i"><i class="fas fa-users-cog"></i></div>거버넌스</a>
+          <a href="/s30/roadmap/"><div class="d-i"><i class="fas fa-bullseye"></i></div>3개년 로드맵</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="/s30/programs/" class="nav-link">핵심 사업 </a>
+        <a href="/s30/programs/" class="nav-link">핵심 사업 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/programs/education/"><div class="d-i"></div>AI 교육 혁신</a>
-          <a href="/s30/programs/research/"><div class="d-i"></div>AI 연구 강화</a>
-          <a href="/s30/programs/industry/"><div class="d-i"></div>산학 협력</a>
-          <a href="/s30/programs/infra/"><div class="d-i"></div>AI 인프라</a>
+          <a href="/s30/programs/education/"><div class="d-i"><i class="fas fa-graduation-cap"></i></div>AI 교육 혁신</a>
+          <a href="/s30/programs/research/"><div class="d-i"><i class="fas fa-microscope"></i></div>AI 연구 강화</a>
+          <a href="/s30/programs/industry/"><div class="d-i"><i class="fas fa-handshake"></i></div>산학 협력</a>
+          <a href="/s30/programs/infra/"><div class="d-i"><i class="fas fa-server"></i></div>AI 인프라</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="/s30/achievements/" class="nav-link">성과 </a>
+        <a href="/s30/achievements/" class="nav-link">성과 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/achievements/robocup/"><div class="d-i"></div>RoboCup 2025 우승</a>
-          <a href="/s30/achievements/quantum/"><div class="d-i"></div>양자AI 47억 사업</a>
-          <a href="/s30/achievements/papers/"><div class="d-i"></div>논문 · 특허</a>
-          <a href="/s30/achievements/transfer/"><div class="d-i"></div>기술이전 · 창업</a>
+          <a href="/s30/achievements/robocup/"><div class="d-i"><i class="fas fa-trophy"></i></div>RoboCup 2025 우승</a>
+          <a href="/s30/achievements/quantum/"><div class="d-i"><i class="fas fa-atom"></i></div>양자AI 47억 사업</a>
+          <a href="/s30/achievements/papers/"><div class="d-i"><i class="fas fa-file-alt"></i></div>논문 · 특허</a>
+          <a href="/s30/achievements/transfer/"><div class="d-i"><i class="fas fa-exchange-alt"></i></div>기술이전 · 창업</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="/s30/partners/" class="nav-link active">파트너십 </a>
+        <a href="/s30/partners/" class="nav-link active">파트너십 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/partners/google/"><div class="d-i"></div>Google for Education</a>
-          <a href="/s30/partners/industry/"><div class="d-i"></div>산학 협약 (35+)</a>
-          <a href="/s30/partners/global/"><div class="d-i"></div>글로벌 협력</a>
-          <a href="/s30/partners/govt/"><div class="d-i"></div>정부·공공기관</a>
+          <a href="/s30/partners/google/"><div class="d-i"><i class="fab fa-google"></i></div>Google for Education</a>
+          <a href="/s30/partners/industry/"><div class="d-i"><i class="fas fa-industry"></i></div>산학 협약 (35+)</a>
+          <a href="/s30/partners/global/"><div class="d-i"><i class="fas fa-globe"></i></div>글로벌 협력</a>
+          <a href="/s30/partners/govt/"><div class="d-i"><i class="fas fa-landmark"></i></div>정부·공공기관</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="/s30/news/" class="nav-link">알림마당 </a>
+        <a href="/s30/news/" class="nav-link">알림마당 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/news/?cat=notice"><div class="d-i"></div>공지사항</a>
-          <a href="/s30/news/?cat=news"><div class="d-i"></div>뉴스·보도자료</a>
-          <a href="/s30/news/?cat=event"><div class="d-i"></div>행사·일정</a>
-          <a href="/s30/news/?cat=resource"><div class="d-i"></div>자료실</a>
+          <a href="/s30/news/?cat=notice"><div class="d-i"><i class="fas fa-bullhorn"></i></div>공지사항</a>
+          <a href="/s30/news/?cat=news"><div class="d-i"><i class="fas fa-newspaper"></i></div>뉴스·보도자료</a>
+          <a href="/s30/news/?cat=event"><div class="d-i"><i class="fas fa-calendar-alt"></i></div>행사·일정</a>
+          <a href="/s30/news/?cat=resource"><div class="d-i"><i class="fas fa-download"></i></div>자료실</a>
         </div>
       </div>
-      <a href="/s30/partners/global/#contact" class="nav-link nav-cta">참여 신청 →</a>
+      <a href="/s30/partners/#contact" class="nav-link nav-cta">참여 신청 →</a>
       <div class="lang-toggle">KOR | ENG</div>
     </nav>
   </div>
 </header>
 
+<main class="prog">
+
 <!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="container ph-inner">
-    <div class="ph-left">
-      <div class="ph-eyebrow">GLOBAL COLLABORATION · 글로벌 협력</div>
-      <h1 class="ph-title">국경을 넘는 <em>AI 연구 네트워크</em></h1>
-      <p class="ph-sub">Stanford · ETRI · KIMS — 2027 글로벌 10개 목표</p>
-      <div class="breadcrumb">
-        <a href="/s30/"> 홈</a>
-        
-        <a href="/s30/partners/">파트너십</a>
-        
-        <span class="current">글로벌 협력</span>
+<section class="prog-hero" data-screen-label="글로벌 · Hero">
+  <img class="prog-hero__img" src="/s30/assets/img/partnership.jpg" alt="글로벌 연구 협력">
+  <div class="prog-hero__veil"></div>
+  <div class="container prog-hero__crumb">
+    <a href="/s30/">홈</a><i>›</i><a href="/s30/partners/">파트너십</a><i>›</i><span>글로벌 협력</span>
+  </div>
+  <div class="container prog-hero__inner">
+    <div class="prog-hero__kicker">Global Collaboration · 글로벌 협력</div>
+    <h1 class="prog-hero__title">국경을 넘는 <b>AI 연구 네트워크</b></h1>
+    <div class="prog-hero__en">Stanford · ETRI · KIMS — 2027 글로벌 10개 목표</div>
+  </div>
+  <div class="container" style="position:relative">
+    <div class="prog-hero__facts">
+      <div class="prog-hero__fact"><div class="n">10<small>개</small></div><div class="l">글로벌 네트워크 (2027)</div></div>
+      <div class="prog-hero__fact"><div class="n">20<small>개 언어</small></div><div class="l">AI 통번역</div></div>
+      <div class="prog-hero__fact"><div class="n">98<small>%</small></div><div class="l">통번역 정확도</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 · 글로벌 풋프린트 -->
+<section class="sec">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">01</div>
+        <div class="sec-head__t">
+          <span class="kick">Global Footprint</span>
+          <h2>세계로 잇는 <em>연구 네트워크</em></h2>
+        </div>
       </div>
     </div>
-    <div class="ph-icon"></div>
-  </div>
-</section>
-
-<!-- KPI 밴드 -->
-<section class="section">
-  <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">GLOBAL FOOTPRINT</div>
-      <h2 class="s-title">세계로 잇는 <em>연구 네트워크</em></h2>
-    </div>
-    <div class="gk-band">
-      <div class="gk-cell"><div class="n">10<span>개</span></div><div class="l">글로벌 연구 네트워크 · 2027 목표</div></div>
-      <div class="gk-cell green"><div class="n">20<span>개 언어</span></div><div class="l">AI 통번역 스마트글라스</div></div>
-      <div class="gk-cell navy"><div class="n">98<span>%</span></div><div class="l">실시간 통번역 정확도</div></div>
-      <div class="gk-cell"><div class="n">473<span>위</span></div><div class="l">QS 세계대학 랭킹</div></div>
+    <div class="dstrip">
+      <div class="dstrip__c"><div class="dstrip__tag">Network 2027</div><div class="dstrip__n blue">10<small>개</small></div><div class="dstrip__l">글로벌 연구 네트워크</div></div>
+      <div class="dstrip__c s"><div class="dstrip__tag">Languages</div><div class="dstrip__n">20<small>개</small></div><div class="dstrip__l">AI 통번역 스마트글라스</div></div>
+      <div class="dstrip__c d"><div class="dstrip__tag">Accuracy</div><div class="dstrip__n">98<small>%</small></div><div class="dstrip__l">실시간 통번역 정확도</div></div>
+      <div class="dstrip__c a"><div class="dstrip__tag">QS Ranking</div><div class="dstrip__n accent">473<small>위</small></div><div class="dstrip__l">QS 세계대학 랭킹</div></div>
     </div>
   </div>
 </section>
 
-<!-- 글로벌 노드 맵 + 국제화 -->
-<section class="section section-alt">
+<!-- 02 · 연구 노드 맵 -->
+<section class="sec sec--navy">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">RESEARCH NODE MAP</div>
-      <h2 class="s-title">PNU 허브 <em>· 글로벌 협력 노드</em></h2>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">02</div>
+        <div class="sec-head__t">
+          <span class="kick">Research Node Map</span>
+          <h2>PNU 허브 <em>· 글로벌 협력 노드</em></h2>
+        </div>
+      </div>
     </div>
-    <div class="gmap-wrap">
-      <svg viewBox="0 0 1000 420" role="img" aria-label="부산대 AI 허브와 글로벌 협력 기관 노드 맵">
-        <!-- 연결선 -->
-        <path class="gmap-link" d="M500,210 L200,90"/>
-        <path class="gmap-link" d="M500,210 L210,300"/>
-        <path class="gmap-link" d="M500,210 L790,95"/>
-        <path class="gmap-link" d="M500,210 L800,310"/>
-        <path class="gmap-link" d="M500,210 L500,360"/>
-        <!-- 중심 허브 -->
-        <circle class="gmap-hub-glow" cx="500" cy="210" r="64" fill="#0075C9"/>
+    <div class="panel">
+      <svg viewBox="0 0 1000 420" role="img" aria-label="부산대 AI 허브와 글로벌 협력 기관 노드 맵" style="width:100%;height:auto">
+        <path d="M500,210 L200,90" stroke="#7EC8FF" stroke-width="2" opacity=".5"/>
+        <path d="M500,210 L210,300" stroke="#7EC8FF" stroke-width="2" opacity=".5"/>
+        <path d="M500,210 L790,95" stroke="#7EC8FF" stroke-width="2" opacity=".5"/>
+        <path d="M500,210 L800,310" stroke="#7EC8FF" stroke-width="2" opacity=".5"/>
+        <path d="M500,210 L500,360" stroke="#7EC8FF" stroke-width="2" opacity=".5"/>
+        <circle cx="500" cy="210" r="64" fill="#0075C9" opacity=".25"/>
         <circle cx="500" cy="210" r="42" fill="#005BAA" stroke="#7EC8FF" stroke-width="2"/>
         <text x="500" y="205" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-weight="900" font-size="17">PNU</text>
         <text x="500" y="223" text-anchor="middle" fill="#9fd0ff" font-family="Inter,sans-serif" font-weight="700" font-size="9.5">AI HUB · 부산</text>
-        <!-- 노드: Stanford -->
         <circle cx="200" cy="90" r="30" fill="#143F90" stroke="#7EC8FF" stroke-width="1.5"/>
         <text x="200" y="88" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-weight="800" font-size="11">Stanford</text>
         <text x="200" y="103" text-anchor="middle" fill="#9fd0ff" font-family="Inter,sans-serif" font-weight="600" font-size="8">USA</text>
-        <!-- 노드: ETRI -->
         <circle cx="790" cy="95" r="30" fill="#143F90" stroke="#7EC8FF" stroke-width="1.5"/>
         <text x="790" y="93" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-weight="800" font-size="11">ETRI</text>
         <text x="790" y="108" text-anchor="middle" fill="#9fd0ff" font-family="Inter,sans-serif" font-weight="600" font-size="8">대전</text>
-        <!-- 노드: KIMS -->
-        <circle cx="210" cy="300" r="30" fill="#00A651" stroke="#a7f0c7" stroke-width="1.5"/>
+        <circle cx="210" cy="300" r="30" fill="#0075C9" stroke="#7EC8FF" stroke-width="1.5"/>
         <text x="210" y="298" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-weight="800" font-size="11">KIMS</text>
-        <text x="210" y="313" text-anchor="middle" fill="#dffaeb" font-family="Inter,sans-serif" font-weight="600" font-size="8">창원</text>
-        <!-- 노드: 삼성중공업 해양AI -->
+        <text x="210" y="313" text-anchor="middle" fill="#cfe6ff" font-family="Inter,sans-serif" font-weight="600" font-size="8">창원</text>
         <circle cx="800" cy="310" r="30" fill="#143F90" stroke="#7EC8FF" stroke-width="1.5"/>
         <text x="800" y="307" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-weight="800" font-size="10">해양AI</text>
         <text x="800" y="322" text-anchor="middle" fill="#9fd0ff" font-family="Inter,sans-serif" font-weight="600" font-size="8">거제</text>
-        <!-- 노드: 글로벌 확장 -->
         <circle cx="500" cy="360" r="28" fill="#0F1F45" stroke="#7EC8FF" stroke-width="1.5" stroke-dasharray="4 4"/>
         <text x="500" y="357" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-weight="800" font-size="10">+ 확장</text>
         <text x="500" y="372" text-anchor="middle" fill="#9fd0ff" font-family="Inter,sans-serif" font-weight="600" font-size="8">→ 10개</text>
@@ -277,142 +181,108 @@
   </div>
 </section>
 
-<!-- 기관 배지 -->
-<section class="section">
+<!-- 03 · 기관 배지 -->
+<section class="sec">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">PARTNER INSTITUTIONS</div>
-      <h2 class="s-title">글로벌 · 국가연구기관 <em>협력 배지</em></h2>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">03</div>
+        <div class="sec-head__t">
+          <span class="kick">Partner Institutions</span>
+          <h2>글로벌 · 국가연구기관 <em>협력</em></h2>
+        </div>
+      </div>
     </div>
-    <div class="inst-grid">
-      <div class="inst-card">
-        <span class="inst-flag">USA</span>
-        <div class="inst-top">
-          <div class="inst-ic navy"></div>
-          <div><div class="inst-name">Stanford</div><div class="inst-loc">Stanford University</div></div>
+    <div class="anchors">
+      <div class="anchor"><div class="alogo">St</div><div class="aname">Stanford</div><div class="acat">Stanford University</div><div class="atag">USA · AI 협력</div></div>
+      <div class="anchor b"><div class="alogo">E</div><div class="aname">ETRI</div><div class="acat">한국전자통신연구원</div><div class="atag">KOR · ICT·AI</div></div>
+      <div class="anchor s"><div class="alogo">K</div><div class="aname">KIMS</div><div class="acat">한국재료연구원</div><div class="atag">KOR · 소재 AI</div></div>
+      <div class="anchor"><div class="alogo">S</div><div class="aname">삼성중공업</div><div class="acat">해양AI센터</div><div class="atag">KOR · 해양 AI</div></div>
+      <div class="anchor s"><div class="alogo">은</div><div class="aname">은성의료재단</div><div class="acat">AX 헬스케어</div><div class="atag">KOR · 의료 AI</div></div>
+      <div class="anchor b"><div class="alogo">+</div><div class="aname">확장 네트워크</div><div class="acat">글로벌 연구 10개 목표</div><div class="atag">2027 · 국제 공동연구</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · 국제화 캠퍼스 -->
+<section class="sec sec--tint">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">04</div>
+        <div class="sec-head__t">
+          <span class="kick">International Campus</span>
+          <h2>언어 장벽 없는 <em>국제 협력</em></h2>
         </div>
-        <div class="inst-chips"><span class="inst-chip">글로벌 연구</span><span class="inst-chip">AI 협력</span></div>
       </div>
-      <div class="inst-card">
-        <span class="inst-flag">KOR</span>
-        <div class="inst-top">
-          <div class="inst-ic"></div>
-          <div><div class="inst-name">ETRI</div><div class="inst-loc">한국전자통신연구원</div></div>
-        </div>
-        <div class="inst-chips"><span class="inst-chip">국가연구기관</span><span class="inst-chip">ICT·AI</span></div>
+      <div class="sec-head__note"><b>AI 통번역 스마트글라스</b> · 국내 최초</div>
+    </div>
+    <div style="display:grid;grid-template-columns:.8fr 1.2fr;gap:34px;align-items:center">
+      <div class="chart" style="border-radius:var(--r-lg);text-align:center">
+        <div class="chart__box" style="height:240px"><canvas id="langChart"></canvas></div>
+        <div style="font:900 30px/1 'Inter';color:var(--pnu-blue);margin-top:8px">20<span style="font-size:16px;color:var(--ink-2)">개</span></div>
+        <div style="font:700 13px/1 'Noto Sans KR';color:var(--mute);margin-top:6px">지원 언어</div>
       </div>
-      <div class="inst-card">
-        <span class="inst-flag">KOR</span>
-        <div class="inst-top">
-          <div class="inst-ic green"></div>
-          <div><div class="inst-name">KIMS</div><div class="inst-loc">한국재료연구원</div></div>
-        </div>
-        <div class="inst-chips"><span class="inst-chip g">소재 AI</span><span class="inst-chip g">공동연구</span></div>
-      </div>
-      <div class="inst-card">
-        <span class="inst-flag">KOR</span>
-        <div class="inst-top">
-          <div class="inst-ic blue-sub"></div>
-          <div><div class="inst-name">삼성중공업</div><div class="inst-loc">해양AI센터</div></div>
-        </div>
-        <div class="inst-chips"><span class="inst-chip">해양 AI</span><span class="inst-chip">산학 거점</span></div>
-      </div>
-      <div class="inst-card">
-        <span class="inst-flag">KOR</span>
-        <div class="inst-top">
-          <div class="inst-ic green"></div>
-          <div><div class="inst-name">은성의료재단</div><div class="inst-loc">AX 헬스케어</div></div>
-        </div>
-        <div class="inst-chips"><span class="inst-chip g">의료 AI</span><span class="inst-chip g">협약</span></div>
-      </div>
-      <div class="inst-card">
-        <span class="inst-flag">2027</span>
-        <div class="inst-top">
-          <div class="inst-ic navy"></div>
-          <div><div class="inst-name">+ 확장 네트워크</div><div class="inst-loc">글로벌 연구 10개 목표</div></div>
-        </div>
-        <div class="inst-chips"><span class="inst-chip">목표 2027</span><span class="inst-chip">국제 공동연구</span></div>
+      <div class="pbars">
+        <div class="pbar"><div class="pl">실시간 통번역</div><div class="pt"><div class="pf" style="width:98%"></div></div><div class="pv">98%</div></div>
+        <div class="pbar"><div class="pl">다국어 지원</div><div class="pt"><div class="pf s" style="width:71%"></div></div><div class="pv">20개</div></div>
+        <div class="pbar"><div class="pl">국내 최초 도입</div><div class="pt"><div class="pf d" style="width:100%"></div></div><div class="pv">1st</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 국제화 캠퍼스 (글라스 통번역) -->
-<section class="section section-alt">
+<!-- 05 · QS 랭킹 항로 -->
+<section class="sec">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">INTERNATIONAL CAMPUS</div>
-      <h2 class="s-title">언어 장벽 없는 <em>국제 협력</em></h2>
-    </div>
-    <div class="intl-wrap">
-      <div class="intl-ring">
-        <canvas id="langChart"></canvas>
-        <div class="intl-ring-center"><div class="n">20<span>개</span></div><div class="l">지원 언어</div></div>
-      </div>
-      <div class="intl-side">
-        <h3>AI 통번역 <em>스마트글라스</em> · 국내 최초</h3>
-        <div class="intl-feat">
-          <div class="intl-row"><div class="ir-ic"></div><div class="ir-t"><div class="t">실시간 통번역</div><div class="d">교육·연구 현장 적용</div></div><div class="ir-v">98<span style="font-size:.6em">%</span></div></div>
-          <div class="intl-row"><div class="ir-ic green"></div><div class="ir-t"><div class="t">다국어 지원</div><div class="d">유학생·글로벌 연구자</div></div><div class="ir-v green">20<span style="font-size:.6em">개</span></div></div>
-          <div class="intl-row"><div class="ir-ic"></div><div class="ir-t"><div class="t">국내 최초 도입</div><div class="d">국제화 캠퍼스 가속</div></div><div class="ir-v" style="font-size:1rem">1st</div></div>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">05</div>
+        <div class="sec-head__t">
+          <span class="kick">Global Ranking Trajectory</span>
+          <h2>QS 랭킹 <em>· 2046 Top 100 항로</em></h2>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- 임팩트 다크 밴드 -->
-<section class="gimpact">
-  <div class="container gimpact-inner">
-    <div class="gimpact-eyebrow">GLOBAL IMPACT · 2027</div>
-    <h2 class="gimpact-title">세계 무대로 <em>확장하는 거점</em></h2>
-    <div class="gimpact-grid">
-      <div class="gimpact-cell"><div class="ic"></div><div class="n">10<span>개</span></div><div class="l">글로벌 연구 네트워크</div><div class="tag">2027 목표</div></div>
-      <div class="gimpact-cell"><div class="ic green"></div><div class="n">473<span>위</span></div><div class="l">QS 세계대학 랭킹</div><div class="tag">Top 200 지향</div></div>
-      <div class="gimpact-cell"><div class="ic"></div><div class="n">20<span>개</span></div><div class="l">통번역 지원 언어</div><div class="tag">98% 정확도</div></div>
-      <div class="gimpact-cell"><div class="ic green"></div><div class="n">35<span>+</span></div><div class="l">산·학·연·관 파트너</div><div class="tag">Network</div></div>
+    <div class="chart" style="border-radius:var(--r-lg)">
+      <div class="chart__box" style="height:300px"><canvas id="qsChart"></canvas></div>
     </div>
   </div>
 </section>
 
-<!-- QS 랭킹 목표 차트 -->
-<section class="section">
+<!-- 06 · 협력 로드맵 -->
+<section class="sec sec--paper">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">GLOBAL RANKING TRAJECTORY</div>
-      <h2 class="s-title">QS 랭킹 <em>· 2046 Top 100 항로</em></h2>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">06</div>
+        <div class="sec-head__t">
+          <span class="kick">Collaboration Milestones</span>
+          <h2>글로벌 협력 <em>로드맵</em></h2>
+        </div>
+      </div>
     </div>
-    <div class="gchart-box"><canvas id="qsChart"></canvas></div>
+    <div class="card" style="border-radius:var(--r-lg)">
+      <div class="vtl">
+        <div class="vtl-item win"><div class="vtl-date">2025</div><div class="vtl-text">국가연구기관 협약 · KIMS·삼성중공업·은성의료재단</div></div>
+        <div class="vtl-item win"><div class="vtl-date">2025</div><div class="vtl-text">AI 통번역 스마트글라스 국내 최초 도입</div></div>
+        <div class="vtl-item"><div class="vtl-date">2026</div><div class="vtl-text">글로벌 AI 연구 네트워크 구축 착수</div></div>
+        <div class="vtl-item"><div class="vtl-date">2027</div><div class="vtl-text">글로벌 대학 AI 연구 네트워크 10개 달성</div></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- 협력 마일스톤 -->
-<section class="section section-alt">
+<!-- 결론 밴드 -->
+<section class="closing">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">COLLABORATION MILESTONES</div>
-      <h2 class="s-title">글로벌 협력 <em>로드맵</em></h2>
-    </div>
-    <div class="gtl">
-      <div class="gtl-item">
-        <div class="gtl-dot"></div>
-        <div class="gtl-card"><div><div class="gtl-date">2025</div><div class="gtl-t">국가연구기관 협약 · KIMS·삼성중공업·은성의료재단</div></div><span class="gtl-badge">기반 구축</span></div>
-      </div>
-      <div class="gtl-item">
-        <div class="gtl-dot"></div>
-        <div class="gtl-card"><div><div class="gtl-date">2025</div><div class="gtl-t">AI 통번역 스마트글라스 국내 최초 도입</div></div><span class="gtl-badge">국내 최초</span></div>
-      </div>
-      <div class="gtl-item green">
-        <div class="gtl-dot"></div>
-        <div class="gtl-card"><div><div class="gtl-date">2026</div><div class="gtl-t">글로벌 AI 연구 네트워크 구축 착수</div></div><span class="gtl-badge">실행</span></div>
-      </div>
-      <div class="gtl-item green">
-        <div class="gtl-dot"></div>
-        <div class="gtl-card"><div><div class="gtl-date">2027</div><div class="gtl-t">글로벌 대학 AI 연구 네트워크 10개 달성</div></div><span class="gtl-badge">목표</span></div>
-      </div>
-    </div>
+    <span class="kick">Global Impact · 2027</span>
+    <h2>세계 무대로 확장하는 AI 거점</h2>
+    <p>글로벌 연구 네트워크 10개 · 20개 언어 통번역 · QS Top 200 지향</p>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer class="site-footer">
@@ -425,9 +295,6 @@
         <div class="ft-brand-name">AI 거점대학육성사업단 · ARISE PNU<small>arise-ai.pusan.ac.kr · A.U.R.A 2.0 마스터플랜</small></div>
         <div class="ft-desc" style="margin-top:16px"><em>"Arise PNU, 같이 더 높게"</em> — 동남권 AX 생태계의 중심 거점, 부산대학교 AI 거점대학육성사업단입니다.</div>
         <div class="ft-addr">📍 부산광역시 금정구 부산대학로 63번길 2 · IT관 3층 AI 거점사업단<br>📞 051-510-0000 · ✉ arise@pusan.ac.kr<br>⏰ 평일 09:00 – 18:00</div>
-        <div class="ft-sns" style="margin-top:24px">
-          <a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a>
-        </div>
       </div>
       <div class="ft-col"><h4>사업 소개</h4>
         <a href="/s30/about/">사업 개요 · 비전</a><a href="/s30/aura/">A.U.R.A 2.0</a><a href="/s30/about/governance/">거버넌스</a><a href="/s30/roadmap/">3개년 로드맵</a>
@@ -449,16 +316,17 @@
 <script>
 (function(){
   if(typeof Chart==='undefined')return;
-  Chart.defaults.font.family="'Inter','Noto Sans KR',sans-serif";
-  var rm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-
-  // 언어 도넛
   var lc=document.getElementById('langChart');
-  if(lc) new Chart(lc,{type:'doughnut',data:{labels:['지원 언어','확장 여지'],datasets:[{data:[20,8],backgroundColor:['#005BAA','#DBEAFE'],borderWidth:0}]},options:{cutout:'72%',plugins:{legend:{display:false},tooltip:{enabled:false}},animation:{duration:rm?0:900}}});
-
-  // QS 랭킹 항로
+  if(lc) new Chart(lc,{ type:'doughnut',
+    data:{ labels:['지원 언어','확장 여지'], datasets:[{ data:[20,8], backgroundColor:['#005BAA','#DBEAFE'], borderWidth:0 }] },
+    options:{ cutout:'72%', plugins:{ legend:{display:false}, tooltip:{enabled:false} } } });
   var qc=document.getElementById('qsChart');
-  if(qc) new Chart(qc,{type:'line',data:{labels:['현재','2030','2046'],datasets:[{label:'QS 세계 랭킹',data:[473,200,100],borderColor:'#005BAA',backgroundColor:'rgba(0,91,170,.08)',borderWidth:3,pointBackgroundColor:'#005BAA',pointRadius:6,pointHoverRadius:8,tension:.3,fill:true}]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{reverse:true,min:50,max:500,ticks:{callback:function(v){return v+'위'},color:'#64748B'},grid:{color:'#EEF2F7'}},x:{ticks:{color:'#0F172A',font:{weight:700}},grid:{display:false}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.y+'위'}}}},animation:{duration:rm?0:1000}}});
+  if(qc) new Chart(qc,{ type:'line',
+    data:{ labels:['현재','2030','2046'], datasets:[{ label:'QS 세계 랭킹', data:[473,200,100], borderColor:'#005BAA', backgroundColor:'rgba(0,91,170,.08)', borderWidth:3, pointBackgroundColor:'#0075C9', pointRadius:6, pointHoverRadius:8, tension:.3, fill:true }] },
+    options:{ responsive:true, maintainAspectRatio:false,
+      scales:{ y:{ reverse:true, min:50, max:500, ticks:{ callback:function(v){return v+'위'}, color:'#64748B' }, grid:{ color:'#EEF2F7' } },
+        x:{ ticks:{ color:'#0F172A', font:{ weight:700 } }, grid:{ display:false } } },
+      plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:function(c){ return c.parsed.y+'위'; } } } } } });
 })();
 </script>
 <script type="module" src="/src/scripts/main.js"></script>

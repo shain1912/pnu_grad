@@ -4,140 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>정부·공공기관 — 부산대학교 AI 거점대학육성사업단 | ARISE PNU</title>
-<meta name="description" content="교육부·MSIT·KIAT·IITP 정부부처 + 부산광역시(RISE 956억)·중소벤처기업부·부산시교육청·ETRI·KMAC 공공기관 협력 거버넌스 — 국책사업 누적 3,111억 연계">
+<meta name="description" content="교육부·MSIT·KIAT·IITP 국책사업 3,111억 · 부산시 RISE 956억 · 정부–대학–지역 협력 거버넌스.">
 <link rel="icon" type="image/jpeg" href="/s30/assets/pnu-symbol-color.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+4:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/s30/assets/vendor/fonts/google-fonts-ital.css">
+<link rel="stylesheet" href="/s30/assets/vendor/fa/css/all.min.css">
 <link rel="stylesheet" href="/src/styles/main.css">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-<style>
-/* 페이지 고유 CSS만. main.css는 건드리지 않음. 그라데이션 전면 금지 — 평면 팔레트만. */
-
-/* KPI 메트릭 밴드 */
-.gv-metricband{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px}
-.gv-metric{position:relative;background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px 20px;text-align:center;box-shadow:0 4px 18px rgba(15,31,69,.05);transition:transform .22s,box-shadow .22s,border-color .22s;overflow:hidden}
-.gv-metric::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--pnu-green);opacity:0;transition:opacity .22s}
-.gv-metric:hover{transform:translateY(-5px);box-shadow:0 16px 38px rgba(0,91,170,.13);border-color:var(--blue-light)}
-.gv-metric:hover::before{opacity:1}
-.gv-metric .n{font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(1.9rem,3vw,2.5rem);color:var(--pnu-blue);line-height:1;letter-spacing:-.03em}
-.gv-metric .n span{font-size:.5em;font-weight:800}
-.gv-metric .n.green{color:var(--pnu-green)}
-.gv-metric .n.navy{color:var(--pnu-navy)}
-.gv-metric .l{font-size:12.5px;color:var(--text-m);margin-top:9px;font-weight:600;line-height:1.4}
-
-/* 정부 부처 배지 행 */
-.dept-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.dept-card{position:relative;background:#fff;border:1px solid var(--border);border-radius:18px;padding:26px 22px;transition:transform .22s,box-shadow .22s,border-color .22s;overflow:hidden}
-.dept-card:hover{transform:translateY(-5px);border-color:var(--pnu-blue);box-shadow:0 14px 34px rgba(0,91,170,.12)}
-.dept-badge{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;background:var(--pnu-blue-dark);margin-bottom:16px}
-.dept-card.g .dept-badge{background:var(--pnu-green)}
-.dept-card.n .dept-badge{background:var(--pnu-navy)}
-.dept-card.b .dept-badge{background:var(--pnu-blue-sub)}
-.dept-abbr{font-family:'Inter',sans-serif;font-weight:800;font-size:11px;letter-spacing:.06em;color:var(--text-m);text-transform:uppercase}
-.dept-name{font-size:16px;font-weight:900;color:var(--ink);letter-spacing:-.02em;margin:4px 0 12px}
-.dept-amt{font-family:'Inter',sans-serif;font-weight:900;font-size:1.55rem;color:var(--pnu-blue);letter-spacing:-.03em;line-height:1}
-.dept-amt span{font-size:.5em;font-weight:800}
-.dept-card.g .dept-amt{color:var(--pnu-green)}
-.dept-card .dept-tag{display:inline-block;margin-top:12px;font-size:11px;font-weight:800;padding:5px 11px;border-radius:100px;background:var(--blue-tint);color:var(--pnu-blue-dark);border:1px solid var(--blue-light)}
-
-/* 공공기관 역할 카드 (5열) */
-.org-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
-.org-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:28px 18px;text-align:center;transition:transform .22s,box-shadow .22s,border-color .22s}
-.org-card:hover{border-color:var(--pnu-blue);transform:translateY(-5px);box-shadow:0 12px 30px rgba(0,91,170,.1)}
-.org-ic{width:56px;height:56px;border-radius:15px;display:flex;align-items:center;justify-content:center;margin:0 auto 15px;font-size:23px;color:#fff;background:var(--pnu-navy)}
-.org-card.b .org-ic{background:var(--pnu-blue)}
-.org-card.bs .org-ic{background:var(--pnu-blue-sub)}
-.org-card.g .org-ic{background:var(--pnu-green)}
-.org-card .t{font-size:15px;font-weight:900;color:var(--ink);letter-spacing:-.02em}
-.org-card .role{font-size:11.5px;font-weight:800;color:var(--pnu-blue);margin-top:8px}
-.org-card.g .role{color:var(--pnu-green)}
-.org-card .d{font-size:11.5px;color:var(--text-m);margin-top:6px;line-height:1.45}
-
-/* 거버넌스 SVG 흐름 */
-.gov-flow-wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:40px;align-items:center}
-.gov-flow-svg{background:var(--pnu-navy);border-radius:24px;padding:18px;box-shadow:0 22px 56px rgba(15,31,69,.18)}
-.gov-flow-svg svg{width:100%;height:auto;display:block}
-.gov-flow-svg .flow-line{stroke-dasharray:6 5;animation:gvFlow 2.4s linear infinite}
-@keyframes gvFlow{to{stroke-dashoffset:-22}}
-@media(prefers-reduced-motion:reduce){.gov-flow-svg .flow-line{animation:none}}
-.gov-flow-side h3{font-size:clamp(1.4rem,2.2vw,1.8rem);font-weight:900;color:var(--ink);letter-spacing:-.03em;line-height:1.25;margin-bottom:18px}
-.gov-flow-side h3 em{font-style:normal;color:var(--pnu-blue)}
-.gff-list{display:flex;flex-direction:column;gap:12px}
-.gff-item{display:flex;align-items:center;gap:14px;padding:15px 16px;background:#fff;border:1px solid var(--border);border-radius:13px;transition:transform .2s,border-color .2s,box-shadow .2s}
-.gff-item:hover{transform:translateX(5px);border-color:var(--pnu-blue);box-shadow:0 6px 18px rgba(0,91,170,.08)}
-.gff-item .gi{width:44px;height:44px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px;background:var(--pnu-blue)}
-.gff-item .gi.green{background:var(--pnu-green)}
-.gff-item .gi.navy{background:var(--pnu-navy)}
-.gff-item .gt .t{font-size:14px;font-weight:800;color:var(--ink)}
-.gff-item .gt .d{font-size:12px;color:var(--text-m);margin-top:2px}
-
-/* 다크 임팩트 밴드 (평면) */
-.gv-impact{position:relative;background:var(--pnu-navy);color:#fff;padding:72px 0;overflow:hidden}
-.gv-impact::before{content:'';position:absolute;inset:0;background-color:rgba(126,200,255,.04);opacity:.6}
-.gv-impact-inner{position:relative;z-index:2}
-.gv-impact-eyebrow{font-family:'Inter',sans-serif;font-weight:800;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#7EC8FF;text-align:center;margin-bottom:10px}
-.gv-impact-title{text-align:center;font-size:clamp(1.5rem,2.4vw,2rem);font-weight:900;letter-spacing:-.03em;line-height:1.2;margin-bottom:44px}
-.gv-impact-title em{font-style:normal;color:#5fe0a4}
-.gv-impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.gvi-cell{position:relative;text-align:center;padding:30px 18px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid rgba(126,200,255,.16);transition:transform .25s,box-shadow .25s,border-color .25s}
-.gvi-cell:hover{transform:translateY(-6px);border-color:rgba(126,200,255,.45);box-shadow:0 22px 50px rgba(0,40,90,.5)}
-.gvi-cell .ic{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:19px;color:#fff;background:var(--pnu-blue-sub)}
-.gvi-cell .ic.green{background:var(--pnu-green)}
-.gvi-cell .n{font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(2.2rem,4.4vw,3.2rem);line-height:1;letter-spacing:-.04em;color:#fff}
-.gvi-cell .n span{font-size:.42em;font-weight:800;color:#7EC8FF}
-.gvi-cell .l{font-size:12.5px;font-weight:700;color:rgba(255,255,255,.78);margin-top:12px;line-height:1.4}
-.gvi-cell .tag{display:inline-block;margin-top:10px;font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#5fe0a4;font-family:'Inter',sans-serif}
-
-/* 예산 차트 박스 */
-.gv-chart-wrap{background:#fff;border:1px solid var(--border);border-radius:24px;padding:34px 32px 28px;box-shadow:0 18px 48px rgba(15,31,69,.08)}
-.gv-chart-head{margin-bottom:18px}
-.gv-chart-title{font-size:clamp(1.2rem,2vw,1.55rem);font-weight:900;color:var(--ink);letter-spacing:-.03em;line-height:1.25;margin:6px 0 10px}
-.gv-chart-title em{font-style:normal;color:var(--pnu-blue)}
-.gv-chart-sub{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px}
-.gct-big{font-family:'Inter',sans-serif;font-weight:900;font-size:2.4rem;line-height:1;letter-spacing:-.04em;color:var(--pnu-blue)}
-.gct-unit{font-size:1rem;font-weight:800;color:var(--pnu-blue)}
-.gct-tag{font-size:11.5px;font-weight:700;color:var(--text-m);margin-left:6px}
-.gv-chart-canvas{position:relative;height:320px}
-.gv-source{font-size:10.5px;color:var(--text-m);margin-top:14px;text-align:right}
-
-/* RISE 강조 카드 */
-.rise-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:6px}
-.rise-card{position:relative;border-radius:22px;overflow:hidden;min-height:300px;background:var(--pnu-navy);display:flex;flex-direction:column;justify-content:flex-end;border:1px solid var(--border);box-shadow:0 12px 32px rgba(15,31,69,.1)}
-.rise-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-.rise-card::after{content:'';position:absolute;inset:0;z-index:1;background:rgba(15,31,69,.6)}
-.rise-inner{position:relative;z-index:2;padding:30px 28px;color:#fff}
-.rise-tag{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border-radius:100px;background:rgba(0,166,81,.85);font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;font-family:'Inter',sans-serif;margin-bottom:14px}
-.rise-tag.blue{background:rgba(0,91,170,.85)}
-.rise-amt{font-family:'Inter',sans-serif;font-weight:900;font-size:2.6rem;line-height:1;letter-spacing:-.03em}
-.rise-amt span{font-size:.4em;font-weight:800}
-.rise-name{font-size:18px;font-weight:900;margin-top:10px;letter-spacing:-.02em}
-.rise-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.rise-meta span{font-size:11.5px;font-weight:700;padding:5px 11px;border-radius:8px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.16)}
-
-/* 타임라인 */
-.gtl{position:relative;max-width:860px;margin:0 auto;padding-left:6px}
-.gtl::before{content:'';position:absolute;left:21px;top:8px;bottom:8px;width:2px;background:var(--pnu-blue-sub)}
-.gtl-item{position:relative;padding:0 0 30px 64px}
-.gtl-item:last-child{padding-bottom:0}
-.gtl-dot{position:absolute;left:10px;top:2px;width:24px;height:24px;border-radius:50%;background:#fff;border:3px solid var(--pnu-blue);display:flex;align-items:center;justify-content:center;z-index:2}
-.gtl-dot i{font-size:9px;color:var(--pnu-blue)}
-.gtl-item.green .gtl-dot{border-color:var(--pnu-green)}
-.gtl-item.green .gtl-dot i{color:var(--pnu-green)}
-.gtl-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 22px;box-shadow:0 4px 16px rgba(15,31,69,.05);transition:transform .2s,box-shadow .2s}
-.gtl-card:hover{transform:translateX(5px);box-shadow:0 12px 28px rgba(0,91,170,.1)}
-.gtl-date{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:800;letter-spacing:.04em;color:var(--pnu-blue);margin-bottom:5px}
-.gtl-item.green .gtl-date{color:var(--pnu-green)}
-.gtl-t{font-size:15.5px;font-weight:900;color:var(--ink);letter-spacing:-.02em;margin-bottom:4px}
-.gtl-d{font-size:13px;color:var(--text-b);line-height:1.6}
-
-@media(max-width:980px){
-  .dept-grid{grid-template-columns:repeat(2,1fr)}
-  .org-grid{grid-template-columns:repeat(3,1fr)}
-  .gov-flow-wrap,.rise-wrap{grid-template-columns:1fr}
-  .gv-metricband{grid-template-columns:repeat(2,1fr)}
-  .gv-impact-grid{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:560px){.dept-grid,.org-grid{grid-template-columns:1fr}}
-</style>
+<link rel="stylesheet" href="/src/styles/programs.css">
+<script src="/aura/vendor/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -171,48 +44,48 @@
     </a>
     <nav class="main-nav">
       <div class="nav-item">
-        <a href="/s30/about/" class="nav-link">사업 소개 </a>
+        <a href="/s30/about/" class="nav-link">사업 소개 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/about/"><div class="d-i"></div>사업 개요 · 비전</a>
-          <a href="/s30/aura/"><div class="d-i"></div>A.U.R.A 2.0 마스터플랜</a>
-          <a href="/s30/about/governance/"><div class="d-i"></div>거버넌스</a>
-          <a href="/s30/roadmap/"><div class="d-i"></div>3개년 로드맵</a>
+          <a href="/s30/about/"><div class="d-i"><i class="fas fa-flag"></i></div>사업 개요 · 비전</a>
+          <a href="/s30/aura/"><div class="d-i"><i class="fas fa-sitemap"></i></div>A.U.R.A 2.0 마스터플랜</a>
+          <a href="/s30/about/governance/"><div class="d-i"><i class="fas fa-users-cog"></i></div>거버넌스</a>
+          <a href="/s30/roadmap/"><div class="d-i"><i class="fas fa-bullseye"></i></div>3개년 로드맵</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="/s30/programs/" class="nav-link">핵심 사업 </a>
+        <a href="/s30/programs/" class="nav-link">핵심 사업 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/programs/education/"><div class="d-i"></div>AI 교육 혁신</a>
-          <a href="/s30/programs/research/"><div class="d-i"></div>AI 연구 강화</a>
-          <a href="/s30/programs/industry/"><div class="d-i"></div>산학 협력</a>
-          <a href="/s30/programs/infra/"><div class="d-i"></div>AI 인프라</a>
+          <a href="/s30/programs/education/"><div class="d-i"><i class="fas fa-graduation-cap"></i></div>AI 교육 혁신</a>
+          <a href="/s30/programs/research/"><div class="d-i"><i class="fas fa-microscope"></i></div>AI 연구 강화</a>
+          <a href="/s30/programs/industry/"><div class="d-i"><i class="fas fa-handshake"></i></div>산학 협력</a>
+          <a href="/s30/programs/infra/"><div class="d-i"><i class="fas fa-server"></i></div>AI 인프라</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="/s30/achievements/" class="nav-link">성과 </a>
+        <a href="/s30/achievements/" class="nav-link">성과 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/achievements/robocup/"><div class="d-i"></div>RoboCup 2025 우승</a>
-          <a href="/s30/achievements/quantum/"><div class="d-i"></div>양자AI 47억 사업</a>
-          <a href="/s30/achievements/papers/"><div class="d-i"></div>논문 · 특허</a>
-          <a href="/s30/achievements/transfer/"><div class="d-i"></div>기술이전 · 창업</a>
+          <a href="/s30/achievements/robocup/"><div class="d-i"><i class="fas fa-trophy"></i></div>RoboCup 2025 우승</a>
+          <a href="/s30/achievements/quantum/"><div class="d-i"><i class="fas fa-atom"></i></div>양자AI 47억 사업</a>
+          <a href="/s30/achievements/papers/"><div class="d-i"><i class="fas fa-file-alt"></i></div>논문 · 특허</a>
+          <a href="/s30/achievements/transfer/"><div class="d-i"><i class="fas fa-exchange-alt"></i></div>기술이전 · 창업</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="/s30/partners/" class="nav-link active">파트너십 </a>
+        <a href="/s30/partners/" class="nav-link active">파트너십 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/partners/google/"><div class="d-i"></div>Google for Education</a>
-          <a href="/s30/partners/industry/"><div class="d-i"></div>산학 협약 (35+)</a>
-          <a href="/s30/partners/global/"><div class="d-i"></div>글로벌 협력</a>
-          <a href="/s30/partners/govt/"><div class="d-i"></div>정부·공공기관</a>
+          <a href="/s30/partners/google/"><div class="d-i"><i class="fab fa-google"></i></div>Google for Education</a>
+          <a href="/s30/partners/industry/"><div class="d-i"><i class="fas fa-industry"></i></div>산학 협약 (35+)</a>
+          <a href="/s30/partners/global/"><div class="d-i"><i class="fas fa-globe"></i></div>글로벌 협력</a>
+          <a href="/s30/partners/govt/"><div class="d-i"><i class="fas fa-landmark"></i></div>정부·공공기관</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="/s30/news/" class="nav-link">알림마당 </a>
+        <a href="/s30/news/" class="nav-link">알림마당 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/news/?cat=notice"><div class="d-i"></div>공지사항</a>
-          <a href="/s30/news/?cat=news"><div class="d-i"></div>뉴스·보도자료</a>
-          <a href="/s30/news/?cat=event"><div class="d-i"></div>행사·일정</a>
-          <a href="/s30/news/?cat=resource"><div class="d-i"></div>자료실</a>
+          <a href="/s30/news/?cat=notice"><div class="d-i"><i class="fas fa-bullhorn"></i></div>공지사항</a>
+          <a href="/s30/news/?cat=news"><div class="d-i"><i class="fas fa-newspaper"></i></div>뉴스·보도자료</a>
+          <a href="/s30/news/?cat=event"><div class="d-i"><i class="fas fa-calendar-alt"></i></div>행사·일정</a>
+          <a href="/s30/news/?cat=resource"><div class="d-i"><i class="fas fa-download"></i></div>자료실</a>
         </div>
       </div>
       <a href="/s30/partners/#contact" class="nav-link nav-cta">참여 신청 →</a>
@@ -221,325 +94,214 @@
   </div>
 </header>
 
+<main class="prog">
+
 <!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="container ph-inner">
-    <div class="ph-left">
-      <div class="ph-eyebrow">GOVERNMENT · PUBLIC</div>
-      <h1 class="ph-title">정부·공공기관 <em>협력 거버넌스</em></h1>
-      <p class="ph-sub">정부부처 · 지자체 · 연구기관 · 교육청</p>
-      <div class="breadcrumb">
-        <a href="/s30/"> 홈</a>
-        
-        <a href="/s30/partners/">파트너십</a>
-        
-        <span class="current">정부·공공기관</span>
-      </div>
+<section class="prog-hero" data-screen-label="정부·공공 · Hero">
+  <img class="prog-hero__img" src="/s30/assets/img/university.jpg" alt="정부·공공 협력">
+  <div class="prog-hero__veil"></div>
+  <div class="container prog-hero__crumb">
+    <a href="/s30/">홈</a><i>›</i><a href="/s30/partners/">파트너십</a><i>›</i><span>정부·공공기관</span>
+  </div>
+  <div class="container prog-hero__inner">
+    <div class="prog-hero__kicker">Government · Public</div>
+    <h1 class="prog-hero__title">정부·공공기관 <b>협력 거버넌스</b></h1>
+    <div class="prog-hero__en">정부부처 · 지자체 · 연구기관 · 교육청</div>
+  </div>
+  <div class="container" style="position:relative">
+    <div class="prog-hero__facts">
+      <div class="prog-hero__fact"><div class="n">3,111<small>억</small></div><div class="l">국책사업 누적</div></div>
+      <div class="prog-hero__fact"><div class="n">8<small>개</small></div><div class="l">대형 국책사업</div></div>
+      <div class="prog-hero__fact"><div class="n">1<small>위</small></div><div class="l">국립대 3년 연속</div></div>
     </div>
-    <div class="ph-icon"></div>
   </div>
 </section>
 
-<!-- GOVERNMENT DEPARTMENTS (funding ministries) -->
-<section class="section">
+<!-- 01 · 중앙 정부부처 -->
+<section class="sec">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow" style="justify-content:center">Funding Ministries</div>
-      <div class="s-title">국책사업을 지원하는 <em>중앙 정부부처</em></div>
-      <div class="s-sub" style="text-align:center;margin:0 auto">교육부 · MSIT · KIAT · IITP</div>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">01</div>
+        <div class="sec-head__t">
+          <span class="kick">Funding Ministries</span>
+          <h2>국책사업을 지원하는 <em>중앙 정부부처</em></h2>
+        </div>
+      </div>
+      <div class="sec-head__note">교육부 · MSIT · KIAT · IITP</div>
     </div>
-
-    <div class="dept-grid">
-      <div class="dept-card">
-        <div class="dept-badge"></div>
-        <div class="dept-abbr">MOE</div>
-        <div class="dept-name">교육부</div>
-        <div class="dept-amt"><span>약 </span>2,531<span>억</span></div>
-        <span class="dept-tag">글로컬·RISE·부트캠프</span>
-      </div>
-      <div class="dept-card b">
-        <div class="dept-badge"></div>
-        <div class="dept-abbr">MSIT</div>
-        <div class="dept-name">과학기술정보통신부</div>
-        <div class="dept-amt"><span>약 </span>189<span>억</span></div>
-        <span class="dept-tag">SW중심대학·양자</span>
-      </div>
-      <div class="dept-card g">
-        <div class="dept-badge"></div>
-        <div class="dept-abbr">KIAT</div>
-        <div class="dept-name">한국산업기술진흥원</div>
-        <div class="dept-amt"><span>약 </span>328<span>억</span></div>
-        <span class="dept-tag">반도체특성화대학</span>
-      </div>
-      <div class="dept-card n">
-        <div class="dept-badge"></div>
-        <div class="dept-abbr">IITP</div>
-        <div class="dept-name">정보통신기획평가원</div>
-        <div class="dept-amt"><span>약 </span>63<span>억</span></div>
-        <span class="dept-tag">AI융합대학원 2기</span>
-      </div>
+    <div class="dstrip">
+      <div class="dstrip__c d"><div class="dstrip__tag">MOE · 교육부</div><div class="dstrip__n">2,531<small>억</small></div><div class="dstrip__l">글로컬 · RISE · 부트캠프</div></div>
+      <div class="dstrip__c"><div class="dstrip__tag">KIAT</div><div class="dstrip__n blue">328<small>억</small></div><div class="dstrip__l">반도체특성화대학</div></div>
+      <div class="dstrip__c s"><div class="dstrip__tag">MSIT</div><div class="dstrip__n">189<small>억</small></div><div class="dstrip__l">SW중심대학 · 양자</div></div>
+      <div class="dstrip__c a"><div class="dstrip__tag">IITP</div><div class="dstrip__n accent">63<small>억</small></div><div class="dstrip__l">AI융합대학원 2기</div></div>
     </div>
   </div>
 </section>
 
-<!-- PUBLIC IMPACT BAND (dark, flat) -->
-<section class="gv-impact">
-  <div class="container gv-impact-inner">
-    <div class="gv-impact-eyebrow">Public Linkage Impact</div>
-    <div class="gv-impact-title">공공·정부 연계가 만든 <em>임팩트</em></div>
-    <div class="gv-impact-grid">
-      <div class="gvi-cell">
-        <div class="ic"></div>
-        <div class="n"><span class="cnt" data-count="3111">0</span><span>억</span></div>
-        <div class="l">국책사업 누적</div>
-        <div class="tag">2023 –</div>
-      </div>
-      <div class="gvi-cell">
-        <div class="ic green"></div>
-        <div class="n"><span class="cnt" data-count="8">0</span></div>
-        <div class="l">대형 국책사업</div>
-        <div class="tag">8 Programs</div>
-      </div>
-      <div class="gvi-cell">
-        <div class="ic"></div>
-        <div class="n"><span class="cnt" data-count="956">0</span><span>억</span></div>
-        <div class="l">부산시 RISE 연계</div>
-        <div class="tag">2025 – 2029</div>
-      </div>
-      <div class="gvi-cell">
-        <div class="ic green"></div>
-        <div class="n">1<span>위</span></div>
-        <div class="l">국립대 (3년 연속)</div>
-        <div class="tag">National No.1</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PUBLIC ORGANIZATIONS (roles) -->
-<section class="section section-alt">
+<!-- 02 · 공공 임팩트 -->
+<section class="sec sec--navy">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow" style="justify-content:center">Public Partners</div>
-      <div class="s-title">지자체·공공기관과의 <em>역할 분담</em></div>
-      <div class="s-sub" style="text-align:center;margin:0 auto">부산시 · 중기부 · 교육청 · ETRI · KMAC</div>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">02</div>
+        <div class="sec-head__t">
+          <span class="kick">Public Linkage Impact</span>
+          <h2>공공·정부 연계가 만든 <em>임팩트</em></h2>
+        </div>
+      </div>
     </div>
-
-    <div class="org-grid">
-      <div class="org-card b">
-        <div class="org-ic"></div>
-        <div class="t">부산광역시</div>
-        <div class="role">지역 거점 · RISE</div>
-        <div class="d">956억 · 2025–2029</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(255,255,255,.16);border-radius:18px;overflow:hidden">
+      <div style="padding:30px 24px;border-left:0">
+        <div style="font:900 40px/1 'Inter';color:#fff;letter-spacing:-.03em">3,111<span style="font-size:18px;color:#7EC8FF">억</span></div>
+        <div style="font:600 13px/1.4 'Noto Sans KR';color:rgba(255,255,255,.7);margin-top:10px">국책사업 누적 · 2023–</div>
       </div>
-      <div class="org-card">
-        <div class="org-ic"></div>
-        <div class="t">중소벤처기업부</div>
-        <div class="role">중소기업 AX</div>
-        <div class="d">AX 확산 연계</div>
+      <div style="padding:30px 24px;border-left:1px solid rgba(255,255,255,.16)">
+        <div style="font:900 40px/1 'Inter';color:#fff;letter-spacing:-.03em">8<span style="font-size:18px;color:#7EC8FF">개</span></div>
+        <div style="font:600 13px/1.4 'Noto Sans KR';color:rgba(255,255,255,.7);margin-top:10px">대형 국책사업</div>
       </div>
-      <div class="org-card g">
-        <div class="org-ic"></div>
-        <div class="t">부산시교육청</div>
-        <div class="role">초·중·고 연계</div>
-        <div class="d">AI 교육 연계</div>
+      <div style="padding:30px 24px;border-left:1px solid rgba(255,255,255,.16)">
+        <div style="font:900 40px/1 'Inter';color:#fff;letter-spacing:-.03em">956<span style="font-size:18px;color:#7EC8FF">억</span></div>
+        <div style="font:600 13px/1.4 'Noto Sans KR';color:rgba(255,255,255,.7);margin-top:10px">부산시 RISE 연계 · 2025–2029</div>
       </div>
-      <div class="org-card bs">
-        <div class="org-ic"></div>
-        <div class="t">ETRI</div>
-        <div class="role">연구기관 협력</div>
-        <div class="d">AI 응용기술</div>
-      </div>
-      <div class="org-card">
-        <div class="org-ic"></div>
-        <div class="t">KMAC</div>
-        <div class="role">경영대상 시상</div>
-        <div class="d">대학 유일 · 2025</div>
+      <div style="padding:30px 24px;border-left:1px solid rgba(255,255,255,.16)">
+        <div style="font:900 40px/1 'Inter';color:#fff;letter-spacing:-.03em">1<span style="font-size:18px;color:#7EC8FF">위</span></div>
+        <div style="font:600 13px/1.4 'Noto Sans KR';color:rgba(255,255,255,.7);margin-top:10px">국립대 (3년 연속)</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- RISE SPOTLIGHT -->
-<section class="section">
+<!-- 03 · 지자체·공공 역할 -->
+<section class="sec">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow" style="justify-content:center">Regional Spotlight</div>
-      <div class="s-title">부산시·교육부 공동 <em>지역혁신중심 대학지원체계</em></div>
-      <div class="s-sub" style="text-align:center;margin:0 auto">RISE · 동남권 AX 거점</div>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">03</div>
+        <div class="sec-head__t">
+          <span class="kick">Public Partners</span>
+          <h2>지자체·공공기관과의 <em>역할 분담</em></h2>
+        </div>
+      </div>
     </div>
-
-    <div class="rise-wrap">
-      <div class="rise-card">
-        <img src="/s30/assets/img/campus.jpg" alt="부산시 RISE 사업" onerror="this.style.display='none';this.parentElement.style.background='#0d3b6e'">
-        <div class="rise-inner">
-          <span class="rise-tag green"> RISE · 부산광역시</span>
-          <div class="rise-amt">956<span>억</span></div>
-          <div class="rise-name">지역혁신중심 대학지원체계</div>
-          <div class="rise-meta"><span>교육부 × 부산시</span><span>2025–2029</span><span>30.7%</span></div>
-        </div>
-      </div>
-      <div class="rise-card">
-        <img src="/s30/assets/img/university.jpg" alt="글로컬대학30" onerror="this.style.display='none';this.parentElement.style.background='#0d3b6e'">
-        <div class="rise-inner">
-          <span class="rise-tag blue"> 교육부 · 글로컬</span>
-          <div class="rise-amt">1,500<span>억</span></div>
-          <div class="rise-name">글로컬대학30</div>
-          <div class="rise-meta"><span>교육부</span><span>2023–2027</span><span>48.2%</span></div>
-        </div>
-      </div>
+    <div class="cardgrid">
+      <div class="card"><div class="card__no">REGIONAL</div><div class="card__ti">부산광역시</div><ul class="card__list"><li>지역 거점 · RISE</li><li>956억 · 2025–2029</li></ul></div>
+      <div class="card"><div class="card__no">SME</div><div class="card__ti">중소벤처기업부</div><ul class="card__list"><li>중소기업 AX</li><li>AX 확산 연계</li></ul></div>
+      <div class="card"><div class="card__no">EDU</div><div class="card__ti">부산시교육청</div><ul class="card__list"><li>초·중·고 연계</li><li>AI 교육 연계</li></ul></div>
+      <div class="card"><div class="card__no">RESEARCH</div><div class="card__ti">ETRI</div><ul class="card__list"><li>연구기관 협력</li><li>AI 응용기술</li></ul></div>
+      <div class="card"><div class="card__no">AWARD</div><div class="card__ti">KMAC</div><ul class="card__list"><li>경영대상 시상</li><li>대학 유일 · 2025</li></ul></div>
     </div>
   </div>
 </section>
 
-<!-- GOVERNANCE FLOW (SVG) -->
-<section class="section section-cream">
+<!-- 04 · RISE 스포트라이트 -->
+<section class="sec sec--tint">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow" style="justify-content:center">Collaboration Governance</div>
-      <div class="s-title">정부–대학–지역을 잇는 <em>협력 거버넌스</em></div>
-      <div class="s-sub" style="text-align:center;margin:0 auto">중앙정부 → 거점대학 → 지역 생태계</div>
-    </div>
-
-    <div class="gov-flow-wrap">
-      <div class="gov-flow-svg">
-        <svg viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg">
-          <!-- 그리드 -->
-          <g stroke="rgba(126,200,255,.12)" stroke-width="1">
-            <line x1="0" y1="90" x2="600" y2="90"/><line x1="0" y1="170" x2="600" y2="170"/><line x1="0" y1="250" x2="600" y2="250"/>
-          </g>
-          <defs>
-            <marker id="gArr" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#7EC8FF" opacity="0.8"/></marker>
-          </defs>
-          <!-- 상단: 중앙정부 부처 -->
-          <g font-family="Inter,sans-serif">
-            <rect x="40" y="34" width="120" height="42" rx="10" fill="#0075C9"/><text x="100" y="60" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">교육부 · MSIT</text>
-            <rect x="240" y="34" width="120" height="42" rx="10" fill="#0075C9"/><text x="300" y="60" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">KIAT · IITP</text>
-            <rect x="440" y="34" width="120" height="42" rx="10" fill="#00A651"/><text x="500" y="60" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">부산광역시</text>
-          </g>
-          <!-- 흐름선 위→허브 -->
-          <g fill="none" stroke="#7EC8FF" stroke-width="1.8" class="flow-line" marker-end="url(#gArr)" opacity="0.8">
-            <path d="M100,76 Q140,120 270,150"/>
-            <path d="M300,76 L300,148"/>
-            <path d="M500,76 Q460,120 330,150"/>
-          </g>
-          <!-- 중앙 허브: PNU 거점대학 -->
-          <rect x="180" y="150" width="240" height="56" rx="14" fill="#143F90" stroke="#fff" stroke-width="2"/>
-          <text x="300" y="174" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="900" fill="#fff">ARISE PNU 거점대학</text>
-          <text x="300" y="193" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" fill="rgba(255,255,255,.85)">AX 선도위원회 · 장영실 AI융합연구원</text>
-          <!-- 흐름선 허브→지역 -->
-          <g fill="none" stroke="#5fe0a4" stroke-width="1.8" class="flow-line" marker-end="url(#gArr)" opacity="0.8">
-            <path d="M240,206 Q200,250 130,278"/>
-            <path d="M300,206 L300,276"/>
-            <path d="M360,206 Q400,250 470,278"/>
-          </g>
-          <!-- 하단: 지역 생태계 -->
-          <g font-family="Inter,sans-serif">
-            <rect x="50" y="280" width="150" height="40" rx="10" fill="rgba(255,255,255,.1)" stroke="rgba(126,200,255,.4)"/><text x="125" y="305" text-anchor="middle" font-size="11.5" font-weight="700" fill="#cfe6ff">중소기업 AX</text>
-            <rect x="225" y="280" width="150" height="40" rx="10" fill="rgba(255,255,255,.1)" stroke="rgba(126,200,255,.4)"/><text x="300" y="305" text-anchor="middle" font-size="11.5" font-weight="700" fill="#cfe6ff">초·중·고 교육</text>
-            <rect x="400" y="280" width="150" height="40" rx="10" fill="rgba(255,255,255,.1)" stroke="rgba(126,200,255,.4)"/><text x="475" y="305" text-anchor="middle" font-size="11.5" font-weight="700" fill="#cfe6ff">연구기관 연계</text>
-          </g>
-        </svg>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">04</div>
+        <div class="sec-head__t">
+          <span class="kick">Regional Spotlight</span>
+          <h2>부산시·교육부 공동 <em>지역혁신 대학지원</em></h2>
+        </div>
       </div>
-      <div class="gov-flow-side">
-        <h3>정부 재정과 지역 수요를 <em>한 축으로</em></h3>
-        <div class="gff-list">
-          <div class="gff-item">
-            <div class="gi"></div>
-            <div class="gt"><div class="t">중앙정부 재정 지원</div><div class="d">교육부 · MSIT · KIAT · IITP</div></div>
-          </div>
-          <div class="gff-item">
-            <div class="gi green"></div>
-            <div class="gt"><div class="t">지자체 지역 거점</div><div class="d">부산광역시 RISE 956억 · 2025–2029</div></div>
-          </div>
-          <div class="gff-item">
-            <div class="gi navy"></div>
-            <div class="gt"><div class="t">거점대학 구심점</div><div class="d">AX 선도위원회 · 장영실 AI융합연구원</div></div>
-          </div>
-          <div class="gff-item">
-            <div class="gi"></div>
-            <div class="gt"><div class="t">지역 생태계 확산</div><div class="d">중소기업 · 초·중·고 · 연구기관</div></div>
-          </div>
+    </div>
+    <div class="photocards" style="grid-template-columns:1fr 1fr">
+      <div class="photocard">
+        <div class="pc-img"><img src="/s30/assets/img/campus.jpg" alt="부산시 RISE 사업"><div class="pc-tag">RISE · 부산광역시</div></div>
+        <div class="pc-body">
+          <div class="pc-badge">교육부 × 부산시 · 2025–2029</div>
+          <div class="pc-name">지역혁신중심 대학지원체계 — 956억</div>
+          <div class="pc-meta"><span>30.7% 비중</span><span>동남권 AX 거점</span></div>
+        </div>
+      </div>
+      <div class="photocard">
+        <div class="pc-img"><img src="/s30/assets/img/university.jpg" alt="글로컬대학30"><div class="pc-tag">교육부 · 글로컬</div></div>
+        <div class="pc-body">
+          <div class="pc-badge">교육부 · 2023–2027</div>
+          <div class="pc-name">글로컬대학30 — 1,500억</div>
+          <div class="pc-meta"><span>48.2% 비중</span><span>최대 규모</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PUBLIC FUNDING STRUCTURE (Chart.js) -->
-<section class="section">
+<!-- 05 · 협력 거버넌스 -->
+<section class="sec sec--navy">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow" style="justify-content:center">Public Funding Linkage</div>
-      <div class="s-title">정부·공공 연계 <em>국책사업 예산 구조</em></div>
-      <div class="s-sub" style="text-align:center;margin:0 auto">8개 대형사업 · 부처별 재원</div>
-    </div>
-
-    <div class="gv-chart-wrap">
-      <div class="gv-chart-head">
-        <div class="s-eyebrow">Cumulative Funding</div>
-        <div class="gv-chart-title">국책사업 누적 재원 <em>부처·기관별</em></div>
-        <div class="gv-chart-sub"><span class="gct-big">3,111</span><span class="gct-unit">억 원</span><span class="gct-tag">누적 · 8개 대형사업 · 2023–</span></div>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">05</div>
+        <div class="sec-head__t">
+          <span class="kick">Collaboration Governance</span>
+          <h2>정부–대학–지역을 잇는 <em>협력 거버넌스</em></h2>
+        </div>
       </div>
-      <div class="gv-chart-canvas"><canvas id="govtBudget" height="300" aria-label="정부 공공 연계 국책사업 예산 구조 막대 차트" role="img"></canvas></div>
-      <div class="gv-source">SOURCE: 부산대 기획처 · UPDATED 2026.05.26</div>
+      <div class="sec-head__note">중앙정부 → 거점대학 → 지역 생태계</div>
+    </div>
+    <div class="panel">
+      <svg viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;max-width:680px;margin:0 auto;display:block">
+        <defs>
+          <marker id="gArr" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#7EC8FF" opacity="0.8"/></marker>
+        </defs>
+        <g font-family="Inter,sans-serif">
+          <rect x="40" y="34" width="120" height="42" rx="12" fill="#0075C9"/><text x="100" y="60" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">교육부 · MSIT</text>
+          <rect x="240" y="34" width="120" height="42" rx="12" fill="#0075C9"/><text x="300" y="60" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">KIAT · IITP</text>
+          <rect x="440" y="34" width="120" height="42" rx="12" fill="#005BAA"/><text x="500" y="60" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">부산광역시</text>
+        </g>
+        <g fill="none" stroke="#7EC8FF" stroke-width="1.8" marker-end="url(#gArr)" opacity="0.8">
+          <path d="M100,76 Q140,120 270,150"/>
+          <path d="M300,76 L300,148"/>
+          <path d="M500,76 Q460,120 330,150"/>
+        </g>
+        <rect x="180" y="150" width="240" height="56" rx="14" fill="#143F90" stroke="#fff" stroke-width="2"/>
+        <text x="300" y="174" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="900" fill="#fff">ARISE PNU 거점대학</text>
+        <text x="300" y="193" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" fill="rgba(255,255,255,.85)">AX 선도위원회 · 장영실 AI융합연구원</text>
+        <g fill="none" stroke="#7EC8FF" stroke-width="1.8" marker-end="url(#gArr)" opacity="0.8">
+          <path d="M240,206 Q200,250 130,278"/>
+          <path d="M300,206 L300,276"/>
+          <path d="M360,206 Q400,250 470,278"/>
+        </g>
+        <g font-family="Inter,sans-serif">
+          <rect x="50" y="280" width="150" height="40" rx="12" fill="rgba(255,255,255,.1)" stroke="rgba(126,200,255,.4)"/><text x="125" y="305" text-anchor="middle" font-size="11.5" font-weight="700" fill="#cfe6ff">중소기업 AX</text>
+          <rect x="225" y="280" width="150" height="40" rx="12" fill="rgba(255,255,255,.1)" stroke="rgba(126,200,255,.4)"/><text x="300" y="305" text-anchor="middle" font-size="11.5" font-weight="700" fill="#cfe6ff">초·중·고 교육</text>
+          <rect x="400" y="280" width="150" height="40" rx="12" fill="rgba(255,255,255,.1)" stroke="rgba(126,200,255,.4)"/><text x="475" y="305" text-anchor="middle" font-size="11.5" font-weight="700" fill="#cfe6ff">연구기관 연계</text>
+        </g>
+      </svg>
     </div>
   </div>
 </section>
 
-<!-- GOVERNMENT-LINKED MILESTONES -->
-<section class="section section-cream">
+<!-- 06 · 예산 구조 -->
+<section class="sec">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow" style="justify-content:center">Public Milestones</div>
-      <div class="s-title">정부·공공 연계 <em>주요 마일스톤</em></div>
-      <div class="s-sub" style="text-align:center;margin:0 auto">선정 · 신설 · 시상</div>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">06</div>
+        <div class="sec-head__t">
+          <span class="kick">Public Funding Linkage</span>
+          <h2>부처·기관별 <em>국책사업 예산 구조</em></h2>
+        </div>
+      </div>
+      <div class="sec-head__note"><b>3,111억</b> 누적 · 출처 부산대 기획처 2026.05.26</div>
     </div>
-
-    <div class="gtl">
-      <div class="gtl-item">
-        <div class="gtl-dot"></div>
-        <div class="gtl-card">
-          <div class="gtl-date">2025</div>
-          <div class="gtl-t">교육부 AI 거점대학 사업 선정</div>
-          <div class="gtl-d">동남권 거점 · 국립대 1위 (3년 연속)</div>
-        </div>
-      </div>
-      <div class="gtl-item green">
-        <div class="gtl-dot"></div>
-        <div class="gtl-card">
-          <div class="gtl-date">2025 – 2029</div>
-          <div class="gtl-t">부산시 RISE 956억 연계</div>
-          <div class="gtl-d">교육부 × 부산광역시 · 지역혁신중심 대학지원체계</div>
-        </div>
-      </div>
-      <div class="gtl-item">
-        <div class="gtl-dot"></div>
-        <div class="gtl-card">
-          <div class="gtl-date">2025.06.15</div>
-          <div class="gtl-t">MSIT 양자과학기술 원천연구 선정</div>
-          <div class="gtl-d">47억 · 국내 최초 위상초전도체</div>
-        </div>
-      </div>
-      <div class="gtl-item green">
-        <div class="gtl-dot"></div>
-        <div class="gtl-card">
-          <div class="gtl-date">2025.12.09</div>
-          <div class="gtl-t">KMAC 한국의 경영대상 AI 혁신 대상</div>
-          <div class="gtl-d">대학 유일 수상</div>
-        </div>
-      </div>
-      <div class="gtl-item">
-        <div class="gtl-dot"></div>
-        <div class="gtl-card">
-          <div class="gtl-date">2026.07</div>
-          <div class="gtl-t">거점대학 본 선정 신청</div>
-          <div class="gtl-d">동남권 AX 허브 확산 (2027)</div>
-        </div>
-      </div>
+    <div class="chart" style="border-radius:var(--r-lg)">
+      <div class="chart__box" style="height:300px"><canvas id="govtBudget"></canvas></div>
     </div>
   </div>
 </section>
+
+<!-- 결론 밴드 -->
+<section class="closing">
+  <div class="container">
+    <span class="kick">Public Milestones</span>
+    <h2>정부 재정과 지역 수요를 한 축으로</h2>
+    <p>교육부 AI 거점대학 선정 · 부산시 RISE 956억 · 국립대 1위 3년 연속</p>
+  </div>
+</section>
+
+</main>
 
 <!-- FOOTER -->
 <footer class="site-footer">
@@ -552,9 +314,6 @@
         <div class="ft-brand-name">AI 거점대학육성사업단 · ARISE PNU<small>arise-ai.pusan.ac.kr · A.U.R.A 2.0 마스터플랜</small></div>
         <div class="ft-desc" style="margin-top:16px"><em>"Arise PNU, 같이 더 높게"</em> — 동남권 AX 생태계의 중심 거점, 부산대학교 AI 거점대학육성사업단입니다.</div>
         <div class="ft-addr">📍 부산광역시 금정구 부산대학로 63번길 2 · IT관 3층 AI 거점사업단<br>📞 051-510-0000 · ✉ arise@pusan.ac.kr<br>⏰ 평일 09:00 – 18:00</div>
-        <div class="ft-sns" style="margin-top:24px">
-          <a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a>
-        </div>
       </div>
       <div class="ft-col"><h4>사업 소개</h4>
         <a href="/s30/about/">사업 개요 · 비전</a><a href="/s30/aura/">A.U.R.A 2.0</a><a href="/s30/about/governance/">거버넌스</a><a href="/s30/roadmap/">3개년 로드맵</a>
@@ -575,79 +334,15 @@
 
 <script>
 (function(){
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  var counters = document.querySelectorAll('.cnt');
-  function runCounter(el){
-    var target = parseInt(el.getAttribute('data-count'), 10) || 0;
-    var fmt = function(v){ return v >= 1000 ? v.toLocaleString('en-US') : v; };
-    if(reduce){ el.textContent = fmt(target); return; }
-    var start = null, dur = 1100;
-    function step(ts){
-      if(!start) start = ts;
-      var p = Math.min((ts - start) / dur, 1);
-      var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = fmt(Math.round(target * eased));
-      if(p < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-
-  var budgetDrawn = false;
-  function drawBudget(){
-    if(budgetDrawn) return;
-    var cv = document.getElementById('govtBudget');
-    if(!cv || typeof Chart === 'undefined') return;
-    budgetDrawn = true;
-    new Chart(cv.getContext('2d'), {
-      type: 'bar',
-      data: {
-        labels: ['글로컬대학30 (교육부)', 'RISE (교육부×부산시)', '반도체특성화대학 (KIAT)', 'SW중심대학 2단계 (MSIT)', 'AI 부트캠프 (교육부×KIAT)', 'AI융합대학원 2기 (IITP)', '양자과학기술 (MSIT·국내최초)'],
-        datasets: [{
-          data: [1500, 956, 328, 142, 75, 63, 47],
-          backgroundColor: ['#005BAA','#00A651','#0075C9','#143F90','#3B82F6','#60A5FA','#7EC8FF'],
-          borderRadius: 7,
-          borderSkipped: false,
-          barThickness: 22
-        }]
-      },
-      options: {
-        indexAxis: 'y',
-        responsive: true,
-        maintainAspectRatio: false,
-        animation: { duration: reduce ? 0 : 1200 },
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            backgroundColor: 'rgba(15,31,69,.94)', padding: 12,
-            titleFont: { size: 12, weight: '700' }, bodyFont: { size: 12 },
-            callbacks: { label: function(c){ return ' ' + c.parsed.x + '억 원'; } }
-          }
-        },
-        scales: {
-          x: { grid: { color: 'rgba(15,31,69,.06)' }, ticks: { color: '#64748B', font: { size: 11 }, callback: function(v){ return v + '억'; } } },
-          y: { grid: { display: false }, ticks: { color: '#0F172A', font: { size: 11, weight: '700' } } }
-        }
-      }
-    });
-  }
-
-  if('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){
-          if(e.target.classList.contains('cnt')){ runCounter(e.target); io.unobserve(e.target); }
-          if(e.target.id === 'govtBudget'){ drawBudget(); io.unobserve(e.target); }
-        }
-      });
-    }, { threshold: .25 });
-    counters.forEach(function(c){ io.observe(c); });
-    var bc = document.getElementById('govtBudget');
-    if(bc) io.observe(bc);
-  } else {
-    counters.forEach(runCounter);
-    drawBudget();
-  }
+  if(typeof Chart==='undefined')return;
+  Chart.defaults.font.family="'Inter','Noto Sans KR',sans-serif";
+  Chart.defaults.color='#475569';
+  var g=document.getElementById('govtBudget');
+  if(g) new Chart(g,{ type:'bar',
+    data:{ labels:['교육부 (MOE)','KIAT','MSIT','IITP'],
+      datasets:[{ label:'누적 사업비(억)', data:[2531,328,189,63], backgroundColor:['#143F90','#005BAA','#0075C9','#7EC8FF'], borderRadius:8, maxBarThickness:54 }] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}},
+      scales:{ y:{ beginAtZero:true, grid:{color:'#EEF2F7'}, ticks:{ callback:function(v){return v+'억'} } }, x:{ grid:{display:false} } } } });
 })();
 </script>
 <script type="module" src="/src/scripts/main.js"></script>

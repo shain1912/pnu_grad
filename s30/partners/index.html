@@ -6,18 +6,18 @@
 <title>파트너십 — 부산대학교 AI 거점대학육성사업단 | ARISE PNU</title>
 <meta name="description" content="Google for Education 국내 대학 최초 전면 도입 · 삼성중공업·LG전자·은성의료재단·KIMS·한화에어로·BNK 산학 협약 · Stanford 글로벌 협력 · 부산시·ETRI·중기부 정부·공공 — 총 35+ 파트너 네트워크">
 <link rel="icon" type="image/jpeg" href="/s30/assets/pnu-symbol-color.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+4:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="/s30/assets/vendor/fonts/google-fonts.css" rel="stylesheet">
+<link rel="stylesheet" href="/s30/assets/vendor/fa/css/all.min.css">
 <link rel="stylesheet" href="/src/styles/main.css">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="/aura/vendor/chart.umd.min.js"></script>
 <style>
 /* 페이지 고유 CSS만. main.css는 건드리지 않음. */
 .pt-metricband{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px}
-.pt-metric{position:relative;background:var(--white);border:1px solid var(--border);border-radius:16px;padding:22px 20px;text-align:center;box-shadow:0 4px 18px rgba(15,31,69,.05);transition:transform .22s,box-shadow .22s,border-color .22s;overflow:hidden}
+.pt-metric{position:relative;background:var(--white);border:1px solid var(--border);border-radius:16px;padding:22px 20px;text-align:center;box-shadow:0 1px 2px rgba(15,31,69,.05);transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1),border-color .4s ease;overflow:hidden}
 .pt-metric::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--pnu-blue-sub),var(--pnu-green));opacity:0;transition:opacity .22s}
-.pt-metric:hover{transform:translateY(-5px);box-shadow:0 16px 38px rgba(0,91,170,.13);border-color:var(--blue-light)}
+.pt-metric:hover{transform:translateY(-5px);box-shadow:0 20px 40px -20px rgba(0,91,170,.28);border-color:rgba(0,117,201,.34)}
 .pt-metric:hover::before{opacity:1}
-.pt-metric .n{font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(1.8rem,3vw,2.4rem);color:var(--pnu-blue);line-height:1;letter-spacing:-.03em}
+.pt-metric .n{font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(1.8rem,3vw,2.4rem);color:var(--pnu-blue);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .pt-metric .n span{font-size:.5em;font-weight:800}
 .pt-metric .n.green{color:var(--pnu-green)}
 .pt-metric .n.navy{color:var(--pnu-navy)}
@@ -33,10 +33,10 @@
 .impact-title{text-align:center;font-size:clamp(1.5rem,2.4vw,2rem);font-weight:900;letter-spacing:-.03em;line-height:1.2;margin-bottom:44px}
 .impact-title em{font-style:normal;background:linear-gradient(90deg,#7EC8FF,#5fe0a4);-webkit-background-clip:text;background-clip:text;color:transparent}
 .impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.impact-cell{position:relative;text-align:center;padding:30px 18px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid rgba(126,200,255,.16);backdrop-filter:blur(4px);transition:transform .25s,box-shadow .25s,border-color .25s}
-.impact-cell:hover{transform:translateY(-6px);border-color:rgba(126,200,255,.45);box-shadow:0 22px 50px rgba(0,40,90,.5)}
+.impact-cell{position:relative;text-align:center;padding:30px 18px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid rgba(126,200,255,.16);backdrop-filter:blur(4px);transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1),border-color .4s ease}
+.impact-cell:hover{transform:translateY(-5px);border-color:rgba(126,200,255,.45);box-shadow:0 22px 44px -20px rgba(11,22,46,.42)}
 .impact-cell .ic{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:19px;color:#fff;background:linear-gradient(135deg,var(--pnu-blue-sub),var(--pnu-green));box-shadow:0 8px 22px rgba(0,117,201,.4)}
-.impact-cell .n{font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(2.4rem,4.6vw,3.4rem);line-height:1;letter-spacing:-.04em;background:linear-gradient(180deg,#fff,#9fd0ff);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 30px rgba(126,200,255,.25)}
+.impact-cell .n{font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(2.4rem,4.6vw,3.4rem);line-height:1;letter-spacing:-.04em;background:linear-gradient(180deg,#fff,#9fd0ff);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 30px rgba(126,200,255,.25);font-variant-numeric:tabular-nums}
 .impact-cell .n span{font-size:.42em;font-weight:800;-webkit-text-fill-color:#7EC8FF}
 .impact-cell .n .cnt{font-size:1em;-webkit-text-fill-color:transparent;background:inherit}
 .impact-cell .l{font-size:12.5px;font-weight:700;color:rgba(255,255,255,.78);margin-top:12px;line-height:1.4}
@@ -44,8 +44,9 @@
 
 /* Google 미니 스탯 행 */
 .gfe-statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px}
-.gfe-stat{text-align:center;padding:16px 8px;border-radius:14px;background:var(--blue-tint);border:1px solid var(--blue-light)}
-.gfe-stat .gn{font-family:'Inter',sans-serif;font-weight:900;font-size:1.6rem;color:var(--pnu-blue);line-height:1;letter-spacing:-.03em}
+.gfe-stat{text-align:center;padding:16px 8px;border-radius:14px;background:var(--blue-tint);border:1px solid var(--blue-light);box-shadow:0 1px 2px rgba(15,31,69,.05);transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1),border-color .4s ease}
+.gfe-stat:hover{transform:translateY(-5px);box-shadow:0 20px 40px -20px rgba(0,91,170,.28);border-color:rgba(0,117,201,.34)}
+.gfe-stat .gn{font-family:'Inter',sans-serif;font-weight:900;font-size:1.6rem;color:var(--pnu-blue);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .gfe-stat .gn span{font-size:.5em}
 .gfe-stat .gl{font-size:10.5px;font-weight:700;color:var(--text-m);margin-top:6px;line-height:1.3}
 
@@ -57,7 +58,8 @@
 @media(prefers-reduced-motion:reduce){.global-map .hub-line path,.global-map .hub-pulse circle:first-child{animation:none}}
 
 /* Google 피처 풀 이미지 카드 */
-.gfe-feature{display:grid;grid-template-columns:1.05fr 1fr;gap:0;border-radius:24px;overflow:hidden;border:1px solid var(--border);box-shadow:0 22px 56px rgba(15,31,69,.12);background:var(--white)}
+.gfe-feature{display:grid;grid-template-columns:1.05fr 1fr;gap:0;border-radius:24px;overflow:hidden;border:1px solid var(--border);box-shadow:0 22px 56px rgba(15,31,69,.12);background:var(--white);transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1),border-color .4s ease}
+.gfe-feature:hover{transform:translateY(-5px);box-shadow:0 20px 40px -20px rgba(0,91,170,.28);border-color:rgba(0,117,201,.34)}
 .gfe-img{position:relative;min-height:440px;background:linear-gradient(135deg,#4285F4 25%,#34A853 50%,#FBBC04 75%,#EA4335)}
 .gfe-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .gfe-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(15,31,69,.45),transparent 55%)}
@@ -78,9 +80,11 @@
 
 /* 산학 이미지 카드 그리드 */
 .ind-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:6px}
-.ind-card{position:relative;border-radius:20px;overflow:hidden;min-height:300px;border:1px solid var(--border);box-shadow:0 10px 30px rgba(15,31,69,.08);background:var(--pnu-navy);display:flex;flex-direction:column;justify-content:flex-end}
+.ind-card{position:relative;border-radius:20px;overflow:hidden;min-height:300px;border:1px solid var(--border);box-shadow:0 10px 30px rgba(15,31,69,.08);background:var(--pnu-navy);display:flex;flex-direction:column;justify-content:flex-end;transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1)}
+.ind-card:hover{transform:translateY(-5px);box-shadow:0 22px 44px -20px rgba(11,22,46,.42)}
+.ind-card:hover img{transform:scale(1.05)}
 .ind-card.no-img{padding:30px}
-.ind-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.ind-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:transform .6s cubic-bezier(.16,1,.3,1)}
 .ind-card::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(8,16,38,.94) 8%,rgba(8,16,38,.55) 48%,rgba(8,16,38,.12) 100%)}
 .ind-inner{position:relative;z-index:2;padding:26px 24px;color:#fff}
 .ind-card.no-img .ind-inner{padding:0}
@@ -100,27 +104,28 @@
 .global-side h3 em{font-style:normal;color:var(--pnu-blue)}
 .global-side p{font-size:14px;color:var(--text-b);line-height:1.8;margin-bottom:22px}
 .global-list{display:flex;flex-direction:column;gap:12px}
-.global-item{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--white);border:1px solid var(--border);border-radius:14px;transition:all .2s}
-.global-item:hover{border-color:var(--pnu-blue);transform:translateX(4px);box-shadow:0 6px 18px rgba(0,91,170,.08)}
+.global-item{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--white);border:1px solid var(--border);border-radius:14px;box-shadow:0 1px 2px rgba(15,31,69,.05);transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1),border-color .4s ease}
+.global-item:hover{border-color:rgba(0,117,201,.34);transform:translateX(5px);box-shadow:0 20px 40px -20px rgba(0,91,170,.28)}
 .global-item .gi-icon{width:42px;height:42px;border-radius:11px;flex-shrink:0}
 .global-item .gi-txt .t{font-size:14px;font-weight:800;color:var(--ink)}
 .global-item .gi-txt .d{font-size:12px;color:var(--text-m);margin-top:2px}
 
 /* 정부·공공 행 */
 .govt-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
-.govt-card{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:26px 20px;text-align:center;transition:all .22s}
-.govt-card:hover{border-color:var(--pnu-blue);transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,91,170,.1)}
+.govt-card{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:26px 20px;text-align:center;box-shadow:0 1px 2px rgba(15,31,69,.05);transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1),border-color .4s ease}
+.govt-card:hover{border-color:rgba(0,117,201,.34);transform:translateY(-5px);box-shadow:0 20px 40px -20px rgba(0,91,170,.28)}
 .govt-ic{width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:22px;color:#fff;background:linear-gradient(135deg,var(--pnu-navy),var(--pnu-blue-dark))}
 .govt-card .t{font-size:15px;font-weight:900;color:var(--ink);letter-spacing:-.02em}
 .govt-card .d{font-size:12px;color:var(--text-m);margin-top:6px;line-height:1.45}
 
 /* 공공 예산 구조 차트 */
-.govt-chart-wrap{margin-top:30px;background:var(--white);border:1px solid var(--border);border-radius:24px;padding:34px 32px 28px;box-shadow:0 18px 48px rgba(15,31,69,.08)}
+.govt-chart-wrap{margin-top:30px;background:var(--white);border:1px solid var(--border);border-radius:24px;padding:34px 32px 28px;box-shadow:0 18px 48px rgba(15,31,69,.08);transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1),border-color .4s ease}
+.govt-chart-wrap:hover{transform:translateY(-5px);box-shadow:0 20px 40px -20px rgba(0,91,170,.28);border-color:rgba(0,117,201,.34)}
 .govt-chart-head{margin-bottom:18px}
 .govt-chart-title{font-size:clamp(1.2rem,2vw,1.55rem);font-weight:900;color:var(--ink);letter-spacing:-.03em;line-height:1.25;margin:6px 0 10px}
 .govt-chart-title em{font-style:normal;color:var(--pnu-blue)}
 .govt-chart-sub{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px}
-.gct-big{font-family:'Inter',sans-serif;font-weight:900;font-size:2.4rem;line-height:1;letter-spacing:-.04em;background:linear-gradient(135deg,var(--pnu-blue),var(--pnu-green));-webkit-background-clip:text;background-clip:text;color:transparent}
+.gct-big{font-family:'Inter',sans-serif;font-weight:900;font-size:2.4rem;line-height:1;letter-spacing:-.04em;background:linear-gradient(135deg,var(--pnu-blue),var(--pnu-green));-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
 .gct-unit{font-size:1rem;font-weight:800;color:var(--pnu-blue)}
 .gct-tag{font-size:11.5px;font-weight:700;color:var(--text-m);margin-left:6px}
 .govt-chart-canvas{position:relative;height:300px}
@@ -148,22 +153,23 @@
 
 /* === 생태계 구성 차트 섹션 === */
 .eco-wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:48px;align-items:center}
-.eco-chart-box{position:relative;background:var(--white);border:1px solid var(--border);border-radius:24px;padding:30px;box-shadow:0 18px 48px rgba(15,31,69,.1);min-height:360px;display:flex;align-items:center;justify-content:center}
+.eco-chart-box{position:relative;background:var(--white);border:1px solid var(--border);border-radius:24px;padding:30px;box-shadow:0 18px 48px rgba(15,31,69,.1);min-height:360px;display:flex;align-items:center;justify-content:center;transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1),border-color .4s ease}
+.eco-chart-box:hover{transform:translateY(-5px);box-shadow:0 20px 40px -20px rgba(0,91,170,.28);border-color:rgba(0,117,201,.34)}
 .eco-chart-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none}
-.eco-chart-center .n{font-family:'Inter',sans-serif;font-weight:900;font-size:2.6rem;color:var(--pnu-blue);line-height:1;letter-spacing:-.03em}
+.eco-chart-center .n{font-family:'Inter',sans-serif;font-weight:900;font-size:2.6rem;color:var(--pnu-blue);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .eco-chart-center .n span{font-size:.5em}
 .eco-chart-center .l{font-size:12px;color:var(--text-m);font-weight:700;margin-top:4px}
 .eco-side h3{font-size:clamp(1.4rem,2.2vw,1.85rem);font-weight:900;color:var(--ink);letter-spacing:-.03em;line-height:1.25;margin-bottom:14px}
 .eco-side h3 em{font-style:normal;color:var(--pnu-blue)}
 .eco-side>p{font-size:14px;color:var(--text-b);line-height:1.8;margin-bottom:24px}
 .eco-legend{display:flex;flex-direction:column;gap:12px}
-.eco-leg{display:flex;align-items:center;gap:14px;padding:13px 16px;background:var(--white);border:1px solid var(--border);border-radius:13px;transition:transform .2s,box-shadow .2s,border-color .2s}
-.eco-leg:hover{transform:translateX(5px);border-color:var(--pnu-blue);box-shadow:0 6px 18px rgba(0,91,170,.08)}
+.eco-leg{display:flex;align-items:center;gap:14px;padding:13px 16px;background:var(--white);border:1px solid var(--border);border-radius:13px;box-shadow:0 1px 2px rgba(15,31,69,.05);transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1),border-color .4s ease}
+.eco-leg:hover{transform:translateX(5px);border-color:rgba(0,117,201,.34);box-shadow:0 20px 40px -20px rgba(0,91,170,.28)}
 .eco-leg .dot{width:13px;height:13px;border-radius:4px;flex-shrink:0}
 .eco-leg .lt{flex:1}
 .eco-leg .lt .t{font-size:14px;font-weight:800;color:var(--ink)}
 .eco-leg .lt .d{font-size:11.5px;color:var(--text-m);margin-top:1px}
-.eco-leg .lv{font-family:'Inter',sans-serif;font-weight:900;font-size:1.15rem;color:var(--ink);letter-spacing:-.02em}
+.eco-leg .lv{font-family:'Inter',sans-serif;font-weight:900;font-size:1.15rem;color:var(--ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 
 /* === 협력 마일스톤 타임라인 === */
 .ptl{position:relative;max-width:860px;margin:0 auto;padding-left:6px}
@@ -174,8 +180,8 @@
 .ptl-dot i{font-size:9px;color:var(--pnu-blue)}
 .ptl-item.green .ptl-dot{border-color:var(--pnu-green)}
 .ptl-item.green .ptl-dot i{color:var(--pnu-green)}
-.ptl-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:18px 22px;box-shadow:0 4px 16px rgba(15,31,69,.05);transition:transform .2s,box-shadow .2s}
-.ptl-card:hover{transform:translateX(5px);box-shadow:0 12px 28px rgba(0,91,170,.1)}
+.ptl-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:18px 22px;box-shadow:0 1px 2px rgba(15,31,69,.05);transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1),border-color .4s ease}
+.ptl-card:hover{transform:translateX(5px);box-shadow:0 20px 40px -20px rgba(0,91,170,.28);border-color:rgba(0,117,201,.34)}
 .ptl-date{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:800;letter-spacing:.04em;color:var(--pnu-blue);margin-bottom:5px}
 .ptl-item.green .ptl-date{color:var(--pnu-green)}
 .ptl-t{font-size:15.5px;font-weight:900;color:var(--ink);letter-spacing:-.02em;margin-bottom:4px}
@@ -189,6 +195,7 @@
   .impact-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:560px){.ind-grid,.govt-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.pt-metric,.impact-cell,.gfe-stat,.gfe-feature,.ind-card,.ind-card img,.global-item,.govt-card,.govt-chart-wrap,.eco-chart-box,.eco-leg,.ptl-card{transition:none !important}}
 </style>
 </head>
 <body>
@@ -234,28 +241,28 @@
       <div class="nav-item">
         <a href="/s30/programs/" class="nav-link">핵심 사업 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/programs/#education"><div class="d-i"><i class="fas fa-graduation-cap"></i></div>AI 교육 혁신</a>
-          <a href="/s30/programs/#research"><div class="d-i"><i class="fas fa-microscope"></i></div>AI 연구 강화</a>
-          <a href="/s30/programs/#industry"><div class="d-i"><i class="fas fa-handshake"></i></div>산학 협력</a>
-          <a href="/s30/programs/#infra"><div class="d-i"><i class="fas fa-server"></i></div>AI 인프라</a>
+          <a href="/s30/programs/education/"><div class="d-i"><i class="fas fa-graduation-cap"></i></div>AI 교육 혁신</a>
+          <a href="/s30/programs/research/"><div class="d-i"><i class="fas fa-microscope"></i></div>AI 연구 강화</a>
+          <a href="/s30/programs/industry/"><div class="d-i"><i class="fas fa-handshake"></i></div>산학 협력</a>
+          <a href="/s30/programs/infra/"><div class="d-i"><i class="fas fa-server"></i></div>AI 인프라</a>
         </div>
       </div>
       <div class="nav-item">
         <a href="/s30/achievements/" class="nav-link">성과 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/achievements/#robocup"><div class="d-i"><i class="fas fa-trophy"></i></div>RoboCup 2025 우승</a>
-          <a href="/s30/achievements/#quantum"><div class="d-i"><i class="fas fa-atom"></i></div>양자AI 47억 사업</a>
-          <a href="/s30/achievements/#papers"><div class="d-i"><i class="fas fa-file-alt"></i></div>논문 · 특허</a>
-          <a href="/s30/achievements/#transfer"><div class="d-i"><i class="fas fa-exchange-alt"></i></div>기술이전 · 창업</a>
+          <a href="/s30/achievements/robocup/"><div class="d-i"><i class="fas fa-trophy"></i></div>RoboCup 2025 우승</a>
+          <a href="/s30/achievements/quantum/"><div class="d-i"><i class="fas fa-atom"></i></div>양자AI 47억 사업</a>
+          <a href="/s30/achievements/papers/"><div class="d-i"><i class="fas fa-file-alt"></i></div>논문 · 특허</a>
+          <a href="/s30/achievements/transfer/"><div class="d-i"><i class="fas fa-exchange-alt"></i></div>기술이전 · 창업</a>
         </div>
       </div>
       <div class="nav-item">
         <a href="/s30/partners/" class="nav-link active">파트너십 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/partners/#google"><div class="d-i"><i class="fab fa-google"></i></div>Google for Education</a>
-          <a href="/s30/partners/#industry"><div class="d-i"><i class="fas fa-industry"></i></div>산학 협약 (35+)</a>
-          <a href="/s30/partners/#global"><div class="d-i"><i class="fas fa-globe"></i></div>글로벌 협력</a>
-          <a href="/s30/partners/#govt"><div class="d-i"><i class="fas fa-landmark"></i></div>정부·공공기관</a>
+          <a href="/s30/partners/google/"><div class="d-i"><i class="fab fa-google"></i></div>Google for Education</a>
+          <a href="/s30/partners/industry/"><div class="d-i"><i class="fas fa-industry"></i></div>산학 협약 (35+)</a>
+          <a href="/s30/partners/global/"><div class="d-i"><i class="fas fa-globe"></i></div>글로벌 협력</a>
+          <a href="/s30/partners/govt/"><div class="d-i"><i class="fas fa-landmark"></i></div>정부·공공기관</a>
         </div>
       </div>
       <div class="nav-item">
@@ -728,7 +735,7 @@
         <a href="/s30/about/">사업 개요 · 비전</a><a href="/s30/about/aura">A.U.R.A 2.0</a><a href="/s30/about/governance">거버넌스</a><a href="/s30/roadmap/">3개년 로드맵</a>
       </div>
       <div class="ft-col"><h4>핵심 사업</h4>
-        <a href="/s30/programs/#education">AI 교육 혁신</a><a href="/s30/programs/#research">AI 연구 강화</a><a href="/s30/programs/#industry">산학 협력</a><a href="/s30/programs/#infra">AI 인프라</a>
+        <a href="/s30/programs/education/">AI 교육 혁신</a><a href="/s30/programs/research/">AI 연구 강화</a><a href="/s30/programs/industry/">산학 협력</a><a href="/s30/programs/infra/">AI 인프라</a>
       </div>
       <div class="ft-col"><h4>관련 사이트</h4>
         <a href="https://www.pusan.ac.kr" target="_blank">부산대학교 ↗</a><a href="https://ai.pusan.ac.kr" target="_blank">AI 대학 ↗</a><a href="https://airc.pusan.ac.kr" target="_blank">장영실연구원 ↗</a><a href="https://aiedu.pusan.ac.kr" target="_blank">AI 융합교육원 ↗</a><a href="https://uitc.pusan.ac.kr" target="_blank">AX·정보화혁신본부 ↗</a>

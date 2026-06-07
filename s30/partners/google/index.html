@@ -4,74 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Google for Education — 부산대학교 AI 거점대학육성사업단 | ARISE PNU</title>
-<meta name="description" content="Google for Education 협력 — 부산대, 국내 대학 최초 Google AI Ecosystem 전면도입(2026), Reference University 지정 추진.">
+<meta name="description" content="국내 대학 최초 Google AI Ecosystem 전면도입(2026) · Reference University 지정 추진.">
 <link rel="icon" type="image/jpeg" href="/s30/assets/pnu-symbol-color.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+4:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/s30/assets/vendor/fonts/google-fonts-ital.css">
+<link rel="stylesheet" href="/s30/assets/vendor/fa/css/all.min.css">
 <link rel="stylesheet" href="/src/styles/main.css">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-<style>
-/* Google for Education page-specific (flat palette only, no gradients) */
-.g-band { background:var(--pnu-navy); padding:60px 0; }
-.g-bignum-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
-.g-bignum { text-align:center; padding:0 24px; border-right:1px solid rgba(255,255,255,.14); }
-.g-bignum:last-child { border-right:none; }
-.g-bignum .t { font-size:11px; color:#7EC8FF; font-weight:800; letter-spacing:.1em; text-transform:uppercase; font-family:'Inter',sans-serif; margin-bottom:10px; }
-.g-bignum .n { font-family:'Inter',sans-serif; font-size:3.2rem; font-weight:900; color:#fff; line-height:1; letter-spacing:-.04em; }
-.g-bignum .n span { font-size:1.5rem; color:#7EC8FF; }
-.g-bignum .l { font-size:13px; color:rgba(255,255,255,.74); margin-top:10px; font-weight:600; }
-.g-feat { display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--border); border-radius:20px; overflow:hidden; box-shadow:0 10px 34px rgba(15,31,69,.07); background:#fff; }
-.g-feat .gf-img { position:relative; min-height:340px; background:#0d3b6e; }
-.g-feat .gf-img img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
-.g-feat .gf-badges { position:absolute; left:18px; bottom:18px; display:flex; gap:8px; flex-wrap:wrap; z-index:2; }
-.g-feat .gf-badge { background:rgba(15,31,69,.82); color:#fff; font-size:11px; font-weight:800; padding:7px 12px; border-radius:100px; letter-spacing:.02em; }
-.g-feat .gf-badge i { color:#7EC8FF; margin-right:5px; }
-.g-feat .gf-body { padding:38px; }
-.g-googlemark { display:inline-flex; align-items:center; gap:3px; font-family:'Inter',sans-serif; font-weight:800; font-size:22px; letter-spacing:-.02em; margin-bottom:8px; }
-.g-googlemark .b{color:#4285F4}.g-googlemark .r{color:#EA4335}.g-googlemark .y{color:#FBBC05}.g-googlemark .g{color:#34A853}
-.g-feat .gf-cat { font-size:11px; font-weight:800; color:var(--pnu-blue); letter-spacing:.1em; text-transform:uppercase; font-family:'Inter',sans-serif; }
-.g-feat .gf-title { font-family:'Source Serif 4',serif; font-size:1.7rem; font-weight:800; color:var(--ink); margin:6px 0 18px; line-height:1.25; }
-.g-meta { display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-bottom:18px; }
-.g-meta-cell { padding:14px 16px; border-right:1px solid var(--border); border-bottom:1px solid var(--border); }
-.g-meta-cell:nth-child(2n){border-right:none}
-.g-meta-cell:nth-last-child(-n+2){border-bottom:none}
-.g-meta-cell .k { font-size:10px; font-weight:800; color:var(--pnu-blue); letter-spacing:.08em; text-transform:uppercase; font-family:'Inter',sans-serif; margin-bottom:4px; }
-.g-meta-cell .v { font-size:14px; font-weight:800; color:var(--ink); }
-.g-chips { display:flex; flex-wrap:wrap; gap:8px; }
-.g-svc-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
-.g-svc { background:#fff; border:1px solid var(--border); border-radius:16px; padding:24px 20px; text-align:center; border-top:4px solid var(--pnu-blue); transition:transform .2s; }
-.g-svc:hover{ transform:translateY(-4px); box-shadow:0 8px 24px rgba(0,91,170,.1); }
-.g-svc .si { width:52px; height:52px; border-radius:13px; background:var(--blue-tint); color:var(--pnu-blue); display:flex; align-items:center; justify-content:center; font-size:21px; margin:0 auto 14px; }
-.g-svc .st { font-size:15px; font-weight:800; color:var(--ink); }
-.g-svc .sl { font-size:11px; color:var(--text-m); margin-top:4px; font-family:'Inter',sans-serif; }
-.g-2col { display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:stretch; }
-.g-panel { background:#fff; border:1px solid var(--border); border-radius:18px; padding:30px 34px; box-shadow:0 8px 28px rgba(15,31,69,.05); }
-.g-panel h4 { font-size:11px; font-weight:800; color:var(--pnu-blue); letter-spacing:.08em; text-transform:uppercase; font-family:'Inter',sans-serif; margin-bottom:18px; }
-.g-chart-box { position:relative; height:280px; }
-.g-bar-row { display:grid; grid-template-columns:130px 1fr 56px; align-items:center; gap:14px; margin-bottom:16px; }
-.g-bar-row:last-child{margin-bottom:0}
-.g-bar-lbl { font-size:13px; font-weight:700; color:var(--ink); }
-.g-bar-track { height:14px; background:var(--blue-tint); border-radius:100px; overflow:hidden; }
-.g-bar-fill { height:100%; background:var(--pnu-blue); border-radius:100px; }
-.g-bar-fill.green{background:var(--pnu-green)}
-.g-bar-val { font-family:'Inter',sans-serif; font-size:13px; font-weight:800; color:var(--pnu-blue); text-align:right; }
-.g-tl { position:relative; padding-left:26px; }
-.g-tl::before { content:''; position:absolute; left:7px; top:6px; bottom:6px; width:2px; background:var(--blue-light); }
-.g-tl-item { position:relative; padding:0 0 22px 18px; }
-.g-tl-item:last-child{padding-bottom:0}
-.g-tl-item::before { content:''; position:absolute; left:-23px; top:4px; width:12px; height:12px; border-radius:50%; background:var(--pnu-blue); border:3px solid #fff; box-shadow:0 0 0 2px var(--pnu-blue); }
-.g-tl-item.first::before { background:var(--pnu-green); box-shadow:0 0 0 2px var(--pnu-green); }
-.g-tl-date { font-family:'Inter',sans-serif; font-size:11px; font-weight:800; color:var(--pnu-blue); letter-spacing:.06em; }
-.g-tl-text { font-size:14px; font-weight:700; color:var(--ink); margin-top:3px; }
-.g-eco-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
-@media (max-width:860px){
-  .g-bignum-grid,.g-svc-grid{ grid-template-columns:repeat(2,1fr); }
-  .g-feat,.g-2col,.g-meta{ grid-template-columns:1fr; }
-  .g-eco-grid{ grid-template-columns:repeat(2,1fr); }
-  .g-bar-row{ grid-template-columns:96px 1fr 44px; }
-}
-</style>
+<link rel="stylesheet" href="/src/styles/programs.css">
+<script src="/aura/vendor/chart.umd.min.js"></script>
 </head>
 <body>
+
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="container">
@@ -88,6 +30,7 @@
     </div>
   </div>
 </div>
+
 <!-- MAIN HEADER -->
 <header class="main-hdr">
   <div class="container hdr-inner">
@@ -101,48 +44,48 @@
     </a>
     <nav class="main-nav">
       <div class="nav-item">
-        <a href="/s30/about/" class="nav-link">사업 소개 </a>
+        <a href="/s30/about/" class="nav-link">사업 소개 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/about/"><div class="d-i"></div>사업 개요 · 비전</a>
-          <a href="/s30/aura/"><div class="d-i"></div>A.U.R.A 2.0 마스터플랜</a>
-          <a href="/s30/about/governance/"><div class="d-i"></div>거버넌스</a>
-          <a href="/s30/roadmap/"><div class="d-i"></div>3개년 로드맵</a>
+          <a href="/s30/about/"><div class="d-i"><i class="fas fa-flag"></i></div>사업 개요 · 비전</a>
+          <a href="/s30/aura/"><div class="d-i"><i class="fas fa-sitemap"></i></div>A.U.R.A 2.0 마스터플랜</a>
+          <a href="/s30/about/governance/"><div class="d-i"><i class="fas fa-users-cog"></i></div>거버넌스</a>
+          <a href="/s30/roadmap/"><div class="d-i"><i class="fas fa-bullseye"></i></div>3개년 로드맵</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="/s30/programs/" class="nav-link">핵심 사업 </a>
+        <a href="/s30/programs/" class="nav-link">핵심 사업 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/programs/education/"><div class="d-i"></div>AI 교육 혁신</a>
-          <a href="/s30/programs/research/"><div class="d-i"></div>AI 연구 강화</a>
-          <a href="/s30/programs/industry/"><div class="d-i"></div>산학 협력</a>
-          <a href="/s30/programs/infra/"><div class="d-i"></div>AI 인프라</a>
+          <a href="/s30/programs/education/"><div class="d-i"><i class="fas fa-graduation-cap"></i></div>AI 교육 혁신</a>
+          <a href="/s30/programs/research/"><div class="d-i"><i class="fas fa-microscope"></i></div>AI 연구 강화</a>
+          <a href="/s30/programs/industry/"><div class="d-i"><i class="fas fa-handshake"></i></div>산학 협력</a>
+          <a href="/s30/programs/infra/"><div class="d-i"><i class="fas fa-server"></i></div>AI 인프라</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="/s30/achievements/" class="nav-link">성과 </a>
+        <a href="/s30/achievements/" class="nav-link">성과 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/achievements/robocup/"><div class="d-i"></div>RoboCup 2025 우승</a>
-          <a href="/s30/achievements/quantum/"><div class="d-i"></div>양자AI 47억 사업</a>
-          <a href="/s30/achievements/papers/"><div class="d-i"></div>논문 · 특허</a>
-          <a href="/s30/achievements/transfer/"><div class="d-i"></div>기술이전 · 창업</a>
+          <a href="/s30/achievements/robocup/"><div class="d-i"><i class="fas fa-trophy"></i></div>RoboCup 2025 우승</a>
+          <a href="/s30/achievements/quantum/"><div class="d-i"><i class="fas fa-atom"></i></div>양자AI 47억 사업</a>
+          <a href="/s30/achievements/papers/"><div class="d-i"><i class="fas fa-file-alt"></i></div>논문 · 특허</a>
+          <a href="/s30/achievements/transfer/"><div class="d-i"><i class="fas fa-exchange-alt"></i></div>기술이전 · 창업</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="/s30/partners/" class="nav-link active">파트너십 </a>
+        <a href="/s30/partners/" class="nav-link active">파트너십 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/partners/google/"><div class="d-i"></div>Google for Education</a>
-          <a href="/s30/partners/industry/"><div class="d-i"></div>산학 협약 (35+)</a>
-          <a href="/s30/partners/global/"><div class="d-i"></div>글로벌 협력</a>
-          <a href="/s30/partners/govt/"><div class="d-i"></div>정부·공공기관</a>
+          <a href="/s30/partners/google/"><div class="d-i"><i class="fab fa-google"></i></div>Google for Education</a>
+          <a href="/s30/partners/industry/"><div class="d-i"><i class="fas fa-industry"></i></div>산학 협약 (35+)</a>
+          <a href="/s30/partners/global/"><div class="d-i"><i class="fas fa-globe"></i></div>글로벌 협력</a>
+          <a href="/s30/partners/govt/"><div class="d-i"><i class="fas fa-landmark"></i></div>정부·공공기관</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="/s30/news/" class="nav-link">알림마당 </a>
+        <a href="/s30/news/" class="nav-link">알림마당 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/news/?cat=notice"><div class="d-i"></div>공지사항</a>
-          <a href="/s30/news/?cat=news"><div class="d-i"></div>뉴스·보도자료</a>
-          <a href="/s30/news/?cat=event"><div class="d-i"></div>행사·일정</a>
-          <a href="/s30/news/?cat=resource"><div class="d-i"></div>자료실</a>
+          <a href="/s30/news/?cat=notice"><div class="d-i"><i class="fas fa-bullhorn"></i></div>공지사항</a>
+          <a href="/s30/news/?cat=news"><div class="d-i"><i class="fas fa-newspaper"></i></div>뉴스·보도자료</a>
+          <a href="/s30/news/?cat=event"><div class="d-i"><i class="fas fa-calendar-alt"></i></div>행사·일정</a>
+          <a href="/s30/news/?cat=resource"><div class="d-i"><i class="fas fa-download"></i></div>자료실</a>
         </div>
       </div>
       <a href="/s30/partners/#contact" class="nav-link nav-cta">참여 신청 →</a>
@@ -151,263 +94,177 @@
   </div>
 </header>
 
+<main class="prog">
+
 <!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="container ph-inner">
-    <div class="ph-left">
-      <div class="ph-eyebrow">Google for Education · Partnership</div>
-      <h1 class="ph-title">Google for Education <em>전면도입</em></h1>
-      <p class="ph-sub">국내 대학 최초 Google AI Ecosystem 도입</p>
-      <div class="breadcrumb">
-        <a href="/s30/"> 홈</a>
-        
-        <a href="/s30/partners/">파트너십</a>
-        
-        <span class="current">Google for Education</span>
-      </div>
-    </div>
-    <div class="ph-icon"></div>
+<section class="prog-hero" data-screen-label="Google · Hero">
+  <img class="prog-hero__img" src="/s30/assets/img/google-edu.jpg" alt="Google for Education 협력">
+  <div class="prog-hero__veil"></div>
+  <div class="container prog-hero__crumb">
+    <a href="/s30/">홈</a><i>›</i><a href="/s30/partners/">파트너십</a><i>›</i><span>Google for Education</span>
   </div>
-</section>
-
-<!-- BIG NUMBERS BAND -->
-<section class="g-band">
-  <div class="container">
-    <div class="g-bignum-grid">
-      <div class="g-bignum">
-        <div class="t">First in Korea</div>
-        <div class="n">1<span>위</span></div>
-        <div class="l">국내 대학 최초 전면도입</div>
-      </div>
-      <div class="g-bignum">
-        <div class="t">Go-Live</div>
-        <div class="n">2026<span>.06</span></div>
-        <div class="l">AI Ecosystem 가동</div>
-      </div>
-      <div class="g-bignum">
-        <div class="t">Agreement</div>
-        <div class="n">05<span>.13</span></div>
-        <div class="l">2026 협력 체결</div>
-      </div>
-      <div class="g-bignum">
-        <div class="t">Status</div>
-        <div class="n">Ref<span>.U</span></div>
-        <div class="l">레퍼런스 대학 추진</div>
-      </div>
+  <div class="container prog-hero__inner">
+    <div class="prog-hero__kicker">Google for Education · Partnership</div>
+    <h1 class="prog-hero__title">Google for Education <b>전면도입</b></h1>
+    <div class="prog-hero__en">국내 대학 최초 Google AI Ecosystem 도입 · Reference University 추진</div>
+  </div>
+  <div class="container" style="position:relative">
+    <div class="prog-hero__facts">
+      <div class="prog-hero__fact"><div class="n">1<small>위</small></div><div class="l">국내 대학 최초</div></div>
+      <div class="prog-hero__fact"><div class="n">2026<small>.06</small></div><div class="l">Ecosystem 가동</div></div>
+      <div class="prog-hero__fact"><div class="n">Ref<small>.U</small></div><div class="l">레퍼런스 대학 추진</div></div>
     </div>
   </div>
 </section>
 
-<!-- FEATURE CARD -->
-<section class="section">
+<!-- 01 · 핵심 지표 -->
+<section class="sec">
   <div class="container">
-    <div class="section-header">
-      <div class="s-eyebrow">Flagship Partnership</div>
-      <h2 class="s-title">캠퍼스 전체에 <em>Google AI</em></h2>
-    </div>
-    <div class="g-feat">
-      <div class="gf-img">
-        <img src="/s30/assets/img/google-edu.jpg" alt="Google for Education 협력" onerror="this.style.display='none';this.parentElement.style.background='#0d3b6e'">
-        <div class="gf-badges">
-          <span class="gf-badge"> 국내 최초</span>
-          <span class="gf-badge"> Reference University</span>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">01</div>
+        <div class="sec-head__t">
+          <span class="kick">Flagship Partnership</span>
+          <h2>캠퍼스 전체에 <em>Google AI</em></h2>
         </div>
       </div>
-      <div class="gf-body">
-        <div class="g-googlemark"><span class="b">G</span><span class="r">o</span><span class="y">o</span><span class="b">g</span><span class="g">l</span><span class="r">e</span> <span style="color:var(--ink);font-size:15px;margin-left:6px">for Education</span></div>
-        <div class="gf-cat">AX Adaptive Administration</div>
-        <h3 class="gf-title">Google AI Ecosystem 전면도입</h3>
-        <div class="g-meta">
-          <div class="g-meta-cell"><div class="k">Scope</div><div class="v">전 구성원 · 전 캠퍼스</div></div>
-          <div class="g-meta-cell"><div class="k">Go-Live</div><div class="v">2026.06</div></div>
-          <div class="g-meta-cell"><div class="k">Agreement</div><div class="v">2026.05.13</div></div>
-          <div class="g-meta-cell"><div class="k">Status</div><div class="v">국내 대학 최초</div></div>
+    </div>
+    <div class="dstrip">
+      <div class="dstrip__c"><div class="dstrip__tag">First in Korea</div><div class="dstrip__n blue">1<small>위</small></div><div class="dstrip__l">국내 대학 최초 전면도입</div></div>
+      <div class="dstrip__c s"><div class="dstrip__tag">Go-Live</div><div class="dstrip__n">2026<small>.06</small></div><div class="dstrip__l">AI Ecosystem 가동</div></div>
+      <div class="dstrip__c d"><div class="dstrip__tag">Agreement</div><div class="dstrip__n">2026<small>.05.13</small></div><div class="dstrip__l">협력 체결</div></div>
+      <div class="dstrip__c a"><div class="dstrip__tag">Status</div><div class="dstrip__n accent" style="font-size:34px">Ref. University</div><div class="dstrip__l">레퍼런스 대학 추진</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · 피처 -->
+<section class="sec sec--tint">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">02</div>
+        <div class="sec-head__t">
+          <span class="kick">Google AI Ecosystem</span>
+          <h2>Google AI Ecosystem <em>전면도입</em></h2>
         </div>
-        <div class="g-chips">
-          <span class="def-chip"> 국내 최초</span>
-          <span class="def-chip"> 전면도입</span>
-          <span class="def-chip"> AI Ecosystem</span>
-          <span class="def-chip"> 지능형 행정</span>
-          <span class="def-chip"> 레퍼런스 추진</span>
+      </div>
+      <div class="sec-head__note">AX · Adaptive Administration</div>
+    </div>
+    <div class="figsplit">
+      <div class="figsplit__media">
+        <img src="/s30/assets/img/google-edu.jpg" alt="Google for Education 협력">
+        <div class="figband__cap" style="position:absolute;left:0;bottom:0"><b>Reference University</b> 국내 최초 전면도입</div>
+      </div>
+      <div class="figsplit__body">
+        <div class="dstrip" style="grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--bd);border-radius:var(--r-md);overflow:hidden">
+          <div class="dstrip__c" style="border-radius:0"><div class="dstrip__tag">Scope</div><div class="dstrip__n" style="font-size:18px">전 구성원 · 전 캠퍼스</div></div>
+          <div class="dstrip__c s" style="border-radius:0"><div class="dstrip__tag">Go-Live</div><div class="dstrip__n" style="font-size:22px">2026.06</div></div>
+          <div class="dstrip__c d" style="border-radius:0"><div class="dstrip__tag">Agreement</div><div class="dstrip__n" style="font-size:22px">2026.05.13</div></div>
+          <div class="dstrip__c a" style="border-radius:0"><div class="dstrip__tag">Status</div><div class="dstrip__n" style="font-size:18px">국내 대학 최초</div></div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:18px">
+          <span class="tag">국내 최초</span><span class="tag">전면도입</span><span class="tag">AI Ecosystem</span><span class="tag">지능형 행정</span><span class="tag">레퍼런스 추진</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- COLLABORATION SCOPE -->
-<section class="section section-alt">
+<!-- 03 · 협력 영역 -->
+<section class="sec">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">Collaboration Pillars</div>
-      <h2 class="s-title">협력 <em>영역</em></h2>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">03</div>
+        <div class="sec-head__t">
+          <span class="kick">Collaboration Pillars</span>
+          <h2>협력 <em>영역</em></h2>
+        </div>
+      </div>
     </div>
-    <div class="g-svc-grid">
-      <div class="g-svc">
-        <div class="si"></div>
-        <div class="st">생성형 AI</div>
-        <div class="sl">Gemini · AI 도구</div>
-      </div>
-      <div class="g-svc">
-        <div class="si"></div>
-        <div class="st">지능형 행정</div>
-        <div class="sl">Adaptive Admin</div>
-      </div>
-      <div class="g-svc">
-        <div class="si"></div>
-        <div class="st">교육 플랫폼</div>
-        <div class="sl">Education Tools</div>
-      </div>
-      <div class="g-svc">
-        <div class="si"></div>
-        <div class="st">클라우드</div>
-        <div class="sl">Workspace · Cloud</div>
-      </div>
+    <div class="dstrip">
+      <div class="dstrip__c"><div class="dstrip__tag">Generative AI</div><div class="dstrip__n blue" style="font-size:26px">생성형 AI</div><div class="dstrip__l">Gemini · AI 도구</div></div>
+      <div class="dstrip__c s"><div class="dstrip__tag">Adaptive Admin</div><div class="dstrip__n" style="font-size:26px">지능형 행정</div><div class="dstrip__l">행정 자동화</div></div>
+      <div class="dstrip__c d"><div class="dstrip__tag">Education Tools</div><div class="dstrip__n" style="font-size:26px">교육 플랫폼</div><div class="dstrip__l">Classroom · Tools</div></div>
+      <div class="dstrip__c a"><div class="dstrip__tag">Cloud</div><div class="dstrip__n" style="font-size:26px">클라우드</div><div class="dstrip__l">Workspace · Cloud</div></div>
     </div>
   </div>
 </section>
 
-<!-- ADOPTION + TIMELINE -->
-<section class="section">
+<!-- 04 · 도입 현황·일정 -->
+<section class="sec sec--tint">
   <div class="container">
-    <div class="section-header">
-      <div class="s-eyebrow">Rollout</div>
-      <h2 class="s-title">도입 <em>현황 · 일정</em></h2>
-    </div>
-    <div class="g-2col">
-      <div class="g-panel">
-        <h4>도입 진행률</h4>
-        <div class="g-bar-row">
-          <div class="g-bar-lbl">협력 체결</div>
-          <div class="g-bar-track"><div class="g-bar-fill green" style="width:100%"></div></div>
-          <div class="g-bar-val">완료</div>
-        </div>
-        <div class="g-bar-row">
-          <div class="g-bar-lbl">행정 도입</div>
-          <div class="g-bar-track"><div class="g-bar-fill" style="width:100%"></div></div>
-          <div class="g-bar-val">2026.06</div>
-        </div>
-        <div class="g-bar-row">
-          <div class="g-bar-lbl">교육 확산</div>
-          <div class="g-bar-track"><div class="g-bar-fill" style="width:72%"></div></div>
-          <div class="g-bar-val">진행</div>
-        </div>
-        <div class="g-bar-row">
-          <div class="g-bar-lbl">레퍼런스 지정</div>
-          <div class="g-bar-track"><div class="g-bar-fill" style="width:55%"></div></div>
-          <div class="g-bar-val">추진</div>
-        </div>
-        <div class="g-bar-row">
-          <div class="g-bar-lbl">행정 만족도</div>
-          <div class="g-bar-track"><div class="g-bar-fill green" style="width:80%"></div></div>
-          <div class="g-bar-val">80</div>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">04</div>
+        <div class="sec-head__t">
+          <span class="kick">Rollout</span>
+          <h2>도입 <em>현황 · 일정</em></h2>
         </div>
       </div>
-      <div class="g-panel">
-        <h4>협력 타임라인</h4>
-        <div class="g-tl">
-          <div class="g-tl-item first">
-            <div class="g-tl-date">2026.05.13</div>
-            <div class="g-tl-text">Google for Education 협력 체결</div>
-          </div>
-          <div class="g-tl-item">
-            <div class="g-tl-date">2026.06</div>
-            <div class="g-tl-text">Google AI Ecosystem 전면도입</div>
-          </div>
-          <div class="g-tl-item">
-            <div class="g-tl-date">2026</div>
-            <div class="g-tl-text">지능형 행정 · 교육 확산</div>
-          </div>
-          <div class="g-tl-item">
-            <div class="g-tl-date">추진 중</div>
-            <div class="g-tl-text">Reference University 지정</div>
-          </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start">
+      <div class="card" style="border-radius:var(--r-lg)">
+        <div style="font:800 12px/1 'Inter';letter-spacing:.06em;text-transform:uppercase;color:var(--pnu-blue-sub);margin-bottom:18px">도입 진행률</div>
+        <div class="pbars">
+          <div class="pbar"><div class="pl">협력 체결</div><div class="pt"><div class="pf" style="width:100%"></div></div><div class="pv">완료</div></div>
+          <div class="pbar"><div class="pl">행정 도입</div><div class="pt"><div class="pf" style="width:100%"></div></div><div class="pv">'26.06</div></div>
+          <div class="pbar"><div class="pl">교육 확산</div><div class="pt"><div class="pf s" style="width:72%"></div></div><div class="pv">진행</div></div>
+          <div class="pbar"><div class="pl">레퍼런스 지정</div><div class="pt"><div class="pf s" style="width:55%"></div></div><div class="pv">추진</div></div>
+        </div>
+      </div>
+      <div class="card" style="border-radius:var(--r-lg)">
+        <div style="font:800 12px/1 'Inter';letter-spacing:.06em;text-transform:uppercase;color:var(--pnu-blue-sub);margin-bottom:18px">협력 타임라인</div>
+        <div class="vtl">
+          <div class="vtl-item win"><div class="vtl-date">2026.05.13</div><div class="vtl-text">Google for Education 협력 체결</div></div>
+          <div class="vtl-item"><div class="vtl-date">2026.06</div><div class="vtl-text">Google AI Ecosystem 전면도입</div></div>
+          <div class="vtl-item"><div class="vtl-date">2026</div><div class="vtl-text">지능형 행정 · 교육 확산</div></div>
+          <div class="vtl-item"><div class="vtl-date">추진 중</div><div class="vtl-text">Reference University 지정</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ADMIN SATISFACTION CHART -->
-<section class="section section-alt">
+<!-- 05 · 행정 만족도 + 플랫폼 -->
+<section class="sec">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">Adaptive Administration</div>
-      <h2 class="s-title">행정 만족도 <em>목표</em></h2>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">05</div>
+        <div class="sec-head__t">
+          <span class="kick">Adaptive Administration</span>
+          <h2>행정 만족도 <em>목표</em> · 플랫폼 파트너</h2>
+        </div>
+      </div>
     </div>
-    <div class="g-panel" style="max-width:760px;margin:0 auto">
-      <div class="g-chart-box"><canvas id="satChart"></canvas></div>
-    </div>
-  </div>
-</section>
-
-<!-- PLATFORM ECOSYSTEM -->
-<section class="section">
-  <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">Platform Partners</div>
-      <h2 class="s-title">도구 중심 <em>교육 플랫폼</em></h2>
-    </div>
-    <div class="g-eco-grid">
-      <div class="partner-chip">
-        <div class="partner-icon google"></div>
-        <div class="partner-name"><span class="partner-name-top">Google</span><span class="partner-cat">AI Ecosystem</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch">
+      <div class="chart" style="border-radius:var(--r-lg)">
+        <h3>행정 만족도 목표</h3>
+        <div class="cap">2025 → 2027 (점)</div>
+        <div class="chart__box" style="height:240px"><canvas id="satChart"></canvas></div>
       </div>
-      <div class="partner-chip">
-        <div class="partner-icon aws"></div>
-        <div class="partner-name"><span class="partner-name-top">AWS</span><span class="partner-cat">Cloud</span></div>
-      </div>
-      <div class="partner-chip">
-        <div class="partner-icon" style="background:#5E5E5E"></div>
-        <div class="partner-name"><span class="partner-name-top">Microsoft</span><span class="partner-cat">Platform</span></div>
-      </div>
-      <div class="partner-chip">
-        <div class="partner-icon nvidia"></div>
-        <div class="partner-name"><span class="partner-name-top">NVIDIA</span><span class="partner-cat">Physical AI</span></div>
-      </div>
-      <div class="partner-chip">
-        <div class="partner-icon naver"></div>
-        <div class="partner-name"><span class="partner-name-top">NAVER Cloud</span><span class="partner-cat">Platform</span></div>
+      <div class="card" style="border-radius:var(--r-lg);display:flex;flex-direction:column;justify-content:center">
+        <div style="font:800 12px/1 'Inter';letter-spacing:.06em;text-transform:uppercase;color:var(--pnu-blue-sub);margin-bottom:16px">Platform Partners</div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <span class="tag">Google · AI Ecosystem</span><span class="tag">AWS · Cloud</span><span class="tag">Microsoft · Platform</span><span class="tag">NVIDIA · Physical AI</span><span class="tag">NAVER Cloud</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- IMPACT GRID -->
-<section class="section section-alt">
+<!-- 결론 밴드 -->
+<section class="closing">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">Impact</div>
-      <h2 class="s-title">도입 <em>임팩트</em></h2>
-    </div>
-    <div class="g-svc-grid">
-      <div class="ach-card gold">
-        <div class="ach-icon"></div>
-        <span class="ach-tag">First in Korea</span>
-        <div class="ach-num">1<span>위</span></div>
-        <div class="ach-num-lbl">국내 대학 최초 전면도입</div>
-      </div>
-      <div class="ach-card green">
-        <div class="ach-icon"></div>
-        <span class="ach-tag">Admin Goal</span>
-        <div class="ach-num">90<span>점</span></div>
-        <div class="ach-num-lbl">행정 만족도 목표</div>
-      </div>
-      <div class="ach-card">
-        <div class="ach-icon"></div>
-        <span class="ach-tag">Go-Live</span>
-        <div class="ach-num">2026<span>.06</span></div>
-        <div class="ach-num-lbl">AI Ecosystem 가동</div>
-      </div>
-      <div class="ach-card violet">
-        <div class="ach-icon"></div>
-        <span class="ach-tag">Status</span>
-        <div class="ach-num">Ref<span>.U</span></div>
-        <div class="ach-num-lbl">레퍼런스 대학 추진</div>
-      </div>
-    </div>
+    <span class="kick">Flagship Partnership</span>
+    <h2>국내 대학 최초 Google AI Ecosystem 전면도입</h2>
+    <p>2026.06 가동 · Reference University 지정 추진</p>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer class="site-footer">
@@ -420,12 +277,9 @@
         <div class="ft-brand-name">AI 거점대학육성사업단 · ARISE PNU<small>arise-ai.pusan.ac.kr · A.U.R.A 2.0 마스터플랜</small></div>
         <div class="ft-desc" style="margin-top:16px"><em>"Arise PNU, 같이 더 높게"</em> — 동남권 AX 생태계의 중심 거점, 부산대학교 AI 거점대학육성사업단입니다.</div>
         <div class="ft-addr">📍 부산광역시 금정구 부산대학로 63번길 2 · IT관 3층 AI 거점사업단<br>📞 051-510-0000 · ✉ arise@pusan.ac.kr<br>⏰ 평일 09:00 – 18:00</div>
-        <div class="ft-sns" style="margin-top:24px">
-          <a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a>
-        </div>
       </div>
       <div class="ft-col"><h4>사업 소개</h4>
-        <a href="/s30/about/#overview">사업 개요 · 비전</a><a href="/s30/about/#aura">A.U.R.A 2.0</a><a href="/s30/about/governance/">거버넌스</a><a href="/s30/roadmap/">3개년 로드맵</a>
+        <a href="/s30/about/">사업 개요 · 비전</a><a href="/s30/aura/">A.U.R.A 2.0</a><a href="/s30/about/governance/">거버넌스</a><a href="/s30/roadmap/">3개년 로드맵</a>
       </div>
       <div class="ft-col"><h4>핵심 사업</h4>
         <a href="/s30/programs/education/">AI 교육 혁신</a><a href="/s30/programs/research/">AI 연구 강화</a><a href="/s30/programs/industry/">산학 협력</a><a href="/s30/programs/infra/">AI 인프라</a>
@@ -440,40 +294,19 @@
     </div>
   </div>
 </footer>
-<script type="module" src="/src/scripts/main.js"></script>
+
 <script>
 (function(){
   if(typeof Chart==='undefined')return;
   var ctx=document.getElementById('satChart');
-  if(!ctx)return;
-  new Chart(ctx,{
-    type:'line',
-    data:{
-      labels:['2025','2026','2027'],
-      datasets:[{
-        label:'행정 만족도',
-        data:[70,80,90],
-        borderColor:'#005BAA',
-        backgroundColor:'rgba(0,91,170,.08)',
-        borderWidth:3,
-        fill:true,
-        tension:.3,
-        pointBackgroundColor:'#00A651',
-        pointRadius:6,
-        pointHoverRadius:8
-      }]
-    },
-    options:{
-      responsive:true,
-      maintainAspectRatio:false,
-      plugins:{ legend:{display:false} },
-      scales:{
-        y:{ min:60, max:100, ticks:{ stepSize:10, color:'#64748B' }, grid:{ color:'#E2E8F0' } },
-        x:{ ticks:{ color:'#0F172A', font:{ weight:'700' } }, grid:{ display:false } }
-      }
-    }
-  });
+  if(ctx) new Chart(ctx,{ type:'line',
+    data:{ labels:['2025','2026','2027'],
+      datasets:[{ label:'행정 만족도', data:[70,80,90], borderColor:'#005BAA', backgroundColor:'rgba(0,91,170,.08)', borderWidth:3, fill:true, tension:.3, pointBackgroundColor:'#0075C9', pointRadius:6, pointHoverRadius:8 }] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}},
+      scales:{ y:{ min:60, max:100, ticks:{ stepSize:10, color:'#64748B' }, grid:{ color:'#E2E8F0' } },
+        x:{ ticks:{ color:'#0F172A', font:{ weight:'700' } }, grid:{ display:false } } } } });
 })();
 </script>
+<script type="module" src="/src/scripts/main.js"></script>
 </body>
 </html>

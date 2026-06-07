@@ -5,124 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>산학 협력 — 부산대학교 AI 거점대학육성사업단 | ARISE PNU</title>
 <meta name="description" content="부산대-UNIST 공동 선도축 기반 동남권 AI 인재 네트워크 — 지역 AX 생태계 실행체계와 동남권 파트너 네트워크.">
-<link rel="icon" type="image/jpeg" href="/s30/assets/pnu-symbol-color.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+4:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/jpeg" href="../../assets/pnu-symbol-color.jpg">
+<link href="/s30/assets/vendor/fonts/google-fonts-ital.css" rel="stylesheet">
 <link rel="stylesheet" href="/src/styles/main.css">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-<style>
-/* ── 페이지 고유 CSS (industry) — main.css 미수정 · 그라데이션 0 ── */
-
-/* KPI 스탯 타일 */
-.ind-kpi-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
-.ind-kpi { background:#fff; border:1px solid var(--border); border-radius:18px; padding:26px 22px; text-align:center; box-shadow:0 6px 22px rgba(15,31,69,.05); transition:transform .2s; }
-.ind-kpi:hover { transform:translateY(-4px); }
-.ind-kpi .k-ic { width:46px; height:46px; border-radius:13px; background:var(--blue-tint); color:var(--pnu-blue); display:flex; align-items:center; justify-content:center; font-size:19px; margin:0 auto 14px; }
-.ind-kpi.green .k-ic { background:#E6F6EE; color:var(--pnu-green); }
-.ind-kpi .k-num { font-family:'Inter',sans-serif; font-weight:900; font-size:38px; line-height:1; color:var(--pnu-blue-dark); letter-spacing:-.02em; }
-.ind-kpi.green .k-num { color:var(--pnu-green); }
-.ind-kpi .k-num span { font-size:18px; font-weight:800; }
-.ind-kpi .k-lbl { font-size:12.5px; font-weight:700; color:var(--text-m); margin-top:9px; }
-
-/* 동남권 AX 도메인 칩 */
-.dom-chips { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
-.dom-chips .dc { display:flex; align-items:center; gap:8px; padding:10px 18px; border-radius:100px; background:#fff; border:1px solid var(--border); font-size:13.5px; font-weight:700; color:var(--ink); }
-.dom-chips .dc i { color:var(--pnu-blue); font-size:14px; }
-
-/* 실행체계 SVG 래퍼 */
-.flow-wrap { background:var(--pnu-navy); border-radius:24px; padding:38px 30px; box-shadow:0 24px 60px rgba(15,31,69,.22); }
-.flow-svg { width:100%; height:auto; display:block; }
-.flow-cap { text-align:center; color:#9DB4E0; font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; margin-top:18px; }
-
-/* 3대 전략 카드 */
-.strat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-.strat-card { background:#fff; border:1px solid var(--border); border-radius:20px; padding:28px 24px; box-shadow:0 8px 26px rgba(15,31,69,.06); transition:transform .2s; }
-.strat-card:hover { transform:translateY(-5px); }
-.strat-card .s-no { font-family:'Inter',sans-serif; font-weight:900; font-size:13px; color:var(--pnu-blue); letter-spacing:.08em; }
-.strat-card .s-hd { display:flex; align-items:center; gap:13px; margin:6px 0 18px; }
-.strat-card .s-ic { width:48px; height:48px; border-radius:14px; background:var(--pnu-blue); color:#fff; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
-.strat-card.c2 .s-ic { background:var(--pnu-blue-dark); }
-.strat-card.c2 .s-no { color:var(--pnu-blue-dark); }
-.strat-card.c3 .s-ic { background:var(--pnu-green); }
-.strat-card.c3 .s-no { color:var(--pnu-green); }
-.strat-card .s-ti { font-size:16.5px; font-weight:900; color:var(--ink); line-height:1.3; }
-.strat-card ul { list-style:none; padding:0; margin:0; }
-.strat-card ul li { display:flex; align-items:flex-start; gap:9px; font-size:13px; font-weight:600; color:var(--text-b); padding:7px 0; border-top:1px dashed var(--border); }
-.strat-card ul li:first-child { border-top:none; }
-.strat-card ul li i { color:var(--pnu-green); font-size:12px; margin-top:3px; }
-
-/* 4계층 자원 미니 그리드 */
-.res-row { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:14px; }
-.res-row .rc { background:var(--blue-tint); border-radius:11px; padding:13px 8px; text-align:center; }
-.res-row .rc i { color:var(--pnu-blue); font-size:17px; }
-.res-row .rc .rl { font-size:11px; font-weight:800; color:var(--pnu-blue-dark); margin-top:6px; }
-.res-row .rc .rv { font-size:10.5px; font-weight:600; color:var(--text-m); margin-top:3px; }
-
-/* 파트너 배지 (동남권 앵커기업) */
-.anchor-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
-.anchor-card { background:#fff; border:1px solid var(--border); border-radius:18px; padding:24px 20px; text-align:center; box-shadow:0 6px 22px rgba(15,31,69,.05); transition:transform .2s; }
-.anchor-card:hover { transform:translateY(-4px); border-color:var(--pnu-blue); }
-.anchor-card .a-logo { width:58px; height:58px; border-radius:15px; background:var(--pnu-navy); color:#fff; display:flex; align-items:center; justify-content:center; font-size:24px; margin:0 auto 14px; }
-.anchor-card.green .a-logo { background:var(--pnu-green); }
-.anchor-card.blue .a-logo { background:var(--pnu-blue); }
-.anchor-card .a-name { font-size:15px; font-weight:900; color:var(--ink); }
-.anchor-card .a-cat { font-size:11.5px; font-weight:700; color:var(--pnu-blue); margin-top:5px; }
-.anchor-card .a-tag { display:inline-block; margin-top:11px; font-size:11px; font-weight:700; color:var(--text-m); background:var(--blue-tint); padding:4px 11px; border-radius:100px; }
-
-/* 연구센터 3개 (앵커) */
-.ctr-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-.ctr-card { background:#fff; border:1px solid var(--border); border-radius:18px; padding:26px 22px; box-shadow:0 6px 22px rgba(15,31,69,.05); }
-.ctr-card .c-ic { width:50px; height:50px; border-radius:14px; background:var(--blue-tint); color:var(--pnu-blue); display:flex; align-items:center; justify-content:center; font-size:21px; margin-bottom:15px; }
-.ctr-card .c-ti { font-size:16px; font-weight:900; color:var(--ink); }
-.ctr-card .c-anchor { display:inline-block; margin-top:8px; font-size:11.5px; font-weight:800; color:#fff; background:var(--pnu-blue-dark); padding:4px 12px; border-radius:100px; }
-.ctr-card .c-stats { display:flex; gap:8px; margin-top:16px; }
-.ctr-card .c-stats .cs { flex:1; background:var(--bg-off); border-radius:11px; padding:11px 6px; text-align:center; }
-.ctr-card .c-stats .cs .n { font-family:'Inter',sans-serif; font-weight:900; font-size:21px; color:var(--pnu-blue); }
-.ctr-card .c-stats .cs .l { font-size:10px; font-weight:700; color:var(--text-m); margin-top:3px; }
-
-/* 확산축 3단계 */
-.axis-flow { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; align-items:stretch; }
-.axis-col { background:#fff; border:1px solid var(--border); padding:24px 20px; position:relative; }
-.axis-col:first-child { border-radius:16px 0 0 16px; }
-.axis-col:last-child { border-radius:0 16px 16px 0; }
-.axis-col .ax-no { width:30px; height:30px; border-radius:50%; background:var(--pnu-blue); color:#fff; font-family:'Inter',sans-serif; font-weight:900; font-size:14px; display:flex; align-items:center; justify-content:center; margin-bottom:13px; }
-.axis-col.a2 .ax-no { background:var(--pnu-blue-dark); }
-.axis-col.a3 .ax-no { background:var(--pnu-green); }
-.axis-col .ax-ti { font-size:14.5px; font-weight:900; color:var(--ink); }
-.axis-col .ax-list { margin-top:10px; }
-.axis-col .ax-list span { display:inline-block; font-size:11.5px; font-weight:700; color:var(--pnu-blue-dark); background:var(--blue-tint); padding:4px 10px; border-radius:8px; margin:0 5px 5px 0; }
-.axis-col::after { content:'\f054'; font-family:'Font Awesome 6 Free'; font-weight:900; color:var(--pnu-blue); position:absolute; right:-9px; top:50%; transform:translateY(-50%); font-size:15px; z-index:2; background:var(--bg-off); padding:4px 0; }
-.axis-col:last-child::after { display:none; }
-
-/* KPI 4분면 */
-.kpi-quad { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
-.kpi-q { background:#fff; border:1px solid var(--border); border-top:4px solid var(--pnu-blue); border-radius:14px; padding:22px 18px; }
-.kpi-q.g { border-top-color:var(--pnu-green); }
-.kpi-q .q-hd { display:flex; align-items:center; gap:9px; font-size:13px; font-weight:900; color:var(--ink); margin-bottom:14px; }
-.kpi-q .q-hd i { color:var(--pnu-blue); }
-.kpi-q.g .q-hd i { color:var(--pnu-green); }
-.kpi-q .q-row { display:flex; justify-content:space-between; align-items:baseline; padding:6px 0; border-top:1px dashed var(--border); }
-.kpi-q .q-row:first-of-type { border-top:none; }
-.kpi-q .q-row .ql { font-size:11.5px; font-weight:600; color:var(--text-m); }
-.kpi-q .q-row .qn { font-family:'Inter',sans-serif; font-weight:900; font-size:15px; color:var(--pnu-blue-dark); }
-
-/* 동남권 자산 배지 */
-.asset-strip { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; }
-.asset-strip .ab { display:flex; align-items:center; gap:9px; background:#fff; border:1px solid var(--border); border-radius:13px; padding:13px 18px; box-shadow:0 4px 14px rgba(15,31,69,.04); }
-.asset-strip .ab i { color:var(--pnu-blue); font-size:17px; }
-.asset-strip .ab .at { font-size:13px; font-weight:800; color:var(--ink); }
-.asset-strip .ab .ad { font-size:11px; font-weight:700; color:var(--pnu-green); }
-
-#network, #research, #strategy, #partners { scroll-margin-top:120px; }
-
-@media (max-width:900px){
-  .ind-kpi-grid,.strat-grid,.anchor-grid,.ctr-grid,.kpi-quad,.res-row { grid-template-columns:repeat(2,1fr); }
-  .axis-flow { grid-template-columns:1fr; }
-  .axis-col,.axis-col:first-child,.axis-col:last-child { border-radius:14px; margin-bottom:10px; }
-  .axis-col::after { content:'\f078'; right:50%; top:auto; bottom:-9px; transform:translateX(50%); }
-}
-</style>
+<link rel="stylesheet" href="/src/styles/programs.css">
 </head>
 <body>
+
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="container">
@@ -139,11 +28,12 @@
     </div>
   </div>
 </div>
+
 <!-- MAIN HEADER -->
 <header class="main-hdr">
   <div class="container hdr-inner">
     <a href="/s30/" class="brand">
-      <img src="/s30/assets/pnu-signature.jpg" alt="부산대학교 공식 시그니처" class="brand-logo">
+      <img src="../../assets/pnu-signature.jpg" alt="부산대학교 공식 시그니처" class="brand-logo">
       <div class="brand-divider"></div>
       <div>
         <div class="brand-text-ko">AI 거점대학육성사업단</div>
@@ -155,7 +45,7 @@
         <a href="/s30/about/" class="nav-link">사업 소개 </a>
         <div class="dropdown">
           <a href="/s30/about/"><div class="d-i"></div>사업 개요 · 비전</a>
-          <a href="/s30/aura/"><div class="d-i"></div>A.U.R.A 2.0 마스터플랜</a>
+          <a href="/s30/about/aura.html"><div class="d-i"></div>A.U.R.A 2.0 마스터플랜</a>
           <a href="/s30/about/governance/"><div class="d-i"></div>거버넌스</a>
           <a href="/s30/roadmap/"><div class="d-i"></div>3개년 로드맵</a>
         </div>
@@ -202,96 +92,106 @@
   </div>
 </header>
 
+<main class="prog">
+
 <!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="container ph-inner">
-    <div class="ph-left">
-      <div class="ph-eyebrow">INDUSTRY · REGIONAL AX ECOSYSTEM</div>
-      <h1 class="ph-title">산학 협력 <em>지역 AX 생태계</em></h1>
-      <p class="ph-sub">부산대–UNIST 공동 선도축 · 동남권 AI 인재 네트워크</p>
-      <div class="breadcrumb">
-        <a href="/s30/"> 홈</a>
-        
-        <a href="/s30/programs/">핵심 사업</a>
-        
-        <span class="current">산학 협력</span>
+<section class="prog-hero" data-screen-label="산학협력 · Hero">
+  <img class="prog-hero__img" src="../../assets/img/meeting.jpg" alt="산학 협력 라운드테이블">
+  <div class="prog-hero__veil"></div>
+  <div class="container prog-hero__crumb">
+    <a href="/s30/">홈</a><i>›</i><a href="/s30/programs/">핵심 사업</a><i>›</i><span>산학 협력</span>
+  </div>
+  <div class="container prog-hero__inner">
+    <div class="prog-hero__kicker">Regional AX Ecosystem · 03</div>
+    <h1 class="prog-hero__title">산학 협력 <b>지역 AX 생태계</b></h1>
+    <div class="prog-hero__en">부산대–UNIST 공동 선도축 · 동남권 AI 인재 네트워크</div>
+  </div>
+  <div class="container" style="position:relative">
+    <div class="prog-hero__facts">
+      <div class="prog-hero__fact"><div class="n">129</div><div class="l">협력기관 네트워크</div></div>
+      <div class="prog-hero__fact"><div class="n">1,000<small>명</small></div><div class="l">학점교류 누적</div></div>
+      <div class="prog-hero__fact"><div class="n">50<small>만 h</small></div><div class="l">외부 개방 GPU</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 · 5년 목표 KPI -->
+<section class="sec">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">01</div>
+        <div class="sec-head__t">
+          <span class="kick">Regional AX Network · KPI</span>
+          <h2>동남권 AI 네트워크 <em>5년 목표</em></h2>
+        </div>
       </div>
     </div>
-    <div class="ph-icon"></div>
-  </div>
-</section>
-
-<!-- KPI 밴드 -->
-<section class="section">
-  <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">REGIONAL AX NETWORK · KPI</div>
-      <h2 class="s-title">동남권 AI 네트워크 <em>5년 목표</em></h2>
-    </div>
-    <div class="ind-kpi-grid">
-      <div class="ind-kpi"><div class="k-ic"></div><div class="k-num">129</div><div class="k-lbl">협력기관 네트워크</div></div>
-      <div class="ind-kpi"><div class="k-ic"></div><div class="k-num">1,000<span>명</span></div><div class="k-lbl">학점교류 누적</div></div>
-      <div class="ind-kpi green"><div class="k-ic"></div><div class="k-num">50<span>만 h</span></div><div class="k-lbl">외부 개방 GPU</div></div>
-      <div class="ind-kpi green"><div class="k-ic"></div><div class="k-num">50<span>건</span></div><div class="k-lbl">공동 R&amp;D 과제</div></div>
-    </div>
-    <div class="ind-kpi-grid" style="margin-top:18px">
-      <div class="ind-kpi"><div class="k-ic"></div><div class="k-num">30<span>과목</span></div><div class="k-lbl">공동교과</div></div>
-      <div class="ind-kpi"><div class="k-ic"></div><div class="k-num">8<span>개</span></div><div class="k-lbl">마이크로디그리 표준</div></div>
-      <div class="ind-kpi green"><div class="k-ic"></div><div class="k-num">100<span>명</span></div><div class="k-lbl">공동 지도교수</div></div>
-      <div class="ind-kpi green"><div class="k-ic"></div><div class="k-num">25<span>종</span></div><div class="k-lbl">산업 데이터셋</div></div>
+    <div class="dstrip dstrip--dark">
+      <div class="dstrip__c"><div class="dstrip__tag">Network</div><div class="dstrip__n blue">129</div><div class="dstrip__l">협력기관 네트워크</div></div>
+      <div class="dstrip__c s"><div class="dstrip__tag">Credit Exchange</div><div class="dstrip__n">1,000<small>명</small></div><div class="dstrip__l">학점교류 누적</div></div>
+      <div class="dstrip__c d"><div class="dstrip__tag">Open GPU</div><div class="dstrip__n">50<small>만 h</small></div><div class="dstrip__l">외부 개방 GPU 시간</div></div>
+      <div class="dstrip__c a"><div class="dstrip__tag">Joint R&amp;D</div><div class="dstrip__n accent">50<small>건</small></div><div class="dstrip__l">공동 R&amp;D 과제</div></div>
     </div>
   </div>
 </section>
 
-<!-- 동남권 AX 도메인 -->
-<section class="section section-alt">
+<!-- 02 · 전략산업 AX 도메인 -->
+<section class="sec sec--tint">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">REGIONAL STRATEGIC INDUSTRIES</div>
-      <h2 class="s-title">동남권 전략산업 <em>AX 도메인</em></h2>
+    <div class="sec-head" style="margin-bottom:36px">
+      <div class="sec-head__l">
+        <div class="sec-idx">02</div>
+        <div class="sec-head__t">
+          <span class="kick">Regional Strategic Industries</span>
+          <h2>동남권 전략산업 <em>AX 도메인</em></h2>
+        </div>
+      </div>
     </div>
-    <div class="dom-chips">
-      <div class="dc"> 조선</div>
-      <div class="dc"> 모빌리티</div>
-      <div class="dc"> 항만</div>
-      <div class="dc"> 에너지</div>
-      <div class="dc"> 의료</div>
+    <div class="domains">
+      <div class="domain"><b>01</b> 조선</div>
+      <div class="domain"><b>02</b> 모빌리티</div>
+      <div class="domain"><b>03</b> 항만</div>
+      <div class="domain"><b>04</b> 에너지</div>
+      <div class="domain"><b>05</b> 의료</div>
     </div>
   </div>
 </section>
 
-<!-- 실행체계 SVG -->
-<section class="section" id="network">
+<!-- 03 · 실행체계 -->
+<section class="sec sec--navy" id="network">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">EXECUTION FRAMEWORK</div>
-      <h2 class="s-title">동남권 AI 인재 네트워크 <em>실행체계</em></h2>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">03</div>
+        <div class="sec-head__t">
+          <span class="kick">Execution Framework</span>
+          <h2>동남권 AI 인재 네트워크 <em>실행체계</em></h2>
+        </div>
+      </div>
+      <div class="sec-head__note">부산대 총괄 · UNIST 연구협력 · 부산권–동남권 확산</div>
     </div>
-    <div class="flow-wrap">
-      <svg class="flow-svg" viewBox="0 0 1040 520" role="img" aria-label="동남권 AI 인재 네트워크 실행체계">
+    <div class="panel">
+      <svg viewBox="0 0 1040 520" role="img" aria-label="동남권 AI 인재 네트워크 실행체계">
         <defs>
           <marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
             <path d="M0,0 L6,3 L0,6 Z" fill="#7EC8FF"></path>
           </marker>
         </defs>
-        <!-- 좌측 실행기반 -->
         <text x="100" y="40" fill="#9DB4E0" font-family="Inter" font-size="13" font-weight="800" text-anchor="middle">지역 실행기반</text>
         <g font-family="Noto Sans KR" font-size="13" font-weight="700">
-          <rect x="20" y="60" width="160" height="48" rx="11" fill="#143F90"></rect><text x="100" y="89" fill="#fff" text-anchor="middle">SW중심대학</text>
-          <rect x="20" y="122" width="160" height="48" rx="11" fill="#143F90"></rect><text x="100" y="151" fill="#fff" text-anchor="middle">AI부트캠프</text>
-          <rect x="20" y="184" width="160" height="48" rx="11" fill="#143F90"></rect><text x="100" y="213" fill="#fff" text-anchor="middle">그랜드ICT센터</text>
-          <rect x="20" y="246" width="160" height="48" rx="11" fill="#143F90"></rect><text x="100" y="275" fill="#fff" text-anchor="middle">AI융합대학원</text>
+          <rect x="20" y="60" width="160" height="48" rx="14" fill="#143F90"></rect><text x="100" y="89" fill="#fff" text-anchor="middle">SW중심대학</text>
+          <rect x="20" y="122" width="160" height="48" rx="14" fill="#143F90"></rect><text x="100" y="151" fill="#fff" text-anchor="middle">AI부트캠프</text>
+          <rect x="20" y="184" width="160" height="48" rx="14" fill="#143F90"></rect><text x="100" y="213" fill="#fff" text-anchor="middle">그랜드ICT센터</text>
+          <rect x="20" y="246" width="160" height="48" rx="14" fill="#143F90"></rect><text x="100" y="275" fill="#fff" text-anchor="middle">AI융합대학원</text>
         </g>
         <line x1="184" y1="84" x2="318" y2="160" stroke="#7EC8FF" stroke-width="1.6" marker-end="url(#arr)" opacity=".8"></line>
         <line x1="184" y1="146" x2="318" y2="170" stroke="#7EC8FF" stroke-width="1.6" marker-end="url(#arr)" opacity=".8"></line>
         <line x1="184" y1="208" x2="318" y2="180" stroke="#7EC8FF" stroke-width="1.6" marker-end="url(#arr)" opacity=".8"></line>
         <line x1="184" y1="270" x2="318" y2="200" stroke="#7EC8FF" stroke-width="1.6" marker-end="url(#arr)" opacity=".8"></line>
-
-        <!-- 중앙 선도축 밴드 -->
-        <rect x="324" y="60" width="392" height="34" rx="9" fill="#00A651"></rect>
+        <rect x="324" y="60" width="392" height="34" rx="9" fill="#0075C9"></rect>
         <text x="520" y="83" fill="#fff" font-family="Inter" font-size="14" font-weight="900" text-anchor="middle">부산대 + UNIST 선도축</text>
-        <!-- 부산대 박스 -->
-        <rect x="324" y="106" width="186" height="170" rx="14" fill="#fff"></rect>
+        <rect x="324" y="106" width="186" height="170" rx="16" fill="#fff"></rect>
         <text x="417" y="132" fill="#0F1F45" font-family="Noto Sans KR" font-size="15" font-weight="900" text-anchor="middle">부산대 총괄</text>
         <g font-family="Noto Sans KR" font-size="12" font-weight="600" fill="#143F90" text-anchor="middle">
           <text x="417" y="160">AI단과대학</text>
@@ -299,11 +199,9 @@
           <text x="417" y="212">장영실AI융합연구원</text>
           <text x="417" y="238">PNU-AXIS 인프라</text>
         </g>
-        <!-- 중앙 노드 -->
         <circle cx="520" cy="191" r="14" fill="#0075C9"></circle>
         <text x="520" y="196" fill="#fff" font-family="Inter" font-size="11" font-weight="900" text-anchor="middle">⇄</text>
-        <!-- UNIST 박스 -->
-        <rect x="530" y="106" width="186" height="170" rx="14" fill="#fff"></rect>
+        <rect x="530" y="106" width="186" height="170" rx="16" fill="#fff"></rect>
         <text x="623" y="132" fill="#0F1F45" font-family="Noto Sans KR" font-size="15" font-weight="900" text-anchor="middle">UNIST 협력</text>
         <g font-family="Noto Sans KR" font-size="12" font-weight="600" fill="#143F90" text-anchor="middle">
           <text x="623" y="160">AI 연구·대학원</text>
@@ -312,246 +210,211 @@
           <text x="623" y="238">과기원급 역량</text>
         </g>
         <text x="520" y="298" fill="#9DB4E0" font-family="Noto Sans KR" font-size="12" font-weight="700" text-anchor="middle">거점국립대–과기원 연계형 선도모델</text>
-
-        <!-- 우측 영남권 연계 -->
         <text x="900" y="40" fill="#9DB4E0" font-family="Inter" font-size="13" font-weight="800" text-anchor="middle">영남권 연계축</text>
         <g font-family="Noto Sans KR" font-size="13" font-weight="700">
-          <rect x="820" y="60" width="160" height="48" rx="11" fill="#0F1F45" stroke="#3a5290" stroke-width="1"></rect><text x="900" y="89" fill="#fff" text-anchor="middle">DGIST</text>
-          <rect x="820" y="122" width="160" height="48" rx="11" fill="#0F1F45" stroke="#3a5290" stroke-width="1"></rect><text x="900" y="151" fill="#fff" text-anchor="middle">KAIST</text>
-          <rect x="820" y="184" width="160" height="48" rx="11" fill="#0F1F45" stroke="#3a5290" stroke-width="1"></rect><text x="900" y="213" fill="#fff" text-anchor="middle">POSTECH</text>
+          <rect x="820" y="60" width="160" height="48" rx="14" fill="#0F1F45" stroke="#3a5290" stroke-width="1"></rect><text x="900" y="89" fill="#fff" text-anchor="middle">DGIST</text>
+          <rect x="820" y="122" width="160" height="48" rx="14" fill="#0F1F45" stroke="#3a5290" stroke-width="1"></rect><text x="900" y="151" fill="#fff" text-anchor="middle">KAIST</text>
+          <rect x="820" y="184" width="160" height="48" rx="14" fill="#0F1F45" stroke="#3a5290" stroke-width="1"></rect><text x="900" y="213" fill="#fff" text-anchor="middle">POSTECH</text>
         </g>
         <line x1="716" y1="170" x2="818" y2="84" stroke="#7EC8FF" stroke-width="1.6" marker-end="url(#arr)" opacity=".8"></line>
         <line x1="716" y1="191" x2="818" y2="146" stroke="#7EC8FF" stroke-width="1.6" marker-end="url(#arr)" opacity=".8"></line>
         <line x1="716" y1="212" x2="818" y2="208" stroke="#7EC8FF" stroke-width="1.6" marker-end="url(#arr)" opacity=".8"></line>
-
-        <!-- 하단 2개 확산축 -->
         <line x1="450" y1="320" x2="290" y2="362" stroke="#7EC8FF" stroke-width="1.6" marker-end="url(#arr)" opacity=".8"></line>
         <line x1="590" y1="320" x2="750" y2="362" stroke="#7EC8FF" stroke-width="1.6" marker-end="url(#arr)" opacity=".8"></line>
-        <rect x="60" y="370" width="430" height="120" rx="14" fill="#143F90"></rect>
+        <rect x="60" y="370" width="430" height="120" rx="16" fill="#143F90"></rect>
         <text x="275" y="398" fill="#fff" font-family="Noto Sans KR" font-size="15" font-weight="900" text-anchor="middle">부산권 확산축</text>
         <text x="275" y="428" fill="#cfe0ff" font-family="Noto Sans KR" font-size="12.5" font-weight="600" text-anchor="middle">부경대 · 한국해양대 · 동아대 · 동의대</text>
         <text x="275" y="456" fill="#cfe0ff" font-family="Noto Sans KR" font-size="12.5" font-weight="600" text-anchor="middle">부산시 · 부산정보산업진흥원</text>
-        <rect x="550" y="370" width="430" height="120" rx="14" fill="#0075C9"></rect>
+        <rect x="550" y="370" width="430" height="120" rx="16" fill="#0075C9"></rect>
         <text x="765" y="398" fill="#fff" font-family="Noto Sans KR" font-size="15" font-weight="900" text-anchor="middle">동남권 확산축</text>
         <text x="765" y="428" fill="#e3f0ff" font-family="Noto Sans KR" font-size="12.5" font-weight="600" text-anchor="middle">창원대 · 경상국립대</text>
         <text x="765" y="456" fill="#e3f0ff" font-family="Noto Sans KR" font-size="12.5" font-weight="600" text-anchor="middle">부울경 산업체</text>
       </svg>
-      <div class="flow-cap">부산대 총괄 · UNIST 연구협력 · 부산권–동남권 확산</div>
     </div>
   </div>
 </section>
 
-<!-- 3대 핵심 전략 -->
-<section class="section section-alt" id="strategy">
+<!-- 04 · 3대 전략 -->
+<section class="sec" id="strategy">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">CORE STRATEGY · 3 AXES</div>
-      <h2 class="s-title">교육 · 연구 · 인프라 <em>3대 전략</em></h2>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">04</div>
+        <div class="sec-head__t">
+          <span class="kick">Core Strategy · 3 Axes</span>
+          <h2>교육 · 연구 · 인프라 <em>3대 전략</em></h2>
+        </div>
+      </div>
     </div>
-    <div class="strat-grid">
-      <div class="strat-card c1">
-        <div class="s-no">STRATEGY 01</div>
-        <div class="s-hd"><div class="s-ic"></div><div class="s-ti">교육 · 인적 교류</div></div>
-        <ul>
-          <li> KNU10 + UNIST LMS 연계</li>
-          <li> AI 핵심·융합·윤리 공동교과</li>
-          <li> 온라인 학점교류·마이크로디그리</li>
-          <li> 교원 겸직·공동 지도교수제</li>
-          <li> 학·석·박 패스트트랙</li>
+    <div class="cardgrid">
+      <div class="card">
+        <div class="card__no">STRATEGY 01</div>
+        <div class="card__ti">교육 · 인적 교류</div>
+        <ul class="card__list">
+          <li>KNU10 + UNIST LMS 연계</li>
+          <li>AI 핵심·융합·윤리 공동교과</li>
+          <li>온라인 학점교류 · 마이크로디그리</li>
+          <li>교원 겸직 · 공동 지도교수제</li>
+          <li>학·석·박 패스트트랙</li>
         </ul>
       </div>
-      <div class="strat-card c2">
-        <div class="s-no">STRATEGY 02</div>
-        <div class="s-hd"><div class="s-ic"></div><div class="s-ti">공동 연구 · 산업 연계</div></div>
-        <ul>
-          <li> AI+X 프로젝트 발굴</li>
-          <li> 기업 데이터 기반 PBL</li>
-          <li> 공동 R&amp;D 데모데이 연 2회</li>
-          <li> 산학연 라운드테이블</li>
-          <li> 조선·모빌리티·항만·에너지·의료</li>
+      <div class="card">
+        <div class="card__no">STRATEGY 02</div>
+        <div class="card__ti">공동 연구 · 산업 연계</div>
+        <ul class="card__list">
+          <li>AI+X 프로젝트 발굴</li>
+          <li>기업 데이터 기반 PBL</li>
+          <li>공동 R&amp;D 데모데이 연 2회</li>
+          <li>산학연 라운드테이블</li>
+          <li>조선·모빌리티·항만·에너지·의료</li>
         </ul>
       </div>
-      <div class="strat-card c3">
-        <div class="s-no">STRATEGY 03</div>
-        <div class="s-hd"><div class="s-ic"></div><div class="s-ti">4계층 자원 공유</div></div>
-        <div class="res-row">
-          <div class="rc"><div class="rl">컴퓨팅</div><div class="rv">PNU-AXIS GPU</div></div>
-          <div class="rc"><div class="rl">데이터</div><div class="rv">도메인 데이터셋</div></div>
-          <div class="rc"><div class="rl">모델</div><div class="rv">특화 LLM·Agent</div></div>
-          <div class="rc"><div class="rl">교과</div><div class="rv">K-MOOC·윤리</div></div>
+      <div class="card">
+        <div class="card__no">STRATEGY 03</div>
+        <div class="card__ti">4계층 자원 공유</div>
+        <div class="res4">
+          <div><div class="rl">컴퓨팅</div><div class="rv">PNU-AXIS GPU</div></div>
+          <div><div class="rl">데이터</div><div class="rv">도메인 데이터셋</div></div>
+          <div><div class="rl">모델</div><div class="rv">특화 LLM·Agent</div></div>
+          <div><div class="rl">교과</div><div class="rv">K-MOOC·윤리</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 확산 4단계 -->
-<section class="section">
+<!-- 05 · 앵커기업 AX 연구센터 -->
+<section class="sec sec--tint" id="research">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">EXPANSION FLOW</div>
-      <h2 class="s-title">권역 확산 <em>단계 구조</em></h2>
-    </div>
-    <div class="axis-flow">
-      <div class="axis-col a1">
-        <div class="ax-no">1</div>
-        <div class="ax-ti">부산권 확산축</div>
-        <div class="ax-list"><span>부경대</span><span>한국해양대</span><span>동아대</span><span>동의대</span></div>
-      </div>
-      <div class="axis-col a2">
-        <div class="ax-no">2</div>
-        <div class="ax-ti">동남권 확산축</div>
-        <div class="ax-list"><span>창원대</span><span>경상국립대</span><span>부울경 산업체</span></div>
-      </div>
-      <div class="axis-col a3">
-        <div class="ax-no">3</div>
-        <div class="ax-ti">영남권 연계축</div>
-        <div class="ax-list"><span>DGIST</span><span>KAIST</span><span>POSTECH</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 산학연 공동 연구센터 -->
-<section class="section section-alt" id="research">
-  <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">JANGYEONGSIL AI INSTITUTE · 2025.12.30</div>
-      <h2 class="s-title">앵커기업 중심 <em>AX 연구센터</em></h2>
-    </div>
-    <div class="ctr-grid">
-      <div class="ctr-card">
-        <div class="c-ic"></div>
-        <div class="c-ti">조선·구조 AI센터</div>
-        <div class="c-anchor">삼성중공업 앵커</div>
-        <div class="c-stats">
-          <div class="cs"><div class="n">5</div><div class="l">조선 교과목</div></div>
-          <div class="cs"><div class="n">4</div><div class="l">취업 세미나</div></div>
-          <div class="cs"><div class="n">2</div><div class="l">재직자 교육</div></div>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">05</div>
+        <div class="sec-head__t">
+          <span class="kick">Jang Young-sil AI Institute · 2025.12.30</span>
+          <h2>앵커기업 중심 <em>AX 연구센터</em></h2>
         </div>
       </div>
-      <div class="ctr-card">
-        <div class="c-ic"></div>
-        <div class="c-ti">헬스케어 AI센터</div>
-        <div class="c-anchor">은성의료재단 앵커</div>
-        <div class="c-stats">
-          <div class="cs"><div class="n">3</div><div class="l">과제 협의</div></div>
-          <div class="cs"><div class="n">AX</div><div class="l">특화 트랙</div></div>
-          <div class="cs"><div class="n">양산</div><div class="l">캠퍼스 연계</div></div>
+    </div>
+    <div class="cardgrid">
+      <div class="card">
+        <div class="card__badge">삼성중공업 앵커</div>
+        <div class="card__ti" style="margin-top:0">조선 · 구조 AI센터</div>
+        <div class="ministats">
+          <div class="ministat"><div class="n">5</div><div class="l">조선 교과목</div></div>
+          <div class="ministat"><div class="n">4</div><div class="l">취업 세미나</div></div>
+          <div class="ministat"><div class="n">2</div><div class="l">재직자 교육</div></div>
         </div>
       </div>
-      <div class="ctr-card">
-        <div class="c-ic"></div>
-        <div class="c-ti">소재·재료 AI센터</div>
-        <div class="c-anchor">한국재료연구원 앵커</div>
-        <div class="c-stats">
-          <div class="cs"><div class="n">RISE</div><div class="l">공동연구</div></div>
-          <div class="cs"><div class="n">3→8</div><div class="l">센터 확장</div></div>
-          <div class="cs"><div class="n">80</div><div class="l">AX 석사</div></div>
+      <div class="card">
+        <div class="card__badge">은성의료재단 앵커</div>
+        <div class="card__ti" style="margin-top:0">헬스케어 AI센터</div>
+        <div class="ministats">
+          <div class="ministat"><div class="n">3</div><div class="l">과제 협의</div></div>
+          <div class="ministat"><div class="n">AX</div><div class="l">특화 트랙</div></div>
+          <div class="ministat"><div class="n">양산</div><div class="l">캠퍼스 연계</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__badge">한국재료연구원 앵커</div>
+        <div class="card__ti" style="margin-top:0">소재 · 재료 AI센터</div>
+        <div class="ministats">
+          <div class="ministat"><div class="n">RISE</div><div class="l">공동연구</div></div>
+          <div class="ministat"><div class="n">3→8</div><div class="l">센터 확장</div></div>
+          <div class="ministat"><div class="n">80</div><div class="l">AX 석사</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 동남권 앵커 파트너 -->
-<section class="section" id="partners">
-  <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">SOUTHEAST KOREA · ANCHOR PARTNERS</div>
-      <h2 class="s-title">동남권 <em>산업 파트너</em></h2>
-    </div>
-    <div class="anchor-grid">
-      <div class="anchor-card blue"><div class="a-logo"></div><div class="a-name">삼성중공업</div><div class="a-cat">조선·해양 AI</div><div class="a-tag">취업연계 트랙</div></div>
-      <div class="anchor-card"><div class="a-logo"></div><div class="a-name">LG전자</div><div class="a-cat">스마트가전 AI</div><div class="a-tag">채용연계 학과</div></div>
-      <div class="anchor-card"><div class="a-logo"></div><div class="a-name">한화에어로</div><div class="a-cat">방산 AI</div><div class="a-tag">산학 R&amp;D</div></div>
-      <div class="anchor-card green"><div class="a-logo"></div><div class="a-name">BNK부산은행</div><div class="a-cat">금융 AI</div><div class="a-tag">핀테크 연계</div></div>
-    </div>
-    <div class="anchor-grid" style="margin-top:18px">
-      <div class="anchor-card"><div class="a-logo"></div><div class="a-name">은성의료재단</div><div class="a-cat">AX 헬스케어</div><div class="a-tag">연구센터 앵커</div></div>
-      <div class="anchor-card"><div class="a-logo"></div><div class="a-name">한국재료연구원</div><div class="a-cat">소재 AI</div><div class="a-tag">RISE 공동연구</div></div>
-      <div class="anchor-card"><div class="a-logo"></div><div class="a-name">UNIST</div><div class="a-cat">과기원 연구축</div><div class="a-tag">공동 선도</div></div>
-      <div class="anchor-card green"><div class="a-logo"></div><div class="a-name">부산시</div><div class="a-cat">RISE·진흥원</div><div class="a-tag">실무 채널</div></div>
-    </div>
-  </div>
-</section>
+<!-- 사진 밴드 -->
+<div class="container" style="padding:62px 36px">
+  <figure class="figband">
+    <img src="../../assets/img/handshake.jpg" alt="산학 협약">
+    <div class="figband__cap"><b>Industry Partnership</b> 동남권 산업체와의 공동 R&amp;D · 데모데이</div>
+  </figure>
+</div>
 
-<!-- 5년 KPI 4분면 -->
-<section class="section section-alt">
+<!-- 06 · 5년 KPI 4분면 -->
+<section class="sec" id="kpi">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">5-YEAR KPI · CONSORTIUM</div>
-      <h2 class="s-title">동남권 협의체 <em>성과 목표</em></h2>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">06</div>
+        <div class="sec-head__t">
+          <span class="kick">5-Year KPI · Consortium</span>
+          <h2>동남권 협의체 <em>성과 목표</em></h2>
+        </div>
+      </div>
     </div>
-    <div class="kpi-quad">
-      <div class="kpi-q">
-        <div class="q-hd"> 교육·학사 공유</div>
-        <div class="q-row"><span class="ql">학점교류</span><span class="qn">1,000명</span></div>
-        <div class="q-row"><span class="ql">공동교과</span><span class="qn">30과목</span></div>
-        <div class="q-row"><span class="ql">마이크로디그리</span><span class="qn">8개</span></div>
-        <div class="q-row"><span class="ql">협의체 채택</span><span class="qn">9개교</span></div>
+    <div class="quad">
+      <div class="qcard">
+        <div class="qh">교육 · 학사 공유</div>
+        <div class="qrow"><span class="ql">학점교류</span><span class="qn">1,000명</span></div>
+        <div class="qrow"><span class="ql">공동교과</span><span class="qn">30과목</span></div>
+        <div class="qrow"><span class="ql">마이크로디그리</span><span class="qn">8개</span></div>
+        <div class="qrow"><span class="ql">협의체 채택</span><span class="qn">9개교</span></div>
       </div>
-      <div class="kpi-q">
-        <div class="q-hd"> 인적 결합</div>
-        <div class="q-row"><span class="ql">겸직 교원</span><span class="qn">20명</span></div>
-        <div class="q-row"><span class="ql">공동임용</span><span class="qn">10명</span></div>
-        <div class="q-row"><span class="ql">공동 지도</span><span class="qn">100명</span></div>
-        <div class="q-row"><span class="ql">패스트트랙</span><span class="qn">75명</span></div>
+      <div class="qcard">
+        <div class="qh">인적 결합</div>
+        <div class="qrow"><span class="ql">겸직 교원</span><span class="qn">20명</span></div>
+        <div class="qrow"><span class="ql">공동임용</span><span class="qn">10명</span></div>
+        <div class="qrow"><span class="ql">공동 지도</span><span class="qn">100명</span></div>
+        <div class="qrow"><span class="ql">패스트트랙</span><span class="qn">75명</span></div>
       </div>
-      <div class="kpi-q g">
-        <div class="q-hd"> 공동 R&amp;D</div>
-        <div class="q-row"><span class="ql">공동 연구단</span><span class="qn">3개</span></div>
-        <div class="q-row"><span class="ql">누적 과제</span><span class="qn">50건</span></div>
-        <div class="q-row"><span class="ql">글로벌(EU·NSF)</span><span class="qn">3건</span></div>
-        <div class="q-row"><span class="ql">데모데이</span><span class="qn">연 2회</span></div>
+      <div class="qcard">
+        <div class="qh">공동 R&amp;D</div>
+        <div class="qrow"><span class="ql">공동 연구단</span><span class="qn">3개</span></div>
+        <div class="qrow"><span class="ql">누적 과제</span><span class="qn">50건</span></div>
+        <div class="qrow"><span class="ql">글로벌(EU·NSF)</span><span class="qn">3건</span></div>
+        <div class="qrow"><span class="ql">데모데이</span><span class="qn">연 2회</span></div>
       </div>
-      <div class="kpi-q g">
-        <div class="q-hd"> 인프라 공동활용</div>
-        <div class="q-row"><span class="ql">외부 개방 GPU</span><span class="qn">50만 h</span></div>
-        <div class="q-row"><span class="ql">참여 기관</span><span class="qn">8개</span></div>
-        <div class="q-row"><span class="ql">산업 데이터셋</span><span class="qn">25종</span></div>
-        <div class="q-row"><span class="ql">특화 LLM</span><span class="qn">3종</span></div>
+      <div class="qcard">
+        <div class="qh">인프라 공동활용</div>
+        <div class="qrow"><span class="ql">외부 개방 GPU</span><span class="qn">50만 h</span></div>
+        <div class="qrow"><span class="ql">참여 기관</span><span class="qn">8개</span></div>
+        <div class="qrow"><span class="ql">산업 데이터셋</span><span class="qn">25종</span></div>
+        <div class="qrow"><span class="ql">특화 LLM</span><span class="qn">3종</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 부산대 6대 자산 + 차트 -->
-<section class="section">
+<!-- 07 · 동남권 산업 파트너 -->
+<section class="sec sec--paper" id="partners">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">PNU LEADERSHIP ASSETS</div>
-      <h2 class="s-title">검증된 <em>운영 자산</em></h2>
-    </div>
-    <div class="asset-strip">
-      <div class="ab"><div><div class="at">SW중심대학</div><div class="ad">10년 연속</div></div></div>
-      <div class="ab"><div><div class="at">AI융합대학원</div><div class="ad">과기정통부</div></div></div>
-      <div class="ab"><div><div class="at">K-MOOC</div><div class="ad">8년·29강좌</div></div></div>
-      <div class="ab"><div><div class="at">사범대 AI융합</div><div class="ad">현직교원 트랙</div></div></div>
-      <div class="ab"><div><div class="at">PNU-AXIS</div><div class="ad">GPU 인프라</div></div></div>
-      <div class="ab"><div><div class="at">재직자 네트워크</div><div class="ad">149명·63기업</div></div></div>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:44px">
-      <div style="background:#fff;border:1px solid var(--border);border-radius:18px;padding:26px">
-        <div class="s-eyebrow" style="margin-bottom:14px">전교생 AI 기본교육 이수율</div>
-        <canvas id="chartRate" height="200"></canvas>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">07</div>
+        <div class="sec-head__t">
+          <span class="kick">Southeast Korea · Anchor Partners</span>
+          <h2>동남권 <em>산업 파트너</em></h2>
+        </div>
       </div>
-      <div style="background:#fff;border:1px solid var(--border);border-radius:18px;padding:26px">
-        <div class="s-eyebrow" style="margin-bottom:14px">5년 KPI 4대 영역 목표</div>
-        <canvas id="chartKpi" height="200"></canvas>
-      </div>
+    </div>
+    <div class="anchors">
+      <div class="anchor b"><div class="alogo">S</div><div class="aname">삼성중공업</div><div class="acat">조선·해양 AI</div><div class="atag">취업연계 트랙</div></div>
+      <div class="anchor"><div class="alogo">L</div><div class="aname">LG전자</div><div class="acat">스마트가전 AI</div><div class="atag">채용연계 학과</div></div>
+      <div class="anchor"><div class="alogo">H</div><div class="aname">한화에어로</div><div class="acat">방산 AI</div><div class="atag">산학 R&amp;D</div></div>
+      <div class="anchor s"><div class="alogo">B</div><div class="aname">BNK부산은행</div><div class="acat">금융 AI</div><div class="atag">핀테크 연계</div></div>
+      <div class="anchor"><div class="alogo">은</div><div class="aname">은성의료재단</div><div class="acat">AX 헬스케어</div><div class="atag">연구센터 앵커</div></div>
+      <div class="anchor"><div class="alogo">K</div><div class="aname">한국재료연구원</div><div class="acat">소재 AI</div><div class="atag">RISE 공동연구</div></div>
+      <div class="anchor b"><div class="alogo">U</div><div class="aname">UNIST</div><div class="acat">과기원 연구축</div><div class="atag">공동 선도</div></div>
+      <div class="anchor s"><div class="alogo">부</div><div class="aname">부산시</div><div class="acat">RISE·진흥원</div><div class="atag">실무 채널</div></div>
     </div>
   </div>
 </section>
 
 <!-- 결론 밴드 -->
-<section class="section" style="background:var(--pnu-navy);padding:60px 0">
-  <div class="container" style="text-align:center">
-    <div class="s-eyebrow" style="color:#7EC8FF;justify-content:center">REGIONAL AX HUB</div>
-    <h2 style="color:#fff;font-size:30px;font-weight:900;letter-spacing:-.02em;margin:14px 0 8px">부산대 = 동남권 AI 거점 주관기관</h2>
-    <p style="color:#9DB4E0;font-size:14px;font-weight:700;margin:0">부산대–UNIST 공동 선도축 · 부산권–동남권 확산</p>
+<section class="closing">
+  <div class="container">
+    <span class="kick">Regional AX Hub</span>
+    <h2>부산대 = 동남권 AI 거점 주관기관</h2>
+    <p>부산대–UNIST 공동 선도축 · 부산권–동남권 확산</p>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer class="site-footer">
@@ -559,17 +422,14 @@
     <div class="ft-top">
       <div>
         <div class="ft-brand-row">
-          <img src="/s30/assets/pnu-signature.jpg" alt="부산대학교" class="ft-logo-img" style="filter:brightness(0) invert(1)">
+          <img src="../../assets/pnu-signature.jpg" alt="부산대학교" class="ft-logo-img" style="filter:brightness(0) invert(1)">
         </div>
         <div class="ft-brand-name">AI 거점대학육성사업단 · ARISE PNU<small>arise-ai.pusan.ac.kr · A.U.R.A 2.0 마스터플랜</small></div>
         <div class="ft-desc" style="margin-top:16px"><em>"Arise PNU, 같이 더 높게"</em> — 동남권 AX 생태계의 중심 거점, 부산대학교 AI 거점대학육성사업단입니다.</div>
         <div class="ft-addr">📍 부산광역시 금정구 부산대학로 63번길 2 · IT관 3층 AI 거점사업단<br>📞 051-510-0000 · ✉ arise@pusan.ac.kr<br>⏰ 평일 09:00 – 18:00</div>
-        <div class="ft-sns" style="margin-top:24px">
-          <a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a>
-        </div>
       </div>
       <div class="ft-col"><h4>사업 소개</h4>
-        <a href="/s30/about/">사업 개요 · 비전</a><a href="/s30/aura/">A.U.R.A 2.0</a><a href="/s30/about/governance/">거버넌스</a><a href="/s30/roadmap/">3개년 로드맵</a>
+        <a href="/s30/about/">사업 개요 · 비전</a><a href="/s30/about/aura.html">A.U.R.A 2.0</a><a href="/s30/about/governance/">거버넌스</a><a href="/s30/roadmap/">3개년 로드맵</a>
       </div>
       <div class="ft-col"><h4>핵심 사업</h4>
         <a href="/s30/programs/education/">AI 교육 혁신</a><a href="/s30/programs/research/">AI 연구 강화</a><a href="/s30/programs/industry/">산학 협력</a><a href="/s30/programs/infra/">AI 인프라</a>
@@ -584,16 +444,7 @@
     </div>
   </div>
 </footer>
-<script>
-(function(){
-  if(typeof Chart==='undefined') return;
-  Chart.defaults.font.family="'Noto Sans KR','Inter',sans-serif";
-  var rc=document.getElementById('chartRate');
-  if(rc) new Chart(rc,{type:'line',data:{labels:['1년','2년','3년','4년','5년'],datasets:[{label:'이수율(%)',data:[91,93,95,96,97],borderColor:'#005BAA',backgroundColor:'rgba(0,91,170,.10)',fill:true,tension:.35,borderWidth:3,pointBackgroundColor:'#005BAA',pointRadius:4}]},options:{plugins:{legend:{display:false}},scales:{y:{min:85,max:100,ticks:{callback:function(v){return v+'%'}}}}}});
-  var kc=document.getElementById('chartKpi');
-  if(kc) new Chart(kc,{type:'bar',data:{labels:['교육·학사','인적 결합','공동 R&D','인프라'],datasets:[{label:'목표 달성도',data:[100,100,100,100],backgroundColor:['#005BAA','#143F90','#00A651','#0075C9'],borderRadius:8,barThickness:38}]},options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{min:0,max:100,ticks:{callback:function(v){return v+'%'}}}}}});
-})();
-</script>
+
 <script type="module" src="/src/scripts/main.js"></script>
 </body>
 </html>

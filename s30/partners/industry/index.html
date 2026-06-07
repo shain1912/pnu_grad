@@ -4,157 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>산학 협약 (35+) — 부산대학교 AI 거점대학육성사업단 | ARISE PNU</title>
-<meta name="description" content="삼성중공업·LG전자·은성의료재단·KIMS·한화에어로·BNK 등 동남권 35+ 산학 협약 — 앵커기업 중심 프로젝트 연구센터, 채용연계 계약학과, 산학 공동 지도교수제로 잇는 AX 산업 생태계.">
+<meta name="description" content="동남권 전략산업 산학 협약 35+ · 앵커기업 중심 AX 연구센터 3개 · LG전자 채용연계 스마트가전공학과 2027 신설.">
 <link rel="icon" type="image/jpeg" href="/s30/assets/pnu-symbol-color.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+4:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/s30/assets/vendor/fonts/google-fonts-ital.css">
+<link rel="stylesheet" href="/s30/assets/vendor/fa/css/all.min.css">
 <link rel="stylesheet" href="/src/styles/main.css">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-<style>
-/* 페이지 고유 CSS만. main.css는 건드리지 않음. 그라데이션 전면 금지 — 평면 팔레트만. */
-
-/* === 히어로 사진 밴드 (handshake.jpg) === */
-.mou-hero{position:relative;background:var(--pnu-navy);color:#fff;overflow:hidden;border-bottom:4px solid var(--pnu-green)}
-.mou-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.34;z-index:0}
-.mou-hero::after{content:'';position:absolute;inset:0;z-index:1;background:rgba(15,31,69,.7)}
-.mou-hero-inner{position:relative;z-index:2;padding:72px 0 64px;display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
-.mou-hero-eyebrow{font-family:'Inter',sans-serif;font-weight:800;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#7EC8FF;margin-bottom:14px}
-.mou-hero h1{font-size:clamp(2rem,3.6vw,3rem);font-weight:900;letter-spacing:-.035em;line-height:1.12;margin-bottom:16px}
-.mou-hero h1 em{font-style:normal;color:#5fe0a4}
-.mou-hero-chips{display:flex;flex-wrap:wrap;gap:8px}
-.mou-hero-chips span{display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:100px;background:rgba(255,255,255,.1);border:1px solid rgba(126,200,255,.28);font-size:12px;font-weight:700}
-.mou-hero-chips i{color:#7EC8FF}
-.mou-counter{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.mou-counter .cc{background:rgba(255,255,255,.07);border:1px solid rgba(126,200,255,.22);border-radius:18px;padding:24px 20px;text-align:center}
-.mou-counter .cc .n{font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(2.4rem,4.4vw,3.2rem);line-height:1;letter-spacing:-.04em;color:#fff}
-.mou-counter .cc .n span{font-size:.42em;font-weight:800;color:#7EC8FF}
-.mou-counter .cc .n.green{color:#5fe0a4}
-.mou-counter .cc .l{font-size:12px;font-weight:700;color:rgba(255,255,255,.78);margin-top:10px;line-height:1.4}
-
-/* === 파트너 로고/배지 그리드 === */
-.logo-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:8px}
-.logo-cell{position:relative;background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px 14px 18px;text-align:center;transition:transform .2s,box-shadow .2s,border-color .2s}
-.logo-cell:hover{transform:translateY(-5px);box-shadow:0 14px 32px rgba(0,91,170,.12);border-color:var(--blue-light)}
-.logo-cell .lmark{width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-family:'Inter',sans-serif;font-weight:900;font-size:20px;color:#fff;background:var(--pnu-blue)}
-.logo-cell .lmark.navy{background:var(--pnu-navy)}
-.logo-cell .lmark.green{background:var(--pnu-green)}
-.logo-cell .lmark.sub{background:var(--pnu-blue-sub)}
-.logo-cell .lmark.dark{background:var(--pnu-blue-dark)}
-.logo-cell .lmark.gray{background:#64748B}
-.logo-cell .lname{font-size:13px;font-weight:800;color:var(--ink);letter-spacing:-.02em;line-height:1.25}
-.logo-cell .lcat{font-size:10.5px;font-weight:700;color:var(--text-m);margin-top:5px}
-.logo-cell .lbadge{position:absolute;top:9px;right:9px;font-size:8.5px;font-weight:800;letter-spacing:.04em;color:var(--pnu-green);background:var(--blue-tint);border:1px solid var(--blue-light);padding:2px 7px;border-radius:100px;font-family:'Inter',sans-serif}
-
-/* === 앵커 센터 카드 === */
-.anchor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:8px}
-.anchor-card{position:relative;border-radius:20px;overflow:hidden;min-height:300px;border:1px solid var(--border);box-shadow:0 10px 30px rgba(15,31,69,.08);background:var(--pnu-navy);display:flex;flex-direction:column;justify-content:flex-end}
-.anchor-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.5}
-.anchor-card::after{content:'';position:absolute;inset:0;z-index:1;background:rgba(8,16,38,.62)}
-.anchor-inner{position:relative;z-index:2;padding:24px;color:#fff}
-.anchor-tag{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border-radius:100px;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;font-family:'Inter',sans-serif;margin-bottom:14px;background:var(--pnu-blue)}
-.anchor-tag.green{background:var(--pnu-green)}
-.anchor-tag.sub{background:var(--pnu-blue-sub)}
-.anchor-center{font-size:16px;font-weight:800;letter-spacing:-.02em;opacity:.92}
-.anchor-name{font-size:22px;font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-top:4px}
-.anchor-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.anchor-meta span{font-size:11.5px;font-weight:700;padding:5px 11px;border-radius:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18)}
-
-/* === 협약 도식 SVG (앵커 → PNU → 확산) === */
-.flow-wrap{background:var(--pnu-navy);border-radius:24px;padding:18px;box-shadow:0 22px 56px rgba(15,31,69,.18)}
-.flow-wrap svg{width:100%;height:auto;display:block}
-.flow-wrap .fl path{stroke-dasharray:7 6;animation:mouFlow 2.4s linear infinite}
-@keyframes mouFlow{to{stroke-dashoffset:-26}}
-.flow-pulse circle:first-child{transform-box:fill-box;transform-origin:center;animation:mouPulse 2.8s ease-in-out infinite}
-@keyframes mouPulse{0%,100%{filter:drop-shadow(0 0 4px rgba(126,200,255,.5))}50%{filter:drop-shadow(0 0 16px rgba(126,200,255,.9))}}
-@media(prefers-reduced-motion:reduce){.flow-wrap .fl path,.flow-pulse circle:first-child{animation:none}}
-
-/* === 도넛 + 범례 === */
-.dist-wrap{display:grid;grid-template-columns:.92fr 1.08fr;gap:48px;align-items:center}
-.dist-box{position:relative;background:var(--white);border:1px solid var(--border);border-radius:24px;padding:30px;box-shadow:0 18px 48px rgba(15,31,69,.1);min-height:340px;display:flex;align-items:center;justify-content:center}
-.dist-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none}
-.dist-center .n{font-family:'Inter',sans-serif;font-weight:900;font-size:2.6rem;color:var(--pnu-blue);line-height:1;letter-spacing:-.03em}
-.dist-center .n span{font-size:.45em}
-.dist-center .l{font-size:12px;color:var(--text-m);font-weight:700;margin-top:4px}
-.dist-legend{display:flex;flex-direction:column;gap:12px}
-.dist-leg{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--white);border:1px solid var(--border);border-radius:13px;transition:transform .2s,border-color .2s}
-.dist-leg:hover{transform:translateX(5px);border-color:var(--pnu-blue)}
-.dist-leg .dot{width:13px;height:13px;border-radius:4px;flex-shrink:0}
-.dist-leg .lt{flex:1}
-.dist-leg .lt .t{font-size:14px;font-weight:800;color:var(--ink)}
-.dist-leg .lt .d{font-size:11.5px;color:var(--text-m);margin-top:1px}
-.dist-leg .lv{font-family:'Inter',sans-serif;font-weight:900;font-size:1.15rem;color:var(--ink)}
-
-/* === LG 계약학과 피처 === */
-.lg-feature{display:grid;grid-template-columns:1fr 1fr;border-radius:24px;overflow:hidden;border:1px solid var(--border);box-shadow:0 22px 56px rgba(15,31,69,.12);background:var(--white)}
-.lg-img{position:relative;min-height:300px;background:var(--pnu-blue-dark)}
-.lg-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.lg-img-tag{position:absolute;top:22px;left:22px;z-index:2;display:inline-flex;align-items:center;gap:8px;padding:8px 15px;background:var(--pnu-green);color:#fff;border-radius:100px;font-size:11.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;font-family:'Inter',sans-serif}
-.lg-body{padding:40px 38px;display:flex;flex-direction:column;justify-content:center}
-.lg-eyebrow{font-family:'Inter',sans-serif;font-weight:800;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--pnu-blue);margin-bottom:12px}
-.lg-title{font-size:clamp(1.4rem,2.2vw,1.85rem);font-weight:900;color:var(--ink);line-height:1.2;letter-spacing:-.03em;margin-bottom:22px}
-.lg-title em{font-style:normal;color:var(--pnu-blue)}
-.lg-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.lg-stat{text-align:center;padding:18px 8px;border-radius:14px;background:var(--blue-tint);border:1px solid var(--blue-light)}
-.lg-stat .sn{font-family:'Inter',sans-serif;font-weight:900;font-size:1.7rem;color:var(--pnu-blue);line-height:1;letter-spacing:-.03em}
-.lg-stat .sn span{font-size:.5em}
-.lg-stat .sn.green{color:var(--pnu-green)}
-.lg-stat .sl{font-size:10.5px;font-weight:700;color:var(--text-m);margin-top:7px;line-height:1.3}
-
-/* === KPI 진행바 === */
-.kpi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 40px;margin-top:8px}
-.kpi-row{display:grid;grid-template-columns:1fr auto;gap:6px 14px;align-items:center}
-.kpi-lbl{font-size:13.5px;font-weight:700;color:var(--ink)}
-.kpi-val{font-family:'Inter',sans-serif;font-weight:900;font-size:1.05rem;color:var(--pnu-blue)}
-.kpi-track{grid-column:1/3;height:9px;border-radius:6px;background:var(--blue-light);overflow:hidden}
-.kpi-fill{height:100%;border-radius:6px;background:var(--pnu-blue);width:0;transition:width 1.2s cubic-bezier(.2,.7,.3,1)}
-.kpi-fill.green{background:var(--pnu-green)}
-.kpi-fill.sub{background:var(--pnu-blue-sub)}
-
-/* === 협약 마일스톤 타임라인 === */
-.mtl{position:relative;max-width:860px;margin:0 auto;padding-left:6px}
-.mtl::before{content:'';position:absolute;left:21px;top:8px;bottom:8px;width:2px;background:var(--pnu-blue-sub)}
-.mtl-item{position:relative;padding:0 0 28px 64px}
-.mtl-item:last-child{padding-bottom:0}
-.mtl-dot{position:absolute;left:10px;top:2px;width:24px;height:24px;border-radius:50%;background:var(--white);border:3px solid var(--pnu-blue);display:flex;align-items:center;justify-content:center;z-index:2}
-.mtl-dot i{font-size:9px;color:var(--pnu-blue)}
-.mtl-item.green .mtl-dot{border-color:var(--pnu-green)}
-.mtl-item.green .mtl-dot i{color:var(--pnu-green)}
-.mtl-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:17px 22px;box-shadow:0 4px 16px rgba(15,31,69,.05);transition:transform .2s}
-.mtl-card:hover{transform:translateX(5px)}
-.mtl-date{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:800;letter-spacing:.04em;color:var(--pnu-blue);margin-bottom:4px}
-.mtl-item.green .mtl-date{color:var(--pnu-green)}
-.mtl-t{font-size:15px;font-weight:900;color:var(--ink);letter-spacing:-.02em;margin-bottom:3px}
-.mtl-d{font-size:12.5px;color:var(--text-b);line-height:1.55}
-
-/* === CTA === */
-.join-cta{background:var(--pnu-navy);color:#fff;padding:64px 0;position:relative}
-.join-cta::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--pnu-green)}
-.join-inner{display:grid;grid-template-columns:1.2fr .9fr;gap:44px;align-items:center}
-.join-eyebrow{font-family:'Inter',sans-serif;font-weight:800;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7EC8FF;margin-bottom:12px}
-.join-title{font-size:clamp(1.6rem,2.6vw,2.2rem);font-weight:900;line-height:1.18;letter-spacing:-.03em;margin-bottom:18px}
-.join-title em{font-style:normal;color:#5fe0a4}
-.join-contact{display:flex;flex-wrap:wrap;gap:14px}
-.join-contact a,.join-contact span{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:600;color:rgba(255,255,255,.9)}
-.join-contact i{color:#7EC8FF}
-.join-box{background:rgba(255,255,255,.07);border:1px solid rgba(126,200,255,.2);border-radius:20px;padding:28px 26px}
-.join-box .jh{font-size:18px;font-weight:900;margin-bottom:6px}
-.join-box .jd{font-size:12.5px;color:rgba(255,255,255,.76);line-height:1.55;margin-bottom:16px}
-.join-form{display:flex;flex-direction:column;gap:10px}
-.join-form input{padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.95);font-size:13px;font-family:inherit;outline:none;color:var(--ink)}
-.join-form button{padding:13px 16px;border-radius:10px;background:var(--pnu-green);border:none;color:#fff;font-size:14px;font-weight:800;cursor:pointer;font-family:inherit;transition:transform .2s}
-.join-form button:hover{transform:translateY(-2px)}
-
-@media(max-width:980px){
-  .mou-hero-inner,.dist-wrap,.lg-feature,.join-inner{grid-template-columns:1fr}
-  .logo-grid{grid-template-columns:repeat(4,1fr)}
-  .anchor-grid{grid-template-columns:1fr 1fr}
-  .kpi-grid{grid-template-columns:1fr}
-}
-@media(max-width:560px){
-  .logo-grid{grid-template-columns:repeat(2,1fr)}
-  .anchor-grid{grid-template-columns:1fr}
-  .lg-stats{grid-template-columns:1fr 1fr}
-}
-</style>
+<link rel="stylesheet" href="/src/styles/programs.css">
+<script src="/aura/vendor/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -188,48 +44,48 @@
     </a>
     <nav class="main-nav">
       <div class="nav-item">
-        <a href="/s30/about/" class="nav-link">사업 소개 </a>
+        <a href="/s30/about/" class="nav-link">사업 소개 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/about/"><div class="d-i"></div>사업 개요 · 비전</a>
-          <a href="/s30/aura/"><div class="d-i"></div>A.U.R.A 2.0 마스터플랜</a>
-          <a href="/s30/about/governance/"><div class="d-i"></div>거버넌스</a>
-          <a href="/s30/roadmap/"><div class="d-i"></div>3개년 로드맵</a>
+          <a href="/s30/about/"><div class="d-i"><i class="fas fa-flag"></i></div>사업 개요 · 비전</a>
+          <a href="/s30/aura/"><div class="d-i"><i class="fas fa-sitemap"></i></div>A.U.R.A 2.0 마스터플랜</a>
+          <a href="/s30/about/governance/"><div class="d-i"><i class="fas fa-users-cog"></i></div>거버넌스</a>
+          <a href="/s30/roadmap/"><div class="d-i"><i class="fas fa-bullseye"></i></div>3개년 로드맵</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="/s30/programs/" class="nav-link">핵심 사업 </a>
+        <a href="/s30/programs/" class="nav-link">핵심 사업 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/programs/education/"><div class="d-i"></div>AI 교육 혁신</a>
-          <a href="/s30/programs/research/"><div class="d-i"></div>AI 연구 강화</a>
-          <a href="/s30/programs/industry/"><div class="d-i"></div>산학 협력</a>
-          <a href="/s30/programs/infra/"><div class="d-i"></div>AI 인프라</a>
+          <a href="/s30/programs/education/"><div class="d-i"><i class="fas fa-graduation-cap"></i></div>AI 교육 혁신</a>
+          <a href="/s30/programs/research/"><div class="d-i"><i class="fas fa-microscope"></i></div>AI 연구 강화</a>
+          <a href="/s30/programs/industry/"><div class="d-i"><i class="fas fa-handshake"></i></div>산학 협력</a>
+          <a href="/s30/programs/infra/"><div class="d-i"><i class="fas fa-server"></i></div>AI 인프라</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="/s30/achievements/" class="nav-link">성과 </a>
+        <a href="/s30/achievements/" class="nav-link">성과 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/achievements/robocup/"><div class="d-i"></div>RoboCup 2025 우승</a>
-          <a href="/s30/achievements/quantum/"><div class="d-i"></div>양자AI 47억 사업</a>
-          <a href="/s30/achievements/papers/"><div class="d-i"></div>논문 · 특허</a>
-          <a href="/s30/achievements/transfer/"><div class="d-i"></div>기술이전 · 창업</a>
+          <a href="/s30/achievements/robocup/"><div class="d-i"><i class="fas fa-trophy"></i></div>RoboCup 2025 우승</a>
+          <a href="/s30/achievements/quantum/"><div class="d-i"><i class="fas fa-atom"></i></div>양자AI 47억 사업</a>
+          <a href="/s30/achievements/papers/"><div class="d-i"><i class="fas fa-file-alt"></i></div>논문 · 특허</a>
+          <a href="/s30/achievements/transfer/"><div class="d-i"><i class="fas fa-exchange-alt"></i></div>기술이전 · 창업</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="/s30/partners/" class="nav-link active">파트너십 </a>
+        <a href="/s30/partners/" class="nav-link active">파트너십 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/partners/google/"><div class="d-i"></div>Google for Education</a>
-          <a href="/s30/partners/industry/"><div class="d-i"></div>산학 협약 (35+)</a>
-          <a href="/s30/partners/global/"><div class="d-i"></div>글로벌 협력</a>
-          <a href="/s30/partners/govt/"><div class="d-i"></div>정부·공공기관</a>
+          <a href="/s30/partners/google/"><div class="d-i"><i class="fab fa-google"></i></div>Google for Education</a>
+          <a href="/s30/partners/industry/"><div class="d-i"><i class="fas fa-industry"></i></div>산학 협약 (35+)</a>
+          <a href="/s30/partners/global/"><div class="d-i"><i class="fas fa-globe"></i></div>글로벌 협력</a>
+          <a href="/s30/partners/govt/"><div class="d-i"><i class="fas fa-landmark"></i></div>정부·공공기관</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="/s30/news/" class="nav-link">알림마당 </a>
+        <a href="/s30/news/" class="nav-link">알림마당 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/news/?cat=notice"><div class="d-i"></div>공지사항</a>
-          <a href="/s30/news/?cat=news"><div class="d-i"></div>뉴스·보도자료</a>
-          <a href="/s30/news/?cat=event"><div class="d-i"></div>행사·일정</a>
-          <a href="/s30/news/?cat=resource"><div class="d-i"></div>자료실</a>
+          <a href="/s30/news/?cat=notice"><div class="d-i"><i class="fas fa-bullhorn"></i></div>공지사항</a>
+          <a href="/s30/news/?cat=news"><div class="d-i"><i class="fas fa-newspaper"></i></div>뉴스·보도자료</a>
+          <a href="/s30/news/?cat=event"><div class="d-i"><i class="fas fa-calendar-alt"></i></div>행사·일정</a>
+          <a href="/s30/news/?cat=resource"><div class="d-i"><i class="fas fa-download"></i></div>자료실</a>
         </div>
       </div>
       <a href="/s30/partners/#contact" class="nav-link nav-cta">참여 신청 →</a>
@@ -238,331 +94,250 @@
   </div>
 </header>
 
+<main class="prog">
+
 <!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="container ph-inner">
-    <div class="ph-left">
-      <div class="ph-eyebrow">INDUSTRY MOU · 산학 협약</div>
-      <h1 class="ph-title">동남권 산업과 잇는 <em>산학 협약 35+</em></h1>
-      <p class="ph-sub">해양 · 가전 · 의료 · 소재 · 방산 · 금융</p>
-      <div class="breadcrumb">
-        <a href="/s30/"> 홈</a>
-        
-        <a href="/s30/partners/">파트너십</a>
-        
-        <span class="current">산학 협약 (35+)</span>
-      </div>
-    </div>
-    <div class="ph-icon"></div>
+<section class="prog-hero" data-screen-label="산학협약 · Hero">
+  <img class="prog-hero__img" src="/s30/assets/img/handshake.jpg" alt="산학 협약">
+  <div class="prog-hero__veil"></div>
+  <div class="container prog-hero__crumb">
+    <a href="/s30/">홈</a><i>›</i><a href="/s30/partners/">파트너십</a><i>›</i><span>산학 협약 (35+)</span>
   </div>
-</section>
-
-<!-- HERO PHOTO + COUNTER (handshake.jpg) -->
-<section class="mou-hero">
-  <img src="/s30/assets/img/handshake.jpg" alt="산학 협약" onerror="this.style.display='none';this.parentElement.style.background='#0d3b6e'">
-  <div class="container mou-hero-inner">
-    <div>
-      <div class="mou-hero-eyebrow">Anchor-led Industry Partnership</div>
-      <h1>앵커기업 중심<br><em>AX 산학 생태계</em></h1>
-      <div class="mou-hero-chips">
-        <span> 조선·해양</span>
-        <span> 스마트가전</span>
-        <span> 헬스케어</span>
-        <span> 소재</span>
-        <span> 방산</span>
-        <span> 금융</span>
-      </div>
-    </div>
-    <div class="mou-counter">
-      <div class="cc"><div class="n"><span class="cnt" data-count="35">0</span><span>+</span></div><div class="l">산학 협약 기관</div></div>
-      <div class="cc"><div class="n green"><span class="cnt" data-count="129">0</span></div><div class="l">협력기관 네트워크</div></div>
-      <div class="cc"><div class="n"><span class="cnt" data-count="3">0</span></div><div class="l">앵커 프로젝트 연구센터</div></div>
-      <div class="cc"><div class="n green"><span class="cnt" data-count="8">0</span></div><div class="l">연구센터 확장 목표 (5년)</div></div>
+  <div class="container prog-hero__inner">
+    <div class="prog-hero__kicker">Industry MOU · 산학 협약</div>
+    <h1 class="prog-hero__title">동남권 산업과 잇는 <b>산학 협약 35+</b></h1>
+    <div class="prog-hero__en">조선·해양 · 스마트가전 · 헬스케어 · 소재 · 방산 · 금융</div>
+  </div>
+  <div class="container" style="position:relative">
+    <div class="prog-hero__facts">
+      <div class="prog-hero__fact"><div class="n">35<small>+</small></div><div class="l">산학 협약 기관</div></div>
+      <div class="prog-hero__fact"><div class="n">129</div><div class="l">협력기관 네트워크</div></div>
+      <div class="prog-hero__fact"><div class="n">3<small>개</small></div><div class="l">앵커 연구센터</div></div>
     </div>
   </div>
 </section>
 
-<!-- PARTNER LOGO / BADGE WALL -->
-<section class="section">
+<!-- 01 · 핵심 지표 -->
+<section class="sec">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow" style="justify-content:center">Partner Wall</div>
-      <div class="s-title">동남권 전략 산업 <em>산학 협약 기관</em></div>
-      <div class="s-sub" style="text-align:center;margin:0 auto">앵커 · 협력기업 · 산업체</div>
-    </div>
-
-    <div class="logo-grid">
-      <div class="logo-cell"><span class="lbadge">ANCHOR</span><div class="lmark sub">S</div><div class="lname">삼성중공업</div><div class="lcat">조선·구조 AI</div></div>
-      <div class="logo-cell"><span class="lbadge">2027</span><div class="lmark green">L</div><div class="lname">LG전자</div><div class="lcat">계약학과</div></div>
-      <div class="logo-cell"><span class="lbadge">ANCHOR</span><div class="lmark">은</div><div class="lname">은성의료재단</div><div class="lcat">헬스케어 AI</div></div>
-      <div class="logo-cell"><span class="lbadge">ANCHOR</span><div class="lmark navy">K</div><div class="lname">한국재료연 KIMS</div><div class="lcat">소재·재료 AI</div></div>
-      <div class="logo-cell"><div class="lmark dark">H</div><div class="lname">한화에어로</div><div class="lcat">방산 AI</div></div>
-      <div class="logo-cell"><div class="lmark">B</div><div class="lname">BNK부산은행</div><div class="lcat">금융 AI</div></div>
-      <div class="logo-cell"><div class="lmark navy">현</div><div class="lname">HD현대중공업</div><div class="lcat">조선 산업체</div></div>
-      <div class="logo-cell"><div class="lmark sub">한</div><div class="lname">한화오션</div><div class="lcat">조선 산업체</div></div>
-      <div class="logo-cell"><div class="lmark dark">H</div><div class="lname">HMM</div><div class="lcat">항만·물류</div></div>
-      <div class="logo-cell"><div class="lmark">K</div><div class="lname">KAI</div><div class="lcat">항공 산업체</div></div>
-      <div class="logo-cell"><div class="lmark navy">SDI</div><div class="lname">삼성SDI</div><div class="lcat">에너지 산업체</div></div>
-      <div class="logo-cell"><div class="lmark sub">L+</div><div class="lname">LG U+</div><div class="lcat">에듀테크</div></div>
-      <div class="logo-cell"><div class="lmark green">K</div><div class="lname">KT</div><div class="lcat">통신·AI</div></div>
-      <div class="logo-cell"><span class="lbadge">'26.07~</span><div class="lmark dark">G</div><div class="lname">그랜드ICT</div><div class="lcat">산학 연구센터</div></div>
-      <div class="logo-cell"><div class="lmark">U</div><div class="lname">UNIST</div><div class="lcat">선도 운영축</div></div>
-      <div class="logo-cell"><div class="lmark navy">진</div><div class="lname">부산정보산업진흥원</div><div class="lcat">실무 채널</div></div>
-      <div class="logo-cell"><div class="lmark sub">의</div><div class="lname">의료·핀테크 융합</div><div class="lcat">확장 분야</div></div>
-      <div class="logo-cell"><div class="lmark gray">+</div><div class="lname">외 19개사 이상</div><div class="lcat">협력 확대 중</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ANCHOR PROJECT RESEARCH CENTERS -->
-<section class="section section-alt">
-  <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow" style="justify-content:center">Anchor Research Centers</div>
-      <div class="s-title">앵커기업 중심 <em>3개 프로젝트 연구센터</em></div>
-      <div class="s-sub" style="text-align:center;margin:0 auto">장영실 AI 융합연구원 · 2025.12.30 개원</div>
-    </div>
-
-    <div class="anchor-grid">
-      <div class="anchor-card">
-        <img src="/s30/assets/img/marine-ai.jpg" alt="조선·구조 AI센터" onerror="this.style.display='none'">
-        <div class="anchor-inner">
-          <span class="anchor-tag sub"> 조선·구조 AI센터</span>
-          <div class="anchor-center">앵커</div>
-          <div class="anchor-name">삼성중공업</div>
-          <div class="anchor-meta"><span>특화 교과 5개</span><span>세미나 4회</span><span>재직자 교육 2회</span></div>
-        </div>
-      </div>
-      <div class="anchor-card">
-        <img src="/s30/assets/img/medical-ai.jpg" alt="헬스케어 AI센터" onerror="this.style.display='none'">
-        <div class="anchor-inner">
-          <span class="anchor-tag green"> 헬스케어 AI센터</span>
-          <div class="anchor-center">앵커</div>
-          <div class="anchor-name">은성의료재단</div>
-          <div class="anchor-meta"><span>과제 협의 3회</span><span>양산캠퍼스 연계</span></div>
-        </div>
-      </div>
-      <div class="anchor-card">
-        <img src="/s30/assets/img/mfg-ai.jpg" alt="소재·재료 AI센터" onerror="this.style.display='none'">
-        <div class="anchor-inner">
-          <span class="anchor-tag"> 소재·재료 AI센터</span>
-          <div class="anchor-center">앵커</div>
-          <div class="anchor-name">한국재료연구원</div>
-          <div class="anchor-meta"><span>RISE 공동연구</span><span>소재 AX 과제</span></div>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">01</div>
+        <div class="sec-head__t">
+          <span class="kick">Anchor-led Industry Partnership</span>
+          <h2>앵커기업 중심 <em>AX 산학 생태계</em></h2>
         </div>
       </div>
     </div>
+    <div class="dstrip">
+      <div class="dstrip__c"><div class="dstrip__tag">Industry MOU</div><div class="dstrip__n blue">35<small>+</small></div><div class="dstrip__l">산학 협약 기관</div></div>
+      <div class="dstrip__c s"><div class="dstrip__tag">Network</div><div class="dstrip__n">129</div><div class="dstrip__l">협력기관 네트워크</div></div>
+      <div class="dstrip__c d"><div class="dstrip__tag">Centers</div><div class="dstrip__n">3<small>개</small></div><div class="dstrip__l">앵커 프로젝트 연구센터</div></div>
+      <div class="dstrip__c a"><div class="dstrip__tag">5-Year Target</div><div class="dstrip__n accent">8<small>개</small></div><div class="dstrip__l">연구센터 확장 목표</div></div>
+    </div>
   </div>
 </section>
 
-<!-- MOU FLOW DIAGRAM -->
-<section class="section">
+<!-- 02 · 파트너 월 -->
+<section class="sec sec--tint">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow" style="justify-content:center">MOU Operating Model</div>
-      <div class="s-title">앵커 → 거점 → <em>확산 선순환</em></div>
-      <div class="s-sub" style="text-align:center;margin:0 auto">프로젝트 → 협력기업 → 취업·정주</div>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">02</div>
+        <div class="sec-head__t">
+          <span class="kick">Partner Wall</span>
+          <h2>동남권 전략 산업 <em>산학 협약 기관</em></h2>
+        </div>
+      </div>
     </div>
+    <div class="logowall">
+      <div class="logo"><span class="lbadge">ANCHOR</span><div class="lmark s">S</div><div class="lname">삼성중공업</div><div class="lcat">조선·구조 AI</div></div>
+      <div class="logo"><span class="lbadge">2027</span><div class="lmark b">L</div><div class="lname">LG전자</div><div class="lcat">계약학과</div></div>
+      <div class="logo"><span class="lbadge">ANCHOR</span><div class="lmark">은</div><div class="lname">은성의료재단</div><div class="lcat">헬스케어 AI</div></div>
+      <div class="logo"><span class="lbadge">ANCHOR</span><div class="lmark d">K</div><div class="lname">한국재료연 KIMS</div><div class="lcat">소재·재료 AI</div></div>
+      <div class="logo"><div class="lmark d">H</div><div class="lname">한화에어로</div><div class="lcat">방산 AI</div></div>
+      <div class="logo"><div class="lmark">B</div><div class="lname">BNK부산은행</div><div class="lcat">금융 AI</div></div>
+      <div class="logo"><div class="lmark d">현</div><div class="lname">HD현대중공업</div><div class="lcat">조선 산업체</div></div>
+      <div class="logo"><div class="lmark s">한</div><div class="lname">한화오션</div><div class="lcat">조선 산업체</div></div>
+      <div class="logo"><div class="lmark d">H</div><div class="lname">HMM</div><div class="lcat">항만·물류</div></div>
+      <div class="logo"><div class="lmark">K</div><div class="lname">KAI</div><div class="lcat">항공 산업체</div></div>
+      <div class="logo"><div class="lmark d">SDI</div><div class="lname">삼성SDI</div><div class="lcat">에너지 산업체</div></div>
+      <div class="logo"><div class="lmark s">L+</div><div class="lname">LG U+</div><div class="lcat">에듀테크</div></div>
+      <div class="logo"><div class="lmark b">K</div><div class="lname">KT</div><div class="lcat">통신·AI</div></div>
+      <div class="logo"><span class="lbadge">'26.07~</span><div class="lmark d">G</div><div class="lname">그랜드ICT</div><div class="lcat">산학 연구센터</div></div>
+      <div class="logo"><div class="lmark">U</div><div class="lname">UNIST</div><div class="lcat">선도 운영축</div></div>
+      <div class="logo"><div class="lmark d">진</div><div class="lname">부산정보산업진흥원</div><div class="lcat">실무 채널</div></div>
+      <div class="logo"><div class="lmark s">의</div><div class="lname">의료·핀테크 융합</div><div class="lcat">확장 분야</div></div>
+      <div class="logo"><div class="lmark g">+</div><div class="lname">외 19개사 이상</div><div class="lcat">협력 확대 중</div></div>
+    </div>
+  </div>
+</section>
 
-    <div class="flow-wrap">
-      <svg viewBox="0 0 920 300" xmlns="http://www.w3.org/2000/svg">
+<!-- 03 · 앵커 연구센터 -->
+<section class="sec">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">03</div>
+        <div class="sec-head__t">
+          <span class="kick">Anchor Research Centers · 2025.12.30</span>
+          <h2>앵커기업 중심 <em>3개 프로젝트 연구센터</em></h2>
+        </div>
+      </div>
+    </div>
+    <div class="photocards">
+      <div class="photocard">
+        <div class="pc-img"><img src="/s30/assets/img/marine-ai.jpg" alt="조선·구조 AI센터"><div class="pc-tag">조선·구조 AI센터</div></div>
+        <div class="pc-body">
+          <div class="pc-badge">앵커 · 삼성중공업</div>
+          <div class="pc-name">조선·구조 AI센터</div>
+          <div class="pc-meta"><span>특화 교과 5개</span><span>세미나 4회</span><span>재직자 교육 2회</span></div>
+        </div>
+      </div>
+      <div class="photocard">
+        <div class="pc-img"><img src="/s30/assets/img/medical-ai.jpg" alt="헬스케어 AI센터"><div class="pc-tag">헬스케어 AI센터</div></div>
+        <div class="pc-body">
+          <div class="pc-badge">앵커 · 은성의료재단</div>
+          <div class="pc-name">헬스케어 AI센터</div>
+          <div class="pc-meta"><span>과제 협의 3회</span><span>양산캠퍼스 연계</span></div>
+        </div>
+      </div>
+      <div class="photocard">
+        <div class="pc-img"><img src="/s30/assets/img/mfg-ai.jpg" alt="소재·재료 AI센터"><div class="pc-tag">소재·재료 AI센터</div></div>
+        <div class="pc-body">
+          <div class="pc-badge">앵커 · 한국재료연구원</div>
+          <div class="pc-name">소재·재료 AI센터</div>
+          <div class="pc-meta"><span>RISE 공동연구</span><span>소재 AX 과제</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · MOU 운영 모델 -->
+<section class="sec sec--navy">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">04</div>
+        <div class="sec-head__t">
+          <span class="kick">MOU Operating Model</span>
+          <h2>앵커 → 거점 → <em>확산 선순환</em></h2>
+        </div>
+      </div>
+      <div class="sec-head__note">프로젝트 → 협력기업 → 취업·정주</div>
+    </div>
+    <div class="panel">
+      <svg viewBox="0 0 920 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
         <defs>
           <radialGradient id="huG"><stop offset="0%" stop-color="#7EC8FF"/><stop offset="100%" stop-color="#005BAA"/></radialGradient>
           <marker id="ar" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#7EC8FF" opacity="0.8"/></marker>
         </defs>
-        <g stroke="rgba(126,200,255,.1)" stroke-width="1">
-          <line x1="0" y1="100" x2="920" y2="100"/><line x1="0" y1="200" x2="920" y2="200"/>
-        </g>
-        <!-- 흐름선 -->
-        <g class="fl" fill="none" stroke="#7EC8FF" stroke-width="1.8" marker-end="url(#ar)" opacity="0.8">
+        <g fill="none" stroke="#7EC8FF" stroke-width="1.8" marker-end="url(#ar)" opacity="0.8">
           <path d="M170,90 L330,140"/>
           <path d="M170,150 L330,150"/>
           <path d="M170,210 L330,160"/>
           <path d="M500,150 L640,150"/>
           <path d="M770,150 L840,150"/>
         </g>
-        <!-- 앵커 노드 -->
         <g font-family="Inter,sans-serif">
           <circle cx="120" cy="90" r="42" fill="rgba(255,255,255,.06)" stroke="#0075C9" stroke-width="2"/>
           <text x="120" y="86" text-anchor="middle" font-size="11" font-weight="800" fill="#fff">삼성중공업</text>
           <text x="120" y="102" text-anchor="middle" font-size="8.5" fill="#7EC8FF">조선·구조</text>
-          <circle cx="120" cy="150" r="42" fill="rgba(255,255,255,.06)" stroke="#00A651" stroke-width="2"/>
+          <circle cx="120" cy="150" r="42" fill="rgba(255,255,255,.06)" stroke="#0075C9" stroke-width="2"/>
           <text x="120" y="146" text-anchor="middle" font-size="11" font-weight="800" fill="#fff">은성의료</text>
-          <text x="120" y="162" text-anchor="middle" font-size="8.5" fill="#5fe0a4">헬스케어</text>
+          <text x="120" y="162" text-anchor="middle" font-size="8.5" fill="#7EC8FF">헬스케어</text>
           <circle cx="120" cy="210" r="42" fill="rgba(255,255,255,.06)" stroke="#0075C9" stroke-width="2"/>
           <text x="120" y="206" text-anchor="middle" font-size="11" font-weight="800" fill="#fff">KIMS</text>
           <text x="120" y="222" text-anchor="middle" font-size="8.5" fill="#7EC8FF">소재·재료</text>
         </g>
-        <!-- 거점 허브 -->
-        <g class="flow-pulse">
-          <circle cx="415" cy="150" r="58" fill="url(#huG)" stroke="#fff" stroke-width="2.5"/>
-          <text x="415" y="142" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="900" fill="#fff">장영실</text>
-          <text x="415" y="160" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="900" fill="#fff">AI연구원</text>
-          <text x="415" y="178" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(255,255,255,.85)">컨트롤 타워</text>
-        </g>
-        <!-- 확산 노드 -->
+        <circle cx="415" cy="150" r="58" fill="url(#huG)" stroke="#fff" stroke-width="2.5"/>
+        <text x="415" y="142" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="900" fill="#fff">장영실</text>
+        <text x="415" y="160" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="900" fill="#fff">AI연구원</text>
+        <text x="415" y="178" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(255,255,255,.85)">컨트롤 타워</text>
         <g font-family="Inter,sans-serif">
           <circle cx="700" cy="150" r="48" fill="rgba(255,255,255,.06)" stroke="#7EC8FF" stroke-width="2"/>
           <text x="700" y="146" text-anchor="middle" font-size="11.5" font-weight="800" fill="#fff">협력기업</text>
           <text x="700" y="162" text-anchor="middle" font-size="8.5" fill="#7EC8FF">확산</text>
-          <circle cx="875" cy="150" r="44" fill="rgba(0,166,81,.18)" stroke="#5fe0a4" stroke-width="2"/>
+          <circle cx="875" cy="150" r="44" fill="rgba(0,117,201,.22)" stroke="#7EC8FF" stroke-width="2"/>
           <text x="875" y="146" text-anchor="middle" font-size="10.5" font-weight="800" fill="#fff">취업·정주</text>
-          <text x="875" y="162" text-anchor="middle" font-size="8.5" fill="#5fe0a4">선순환</text>
+          <text x="875" y="162" text-anchor="middle" font-size="8.5" fill="#7EC8FF">선순환</text>
         </g>
       </svg>
     </div>
   </div>
 </section>
 
-<!-- LG CONTRACT DEPARTMENT FEATURE -->
-<section class="section section-alt">
+<!-- 05 · LG 계약학과 -->
+<section class="sec">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow" style="justify-content:center">Contract Department</div>
-      <div class="s-title">LG전자 <em>채용연계 스마트가전공학과</em></div>
-      <div class="s-sub" style="text-align:center;margin:0 auto">2027 신설</div>
-    </div>
-
-    <div class="lg-feature">
-      <div class="lg-img">
-        <img src="/s30/assets/img/college-ai.jpg" alt="스마트가전공학과" onerror="this.style.display='none';this.parentElement.style.background='#143F90'">
-        <span class="lg-img-tag"> 채용연계 계약학과</span>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">05</div>
+        <div class="sec-head__t">
+          <span class="kick">Contract Department · 2027</span>
+          <h2>LG전자 <em>채용연계 스마트가전공학과</em></h2>
+        </div>
       </div>
-      <div class="lg-body">
-        <div class="lg-eyebrow"> LG전자 산학 협약</div>
-        <h2 class="lg-title">입학과 동시에 <em>채용 연계</em>되는 계약학과</h2>
-        <div class="lg-stats">
-          <div class="lg-stat"><div class="sn">30<span>명</span></div><div class="sl">정원</div></div>
-          <div class="lg-stat"><div class="sn green">전액</div><div class="sl">등록금 지원</div></div>
-          <div class="lg-stat"><div class="sn">2027</div><div class="sl">신설 예정</div></div>
+    </div>
+    <div class="figsplit figsplit--rev">
+      <div class="figsplit__media">
+        <img src="/s30/assets/img/college-ai.jpg" alt="스마트가전공학과">
+        <div class="figband__cap" style="position:absolute;left:0;bottom:0"><b>채용연계 계약학과</b> 입학 = 채용 연계</div>
+      </div>
+      <div class="figsplit__body">
+        <div style="font:800 12px/1 'Inter';letter-spacing:.06em;text-transform:uppercase;color:var(--pnu-blue-sub);margin-bottom:14px">LG전자 산학 협약</div>
+        <h3 style="font:900 24px/1.3 'Noto Sans KR';color:var(--ink);margin-bottom:22px">입학과 동시에 <span style="color:var(--pnu-blue)">채용 연계</span>되는 계약학과</h3>
+        <div class="dstrip" style="grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--bd);border-radius:var(--r-md);overflow:hidden">
+          <div class="dstrip__c" style="border-radius:0"><div class="dstrip__tag">정원</div><div class="dstrip__n blue">30<small>명</small></div></div>
+          <div class="dstrip__c s" style="border-radius:0"><div class="dstrip__tag">등록금</div><div class="dstrip__n" style="font-size:30px">전액</div><div class="dstrip__l">지원</div></div>
+          <div class="dstrip__c d" style="border-radius:0"><div class="dstrip__tag">신설</div><div class="dstrip__n">2027</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- DOMAIN DISTRIBUTION DONUT -->
-<section class="section">
+<!-- 06 · 도메인 분포 -->
+<section class="sec sec--tint">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow" style="justify-content:center">Domain Portfolio</div>
-      <div class="s-title">전략산업별 <em>산학 협약 분포</em></div>
-      <div class="s-sub" style="text-align:center;margin:0 auto">조선·해양 중심 동남권 포트폴리오</div>
-    </div>
-
-    <div class="dist-wrap">
-      <div class="dist-box">
-        <canvas id="distChart" width="340" height="340" aria-label="전략산업별 산학 협약 분포 도넛 차트" role="img"></canvas>
-        <div class="dist-center"><div class="n">6<span>대</span></div><div class="l">전략 산업군</div></div>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">06</div>
+        <div class="sec-head__t">
+          <span class="kick">Domain Portfolio</span>
+          <h2>전략산업별 <em>산학 협약 분포</em></h2>
+        </div>
       </div>
-      <div class="dist-legend">
-        <div class="dist-leg"><span class="dot" style="background:#005BAA"></span><div class="lt"><div class="t">조선·해양</div><div class="d">삼성중공업·HD현대중공업·한화오션·HMM</div></div><div class="lv">4</div></div>
-        <div class="dist-leg"><span class="dot" style="background:#00A651"></span><div class="lt"><div class="t">스마트가전</div><div class="d">LG전자 채용연계 계약학과</div></div><div class="lv">1</div></div>
-        <div class="dist-leg"><span class="dot" style="background:#0075C9"></span><div class="lt"><div class="t">헬스케어·소재</div><div class="d">은성의료재단 · 한국재료연 KIMS</div></div><div class="lv">2</div></div>
-        <div class="dist-leg"><span class="dot" style="background:#143F90"></span><div class="lt"><div class="t">방산·항공·에너지</div><div class="d">한화에어로 · KAI · 삼성SDI</div></div><div class="lv">3</div></div>
-        <div class="dist-leg"><span class="dot" style="background:#3B82F6"></span><div class="lt"><div class="t">금융·통신</div><div class="d">BNK부산은행 · KT · LG U+</div></div><div class="lv">3</div></div>
-        <div class="dist-leg"><span class="dot" style="background:#7EC8FF"></span><div class="lt"><div class="t">확장 분야</div><div class="d">의료·의생명 · 핀테크 융합연구센터</div></div><div class="lv">2+</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:.8fr 1.2fr;gap:34px;align-items:center">
+      <div class="chart" style="border-radius:var(--r-lg);text-align:center">
+        <div class="chart__box" style="height:260px"><canvas id="distChart"></canvas></div>
+        <div style="font:900 30px/1 'Inter';color:var(--pnu-blue);margin-top:8px">6<span style="font-size:16px;color:var(--ink-2)">대</span></div>
+        <div style="font:700 13px/1 'Noto Sans KR';color:var(--mute);margin-top:6px">전략 산업군</div>
+      </div>
+      <div class="pbars">
+        <div class="pbar"><div class="pl">조선·해양</div><div class="pt"><div class="pf" style="width:100%"></div></div><div class="pv">4</div></div>
+        <div class="pbar"><div class="pl">방산·항공·에너지</div><div class="pt"><div class="pf d" style="width:75%"></div></div><div class="pv">3</div></div>
+        <div class="pbar"><div class="pl">금융·통신</div><div class="pt"><div class="pf d" style="width:75%"></div></div><div class="pv">3</div></div>
+        <div class="pbar"><div class="pl">헬스케어·소재</div><div class="pt"><div class="pf s" style="width:50%"></div></div><div class="pv">2</div></div>
+        <div class="pbar"><div class="pl">확장 분야 (의료·핀테크)</div><div class="pt"><div class="pf s" style="width:50%"></div></div><div class="pv">2+</div></div>
+        <div class="pbar"><div class="pl">스마트가전</div><div class="pt"><div class="pf" style="width:25%;background:#0EA5E9"></div></div><div class="pv">1</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 5-YEAR KPI BARS -->
-<section class="section section-alt">
+<!-- 결론 밴드 -->
+<section class="closing">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow" style="justify-content:center">5-Year Targets</div>
-      <div class="s-title">산학 협력 <em>5년 KPI 목표</em></div>
-      <div class="s-sub" style="text-align:center;margin:0 auto">연구센터 · 공동지도 · 석사 · 프로젝트</div>
-    </div>
-
-    <div class="kpi-grid">
-      <div class="kpi-row"><div class="kpi-lbl">프로젝트 연구센터</div><div class="kpi-val">3 → 8개</div><div class="kpi-track"><div class="kpi-fill" data-w="38"></div></div></div>
-      <div class="kpi-row"><div class="kpi-lbl">산학 공동 지도교수</div><div class="kpi-val">30명</div><div class="kpi-track"><div class="kpi-fill green" data-w="60"></div></div></div>
-      <div class="kpi-row"><div class="kpi-lbl">AX 프로젝트 석사 배출</div><div class="kpi-val">80명</div><div class="kpi-track"><div class="kpi-fill sub" data-w="80"></div></div></div>
-      <div class="kpi-row"><div class="kpi-lbl">지역 수요 AX 프로젝트</div><div class="kpi-val">350개</div><div class="kpi-track"><div class="kpi-fill" data-w="100"></div></div></div>
-    </div>
+    <span class="kick">Partnership Milestones</span>
+    <h2>앵커기업 중심 동남권 AX 산업 허브</h2>
+    <p>장영실 AI융합연구원 개원(2025.12.30) · 연구센터 3 → 8개 확장 · LG 계약학과 2027</p>
   </div>
 </section>
 
-<!-- MILESTONES -->
-<section class="section">
-  <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow" style="justify-content:center">Partnership Milestones</div>
-      <div class="s-title">산학 협약 <em>추진 여정</em></div>
-      <div class="s-sub" style="text-align:center;margin:0 auto">기반 → 실행 → 확산</div>
-    </div>
-
-    <div class="mtl">
-      <div class="mtl-item green">
-        <div class="mtl-dot"></div>
-        <div class="mtl-card">
-          <div class="mtl-date">2025.12.30</div>
-          <div class="mtl-t">장영실 AI 융합연구원 개원</div>
-          <div class="mtl-d">앵커기업 중심 산학연 협력 컨트롤 타워 출범</div>
-        </div>
-      </div>
-      <div class="mtl-item">
-        <div class="mtl-dot"></div>
-        <div class="mtl-card">
-          <div class="mtl-date">2025 ~</div>
-          <div class="mtl-t">동남권 전략산업 산학 협약 체결</div>
-          <div class="mtl-d">삼성중공업 · 은성의료 · KIMS · 한화 · BNK</div>
-        </div>
-      </div>
-      <div class="mtl-item green">
-        <div class="mtl-dot"></div>
-        <div class="mtl-card">
-          <div class="mtl-date">2026.07 ~</div>
-          <div class="mtl-t">동남권AI혁신연구센터 착수</div>
-          <div class="mtl-d">그랜드ICT · 재직자 석사 3트랙 · 14개 산학과제</div>
-        </div>
-      </div>
-      <div class="mtl-item">
-        <div class="mtl-dot"></div>
-        <div class="mtl-card">
-          <div class="mtl-date">2027</div>
-          <div class="mtl-t">LG전자 채용연계 스마트가전공학과 신설</div>
-          <div class="mtl-d">정원 30명 · 등록금 전액 지원</div>
-        </div>
-      </div>
-      <div class="mtl-item green">
-        <div class="mtl-dot"></div>
-        <div class="mtl-card">
-          <div class="mtl-date">5년 목표</div>
-          <div class="mtl-t">프로젝트 연구센터 8개 확장</div>
-          <div class="mtl-d">동남권 AX 산업 허브 완성</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- JOIN CTA -->
-<section id="contact" class="join-cta">
-  <div class="container join-inner">
-    <div>
-      <div class="join-eyebrow">Join the Ecosystem</div>
-      <h2 class="join-title">동남권 산업과 함께할<br><em>산학 파트너</em>를 찾습니다</h2>
-      <div class="join-contact">
-        <a href="mailto:arise@pusan.ac.kr"> arise@pusan.ac.kr</a>
-        <span> 051-510-0000</span>
-        <span> IT관 3층 AI 거점사업단</span>
-      </div>
-    </div>
-    <div class="join-box">
-      <div class="jh">산학 협약 문의</div>
-      <div class="jd">앵커 · 협력기업 협력 문의</div>
-      <form class="join-form" onsubmit="return false;">
-        <input type="text" placeholder="기관·기업명">
-        <input type="text" placeholder="담당자 성함">
-        <input type="email" placeholder="이메일 주소">
-        <button type="submit"> 협약 문의 보내기</button>
-      </form>
-    </div>
-  </div>
-</section>
+</main>
 
 <!-- FOOTER -->
 <footer class="site-footer">
@@ -575,9 +350,6 @@
         <div class="ft-brand-name">AI 거점대학육성사업단 · ARISE PNU<small>arise-ai.pusan.ac.kr · A.U.R.A 2.0 마스터플랜</small></div>
         <div class="ft-desc" style="margin-top:16px"><em>"Arise PNU, 같이 더 높게"</em> — 동남권 AX 생태계의 중심 거점, 부산대학교 AI 거점대학육성사업단입니다.</div>
         <div class="ft-addr">📍 부산광역시 금정구 부산대학로 63번길 2 · IT관 3층 AI 거점사업단<br>📞 051-510-0000 · ✉ arise@pusan.ac.kr<br>⏰ 평일 09:00 – 18:00</div>
-        <div class="ft-sns" style="margin-top:24px">
-          <a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a>
-        </div>
       </div>
       <div class="ft-col"><h4>사업 소개</h4>
         <a href="/s30/about/">사업 개요 · 비전</a><a href="/s30/aura/">A.U.R.A 2.0</a><a href="/s30/about/governance/">거버넌스</a><a href="/s30/roadmap/">3개년 로드맵</a>
@@ -598,80 +370,12 @@
 
 <script>
 (function(){
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // 카운터
-  function runCounter(el){
-    var target = parseInt(el.getAttribute('data-count'), 10) || 0;
-    var fmt = function(v){ return v >= 1000 ? v.toLocaleString('en-US') : v; };
-    if(reduce){ el.textContent = fmt(target); return; }
-    var start = null, dur = 1100;
-    function step(ts){
-      if(!start) start = ts;
-      var p = Math.min((ts - start) / dur, 1);
-      var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = fmt(Math.round(target * eased));
-      if(p < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-
-  // KPI 진행바
-  function runBar(el){ el.style.width = (el.getAttribute('data-w') || 0) + '%'; }
-
-  // 도넛 차트
-  var distDrawn = false;
-  function drawDist(){
-    if(distDrawn) return;
-    var cv = document.getElementById('distChart');
-    if(!cv || typeof Chart === 'undefined') return;
-    distDrawn = true;
-    new Chart(cv.getContext('2d'), {
-      type: 'doughnut',
-      data: {
-        labels: ['조선·해양','스마트가전','헬스케어·소재','방산·항공·에너지','금융·통신','확장 분야'],
-        datasets: [{
-          data: [4, 1, 2, 3, 3, 2],
-          backgroundColor: ['#005BAA','#00A651','#0075C9','#143F90','#3B82F6','#7EC8FF'],
-          borderColor: '#ffffff',
-          borderWidth: 3,
-          hoverOffset: 10
-        }]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: true, cutout: '66%',
-        animation: { duration: reduce ? 0 : 1200, animateRotate: true },
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            backgroundColor: 'rgba(15,31,69,.94)', padding: 12,
-            titleFont: { size: 13, weight: '700' }, bodyFont: { size: 12 },
-            callbacks: { label: function(c){ return ' ' + c.label + ': ' + c.parsed + '개 기관'; } }
-          }
-        }
-      }
-    });
-  }
-
-  if('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){
-          if(e.target.classList.contains('cnt')){ runCounter(e.target); io.unobserve(e.target); }
-          if(e.target.classList.contains('kpi-fill')){ runBar(e.target); io.unobserve(e.target); }
-          if(e.target.id === 'distChart'){ drawDist(); io.unobserve(e.target); }
-        }
-      });
-    }, { threshold: .25 });
-    document.querySelectorAll('.cnt').forEach(function(c){ io.observe(c); });
-    document.querySelectorAll('.kpi-fill').forEach(function(b){ io.observe(b); });
-    var cv = document.getElementById('distChart');
-    if(cv) io.observe(cv);
-  } else {
-    document.querySelectorAll('.cnt').forEach(runCounter);
-    document.querySelectorAll('.kpi-fill').forEach(runBar);
-    drawDist();
-  }
+  if(typeof Chart==='undefined')return;
+  var d=document.getElementById('distChart');
+  if(d) new Chart(d,{ type:'doughnut',
+    data:{ labels:['조선·해양','방산·항공·에너지','금융·통신','헬스케어·소재','확장 분야','스마트가전'],
+      datasets:[{ data:[4,3,3,2,2,1], backgroundColor:['#005BAA','#143F90','#3B82F6','#0075C9','#7EC8FF','#0EA5E9'], borderColor:'#fff', borderWidth:3 }] },
+    options:{ responsive:true, maintainAspectRatio:false, cutout:'62%', plugins:{ legend:{ display:false } } } });
 })();
 </script>
 <script type="module" src="/src/scripts/main.js"></script>

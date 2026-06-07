@@ -4,55 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>거버넌스 — 부산대학교 AI 거점대학육성사업단 | ARISE PNU</title>
-<meta name="description" content="교육·연구·평생학습 이원+통합 거버넌스 — AI융합교육원·장영실 AI융합연구원·AX·정보화혁신본부 3축이 부산대 단일 운영체계로 통합되는 ARISE PNU 거버넌스 구조.">
+<meta name="description" content="이원+통합 거버넌스 — 총장 직속 2대 위원회, 3대 핵심 기관(장영실 AI융합연구원·AI 대학·AI융합교육원), 16개 단과대학 전대학 참여.">
 <link rel="icon" type="image/jpeg" href="/s30/assets/pnu-symbol-color.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+4:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/s30/assets/vendor/fonts/google-fonts-ital.css">
+<link rel="stylesheet" href="/s30/assets/vendor/fa/css/all.min.css">
 <link rel="stylesheet" href="/src/styles/main.css">
-<style>
-/* 페이지 고유 CSS — main.css 미수정. 평면 팔레트만. */
-.gov-diagram { background:var(--blue-tint); border:1px solid var(--border); border-radius:24px; padding:34px 28px; margin-bottom:22px; }
-.gov-diagram svg { width:100%; height:auto; display:block; }
-.gov-legend { display:flex; flex-wrap:wrap; gap:10px 22px; justify-content:center; margin-top:18px; }
-.gov-legend span { display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color:var(--text-b); }
-.gov-legend i { width:13px; height:13px; border-radius:3px; display:inline-block; }
-.lg-edu{background:var(--pnu-blue);} .lg-res{background:var(--pnu-green);} .lg-hub{background:var(--pnu-navy);} .lg-ax{background:var(--pnu-blue-dark);}
-
-/* 역할 배지 칩 */
-.role-bar { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:6px 0 34px; }
-.role-chip { display:inline-flex; align-items:center; gap:7px; padding:8px 16px; border-radius:100px; background:#fff; border:1px solid var(--border); font-size:12.5px; font-weight:700; color:var(--ink); }
-.role-chip i { color:var(--pnu-blue); font-size:12px; }
-
-/* 위원회 2분할 카드 */
-.comm-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin-bottom:22px; }
-.comm-card { border-radius:16px; padding:26px; color:#fff; }
-.comm-card.navy { background:var(--pnu-navy); }
-.comm-card.dark { background:var(--pnu-blue-dark); }
-.comm-eyebrow { font-size:10.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; opacity:.8; font-family:'Inter',sans-serif; }
-.comm-name { font-size:20px; font-weight:900; margin:8px 0 4px; }
-.comm-head { display:inline-block; padding:4px 12px; border-radius:100px; background:rgba(255,255,255,.16); font-size:11.5px; font-weight:700; }
-
-/* 3대 기관 시너지 미니 카드 */
-.syn-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-.syn-card { background:var(--blue-tint); border:1px solid var(--border); border-radius:14px; padding:20px; text-align:center; }
-.syn-icon { width:46px; height:46px; border-radius:12px; background:var(--pnu-blue); color:#fff; display:flex; align-items:center; justify-content:center; font-size:18px; margin:0 auto 12px; }
-.syn-card.g .syn-icon{background:var(--pnu-green);} .syn-card.n .syn-icon{background:var(--pnu-navy);}
-.syn-title { font-size:14px; font-weight:800; color:var(--ink); }
-.syn-chips { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin-top:10px; }
-.syn-chips span { font-size:11px; font-weight:700; color:var(--pnu-blue-dark); background:#fff; border:1px solid var(--border); border-radius:100px; padding:3px 9px; }
-
-/* 참여대학 칩 그리드 */
-.college-wrap { background:var(--pnu-navy); border-radius:20px; padding:30px 26px; }
-.college-eyebrow { color:#fff; opacity:.7; font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; text-align:center; font-family:'Inter',sans-serif; }
-.college-num { text-align:center; color:#fff; font-size:38px; font-weight:900; line-height:1; margin:6px 0 18px; font-family:'Inter',sans-serif; }
-.college-num small { font-size:14px; font-weight:700; opacity:.7; margin-left:6px; }
-.college-grid { display:grid; grid-template-columns:repeat(8,1fr); gap:8px; }
-.college-grid span { background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.16); border-radius:8px; padding:9px 4px; text-align:center; font-size:11.5px; font-weight:700; color:#fff; }
-.college-grid span.lead { background:var(--pnu-blue); border-color:var(--pnu-blue); }
-@media(max-width:980px){ .college-grid{grid-template-columns:repeat(4,1fr);} .comm-grid,.syn-grid{grid-template-columns:1fr;} }
-@media(max-width:560px){ .college-grid{grid-template-columns:repeat(2,1fr);} }
-</style>
+<link rel="stylesheet" href="/src/styles/programs.css">
 </head>
 <body>
+
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="container">
@@ -69,6 +29,7 @@
     </div>
   </div>
 </div>
+
 <!-- MAIN HEADER -->
 <header class="main-hdr">
   <div class="container hdr-inner">
@@ -82,48 +43,48 @@
     </a>
     <nav class="main-nav">
       <div class="nav-item">
-        <a href="/s30/about/" class="nav-link active">사업 소개 </a>
+        <a href="/s30/about/" class="nav-link active">사업 소개 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/about/"><div class="d-i"></div>사업 개요 · 비전</a>
-          <a href="/s30/aura/"><div class="d-i"></div>A.U.R.A 2.0 마스터플랜</a>
-          <a href="/s30/about/governance/"><div class="d-i"></div>거버넌스</a>
-          <a href="/s30/roadmap/"><div class="d-i"></div>3개년 로드맵</a>
+          <a href="/s30/about/"><div class="d-i"><i class="fas fa-flag"></i></div>사업 개요 · 비전</a>
+          <a href="/s30/aura/"><div class="d-i"><i class="fas fa-sitemap"></i></div>A.U.R.A 2.0 마스터플랜</a>
+          <a href="/s30/about/governance/"><div class="d-i"><i class="fas fa-users-cog"></i></div>거버넌스</a>
+          <a href="/s30/roadmap/"><div class="d-i"><i class="fas fa-bullseye"></i></div>3개년 로드맵</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="/s30/programs/" class="nav-link">핵심 사업 </a>
+        <a href="/s30/programs/" class="nav-link">핵심 사업 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/programs/education/"><div class="d-i"></div>AI 교육 혁신</a>
-          <a href="/s30/programs/research/"><div class="d-i"></div>AI 연구 강화</a>
-          <a href="/s30/programs/industry/"><div class="d-i"></div>산학 협력</a>
-          <a href="/s30/programs/infra/"><div class="d-i"></div>AI 인프라</a>
+          <a href="/s30/programs/education/"><div class="d-i"><i class="fas fa-graduation-cap"></i></div>AI 교육 혁신</a>
+          <a href="/s30/programs/research/"><div class="d-i"><i class="fas fa-microscope"></i></div>AI 연구 강화</a>
+          <a href="/s30/programs/industry/"><div class="d-i"><i class="fas fa-handshake"></i></div>산학 협력</a>
+          <a href="/s30/programs/infra/"><div class="d-i"><i class="fas fa-server"></i></div>AI 인프라</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="/s30/achievements/" class="nav-link">성과 </a>
+        <a href="/s30/achievements/" class="nav-link">성과 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/achievements/robocup/"><div class="d-i"></div>RoboCup 2025 우승</a>
-          <a href="/s30/achievements/quantum/"><div class="d-i"></div>양자AI 47억 사업</a>
-          <a href="/s30/achievements/papers/"><div class="d-i"></div>논문 · 특허</a>
-          <a href="/s30/achievements/transfer/"><div class="d-i"></div>기술이전 · 창업</a>
+          <a href="/s30/achievements/robocup/"><div class="d-i"><i class="fas fa-trophy"></i></div>RoboCup 2025 우승</a>
+          <a href="/s30/achievements/quantum/"><div class="d-i"><i class="fas fa-atom"></i></div>양자AI 47억 사업</a>
+          <a href="/s30/achievements/papers/"><div class="d-i"><i class="fas fa-file-alt"></i></div>논문 · 특허</a>
+          <a href="/s30/achievements/transfer/"><div class="d-i"><i class="fas fa-exchange-alt"></i></div>기술이전 · 창업</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="/s30/partners/" class="nav-link">파트너십 </a>
+        <a href="/s30/partners/" class="nav-link">파트너십 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/partners/google/"><div class="d-i"></div>Google for Education</a>
-          <a href="/s30/partners/industry/"><div class="d-i"></div>산학 협약 (35+)</a>
-          <a href="/s30/partners/global/"><div class="d-i"></div>글로벌 협력</a>
-          <a href="/s30/partners/govt/"><div class="d-i"></div>정부·공공기관</a>
+          <a href="/s30/partners/google/"><div class="d-i"><i class="fab fa-google"></i></div>Google for Education</a>
+          <a href="/s30/partners/industry/"><div class="d-i"><i class="fas fa-industry"></i></div>산학 협약 (35+)</a>
+          <a href="/s30/partners/global/"><div class="d-i"><i class="fas fa-globe"></i></div>글로벌 협력</a>
+          <a href="/s30/partners/govt/"><div class="d-i"><i class="fas fa-landmark"></i></div>정부·공공기관</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="/s30/news/" class="nav-link">알림마당 </a>
+        <a href="/s30/news/" class="nav-link">알림마당 <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown">
-          <a href="/s30/news/?cat=notice"><div class="d-i"></div>공지사항</a>
-          <a href="/s30/news/?cat=news"><div class="d-i"></div>뉴스·보도자료</a>
-          <a href="/s30/news/?cat=event"><div class="d-i"></div>행사·일정</a>
-          <a href="/s30/news/?cat=resource"><div class="d-i"></div>자료실</a>
+          <a href="/s30/news/?cat=notice"><div class="d-i"><i class="fas fa-bullhorn"></i></div>공지사항</a>
+          <a href="/s30/news/?cat=news"><div class="d-i"><i class="fas fa-newspaper"></i></div>뉴스·보도자료</a>
+          <a href="/s30/news/?cat=event"><div class="d-i"><i class="fas fa-calendar-alt"></i></div>행사·일정</a>
+          <a href="/s30/news/?cat=resource"><div class="d-i"><i class="fas fa-download"></i></div>자료실</a>
         </div>
       </div>
       <a href="/s30/partners/#contact" class="nav-link nav-cta">참여 신청 →</a>
@@ -132,227 +93,193 @@
   </div>
 </header>
 
+<main class="prog">
+
 <!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="container ph-inner">
-    <div class="ph-left">
-      <div class="ph-eyebrow">GOVERNANCE</div>
-      <h1 class="ph-title">이원+통합 <em>거버넌스</em></h1>
-      <p class="ph-sub">교육 · 연구 · 평생학습 — 단일 운영체계</p>
-      <div class="breadcrumb">
-        <a href="/s30/"> 홈</a>
-        
-        <a href="/s30/about/">사업 소개</a>
-        
-        <span class="current">거버넌스</span>
-      </div>
+<section class="prog-hero" data-screen-label="거버넌스 · Hero">
+  <img class="prog-hero__img" src="/s30/assets/img/meeting.jpg" alt="거버넌스 협의체">
+  <div class="prog-hero__veil"></div>
+  <div class="container prog-hero__crumb">
+    <a href="/s30/">홈</a><i>›</i><a href="/s30/about/">사업 소개</a><i>›</i><span>거버넌스</span>
+  </div>
+  <div class="container prog-hero__inner">
+    <div class="prog-hero__kicker">Governance</div>
+    <h1 class="prog-hero__title">이원+통합 <b>거버넌스</b></h1>
+    <div class="prog-hero__en">교육 · 연구 · 평생학습 — 단일 운영체계</div>
+  </div>
+  <div class="container" style="position:relative">
+    <div class="prog-hero__facts">
+      <div class="prog-hero__fact"><div class="n">2<small>대</small></div><div class="l">총장 직속 위원회</div></div>
+      <div class="prog-hero__fact"><div class="n">3<small>대</small></div><div class="l">핵심 기관</div></div>
+      <div class="prog-hero__fact"><div class="n">16<small>개</small></div><div class="l">단과대학 참여</div></div>
     </div>
-    <div class="ph-icon"></div>
   </div>
 </section>
 
-<!-- 거버넌스 다이어그램 -->
-<section class="section">
+<!-- 01 · 이원 운영·단일 체계 -->
+<section class="sec sec--navy">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">DUAL + UNIFIED GOVERNANCE</div>
-      <h2 class="s-title">이원 운영 · <em>단일 체계</em></h2>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">01</div>
+        <div class="sec-head__t">
+          <span class="kick">Dual + Unified Governance</span>
+          <h2>이원 운영 · <em>단일 체계</em></h2>
+        </div>
+      </div>
+      <div class="sec-head__note">총장 직속 · 양방향 환류 · 비학위·학위·산학</div>
     </div>
-
-    <div class="role-bar">
-      <span class="role-chip"> 총장 직속</span>
-      <span class="role-chip"> AX 선도위원회</span>
-      <span class="role-chip"> 양방향 환류</span>
-      <span class="role-chip"> 비학위 · 학위 · 산학</span>
-    </div>
-
-    <div class="gov-diagram">
-      <svg viewBox="0 0 1000 540" role="img" aria-label="이원+통합 거버넌스 구조도">
+    <div class="panel">
+      <svg viewBox="0 0 1000 540" role="img" aria-label="이원+통합 거버넌스 구조도" style="width:100%;height:auto">
         <defs>
-          <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
-            <path d="M0,0 L9,4.5 L0,9 Z" fill="#0F1F45"/>
-          </marker>
+          <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#7EC8FF"/></marker>
         </defs>
-        <!-- 총장 -->
-        <rect x="410" y="14" width="180" height="48" rx="10" fill="#0F1F45"/>
+        <rect x="410" y="14" width="180" height="48" rx="12" fill="#0a1430"/>
         <text x="500" y="44" text-anchor="middle" fill="#fff" font-size="17" font-weight="800" font-family="Inter,sans-serif">총장 직속</text>
-        <!-- 연결선 총장→허브 -->
-        <line x1="500" y1="62" x2="500" y2="118" stroke="#0F1F45" stroke-width="2.5" marker-end="url(#ar)"/>
-
-        <!-- 중앙 통합 허브 -->
-        <rect x="335" y="122" width="330" height="92" rx="14" fill="#0F1F45"/>
+        <line x1="500" y1="62" x2="500" y2="118" stroke="#7EC8FF" stroke-width="2.5" marker-end="url(#ar)"/>
+        <rect x="335" y="122" width="330" height="92" rx="14" fill="#0a1430" stroke="#3a5290"/>
         <text x="500" y="152" text-anchor="middle" fill="#fff" font-size="16" font-weight="800">통합 거버넌스 협의체</text>
         <text x="500" y="176" text-anchor="middle" fill="#cfe0ff" font-size="11.5">동남권AI혁신인재양성협의체 (가칭)</text>
         <text x="500" y="198" text-anchor="middle" fill="#9bb8e8" font-size="10.5" font-weight="700">의제 조정 · 정책 환류 · 성과 표준화</text>
-
-        <!-- 좌 축 박스 -->
         <rect x="60" y="270" width="320" height="86" rx="14" fill="#005BAA"/>
-        <text x="220" y="300" text-anchor="middle" fill="#fff" font-size="11" font-weight="700" opacity=".85" font-family="Inter,sans-serif">비학위 축</text>
+        <text x="220" y="300" text-anchor="middle" fill="#cfe0ff" font-size="11" font-weight="700" font-family="Inter,sans-serif">비학위 축</text>
         <text x="220" y="324" text-anchor="middle" fill="#fff" font-size="17" font-weight="800">AI융합교육원</text>
         <text x="220" y="344" text-anchor="middle" fill="#cfe0ff" font-size="10.5">전교생 기본교육 · 가치확산</text>
-
-        <!-- 우 축 박스 -->
-        <rect x="620" y="270" width="320" height="86" rx="14" fill="#00A651"/>
-        <text x="780" y="300" text-anchor="middle" fill="#fff" font-size="11" font-weight="700" opacity=".9" font-family="Inter,sans-serif">학위 · 산학 축</text>
+        <rect x="620" y="270" width="320" height="86" rx="14" fill="#0075C9"/>
+        <text x="780" y="300" text-anchor="middle" fill="#cfe0ff" font-size="11" font-weight="700" font-family="Inter,sans-serif">학위 · 산학 축</text>
         <text x="780" y="324" text-anchor="middle" fill="#fff" font-size="17" font-weight="800">장영실 AI융합연구원</text>
-        <text x="780" y="344" text-anchor="middle" fill="#dcfce7" font-size="10.5">개방형 융합연구 · 산학 R&amp;D</text>
-
-        <!-- 허브 ↔ 좌/우 양방향 -->
-        <path d="M335,178 L220,270" stroke="#0F1F45" stroke-width="2.5" marker-end="url(#ar)" marker-start="url(#ar)"/>
-        <path d="M665,178 L780,270" stroke="#0F1F45" stroke-width="2.5" marker-end="url(#ar)" marker-start="url(#ar)"/>
-
-        <!-- 좌 세부 칩 -->
+        <text x="780" y="344" text-anchor="middle" fill="#cfe0ff" font-size="10.5">개방형 융합연구 · 산학 R&amp;D</text>
+        <path d="M335,178 L220,270" stroke="#7EC8FF" stroke-width="2.5" marker-end="url(#ar)" marker-start="url(#ar)"/>
+        <path d="M665,178 L780,270" stroke="#7EC8FF" stroke-width="2.5" marker-end="url(#ar)" marker-start="url(#ar)"/>
         <g font-size="10.5" font-weight="700">
-          <rect x="40" y="372" width="170" height="26" rx="13" fill="#EFF6FF" stroke="#005BAA"/><text x="125" y="389" text-anchor="middle" fill="#143F90">전교생 AI 기본교육</text>
-          <rect x="40" y="404" width="170" height="26" rx="13" fill="#EFF6FF" stroke="#005BAA"/><text x="125" y="421" text-anchor="middle" fill="#143F90">초·중·고 AI 연계</text>
-          <rect x="230" y="372" width="170" height="26" rx="13" fill="#EFF6FF" stroke="#005BAA"/><text x="315" y="389" text-anchor="middle" fill="#143F90">교원·교수자 연수</text>
-          <rect x="230" y="404" width="170" height="26" rx="13" fill="#EFF6FF" stroke="#005BAA"/><text x="315" y="421" text-anchor="middle" fill="#143F90">시민·취약계층 교육</text>
+          <rect x="40" y="372" width="170" height="26" rx="13" fill="#0a1430" stroke="#005BAA"/><text x="125" y="389" text-anchor="middle" fill="#cfe0ff">전교생 AI 기본교육</text>
+          <rect x="40" y="404" width="170" height="26" rx="13" fill="#0a1430" stroke="#005BAA"/><text x="125" y="421" text-anchor="middle" fill="#cfe0ff">초·중·고 AI 연계</text>
+          <rect x="230" y="372" width="170" height="26" rx="13" fill="#0a1430" stroke="#005BAA"/><text x="315" y="389" text-anchor="middle" fill="#cfe0ff">교원·교수자 연수</text>
+          <rect x="230" y="404" width="170" height="26" rx="13" fill="#0a1430" stroke="#005BAA"/><text x="315" y="421" text-anchor="middle" fill="#cfe0ff">시민·취약계층 교육</text>
         </g>
-        <!-- 우 세부 칩 -->
         <g font-size="10.5" font-weight="700">
-          <rect x="600" y="372" width="170" height="26" rx="13" fill="#EFF6FF" stroke="#00A651"/><text x="685" y="389" text-anchor="middle" fill="#0F1F45">개방형 융합연구</text>
-          <rect x="600" y="404" width="170" height="26" rx="13" fill="#EFF6FF" stroke="#00A651"/><text x="685" y="421" text-anchor="middle" fill="#0F1F45">산학협력 R&amp;D</text>
-          <rect x="790" y="372" width="170" height="26" rx="13" fill="#EFF6FF" stroke="#00A651"/><text x="875" y="389" text-anchor="middle" fill="#0F1F45">연구-교육 환류</text>
-          <rect x="790" y="404" width="170" height="26" rx="13" fill="#EFF6FF" stroke="#00A651"/><text x="875" y="421" text-anchor="middle" fill="#0F1F45">14개 산학과제</text>
+          <rect x="600" y="372" width="170" height="26" rx="13" fill="#0a1430" stroke="#0075C9"/><text x="685" y="389" text-anchor="middle" fill="#cfe0ff">개방형 융합연구</text>
+          <rect x="600" y="404" width="170" height="26" rx="13" fill="#0a1430" stroke="#0075C9"/><text x="685" y="421" text-anchor="middle" fill="#cfe0ff">산학협력 R&amp;D</text>
+          <rect x="790" y="372" width="170" height="26" rx="13" fill="#0a1430" stroke="#0075C9"/><text x="875" y="389" text-anchor="middle" fill="#cfe0ff">연구-교육 환류</text>
+          <rect x="790" y="404" width="170" height="26" rx="13" fill="#0a1430" stroke="#0075C9"/><text x="875" y="421" text-anchor="middle" fill="#cfe0ff">14개 산학과제</text>
         </g>
-
-        <!-- 좌/우 → 칩 연결 -->
         <line x1="220" y1="356" x2="220" y2="372" stroke="#005BAA" stroke-width="2"/>
-        <line x1="780" y1="356" x2="780" y2="372" stroke="#00A651" stroke-width="2"/>
-
-        <!-- 하단 협력 네트워크 띠 -->
+        <line x1="780" y1="356" x2="780" y2="372" stroke="#0075C9" stroke-width="2"/>
         <rect x="40" y="466" width="920" height="56" rx="12" fill="#143F90"/>
         <text x="70" y="490" fill="#fff" font-size="11" font-weight="800" font-family="Inter,sans-serif">협력 네트워크</text>
         <text x="70" y="510" fill="#cfe0ff" font-size="11" font-weight="600">부산·울산·경남 교육청 · 과학고 4교 · 63개 기업 · 부산시 AI센터 · K-MOOC</text>
-        <line x1="220" y1="430" x2="220" y2="466" stroke="#143F90" stroke-width="2" marker-end="url(#ar)"/>
-        <line x1="780" y1="430" x2="780" y2="466" stroke="#143F90" stroke-width="2" marker-end="url(#ar)"/>
+        <line x1="220" y1="430" x2="220" y2="466" stroke="#7EC8FF" stroke-width="2" marker-end="url(#ar)"/>
+        <line x1="780" y1="430" x2="780" y2="466" stroke="#7EC8FF" stroke-width="2" marker-end="url(#ar)"/>
       </svg>
-      <div class="gov-legend">
-        <span><i class="lg-hub"></i> 통합 거버넌스</span>
-        <span><i class="lg-edu"></i> 비학위 축 (교육)</span>
-        <span><i class="lg-res"></i> 학위·산학 축 (연구)</span>
-        <span><i class="lg-ax"></i> 협력 네트워크</span>
+      <div class="legend">
+        <span><b style="background:#0a1430;border:1px solid #3a5290"></b>통합 거버넌스</span>
+        <span><b style="background:#005BAA"></b>비학위 축 (교육)</span>
+        <span><b style="background:#0075C9"></b>학위·산학 축 (연구)</span>
+        <span><b style="background:#143F90"></b>협력 네트워크</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 거버넌스 위원회 -->
-<section class="section section-alt">
+<!-- 02 · 2대 위원회 -->
+<section class="sec">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">GOVERNANCE BODIES</div>
-      <h2 class="s-title">총장 직속 <em>2대 위원회</em></h2>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">02</div>
+        <div class="sec-head__t">
+          <span class="kick">Governance Bodies</span>
+          <h2>총장 직속 <em>2대 위원회</em></h2>
+        </div>
+      </div>
     </div>
-    <div class="comm-grid">
-      <div class="comm-card navy">
-        <div class="comm-eyebrow">AI EDUCATION</div>
-        <div class="comm-name">AI교육위원회</div>
-        <div class="comm-head">위원장 · 교학부총장</div>
-      </div>
-      <div class="comm-card dark">
-        <div class="comm-eyebrow">AX LEADERSHIP</div>
-        <div class="comm-name">AX선도위원회</div>
-        <div class="comm-head">위원장 · 대외전략부총장</div>
-      </div>
+    <div class="cardgrid two">
+      <div class="card"><div class="card__no">AI EDUCATION</div><div class="card__ti">AI교육위원회</div><ul class="card__list"><li>위원장 · 교학부총장</li><li>전교 AI 교육 정책 총괄</li></ul></div>
+      <div class="card"><div class="card__no">AX LEADERSHIP</div><div class="card__ti">AX선도위원회</div><ul class="card__list"><li>위원장 · 대외전략부총장</li><li>AX 전략·대외 협력 총괄</li></ul></div>
     </div>
   </div>
 </section>
 
-<!-- 3대 핵심 기관 -->
-<section class="section">
+<!-- 03 · 3대 핵심 기관 -->
+<section class="sec sec--tint">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">THREE CORE INSTITUTIONS</div>
-      <h2 class="s-title">3대 핵심 <em>기관</em></h2>
-    </div>
-    <div class="gov-grid">
-      <div class="gov-card">
-        <span class="gov-tag gold">R&amp;D 중심</span>
-        <div class="gov-title">장영실 AI융합연구원</div>
-        <ul class="gov-list">
-          <li>개방형 융합연구 플랫폼</li>
-          <li>산학협력 R&amp;D 프로젝트</li>
-          <li>연구-교육 연계 시스템</li>
-          <li>개원 2025.12.30</li>
-        </ul>
-      </div>
-      <div class="gov-card">
-        <span class="gov-tag green">AI 교육 허브</span>
-        <div class="gov-title">AI 대학</div>
-        <ul class="gov-list">
-          <li>AI 전문인력 양성</li>
-          <li>학제간 융합전공 운영</li>
-          <li>대학원 교육 연계</li>
-          <li>2027 신입생 424명</li>
-        </ul>
-      </div>
-      <div class="gov-card">
-        <span class="gov-tag">AI 기본교육 전담</span>
-        <div class="gov-title">AI융합교육원</div>
-        <ul class="gov-list">
-          <li>AI 기초교육 커리큘럼</li>
-          <li>교내 융합교육 코디네이션</li>
-          <li>교수 역량 강화 프로그램</li>
-          <li>총장 직속 전담기관</li>
-        </ul>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">03</div>
+        <div class="sec-head__t">
+          <span class="kick">Three Core Institutions</span>
+          <h2>3대 핵심 <em>기관</em></h2>
+        </div>
       </div>
     </div>
-
-    <div style="height:30px"></div>
-
-    <!-- 3대 기관 시너지 -->
-    <div class="section-header center" style="margin-bottom:24px">
-      <div class="s-eyebrow">SYNERGY</div>
-      <h2 class="s-title">교육 · 연구 · <em>확산 선순환</em></h2>
+    <div class="cardgrid">
+      <div class="card">
+        <div class="card__badge">R&amp;D 중심</div>
+        <div class="card__ti" style="margin-top:0">장영실 AI융합연구원</div>
+        <ul class="card__list"><li>개방형 융합연구 플랫폼</li><li>산학협력 R&amp;D 프로젝트</li><li>연구-교육 연계 시스템</li><li>개원 2025.12.30</li></ul>
+      </div>
+      <div class="card">
+        <div class="card__badge">AI 교육 허브</div>
+        <div class="card__ti" style="margin-top:0">AI 대학</div>
+        <ul class="card__list"><li>AI 전문인력 양성</li><li>학제간 융합전공 운영</li><li>대학원 교육 연계</li><li>2027 신입생 424명</li></ul>
+      </div>
+      <div class="card">
+        <div class="card__badge">AI 기본교육 전담</div>
+        <div class="card__ti" style="margin-top:0">AI융합교육원</div>
+        <ul class="card__list"><li>AI 기초교육 커리큘럼</li><li>교내 융합교육 코디네이션</li><li>교수 역량 강화 프로그램</li><li>총장 직속 전담기관</li></ul>
+      </div>
     </div>
-    <div class="syn-grid">
-      <div class="syn-card">
-        <div class="syn-icon"></div>
-        <div class="syn-title">교육-연구 연계</div>
-        <div class="syn-chips"><span>연구성과 환류</span><span>최신 AI 학습</span></div>
-      </div>
-      <div class="syn-card g">
-        <div class="syn-icon"></div>
-        <div class="syn-title">혁신 생태계</div>
-        <div class="syn-chips"><span>교육-연구-확산</span><span>지속가능</span></div>
-      </div>
-      <div class="syn-card n">
-        <div class="syn-icon"></div>
-        <div class="syn-title">역량 결집-확산</div>
-        <div class="syn-chips"><span>전대학 확산</span><span>융합 촉진</span></div>
-      </div>
+    <div class="dstrip dstrip--dark" style="grid-template-columns:repeat(3,1fr);margin-top:20px">
+      <div class="dstrip__c"><div class="dstrip__tag">Synergy 01</div><div class="dstrip__n blue" style="font-size:24px">교육-연구 연계</div><div class="dstrip__l">연구성과 환류 · 최신 AI 학습</div></div>
+      <div class="dstrip__c s"><div class="dstrip__tag">Synergy 02</div><div class="dstrip__n" style="font-size:24px">혁신 생태계</div><div class="dstrip__l">교육-연구-확산 · 지속가능</div></div>
+      <div class="dstrip__c d"><div class="dstrip__tag">Synergy 03</div><div class="dstrip__n" style="font-size:24px">역량 결집-확산</div><div class="dstrip__l">전대학 확산 · 융합 촉진</div></div>
     </div>
   </div>
 </section>
 
-<!-- 전대학 참여 -->
-<section class="section section-alt">
+<!-- 04 · 전대학 참여 -->
+<section class="sec">
   <div class="container">
-    <div class="college-wrap">
-      <div class="college-eyebrow">UNIVERSITY-WIDE PARTICIPATION</div>
-      <div class="college-num">16<small>개 단과대학 참여</small></div>
-      <div class="college-grid">
-        <span class="lead">AI대학</span>
-        <span>공과대학</span>
-        <span>인문대학</span>
-        <span>사회과학대학</span>
-        <span>자연과학대학</span>
-        <span>사범대학</span>
-        <span>경제통상대학</span>
-        <span>경영대학</span>
-        <span>약학대학</span>
-        <span>생활과학대학</span>
-        <span>예술대학</span>
-        <span>나노과학기술</span>
-        <span>간호대학</span>
-        <span>생명자원과학</span>
-        <span>의과대학</span>
-        <span>학부대학</span>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">04</div>
+        <div class="sec-head__t">
+          <span class="kick">University-wide Participation</span>
+          <h2>16개 단과대학 <em>전대학 참여</em></h2>
+        </div>
       </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px">
+      <span class="domain" style="background:var(--pnu-navy);color:#fff;border-color:var(--pnu-navy)"><b style="color:#7EC8FF">LEAD</b> AI대학</span>
+      <span class="domain">공과대학</span>
+      <span class="domain">인문대학</span>
+      <span class="domain">사회과학대학</span>
+      <span class="domain">자연과학대학</span>
+      <span class="domain">사범대학</span>
+      <span class="domain">경제통상대학</span>
+      <span class="domain">경영대학</span>
+      <span class="domain">약학대학</span>
+      <span class="domain">생활과학대학</span>
+      <span class="domain">예술대학</span>
+      <span class="domain">나노과학기술</span>
+      <span class="domain">간호대학</span>
+      <span class="domain">생명자원과학</span>
+      <span class="domain">의과대학</span>
+      <span class="domain">학부대학</span>
     </div>
   </div>
 </section>
+
+<!-- 결론 밴드 -->
+<section class="closing">
+  <div class="container">
+    <span class="kick">Dual + Unified Governance</span>
+    <h2>교육 · 연구 · 평생학습을 잇는 단일 운영체계</h2>
+    <p>총장 직속 2대 위원회 · 3대 핵심 기관 · 16개 단과대학 전대학 참여</p>
+  </div>
+</section>
+
+</main>
 
 <!-- FOOTER -->
 <footer class="site-footer">
@@ -365,9 +292,6 @@
         <div class="ft-brand-name">AI 거점대학육성사업단 · ARISE PNU<small>arise-ai.pusan.ac.kr · A.U.R.A 2.0 마스터플랜</small></div>
         <div class="ft-desc" style="margin-top:16px"><em>"Arise PNU, 같이 더 높게"</em> — 동남권 AX 생태계의 중심 거점, 부산대학교 AI 거점대학육성사업단입니다.</div>
         <div class="ft-addr">📍 부산광역시 금정구 부산대학로 63번길 2 · IT관 3층 AI 거점사업단<br>📞 051-510-0000 · ✉ arise@pusan.ac.kr<br>⏰ 평일 09:00 – 18:00</div>
-        <div class="ft-sns" style="margin-top:24px">
-          <a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a>
-        </div>
       </div>
       <div class="ft-col"><h4>사업 소개</h4>
         <a href="/s30/about/">사업 개요 · 비전</a><a href="/s30/aura/">A.U.R.A 2.0</a><a href="/s30/about/governance/">거버넌스</a><a href="/s30/roadmap/">3개년 로드맵</a>
@@ -385,6 +309,7 @@
     </div>
   </div>
 </footer>
+
 <script type="module" src="/src/scripts/main.js"></script>
 </body>
 </html>

@@ -5,206 +5,183 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI 인프라 — 부산대학교 AI 거점대학육성사업단 | ARISE PNU</title>
 <meta name="description" content="PNU-AXIS IDC · 국방데이터 안심존 · 303+ GPU 집적 · AIaaS · 몰입형 부트캠프 — 동남권 AI 컴퓨팅 거점을 구축하는 부산대학교 AI 인프라.">
-<link rel="icon" type="image/jpeg" href="/s30/assets/pnu-symbol-color.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+4:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/jpeg" href="../../assets/pnu-symbol-color.jpg">
+<link href="/s30/assets/vendor/fonts/google-fonts-ital.css" rel="stylesheet">
 <link rel="stylesheet" href="/src/styles/main.css">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="/src/styles/programs.css">
+<script src="/aura/vendor/chart.umd.min.js"></script>
 <style>
-/* ── 페이지 고유 CSS (infra) — main.css 미수정 · 그라데이션 0 ── */
-#vision,#axis,#hub,#aiaas,#secure,#assets,#bootcamp{ scroll-margin-top:120px; }
-.infra-jumpbar{ display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; }
-.infra-jumpbar a{ display:flex; align-items:center; gap:8px; padding:10px 16px; border-radius:100px;
-  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.2); color:#fff;
-  font-size:12.5px; font-weight:700; letter-spacing:-.01em; transition:all .2s; }
-.infra-jumpbar a:hover{ background:rgba(255,255,255,.18); transform:translateY(-2px); }
-.infra-jumpbar a i{ color:#7EC8FF; font-size:13px; }
-
-/* 비전 2-트랙 + 4요소 */
+/* ── infra 페이지 고유 (평면 블루 · 곡선) ── */
 .track-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
-.track-card{ background:var(--pnu-navy); color:#fff; border-radius:20px; padding:30px 28px;
-  border:1px solid rgba(126,200,255,.2); position:relative; overflow:hidden; }
-.track-card.green{ background:var(--pnu-blue-dark); }
-.track-card .tk-en{ font-family:'Inter',sans-serif; font-size:11px; font-weight:800; letter-spacing:.12em;
-  text-transform:uppercase; color:#7EC8FF; }
-.track-card .tk-icon{ position:absolute; top:24px; right:26px; font-size:30px; color:rgba(126,200,255,.28); }
-.track-card .tk-title{ font-size:21px; font-weight:900; margin-top:10px; line-height:1.2; }
-.track-card .tk-chips{ display:flex; flex-wrap:wrap; gap:7px; margin-top:18px; }
-.track-card .tk-chips span{ font-size:11.5px; font-weight:700; padding:5px 11px; border-radius:100px;
+.track-card{ background:var(--pnu-navy); color:#fff; border-radius:22px; padding:32px 30px;
+  border:1px solid rgba(126,200,255,.2);
+  transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .4s ease;
+  box-shadow: 0 1px 2px rgba(15,31,69,.05); }
+.track-card:hover{ transform: translateY(-5px); box-shadow: 0 22px 44px -20px rgba(11,22,46,.42); }
+.track-card.alt{ background:var(--pnu-blue-dark); }
+.track-card .tk-en{ font:800 11px/1 'Inter',sans-serif; letter-spacing:.14em; text-transform:uppercase; color:#7EC8FF; }
+.track-card .tk-title{ font:900 22px/1.2 'Noto Sans KR'; margin-top:12px; }
+.track-card .tk-chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:20px; }
+.track-card .tk-chips span{ font:700 12px/1 'Noto Sans KR'; padding:7px 13px; border-radius:100px;
   background:rgba(126,200,255,.14); border:1px solid rgba(126,200,255,.3); color:#cfe6ff; }
 .elem4{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:18px; }
-.elem-cell{ background:var(--blue-tint); border:1px solid var(--border); border-radius:16px; padding:20px 16px; text-align:center; }
-.elem-cell i{ font-size:24px; color:var(--pnu-blue); }
-.elem-cell .ec-t{ font-size:14px; font-weight:800; color:var(--ink); margin-top:10px; }
-.elem-cell .ec-s{ font-size:11.5px; font-weight:700; color:var(--pnu-blue-dark); margin-top:5px; }
+.elem-cell{ background:#fff; border:1px solid var(--bd); border-radius:16px; padding:24px 18px; text-align:center;
+  transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .4s ease;
+  box-shadow: 0 1px 2px rgba(15,31,69,.05); }
+.elem-cell:hover{ transform: translateY(-5px); box-shadow: 0 20px 40px -20px rgba(0,91,170,.28); border-color: rgba(0,117,201,.34); }
+.elem-cell .ec-t{ font:800 15px/1.3 'Noto Sans KR'; color:var(--ink); }
+.elem-cell .ec-s{ font:700 12px/1.3 'Noto Sans KR'; color:var(--pnu-blue-sub); margin-top:6px; }
 
-/* IDC 단면(층별) 도식 */
-.idc-wrap{ display:grid; grid-template-columns:.85fr 1.15fr; gap:34px; align-items:center; }
-.idc-stack{ display:flex; flex-direction:column; gap:7px; }
-.idc-roof{ text-align:center; font-size:11.5px; font-weight:800; color:var(--pnu-blue-dark);
-  background:var(--blue-light); border-radius:10px; padding:8px; letter-spacing:-.01em; }
-.idc-floor{ display:grid; grid-template-columns:64px 1fr; align-items:center; gap:14px;
-  background:#fff; border:1px solid var(--border); border-radius:12px; padding:14px 16px;
-  box-shadow:0 3px 12px rgba(15,31,69,.05); transition:all .2s; }
-.idc-floor:hover{ transform:translateX(5px); border-color:var(--pnu-blue); }
-.idc-floor .fl-n{ font-family:'Inter',sans-serif; font-size:16px; font-weight:900; color:var(--pnu-blue);
-  text-align:center; border-right:2px solid var(--border); padding-right:12px; }
-.idc-floor .fl-u{ font-size:13.5px; font-weight:700; color:var(--ink); }
-.idc-floor.b1 .fl-n{ color:var(--pnu-navy); }
-.idc-side{ position:relative; border-radius:20px; overflow:hidden; min-height:330px;
-  border:1px solid var(--border); box-shadow:0 16px 44px rgba(15,31,69,.14); background:#0d3b6e; }
-.idc-side img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-.idc-side .is-cap{ position:absolute; left:0; right:0; bottom:0; padding:18px 20px;
-  background:rgba(15,31,69,.86); color:#fff; }
-.idc-side .is-cap .c-t{ font-size:15px; font-weight:900; }
-.idc-side .is-cap .c-s{ font-size:11.5px; color:#9fc4ee; font-weight:700; margin-top:3px; }
-
-/* 설비 4패널 */
-.facil-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:24px; }
-.facil-cell{ background:#fff; border:1px solid var(--border); border-radius:14px; padding:18px 16px; text-align:center; }
-.facil-cell i{ font-size:22px; color:var(--pnu-blue); }
-.facil-cell .fc-t{ font-size:13px; font-weight:800; color:var(--ink); margin-top:9px; }
-.facil-cell .fc-s{ font-size:11px; font-weight:700; color:var(--text-m,#64748B); margin-top:4px; }
-
-/* IDC 스펙 스탯 4 */
-.spec-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; background:var(--pnu-blue-dark);
-  border-radius:20px; overflow:hidden; }
-.spec-cell{ padding:30px 22px; text-align:center; border-right:1px solid rgba(255,255,255,.12); color:#fff; }
+.idc-wrap{ display:grid; grid-template-columns:.85fr 1.15fr; gap:24px; align-items:stretch; }
+.idc-stack{ display:flex; flex-direction:column; gap:8px; }
+.idc-roof{ text-align:center; font:800 12px/1 'Noto Sans KR'; color:var(--pnu-blue-dark);
+  background:var(--blue-light); border-radius:100px; padding:10px; }
+.idc-floor{ display:grid; grid-template-columns:60px 1fr; align-items:center; gap:14px;
+  background:#fff; border:1px solid var(--bd); border-radius:14px; padding:15px 18px; flex:1;
+  transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .4s ease;
+  box-shadow: 0 1px 2px rgba(15,31,69,.05); }
+.idc-floor:hover{ transform: translateY(-5px); box-shadow: 0 20px 40px -20px rgba(0,91,170,.28); border-color: rgba(0,117,201,.34); }
+.idc-floor .fl-n{ font:900 16px/1 'Inter',sans-serif; color:var(--pnu-blue); text-align:center;
+  border-right:2px solid var(--bd); padding-right:12px; }
+.idc-floor .fl-u{ font:700 13.5px/1.3 'Noto Sans KR'; color:var(--ink); }
+.idc-side{ position:relative; border-radius:22px; overflow:hidden; min-height:340px;
+  transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .4s ease;
+  box-shadow: 0 1px 2px rgba(15,31,69,.05); }
+.idc-side:hover{ transform: translateY(-5px); box-shadow: 0 22px 44px -20px rgba(11,22,46,.42); }
+.idc-side img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  transition:transform .6s cubic-bezier(.16,1,.3,1); }
+.idc-side:hover img{ transform:scale(1.05); }
+.idc-side .is-cap{ position:absolute; left:0; right:0; bottom:0; padding:18px 22px; background:rgba(15,31,69,.82); color:#fff; }
+.idc-side .c-t{ font:900 16px/1 'Noto Sans KR'; }
+.idc-side .c-s{ font:700 12px/1 'Noto Sans KR'; color:#9fc4ee; margin-top:5px; }
+.facil-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:22px; }
+.facil-cell{ background:#fff; border:1px solid var(--bd); border-radius:14px; padding:18px 16px; text-align:center;
+  transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .4s ease;
+  box-shadow: 0 1px 2px rgba(15,31,69,.05); }
+.facil-cell:hover{ transform: translateY(-5px); box-shadow: 0 20px 40px -20px rgba(0,91,170,.28); border-color: rgba(0,117,201,.34); }
+.facil-cell .fc-t{ font:800 13px/1.3 'Noto Sans KR'; color:var(--ink); }
+.facil-cell .fc-s{ font:700 11.5px/1.3 'Noto Sans KR'; color:var(--mute); margin-top:5px; }
+.spec-grid{ display:grid; grid-template-columns:repeat(4,1fr); background:var(--pnu-blue-dark);
+  border-radius:22px; overflow:hidden; margin-top:18px; }
+.spec-cell{ padding:30px 22px; text-align:center; border-right:1px solid rgba(255,255,255,.12); color:#fff;
+  transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .4s ease; }
 .spec-cell:last-child{ border-right:none; }
-.spec-cell .sp-n{ font-family:'Inter',sans-serif; font-size:34px; font-weight:900; line-height:1; }
-.spec-cell .sp-n small{ font-size:16px; font-weight:800; }
-.spec-cell .sp-l{ font-size:12px; font-weight:700; color:#bcd9f7; margin-top:9px; }
+.spec-cell:hover{ transform: translateY(-5px); box-shadow: 0 22px 44px -20px rgba(11,22,46,.42); }
+.spec-cell .sp-n{ font:900 34px/1 'Inter',sans-serif; font-variant-numeric: tabular-nums; }
+.spec-cell .sp-n small{ font:800 16px/1 'Inter'; }
+.spec-cell .sp-l{ font:700 12px/1.3 'Noto Sans KR'; color:#bcd9f7; margin-top:10px; }
 
-/* GPU 현황·계획 */
 .gpu-split{ display:grid; grid-template-columns:1fr 1fr; gap:22px; align-items:start; }
-.gpu-card{ background:#fff; border:1px solid var(--border); border-radius:20px; padding:26px 24px;
-  box-shadow:0 8px 26px rgba(15,31,69,.06); }
-.gpu-card .gc-h{ font-size:13px; font-weight:800; color:var(--pnu-blue-dark); letter-spacing:-.01em; }
-.gpu-card .gc-big{ font-family:'Inter',sans-serif; font-size:46px; font-weight:900; color:var(--pnu-blue); line-height:1; margin-top:4px; }
-.gpu-card .gc-big small{ font-size:18px; font-weight:800; color:var(--ink); }
-.gpu-chart-box{ height:200px; margin-top:14px; }
-.plan-rows{ display:flex; flex-direction:column; gap:10px; margin-top:16px; }
-.plan-row{ display:grid; grid-template-columns:74px 1fr 56px; align-items:center; gap:12px; }
-.plan-row .pr-model{ font-family:'Inter',sans-serif; font-size:13px; font-weight:900; color:var(--pnu-blue-dark); }
-.plan-row .pr-track{ height:26px; border-radius:8px; background:var(--blue-light); position:relative; overflow:hidden; }
-.plan-row .pr-fill{ position:absolute; inset:0; background:var(--pnu-blue); border-radius:8px; }
-.plan-row .pr-fill.g{ background:var(--pnu-green); }
-.plan-row .pr-fill.s{ background:var(--pnu-blue-sub,#0075C9); }
-.plan-row .pr-use{ position:absolute; left:10px; top:0; bottom:0; display:flex; align-items:center;
-  font-size:11px; font-weight:700; color:#fff; white-space:nowrap; }
-.plan-row .pr-qty{ font-family:'Inter',sans-serif; font-size:14px; font-weight:900; color:var(--ink); text-align:right; }
+.gpu-card{ background:#fff; border:1px solid var(--bd); border-radius:22px; padding:28px 26px;
+  transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .4s ease;
+  box-shadow: 0 1px 2px rgba(15,31,69,.05); }
+.gpu-card:hover{ transform: translateY(-5px); box-shadow: 0 20px 40px -20px rgba(0,91,170,.28); border-color: rgba(0,117,201,.34); }
+.gpu-card .gc-h{ font:800 13px/1 'Inter',sans-serif; letter-spacing:.04em; color:var(--pnu-blue-sub); }
+.gpu-card .gc-big{ font:900 46px/1 'Inter',sans-serif; color:var(--pnu-blue); margin-top:8px; font-variant-numeric: tabular-nums; }
+.gpu-card .gc-big small{ font:800 18px/1 'Inter'; color:var(--ink); }
+.gpu-chart-box{ height:210px; margin-top:14px; }
+.plan-rows{ display:flex; flex-direction:column; gap:12px; margin-top:18px; }
+.plan-row{ display:grid; grid-template-columns:72px 1fr 50px; align-items:center; gap:12px; }
+.plan-row .pr-model{ font:900 13px/1 'Inter',sans-serif; color:var(--pnu-blue-dark); }
+.plan-row .pr-track{ height:30px; border-radius:100px; background:var(--blue-light); position:relative; overflow:hidden; }
+.plan-row .pr-fill{ position:absolute; inset:0; background:var(--pnu-blue); border-radius:100px; }
+.plan-row .pr-fill.s{ background:var(--pnu-blue-sub); }
+.plan-row .pr-fill.d{ background:var(--pnu-blue-dark); }
+.plan-row .pr-use{ position:absolute; left:14px; top:0; bottom:0; display:flex; align-items:center;
+  font:700 11px/1 'Noto Sans KR'; color:#fff; white-space:nowrap; }
+.plan-row .pr-qty{ font:900 14px/1 'Inter',sans-serif; color:var(--ink); text-align:right; }
 .pool-row{ display:flex; gap:12px; margin-top:18px; }
-.pool-chip{ flex:1; background:var(--blue-tint); border:1px solid var(--border); border-radius:12px; padding:14px 16px; }
-.pool-chip i{ color:var(--pnu-blue); font-size:16px; }
-.pool-chip .pl-t{ font-size:13px; font-weight:800; color:var(--ink); margin-top:6px; }
-.pool-chip .pl-s{ font-size:11px; font-weight:700; color:var(--pnu-blue-dark); margin-top:3px; }
+.pool-chip{ flex:1; background:var(--blue-tint); border:1px solid var(--bd); border-radius:14px; padding:14px 16px;
+  transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .4s ease;
+  box-shadow: 0 1px 2px rgba(15,31,69,.05); }
+.pool-chip:hover{ transform: translateY(-5px); box-shadow: 0 20px 40px -20px rgba(0,91,170,.28); border-color: rgba(0,117,201,.34); }
+.pool-chip .pl-t{ font:800 13px/1.3 'Noto Sans KR'; color:var(--ink); }
+.pool-chip .pl-s{ font:700 11px/1.3 'Noto Sans KR'; color:var(--pnu-blue-dark); margin-top:5px; }
 
-/* 안심존 듀얼존 */
-.zone-grid{ display:grid; grid-template-columns:1fr 70px 1fr; gap:0; align-items:stretch; }
-.zone-card{ border-radius:20px; padding:28px 26px; }
-.zone-card.secure{ background:var(--pnu-navy); color:#fff; }
-.zone-card.open{ background:var(--blue-tint); border:1px solid var(--border); color:var(--ink); }
-.zone-card .zc-tag{ font-family:'Inter',sans-serif; font-size:10.5px; font-weight:800; letter-spacing:.1em;
-  text-transform:uppercase; }
-.zone-card.secure .zc-tag{ color:#7EC8FF; }
-.zone-card.open .zc-tag{ color:var(--pnu-blue); }
-.zone-card .zc-title{ font-size:19px; font-weight:900; margin-top:8px; }
-.zone-card .zc-sub{ font-size:12px; font-weight:700; margin-top:4px; }
-.zone-card.secure .zc-sub{ color:#9fc4ee; }
-.zone-card.open .zc-sub{ color:var(--pnu-blue-dark); }
-.zone-card ul{ list-style:none; padding:0; margin:18px 0 0; display:flex; flex-direction:column; gap:9px; }
-.zone-card li{ display:flex; align-items:center; gap:9px; font-size:12.5px; font-weight:700; }
-.zone-card.secure li i{ color:#7EC8FF; }
-.zone-card.open li i{ color:var(--pnu-green); }
-.zone-mid{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; }
-.zone-mid .zm-icon{ width:48px; height:48px; border-radius:50%; background:var(--pnu-blue);
-  display:flex; align-items:center; justify-content:center; color:#fff; font-size:18px; }
-.zone-mid .zm-dir{ font-size:10px; font-weight:800; color:var(--pnu-blue-dark); text-align:center; line-height:1.3; }
-.sec-meta{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:18px; }
-.sec-meta .sm-cell{ background:#fff; border:1px solid var(--border); border-radius:12px; padding:14px; text-align:center; }
-.sec-meta i{ font-size:18px; color:var(--pnu-blue); }
-.sec-meta .sm-t{ font-size:12.5px; font-weight:800; color:var(--ink); margin-top:7px; }
-.sec-img{ position:relative; border-radius:20px; overflow:hidden; min-height:300px; margin-top:24px;
-  border:1px solid var(--border); box-shadow:0 14px 40px rgba(15,31,69,.12); background:#0d3b6e; }
-.sec-img img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-.sec-img .si-cap{ position:absolute; left:0; right:0; bottom:0; padding:16px 20px;
-  background:rgba(15,31,69,.86); color:#fff; font-size:12px; font-weight:700; }
-
-/* AIaaS 레이어 */
 .aiaas-rows{ display:flex; flex-direction:column; gap:12px; }
 .aiaas-row{ display:grid; grid-template-columns:200px 1fr; align-items:center; gap:18px;
-  background:#fff; border:1px solid var(--border); border-radius:14px; padding:18px 22px; transition:all .2s; }
-.aiaas-row:hover{ transform:translateX(5px); border-color:var(--pnu-blue); }
-.aiaas-row .ar-head{ display:flex; align-items:center; gap:12px; }
-.aiaas-row .ar-icon{ width:42px; height:42px; border-radius:12px; background:var(--blue-tint);
-  display:flex; align-items:center; justify-content:center; color:var(--pnu-blue); font-size:18px; flex:none; }
-.aiaas-row .ar-t{ font-size:15px; font-weight:900; color:var(--ink); }
-.aiaas-row .ar-chips{ display:flex; flex-wrap:wrap; gap:7px; }
-.aiaas-row .ar-chips span{ font-size:11.5px; font-weight:700; padding:5px 12px; border-radius:100px;
-  background:var(--blue-tint); border:1px solid var(--border); color:var(--pnu-blue-dark); }
+  background:#fff; border:1px solid var(--bd); border-radius:16px; padding:20px 24px;
+  transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .4s ease;
+  box-shadow: 0 1px 2px rgba(15,31,69,.05); }
+.aiaas-row:hover{ transform: translateY(-5px); box-shadow: 0 20px 40px -20px rgba(0,91,170,.28); border-color: rgba(0,117,201,.34); }
+.aiaas-row .ar-t{ font:900 15px/1.3 'Noto Sans KR'; color:var(--ink); }
+.aiaas-row .ar-chips{ display:flex; flex-wrap:wrap; gap:8px; }
+.aiaas-row .ar-chips span{ font:700 12px/1 'Noto Sans KR'; padding:7px 13px; border-radius:100px;
+  background:var(--blue-tint); border:1px solid var(--bd); color:var(--pnu-blue-dark); }
 
-/* Hub Space 공간 카드 + 면적 */
+.zone-grid{ display:grid; grid-template-columns:1fr 80px 1fr; align-items:stretch; }
+.zone-card{ border-radius:22px; padding:30px 28px;
+  transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .4s ease;
+  box-shadow: 0 1px 2px rgba(15,31,69,.05); }
+.zone-card.secure{ background:var(--pnu-navy); color:#fff; }
+.zone-card.secure:hover{ transform: translateY(-5px); box-shadow: 0 22px 44px -20px rgba(11,22,46,.42); }
+.zone-card.open{ background:var(--blue-tint); border:1px solid var(--bd); color:var(--ink); }
+.zone-card.open:hover{ transform: translateY(-5px); box-shadow: 0 20px 40px -20px rgba(0,91,170,.28); border-color: rgba(0,117,201,.34); }
+.zone-card .zc-tag{ font:800 10.5px/1 'Inter',sans-serif; letter-spacing:.1em; text-transform:uppercase; }
+.zone-card.secure .zc-tag{ color:#7EC8FF; }
+.zone-card.open .zc-tag{ color:var(--pnu-blue); }
+.zone-card .zc-title{ font:900 20px/1.2 'Noto Sans KR'; margin-top:10px; }
+.zone-card .zc-sub{ font:700 12px/1.3 'Noto Sans KR'; margin-top:5px; }
+.zone-card.secure .zc-sub{ color:#9fc4ee; }
+.zone-card.open .zc-sub{ color:var(--pnu-blue-dark); }
+.zone-card ul{ list-style:none; padding:0; margin:20px 0 0; display:flex; flex-direction:column; gap:11px; }
+.zone-card li{ font:700 12.5px/1.4 'Noto Sans KR'; padding-left:16px; position:relative; }
+.zone-card li::before{ content:""; position:absolute; left:0; top:6px; width:7px; height:7px; border-radius:50%; }
+.zone-card.secure li::before{ background:#7EC8FF; }
+.zone-card.open li::before{ background:var(--pnu-blue-sub); }
+.zone-mid{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; }
+.zone-mid .zm-icon{ width:46px; height:46px; border-radius:50%; background:var(--pnu-blue); color:#fff;
+  display:grid; place-items:center; font:900 18px/1 'Inter'; }
+.zone-mid .zm-dir{ font:800 10px/1.3 'Noto Sans KR'; color:var(--pnu-blue-dark); text-align:center; }
+.sec-meta{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:18px; }
+.sec-meta .sm-cell{ background:#fff; border:1px solid var(--bd); border-radius:14px; padding:16px; text-align:center;
+  transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .4s ease;
+  box-shadow: 0 1px 2px rgba(15,31,69,.05); }
+.sec-meta .sm-cell:hover{ transform: translateY(-5px); box-shadow: 0 20px 40px -20px rgba(0,91,170,.28); border-color: rgba(0,117,201,.34); }
+.sec-meta .sm-t{ font:800 12.5px/1.3 'Noto Sans KR'; color:var(--ink); }
+
 .hub-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }
-.hub-cell{ background:#fff; border:1px solid var(--border); border-radius:16px; padding:22px 16px; text-align:center; transition:all .2s; }
-.hub-cell:hover{ transform:translateY(-4px); box-shadow:0 14px 34px rgba(0,91,170,.14); border-color:var(--pnu-blue); }
-.hub-cell i{ font-size:26px; color:var(--pnu-blue); }
-.hub-cell .hc-t{ font-size:13.5px; font-weight:800; color:var(--ink); margin-top:12px; line-height:1.25; }
-.area-bars{ display:flex; flex-direction:column; gap:9px; margin-top:24px; }
-.area-row{ display:grid; grid-template-columns:230px 1fr 72px; align-items:center; gap:14px; }
-.area-row .ab-l{ font-size:12.5px; font-weight:700; color:var(--ink); }
-.area-row .ab-track{ height:22px; background:var(--blue-light); border-radius:7px; overflow:hidden; }
-.area-row .ab-fill{ height:100%; background:var(--pnu-blue); border-radius:7px; }
-.area-row .ab-v{ font-family:'Inter',sans-serif; font-size:13px; font-weight:900; color:var(--pnu-blue-dark); text-align:right; }
+.hub-cell{ background:#fff; border:1px solid var(--bd); border-radius:16px; padding:24px 16px; text-align:center;
+  transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .4s ease;
+  box-shadow: 0 1px 2px rgba(15,31,69,.05); }
+.hub-cell:hover{ transform: translateY(-5px); box-shadow: 0 20px 40px -20px rgba(0,91,170,.28); border-color: rgba(0,117,201,.34); }
+.hub-cell .hc-t{ font:800 13.5px/1.3 'Noto Sans KR'; color:var(--ink); }
+.area-bars{ display:flex; flex-direction:column; gap:10px; margin-top:24px; }
+.area-row{ display:grid; grid-template-columns:280px 1fr 66px; align-items:center; gap:16px; }
+.area-row .ab-l{ font:700 13px/1.3 'Noto Sans KR'; color:var(--ink); }
+.area-row .ab-track{ height:24px; background:var(--blue-light); border-radius:100px; overflow:hidden; }
+.area-row .ab-fill{ height:100%; background:var(--pnu-blue); border-radius:100px; }
+.area-row .ab-v{ font:900 13px/1 'Inter',sans-serif; color:var(--pnu-blue-dark); text-align:right; }
 
-/* 6대 자산 허브-스포크 */
-.asset-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-.asset-card{ background:#fff; border:1px solid var(--border); border-radius:18px; padding:24px 22px;
-  box-shadow:0 6px 22px rgba(15,31,69,.05); transition:all .2s; position:relative; }
-.asset-card:hover{ transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,91,170,.14); }
-.asset-card .an{ position:absolute; top:20px; right:22px; font-family:'Inter',sans-serif;
-  font-size:26px; font-weight:900; color:var(--blue-light); }
-.asset-card .ai-ic{ width:46px; height:46px; border-radius:12px; background:var(--blue-tint);
-  display:flex; align-items:center; justify-content:center; color:var(--pnu-blue); font-size:20px; }
-.asset-card .at{ font-size:15.5px; font-weight:900; color:var(--ink); margin-top:14px; line-height:1.25; }
-.asset-card .achips{ display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
-.asset-card .achips span{ font-size:11px; font-weight:700; padding:4px 10px; border-radius:100px;
-  background:var(--blue-tint); border:1px solid var(--border); color:var(--pnu-blue-dark); }
-.asset-card.green .ai-ic{ background:#E5F6EC; color:var(--pnu-green); }
-.asset-band{ display:flex; align-items:center; justify-content:center; gap:18px; margin-top:18px;
-  background:var(--pnu-blue-dark); color:#fff; border-radius:14px; padding:18px; flex-wrap:wrap; }
-.asset-band .ax-pill{ font-size:12.5px; font-weight:800; padding:7px 16px; border-radius:100px;
-  background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25); }
-.asset-band i{ color:#7EC8FF; }
-
-/* 부트캠프 몰입형 트랙 */
 .bc-band{ background:var(--pnu-navy); border-radius:24px; padding:46px 40px; color:#fff; }
-.bc-stats{ display:flex; gap:34px; flex-wrap:wrap; margin-bottom:30px; }
-.bc-stats .bs{ }
-.bc-stats .bs .n{ font-family:'Inter',sans-serif; font-size:40px; font-weight:900; color:#7EC8FF; line-height:1; }
-.bc-stats .bs .n small{ font-size:18px; }
-.bc-stats .bs .l{ font-size:12px; font-weight:700; color:#bcd9f7; margin-top:7px; }
+.bc-stats{ display:flex; gap:44px; flex-wrap:wrap; margin-bottom:30px; }
+.bc-stats .n{ font:900 40px/1 'Inter',sans-serif; color:#7EC8FF; font-variant-numeric: tabular-nums; }
+.bc-stats .n small{ font:800 18px/1 'Inter'; }
+.bc-stats .l{ font:700 12px/1.3 'Noto Sans KR'; color:#bcd9f7; margin-top:8px; }
 .bc-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-.bc-card{ background:rgba(255,255,255,.06); border:1px solid rgba(126,200,255,.22); border-radius:16px;
-  padding:22px 20px; transition:all .2s; }
-.bc-card:hover{ background:rgba(255,255,255,.11); transform:translateY(-4px); }
-.bc-card.green{ border-color:rgba(0,166,81,.4); }
-.bc-card .bc-hd{ display:flex; align-items:center; gap:10px; }
-.bc-card .bc-ic{ width:40px; height:40px; border-radius:11px; background:rgba(126,200,255,.15);
-  display:flex; align-items:center; justify-content:center; color:#7EC8FF; font-size:17px; flex:none; }
-.bc-card.green .bc-ic{ background:rgba(0,166,81,.18); color:#5fd99a; }
-.bc-card .bc-t{ font-size:15px; font-weight:900; }
-.bc-card .bc-d{ font-size:11.5px; font-weight:600; color:#cfe6ff; margin-top:12px; line-height:1.45; }
-.bc-card .bc-part{ display:flex; flex-wrap:wrap; gap:6px; margin-top:13px; }
-.bc-card .bc-part span{ font-size:10.5px; font-weight:700; padding:4px 9px; border-radius:6px;
+.bc-card{ background:rgba(255,255,255,.06); border:1px solid rgba(126,200,255,.22); border-radius:16px; padding:24px 22px;
+  transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .4s ease; }
+.bc-card:hover{ transform: translateY(-5px); box-shadow: 0 22px 44px -20px rgba(11,22,46,.42); }
+.bc-card .bc-t{ font:900 16px/1.2 'Noto Sans KR'; }
+.bc-card .bc-d{ font:600 12px/1.5 'Noto Sans KR'; color:#cfe6ff; margin-top:12px; }
+.bc-card .bc-part{ display:flex; flex-wrap:wrap; gap:7px; margin-top:14px; }
+.bc-card .bc-part span{ font:700 10.5px/1 'Inter',sans-serif; padding:5px 10px; border-radius:100px;
   background:rgba(255,255,255,.1); color:#e3f0ff; }
 
 @media(max-width:880px){
-  .track-grid,.gpu-split,.idc-wrap,.elem4,.spec-grid,.asset-grid,.bc-grid,.hub-grid,
+  .track-grid,.gpu-split,.idc-wrap,.elem4,.spec-grid,.bc-grid,.hub-grid,
   .facil-grid,.zone-grid,.sec-meta,.aiaas-row{ grid-template-columns:1fr; }
-  .zone-mid{ flex-direction:row; padding:10px 0; }
+  .zone-mid{ flex-direction:row; padding:12px 0; }
+  .area-row{ grid-template-columns:1fr; gap:6px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .track-card,.elem-cell,.idc-floor,.idc-side,.idc-side img,.facil-cell,.spec-cell,
+  .gpu-card,.pool-chip,.aiaas-row,.zone-card,.sec-meta .sm-cell,.hub-cell,.bc-card{ transition:none !important; }
 }
 </style>
 </head>
 <body>
+
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="container">
@@ -221,11 +198,12 @@
     </div>
   </div>
 </div>
+
 <!-- MAIN HEADER -->
 <header class="main-hdr">
   <div class="container hdr-inner">
     <a href="/s30/" class="brand">
-      <img src="/s30/assets/pnu-signature.jpg" alt="부산대학교 공식 시그니처" class="brand-logo">
+      <img src="../../assets/pnu-signature.jpg" alt="부산대학교 공식 시그니처" class="brand-logo">
       <div class="brand-divider"></div>
       <div>
         <div class="brand-text-ko">AI 거점대학육성사업단</div>
@@ -237,7 +215,7 @@
         <a href="/s30/about/" class="nav-link">사업 소개 </a>
         <div class="dropdown">
           <a href="/s30/about/"><div class="d-i"></div>사업 개요 · 비전</a>
-          <a href="/s30/aura/"><div class="d-i"></div>A.U.R.A 2.0 마스터플랜</a>
+          <a href="/s30/about/aura.html"><div class="d-i"></div>A.U.R.A 2.0 마스터플랜</a>
           <a href="/s30/about/governance/"><div class="d-i"></div>거버넌스</a>
           <a href="/s30/roadmap/"><div class="d-i"></div>3개년 로드맵</a>
         </div>
@@ -284,94 +262,73 @@
   </div>
 </header>
 
+<main class="prog">
+
 <!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="container ph-inner">
-    <div class="ph-left">
-      <div class="ph-eyebrow">AI INFRASTRUCTURE · PNU-AXIS</div>
-      <h1 class="ph-title">AI 인프라 <em>집적화</em></h1>
-      <p class="ph-sub">AI for All, Secure for Strategic</p>
-      <div class="infra-jumpbar">
-        <a href="#vision"> 구성 체계</a>
-        <a href="#axis"> PNU-AXIS IDC</a>
-        <a href="#aiaas"> AIaaS</a>
-        <a href="#secure"> 국방 안심존</a>
-        <a href="#hub"> Hub Space</a>
-        <a href="#bootcamp"> 부트캠프</a>
-      </div>
-      <div class="breadcrumb">
-        <a href="/s30/"> 홈</a>
-        
-        <a href="/s30/programs/">핵심 사업</a>
-        
-        <span class="current">AI 인프라</span>
-      </div>
+<section class="prog-hero" data-screen-label="AI인프라 · Hero">
+  <img class="prog-hero__img" src="../../assets/img/it-building.jpg" alt="PNU-AXIS 데이터센터">
+  <div class="prog-hero__veil"></div>
+  <div class="container prog-hero__crumb">
+    <a href="/s30/">홈</a><i>›</i><a href="/s30/programs/">핵심 사업</a><i>›</i><span>AI 인프라</span>
+  </div>
+  <div class="container prog-hero__inner">
+    <div class="prog-hero__kicker">AI Infrastructure · PNU-AXIS · 04</div>
+    <h1 class="prog-hero__title">AI 인프라 <b>집적화</b></h1>
+    <div class="prog-hero__en">AI for All, Secure for Strategic</div>
+  </div>
+  <div class="container" style="position:relative">
+    <div class="prog-hero__facts">
+      <div class="prog-hero__fact"><div class="n">303<small>+</small></div><div class="l">교내 보유 GPU</div></div>
+      <div class="prog-hero__fact"><div class="n">800<small>장</small></div><div class="l">신규 GPU · 500억</div></div>
+      <div class="prog-hero__fact"><div class="n">10,067<small>㎡</small></div><div class="l">Hub Space</div></div>
     </div>
-    <div class="ph-icon"></div>
   </div>
 </section>
 
 <!-- 핵심 스탯 밴드 -->
-<section class="stats-band">
+<section class="sec">
   <div class="container">
-    <div class="stats-grid">
-      <div class="stat-cell">
-        <div class="stat-cell-tag">현재 GPU</div>
-        <div class="stat-cell-num"><span>303</span>+</div>
-        <div class="stat-cell-lbl">교내 보유 GPU</div>
-        <div class="stat-cell-note">하이엔드 23 · 기타 385</div>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">01</div>
+        <div class="sec-head__t">
+          <span class="kick">Infrastructure at a Glance</span>
+          <h2>동남권 AI <em>컴퓨팅 거점</em> 규모</h2>
+        </div>
       </div>
-      <div class="stat-cell">
-        <div class="stat-cell-tag">확보 계획</div>
-        <div class="stat-cell-num gold"><span>800</span>장</div>
-        <div class="stat-cell-lbl">신규 GPU · 500억</div>
-        <div class="stat-cell-note">H200 · L40S · A10/A30</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-cell-tag">전력</div>
-        <div class="stat-cell-num"><span>2</span>MW</div>
-        <div class="stat-cell-lbl">이중화 데이터센터</div>
-        <div class="stat-cell-note">Tier 2 이상</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-cell-tag">복합 공간</div>
-        <div class="stat-cell-num"><span>10,067</span></div>
-        <div class="stat-cell-lbl">Hub Space ㎡</div>
-        <div class="stat-cell-note">5개 기관 집적</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-cell-tag">네트워크</div>
-        <div class="stat-cell-num"><span>400</span>G</div>
-        <div class="stat-cell-lbl">InfiniBand bps+</div>
-        <div class="stat-cell-note">고성능 이더넷</div>
-      </div>
+    </div>
+    <div class="dstrip dstrip--ledger" style="grid-template-columns:repeat(5,1fr)">
+      <div class="dstrip__c"><div class="dstrip__tag">현재 GPU</div><div class="dstrip__n blue">303<small>+</small></div><div class="dstrip__l">교내 보유 GPU</div></div>
+      <div class="dstrip__c a"><div class="dstrip__tag">확보 계획</div><div class="dstrip__n accent">800<small>장</small></div><div class="dstrip__l">신규 GPU · 500억</div></div>
+      <div class="dstrip__c s"><div class="dstrip__tag">전력</div><div class="dstrip__n">2<small>MW</small></div><div class="dstrip__l">이중화 데이터센터</div></div>
+      <div class="dstrip__c d"><div class="dstrip__tag">복합 공간</div><div class="dstrip__n">10,067</div><div class="dstrip__l">Hub Space ㎡</div></div>
+      <div class="dstrip__c"><div class="dstrip__tag">네트워크</div><div class="dstrip__n">400<small>G</small></div><div class="dstrip__l">InfiniBand bps+</div></div>
     </div>
   </div>
 </section>
 
-<!-- ① 비전 · 2-트랙 · 4요소 -->
-<section class="section" id="vision">
+<!-- 02 · 비전 2-트랙 -->
+<section class="sec sec--tint">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">VISION · 2-TRACK</div>
-      <h2 class="s-title">AI 인프라 <em>구성 체계</em></h2>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">02</div>
+        <div class="sec-head__t">
+          <span class="kick">Vision · 2-Track</span>
+          <h2>AI 인프라 <em>구성 체계</em></h2>
+        </div>
+      </div>
     </div>
     <div class="track-grid">
       <div class="track-card">
-        <div class="tk-icon"></div>
         <div class="tk-en">Track 1 · Computing</div>
         <div class="tk-title">PNU-AXIS</div>
-        <div class="tk-chips">
-          <span>GPU 집적 허브</span><span>교육·연구 Pool</span><span>AIaaS</span><span>100+ → 1,000+ GPU</span>
-        </div>
+        <div class="tk-chips"><span>GPU 집적 허브</span><span>교육·연구 Pool</span><span>AIaaS</span><span>100+ → 1,000+ GPU</span></div>
       </div>
-      <div class="track-card green">
-        <div class="tk-icon"></div>
+      <div class="track-card alt">
         <div class="tk-en">Track 2 · Space</div>
         <div class="tk-title">AI Innovation Hub Space</div>
-        <div class="tk-chips">
-          <span>개방형 복합공간</span><span>교육·연구·창업</span><span>AXIS 연동</span><span>10,067㎡</span>
-        </div>
+        <div class="tk-chips"><span>개방형 복합공간</span><span>교육·연구·창업</span><span>AXIS 연동</span><span>10,067㎡</span></div>
       </div>
     </div>
     <div class="elem4">
@@ -383,28 +340,30 @@
   </div>
 </section>
 
-<!-- ② PNU-AXIS IDC -->
-<section class="section section-alt" id="axis">
+<!-- 03 · PNU-AXIS IDC -->
+<section class="sec">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">PNU-AXIS · IDC</div>
-      <h2 class="s-title">데이터센터 <em>신규 건설·구축</em></h2>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">03</div>
+        <div class="sec-head__t">
+          <span class="kick">PNU-AXIS · IDC</span>
+          <h2>데이터센터 <em>신규 건설·구축</em></h2>
+        </div>
+      </div>
     </div>
     <div class="idc-wrap">
       <div class="idc-stack">
-        <div class="idc-roof"> 공조 설비 (실외기)</div>
+        <div class="idc-roof">공조 설비 (실외기)</div>
         <div class="idc-floor"><div class="fl-n">4F</div><div class="fl-u">컨퍼런스룸 &amp; 회의실</div></div>
         <div class="idc-floor"><div class="fl-n">3F</div><div class="fl-u">외주업체 사무공간</div></div>
         <div class="idc-floor"><div class="fl-n">2F</div><div class="fl-u">IDC 전산실 · 운영공간</div></div>
         <div class="idc-floor"><div class="fl-n">1F</div><div class="fl-u">서비스실 · 관제실 · 비상발전기</div></div>
-        <div class="idc-floor b1"><div class="fl-n">B1</div><div class="fl-u">수전실 · 관리실 · 주차</div></div>
+        <div class="idc-floor"><div class="fl-n">B1</div><div class="fl-u">수전실 · 관리실 · 주차</div></div>
       </div>
       <div class="idc-side">
-        <img src="/s30/assets/img/it-building.jpg" alt="PNU-AXIS IDC 데이터센터" onerror="this.style.display='none'">
-        <div class="is-cap">
-          <div class="c-t">PNU-AXIS IDC</div>
-          <div class="c-s">분산 GPU 단일 허브 집적</div>
-        </div>
+        <img src="../../assets/img/it-building.jpg" alt="PNU-AXIS IDC 데이터센터">
+        <div class="is-cap"><div class="c-t">PNU-AXIS IDC</div><div class="c-s">분산 GPU 단일 허브 집적</div></div>
       </div>
     </div>
     <div class="facil-grid">
@@ -413,7 +372,7 @@
       <div class="facil-cell"><div class="fc-t">공조설비 구성</div><div class="fc-s">친환경 냉매 R-407C</div></div>
       <div class="facil-cell"><div class="fc-t">무창 벽체 마감</div><div class="fc-s">보안·단열 단면</div></div>
     </div>
-    <div class="spec-grid" style="margin-top:24px">
+    <div class="spec-grid">
       <div class="spec-cell"><div class="sp-n">2<small>MW</small></div><div class="sp-l">전력 이중화</div></div>
       <div class="spec-cell"><div class="sp-n">400<small>G+</small></div><div class="sp-l">InfiniBand bps</div></div>
       <div class="spec-cell"><div class="sp-n">22<small>h</small></div><div class="sp-l">연간 다운타임 이하</div></div>
@@ -422,12 +381,17 @@
   </div>
 </section>
 
-<!-- GPU 현황 + 계획 -->
-<section class="section" id="gpu">
+<!-- 04 · GPU 현황·계획 -->
+<section class="sec sec--tint">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">GPU FLEET</div>
-      <h2 class="s-title">GPU 보유 현황과 <em>확보 계획</em></h2>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">04</div>
+        <div class="sec-head__t">
+          <span class="kick">GPU Fleet</span>
+          <h2>GPU 보유 현황과 <em>확보 계획</em></h2>
+        </div>
+      </div>
     </div>
     <div class="gpu-split">
       <div class="gpu-card">
@@ -443,21 +407,9 @@
         <div class="gc-h">향후 확보 계획 · 500억</div>
         <div class="gc-big">+800<small> 장</small></div>
         <div class="plan-rows">
-          <div class="plan-row">
-            <div class="pr-model">H200</div>
-            <div class="pr-track"><div class="pr-fill" style="width:100%"></div><div class="pr-use">연구 서비스 · 400B+ 학습</div></div>
-            <div class="pr-qty">400</div>
-          </div>
-          <div class="plan-row">
-            <div class="pr-model">L40S</div>
-            <div class="pr-track"><div class="pr-fill s" style="width:50%"></div><div class="pr-use">시각화 · 7B~14B</div></div>
-            <div class="pr-qty">200</div>
-          </div>
-          <div class="plan-row">
-            <div class="pr-model">A10/A30</div>
-            <div class="pr-track"><div class="pr-fill g" style="width:50%"></div><div class="pr-use">가상화 · 교육 실습</div></div>
-            <div class="pr-qty">200</div>
-          </div>
+          <div class="plan-row"><div class="pr-model">H200</div><div class="pr-track"><div class="pr-fill" style="width:100%"></div><div class="pr-use">연구 서비스 · 400B+ 학습</div></div><div class="pr-qty">400</div></div>
+          <div class="plan-row"><div class="pr-model">L40S</div><div class="pr-track"><div class="pr-fill s" style="width:55%"></div><div class="pr-use">시각화 · 7B~14B</div></div><div class="pr-qty">200</div></div>
+          <div class="plan-row"><div class="pr-model">A10/A30</div><div class="pr-track"><div class="pr-fill d" style="width:55%"></div><div class="pr-use">가상화 · 교육 실습</div></div><div class="pr-qty">200</div></div>
         </div>
         <div class="pool-row">
           <div class="pool-chip"><div class="pl-t">부·울·경 AI 컴퓨팅 거점</div><div class="pl-s">RISE · AI 바우처 연계</div></div>
@@ -467,65 +419,55 @@
   </div>
 </section>
 
-<!-- ③ AIaaS -->
-<section class="section section-alt" id="aiaas">
+<!-- 05 · AIaaS -->
+<section class="sec">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">AI COMPUTING AS A SERVICE</div>
-      <h2 class="s-title">MLOps · <em>셀프서비스 플랫폼</em></h2>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">05</div>
+        <div class="sec-head__t">
+          <span class="kick">AI Computing as a Service</span>
+          <h2>MLOps · <em>셀프서비스 플랫폼</em></h2>
+        </div>
+      </div>
     </div>
     <div class="aiaas-rows">
-      <div class="aiaas-row">
-        <div class="ar-head"><div class="ar-icon"></div><div class="ar-t">개발 환경</div></div>
-        <div class="ar-chips"><span>JupyterHub</span><span>Docker / K8s</span><span>모델 레지스트리</span><span>MLflow 실험 추적</span></div>
-      </div>
-      <div class="aiaas-row">
-        <div class="ar-head"><div class="ar-icon"></div><div class="ar-t">자원 접근</div></div>
-        <div class="ar-chips"><span>웹 포털 셀프서비스</span><span>GPU 신청·할당</span><span>스토리지</span><span>데이터셋</span></div>
-      </div>
-      <div class="aiaas-row">
-        <div class="ar-head"><div class="ar-icon"></div><div class="ar-t">하이브리드 연동</div></div>
-        <div class="ar-chips"><span>온프레미스 PNU-AXIS</span><span>AWS · NCP</span><span>피크 수요 탄력</span></div>
-      </div>
-      <div class="aiaas-row">
-        <div class="ar-head"><div class="ar-icon"></div><div class="ar-t">학생 크레딧</div></div>
-        <div class="ar-chips"><span>GPU 컴퓨팅 시간</span><span>대용량 스토리지</span><span>상용 API</span><span>데이터셋 패키지</span></div>
-      </div>
+      <div class="aiaas-row"><div class="ar-t">개발 환경</div><div class="ar-chips"><span>JupyterHub</span><span>Docker / K8s</span><span>모델 레지스트리</span><span>MLflow 실험 추적</span></div></div>
+      <div class="aiaas-row"><div class="ar-t">자원 접근</div><div class="ar-chips"><span>웹 포털 셀프서비스</span><span>GPU 신청·할당</span><span>스토리지</span><span>데이터셋</span></div></div>
+      <div class="aiaas-row"><div class="ar-t">하이브리드 연동</div><div class="ar-chips"><span>온프레미스 PNU-AXIS</span><span>AWS · NCP</span><span>피크 수요 탄력</span></div></div>
+      <div class="aiaas-row"><div class="ar-t">학생 크레딧</div><div class="ar-chips"><span>GPU 컴퓨팅 시간</span><span>대용량 스토리지</span><span>상용 API</span><span>데이터셋 패키지</span></div></div>
     </div>
   </div>
 </section>
 
-<!-- ④ 국방데이터 안심존 -->
-<section class="section" id="secure">
+<!-- 06 · 국방데이터 안심존 -->
+<section class="sec sec--tint">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">MLSecOps · DUAL-ZONE</div>
-      <h2 class="s-title">국방데이터 <em>안심존</em></h2>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">06</div>
+        <div class="sec-head__t">
+          <span class="kick">MLSecOps · Dual-Zone</span>
+          <h2>국방데이터 <em>안심존</em></h2>
+        </div>
+      </div>
     </div>
     <div class="zone-grid">
       <div class="zone-card secure">
         <div class="zc-tag">Closed · On-Premise</div>
         <div class="zc-title">Secure AI Zone</div>
         <div class="zc-sub">권한 부여 제한 인원 · 폐쇄망</div>
-        <ul>
-          <li> 국방·방산·산업 민감 데이터</li>
-          <li> 기밀 AI 모델 개발</li>
-          <li> CSAP · CII 요건 준수</li>
-        </ul>
+        <ul><li>국방·방산·산업 민감 데이터</li><li>기밀 AI 모델 개발</li><li>CSAP · CII 요건 준수</li></ul>
       </div>
       <div class="zone-mid">
-        <div class="zm-icon"></div>
+        <div class="zm-icon">→</div>
         <div class="zm-dir">일방향<br>자료교환</div>
       </div>
       <div class="zone-card open">
         <div class="zc-tag">Open · Public</div>
         <div class="zc-title">Open AI Zone</div>
         <div class="zc-sub">일반 연구자 · 학생 · 민간기업</div>
-        <ul>
-          <li> 일반 AI 연구·교육 실습</li>
-          <li> 스타트업 프로토타입</li>
-          <li> Open Source SW 협력연구</li>
-        </ul>
+        <ul><li>일반 AI 연구·교육 실습</li><li>스타트업 프로토타입</li><li>Open Source SW 협력연구</li></ul>
       </div>
     </div>
     <div class="sec-meta">
@@ -534,19 +476,27 @@
       <div class="sm-cell"><div class="sm-t">RBAC · MFA · 망분리</div></div>
       <div class="sm-cell"><div class="sm-t">CSAP · CII 준수</div></div>
     </div>
-    <div class="sec-img">
-      <img src="/s30/assets/img/tech-circuit.jpg" alt="군·산·학 협력센터 국방데이터 안심존 구조" onerror="this.style.display='none'">
-      <div class="si-cap">군·산·학 협력센터 — 국방데이터 기반 AX 센터 구조</div>
+    <div class="container" style="padding:24px 0 0">
+      <figure class="figband" style="height:300px">
+        <img src="../../assets/img/tech-circuit.jpg" alt="국방데이터 안심존 구조">
+        <div class="figband__cap"><b>Secure Zone</b> 군·산·학 협력센터 — 국방데이터 기반 AX 센터</div>
+      </figure>
     </div>
   </div>
 </section>
 
-<!-- Hub Space -->
-<section class="section section-alt" id="hub">
+<!-- 07 · Hub Space -->
+<section class="sec">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">PNU AI INNOVATION HUB SPACE</div>
-      <h2 class="s-title">개방형 <em>복합 혁신 공간</em></h2>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">07</div>
+        <div class="sec-head__t">
+          <span class="kick">PNU AI Innovation Hub Space</span>
+          <h2>개방형 <em>복합 혁신 공간</em></h2>
+        </div>
+      </div>
+      <div class="sec-head__note"><b>5개 기관</b> 집적 · 총 10,067㎡</div>
     </div>
     <div class="hub-grid">
       <div class="hub-cell"><div class="hc-t">AI Co-Lab Zone</div></div>
@@ -565,111 +515,46 @@
   </div>
 </section>
 
-<!-- AI 교육 확산 6대 자산 -->
-<section class="section" id="assets">
+<!-- 08 · 부트캠프 몰입형 -->
+<section class="sec sec--tint">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">VERIFIED ASSETS · 6</div>
-      <h2 class="s-title">AI 교육 확산 <em>6대 자산</em></h2>
-    </div>
-    <div class="asset-grid">
-      <div class="asset-card">
-        <div class="an">01</div>
-        <div class="ai-ic"></div>
-        <div class="at">SW중심대학 10년</div>
-        <div class="achips"><span>동남권 최초·최장</span><span>AI 기본 99.13%</span><span>322개 분반</span><span>만족도 4.07</span></div>
-      </div>
-      <div class="asset-card">
-        <div class="an">02</div>
-        <div class="ai-ic"></div>
-        <div class="at">AI융합교육원</div>
-        <div class="achips"><span>총장 직속 5부서</span><span>기초·융합·전공</span><span>책임교수 3인</span></div>
-      </div>
-      <div class="asset-card">
-        <div class="an">03</div>
-        <div class="ai-ic"></div>
-        <div class="at">K-MOOC 무크선도대학</div>
-        <div class="achips"><span>8년 · 29강좌</span><span>2023 선도대학</span><span>AI 특성화</span></div>
-      </div>
-      <div class="asset-card">
-        <div class="an">04</div>
-        <div class="ai-ic"></div>
-        <div class="at">사범대 AI융합교육전공</div>
-        <div class="achips"><span>현직교원 트랙</span><span>AI 교사 1만명 연계</span><span>부울경 거점</span></div>
-      </div>
-      <div class="asset-card green">
-        <div class="an">05</div>
-        <div class="ai-ic"></div>
-        <div class="at">PNU-AXIS · AI코딩존</div>
-        <div class="achips"><span>AI 실습 크레딧</span><span>code.pusan.ac.kr</span><span>PLATO LMS 연계</span></div>
-      </div>
-      <div class="asset-card">
-        <div class="an">06</div>
-        <div class="ai-ic"></div>
-        <div class="at">재직자 · 산학 네트워크</div>
-        <div class="achips"><span>ICT융합학과 10년</span><span>재직자 149명</span><span>63개 기업</span></div>
+    <div class="sec-head">
+      <div class="sec-head__l">
+        <div class="sec-idx">08</div>
+        <div class="sec-head__t">
+          <span class="kick">Immersive Bootcamp</span>
+          <h2>AI 부트캠프 <em>몰입형 6트랙</em></h2>
+        </div>
       </div>
     </div>
-    <div class="asset-band">
-      <span class="ax-pill">비학위</span>
-      
-      <span class="ax-pill">학위</span>
-      
-      <span class="ax-pill">산학</span>
-      
-      <span class="ax-pill" style="background:rgba(126,200,255,.25)">단일 운영체계 가동</span>
+    <div class="bc-band">
+      <div class="bc-stats">
+        <div><div class="n">6<small> 트랙</small></div><div class="l">AI 분야별 몰입형</div></div>
+        <div><div class="n">75<small>억</small></div><div class="l">AI 부트캠프 사업</div></div>
+        <div><div class="n">10<small>+</small></div><div class="l">협력 기업·기관</div></div>
+      </div>
+      <div class="bc-grid">
+        <div class="bc-card"><div class="bc-t">클라우드 AI</div><div class="bc-d">클라우드 네이티브 AI 전주기 실습 (MLOps)</div><div class="bc-part"><span>NAVER CONNECT</span><span>AWS</span></div></div>
+        <div class="bc-card"><div class="bc-t">피지컬 AI</div><div class="bc-d">온디바이스 AI 경량화 · 로보틱스 제어</div><div class="bc-part"><span>NVIDIA DLI</span><span>한컴</span></div></div>
+        <div class="bc-card"><div class="bc-t">생성형 AI</div><div class="bc-d">RAG · 파인튜닝 · 배포 전주기 엔지니어링</div><div class="bc-part"><span>Upstage</span></div></div>
+        <div class="bc-card"><div class="bc-t">XR</div><div class="bc-d">Unreal Engine 제조·조선 디지털트윈</div><div class="bc-part"><span>삼우이머전</span></div></div>
+        <div class="bc-card"><div class="bc-t">AX 보안</div><div class="bc-d">sLLM 기반 보안관제 자동화 · 위험분석</div><div class="bc-part"><span>스마트엠투엠</span></div></div>
+        <div class="bc-card"><div class="bc-t">산업 AI</div><div class="bc-d">제조·물류 제약조건 기반 최적화 모델링</div><div class="bc-part"><span>AWS</span></div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 부트캠프 몰입형 -->
-<section class="section section-alt" id="bootcamp">
+<!-- 결론 밴드 -->
+<section class="closing">
   <div class="container">
-    <div class="section-header center">
-      <div class="s-eyebrow">IMMERSIVE BOOTCAMP</div>
-      <h2 class="s-title">AI 부트캠프 <em>몰입형 6트랙</em></h2>
-    </div>
-    <div class="bc-band">
-      <div class="bc-stats">
-        <div class="bs"><div class="n">6<small> 트랙</small></div><div class="l">AI 분야별 몰입형</div></div>
-        <div class="bs"><div class="n">75<small>억</small></div><div class="l">AI 부트캠프 사업</div></div>
-        <div class="bs"><div class="n">10<small>+</small></div><div class="l">협력 기업·기관</div></div>
-      </div>
-      <div class="bc-grid">
-        <div class="bc-card">
-          <div class="bc-hd"><div class="bc-ic"></div><div class="bc-t">클라우드 AI</div></div>
-          <div class="bc-d">클라우드 네이티브 AI 전주기 실습 (MLOps)</div>
-          <div class="bc-part"><span>NAVER CONNECT</span><span>AWS</span></div>
-        </div>
-        <div class="bc-card">
-          <div class="bc-hd"><div class="bc-ic"></div><div class="bc-t">피지컬 AI</div></div>
-          <div class="bc-d">온디바이스 AI 경량화 · 로보틱스 제어</div>
-          <div class="bc-part"><span>NVIDIA DLI</span><span>한컴</span></div>
-        </div>
-        <div class="bc-card">
-          <div class="bc-hd"><div class="bc-ic"></div><div class="bc-t">생성형 AI</div></div>
-          <div class="bc-d">RAG · 파인튜닝 · 배포 전주기 엔지니어링</div>
-          <div class="bc-part"><span>Upstage</span></div>
-        </div>
-        <div class="bc-card">
-          <div class="bc-hd"><div class="bc-ic"></div><div class="bc-t">XR</div></div>
-          <div class="bc-d">Unreal Engine 제조·조선 디지털트윈</div>
-          <div class="bc-part"><span>삼우이머전</span></div>
-        </div>
-        <div class="bc-card">
-          <div class="bc-hd"><div class="bc-ic"></div><div class="bc-t">AX 보안</div></div>
-          <div class="bc-d">sLLM 기반 보안관제 자동화 · 위험분석</div>
-          <div class="bc-part"><span>스마트엠투엠</span></div>
-        </div>
-        <div class="bc-card green">
-          <div class="bc-hd"><div class="bc-ic"></div><div class="bc-t">산업 AI</div></div>
-          <div class="bc-d">제조·물류 제약조건 기반 최적화 모델링</div>
-          <div class="bc-part"><span>AWS</span></div>
-        </div>
-      </div>
-    </div>
+    <span class="kick">Regional AI Computing Hub</span>
+    <h2>AI for All, Secure for Strategic</h2>
+    <p>PNU-AXIS · 동남권 AI 컴퓨팅 거점</p>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer class="site-footer">
@@ -677,17 +562,14 @@
     <div class="ft-top">
       <div>
         <div class="ft-brand-row">
-          <img src="/s30/assets/pnu-signature.jpg" alt="부산대학교" class="ft-logo-img" style="filter:brightness(0) invert(1)">
+          <img src="../../assets/pnu-signature.jpg" alt="부산대학교" class="ft-logo-img" style="filter:brightness(0) invert(1)">
         </div>
         <div class="ft-brand-name">AI 거점대학육성사업단 · ARISE PNU<small>arise-ai.pusan.ac.kr · A.U.R.A 2.0 마스터플랜</small></div>
         <div class="ft-desc" style="margin-top:16px"><em>"Arise PNU, 같이 더 높게"</em> — 동남권 AX 생태계의 중심 거점, 부산대학교 AI 거점대학육성사업단입니다.</div>
         <div class="ft-addr">📍 부산광역시 금정구 부산대학로 63번길 2 · IT관 3층 AI 거점사업단<br>📞 051-510-0000 · ✉ arise@pusan.ac.kr<br>⏰ 평일 09:00 – 18:00</div>
-        <div class="ft-sns" style="margin-top:24px">
-          <a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a>
-        </div>
       </div>
       <div class="ft-col"><h4>사업 소개</h4>
-        <a href="/s30/about/">사업 개요 · 비전</a><a href="/s30/aura/">A.U.R.A 2.0</a><a href="/s30/about/governance/">거버넌스</a><a href="/s30/roadmap/">3개년 로드맵</a>
+        <a href="/s30/about/">사업 개요 · 비전</a><a href="/s30/about/aura.html">A.U.R.A 2.0</a><a href="/s30/about/governance/">거버넌스</a><a href="/s30/roadmap/">3개년 로드맵</a>
       </div>
       <div class="ft-col"><h4>핵심 사업</h4>
         <a href="/s30/programs/education/">AI 교육 혁신</a><a href="/s30/programs/research/">AI 연구 강화</a><a href="/s30/programs/industry/">산학 협력</a><a href="/s30/programs/infra/">AI 인프라</a>
@@ -702,6 +584,7 @@
     </div>
   </div>
 </footer>
+
 <script>
 window.addEventListener('DOMContentLoaded',function(){
   if(typeof Chart==='undefined') return;
@@ -709,20 +592,9 @@ window.addEventListener('DOMContentLoaded',function(){
   var ctx=document.getElementById('gpuNow');
   if(ctx) new Chart(ctx,{
     type:'doughnut',
-    data:{
-      labels:['PNU-IDC 입주 (163)','교내 학과 교육용 (245)'],
-      datasets:[{
-        data:[163,245],
-        backgroundColor:['#143F90','#0075C9'],
-        borderColor:'#fff', borderWidth:3
-      }]
-    },
-    options:{
-      cutout:'62%',
-      plugins:{
-        legend:{position:'bottom', labels:{boxWidth:12, padding:14, font:{size:11.5, weight:'700'}}}
-      }
-    }
+    data:{ labels:['PNU-IDC 입주 (163)','교내 학과 교육용 (245)'],
+      datasets:[{ data:[163,245], backgroundColor:['#143F90','#0075C9'], borderColor:'#fff', borderWidth:3 }] },
+    options:{ cutout:'62%', plugins:{ legend:{position:'bottom', labels:{boxWidth:12, padding:14, font:{size:11.5, weight:'700'}}}} }
   });
 });
 </script>
