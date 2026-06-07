@@ -29,8 +29,8 @@
   --grad-accent: linear-gradient(108deg, var(--accent-1) 0%, var(--accent-2) 100%);
 
   /* --- Glass surfaces --- */
-  --glass-bg: rgba(10, 14, 30, 0.46);
-  --glass-bg-strong: rgba(8, 11, 26, 0.62);
+  --glass-bg: rgba(10, 14, 30, 0.76);
+  --glass-bg-strong: rgba(8, 11, 26, 0.88);
   --glass-border: rgba(155, 190, 255, 0.16);
   --glass-blur: 18px;
 
@@ -61,8 +61,8 @@
   --accent-2: #00a651;
   --glow-cyan: rgba(37, 99, 235, 0.30);
   --glow-violet: rgba(0, 166, 81, 0.28);
-  --glass-bg: rgba(255, 255, 255, 0.62);
-  --glass-bg-strong: rgba(255, 255, 255, 0.78);
+  --glass-bg: rgba(255, 255, 255, 0.84);
+  --glass-bg-strong: rgba(255, 255, 255, 0.94);
   --glass-border: rgba(40, 70, 140, 0.20);
   --shadow-card: 0 24px 60px -26px rgba(40, 60, 120, 0.34);
 }
@@ -319,7 +319,6 @@ img, video { display: block; max-width: 100%; }
   border-radius: 99px;
   background: var(--grad-accent);
   box-shadow: 0 0 12px var(--glow-cyan);
-  transition: width 0.25s linear;
 }
 .hud__progress-pct {
   font-family: var(--font-display);
@@ -342,7 +341,6 @@ img, video { display: block; max-width: 100%; }
   overflow-y: scroll;
   overflow-x: hidden;
   scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
   background: transparent;     /* let the 3D scene show through */
 }
 
@@ -351,8 +349,6 @@ img, video { display: block; max-width: 100%; }
   min-height: 100vh;
   display: flex;
   align-items: center;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
   padding: clamp(5rem, 12vh, 8rem) clamp(1.2rem, 6vw, 6rem);
   background: transparent;     /* transparent — scene visible behind */
 }
@@ -614,10 +610,15 @@ img, video { display: block; max-width: 100%; }
    10. RESPONSIVE
    ============================================================= */
 @media (max-width: 760px) {
+  .snap {
+    scroll-snap-type: y mandatory;
+  }
   /* Side panels collapse to full-width, bottom-anchored cards */
   .section {
     align-items: flex-end;
     padding: 5rem 1rem 6rem;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
   .section--hero { align-items: center; }
 

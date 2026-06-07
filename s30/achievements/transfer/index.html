@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>기술이전 · 창업 — 부산대학교 AI 거점대학육성사업단 | ARISE PNU</title>
+<meta name="description" content="기술이전·창업 누적 12억 유치 — 부산대 AI 거점대학 산학협력 성과. 해양·의료·소재·금융 AX 기업 협력.">
+<link rel="icon" type="image/jpeg" href="/s30/assets/pnu-symbol-color.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+4:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/src/styles/main.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+/* Transfer page-specific (flat palette only, no gradients) */
+.tr-bignum-band { background:var(--pnu-navy); padding:60px 0; }
+.tr-bignum-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+.tr-bignum { text-align:center; padding:0 24px; border-right:1px solid rgba(255,255,255,.14); }
+.tr-bignum:last-child { border-right:none; }
+.tr-bignum .n { font-family:'Inter',sans-serif; font-size:3.4rem; font-weight:900; color:#fff; line-height:1; letter-spacing:-.04em; }
+.tr-bignum .n span { font-size:1.6rem; color:#7EC8FF; }
+.tr-bignum .l { font-size:13px; color:rgba(255,255,255,.74); margin-top:10px; font-weight:600; letter-spacing:.02em; }
+.tr-bignum .t { font-size:11px; color:#7EC8FF; font-weight:800; letter-spacing:.1em; text-transform:uppercase; font-family:'Inter',sans-serif; margin-bottom:10px; }
+.tr-chart-wrap { background:#fff; border:1px solid var(--border); border-radius:18px; padding:30px 32px; box-shadow:0 8px 28px rgba(15,31,69,.06); }
+.tr-chart-head { font-size:12px; font-weight:800; color:var(--pnu-blue); letter-spacing:.08em; text-transform:uppercase; font-family:'Inter',sans-serif; margin-bottom:18px; }
+.tr-chart-box { position:relative; height:300px; }
+.tr-two { display:grid; grid-template-columns:1.1fr 1fr; gap:22px; align-items:stretch; }
+.tr-case-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.tr-case { background:#fff; border:1px solid var(--border); border-radius:16px; padding:24px; border-top:4px solid var(--pnu-blue); transition:transform .2s,box-shadow .2s; }
+.tr-case:hover { transform:translateY(-4px); box-shadow:0 14px 34px rgba(15,31,69,.1); }
+.tr-case.green { border-top-color:var(--pnu-green); }
+.tr-case .ci { width:48px; height:48px; border-radius:12px; background:var(--blue-tint); color:var(--pnu-blue); display:flex; align-items:center; justify-content:center; font-size:20px; margin-bottom:16px; }
+.tr-case.green .ci { background:#D1FAE5; color:var(--pnu-green); }
+.tr-case .ctag { font-size:11px; font-weight:800; color:var(--pnu-blue); letter-spacing:.06em; text-transform:uppercase; font-family:'Inter',sans-serif; }
+.tr-case.green .ctag { color:var(--pnu-green); }
+.tr-case .cttl { font-size:18px; font-weight:800; color:var(--ink); margin:6px 0 14px; }
+.tr-case .crow { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--text-b); font-weight:600; margin-top:8px; }
+.tr-case .crow i { color:var(--pnu-blue); font-size:12px; width:14px; }
+.tr-case.green .crow i { color:var(--pnu-green); }
+.tr-pipe { background:#fff; border:1px solid var(--border); border-radius:18px; padding:34px 38px; box-shadow:0 8px 28px rgba(15,31,69,.06); }
+.tr-pipe-flow { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+.tr-pipe-step { text-align:center; padding:0 14px; position:relative; }
+.tr-pipe-step::after { content:'\f054'; font-family:'Font Awesome 6 Free'; font-weight:900; position:absolute; right:-8px; top:14px; color:var(--blue-light); font-size:16px; }
+.tr-pipe-step:last-child::after { display:none; }
+.tr-pipe-step .pi { width:54px; height:54px; border-radius:50%; background:var(--blue-tint); color:var(--pnu-blue); display:flex; align-items:center; justify-content:center; font-size:20px; margin:0 auto 14px; }
+.tr-pipe-step.end .pi { background:var(--pnu-green); color:#fff; }
+.tr-pipe-step .pl { font-size:14px; font-weight:800; color:var(--ink); }
+.tr-pipe-step .pn { font-size:11px; color:var(--text-m); font-weight:600; margin-top:4px; }
+.tr-bar-row { display:grid; grid-template-columns:160px 1fr 70px; align-items:center; gap:16px; margin-bottom:14px; }
+.tr-bar-row:last-child { margin-bottom:0; }
+.tr-bar-lbl { font-size:13px; font-weight:700; color:var(--ink); }
+.tr-bar-track { height:14px; background:var(--blue-tint); border-radius:100px; overflow:hidden; }
+.tr-bar-fill { height:100%; background:var(--pnu-blue); border-radius:100px; }
+.tr-bar-fill.green { background:var(--pnu-green); }
+.tr-bar-val { font-family:'Inter',sans-serif; font-size:13px; font-weight:800; color:var(--pnu-blue); text-align:right; }
+.tr-chips { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
+.tr-related-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+@media (max-width:860px){
+  .tr-bignum-grid,.tr-case-grid,.tr-related-grid{ grid-template-columns:repeat(2,1fr); }
+  .tr-two{ grid-template-columns:1fr; }
+  .tr-pipe-flow{ grid-template-columns:repeat(2,1fr); gap:24px 0; }
+  .tr-bar-row{ grid-template-columns:110px 1fr 56px; }
+}
+</style>
+</head>
+<body>
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="left">
+      <span class="live"><span class="live-dot"></span> 2026 AI 거점대학사업 운영 중</span>
+      <span style="margin-left:14px">·</span>
+      <span class="slogan-strip" style="margin-left:14px">Arise PNU, 같이 더 높게</span>
+    </div>
+    <div class="right">
+      <a href="https://www.pusan.ac.kr" target="_blank">부산대학교</a>
+      <a href="https://ai.pusan.ac.kr" target="_blank">AI 대학</a>
+      <a href="https://airc.pusan.ac.kr" target="_blank">장영실연구원</a>
+      <a href="#">로그인</a>
+    </div>
+  </div>
+</div>
+<!-- MAIN HEADER -->
+<header class="main-hdr">
+  <div class="container hdr-inner">
+    <a href="/s30/" class="brand">
+      <img src="/s30/assets/pnu-signature.jpg" alt="부산대학교 공식 시그니처" class="brand-logo">
+      <div class="brand-divider"></div>
+      <div>
+        <div class="brand-text-ko">AI 거점대학육성사업단</div>
+        <div class="brand-text-en">ARISE · arise-ai.pusan.ac.kr</div>
+      </div>
+    </a>
+    <nav class="main-nav">
+      <div class="nav-item">
+        <a href="/s30/about/" class="nav-link">사업 소개 </a>
+        <div class="dropdown">
+          <a href="/s30/about/"><div class="d-i"></div>사업 개요 · 비전</a>
+          <a href="/s30/aura/"><div class="d-i"></div>A.U.R.A 2.0 마스터플랜</a>
+          <a href="/s30/about/governance/"><div class="d-i"></div>거버넌스</a>
+          <a href="/s30/roadmap/"><div class="d-i"></div>3개년 로드맵</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/s30/programs/" class="nav-link">핵심 사업 </a>
+        <div class="dropdown">
+          <a href="/s30/programs/education/"><div class="d-i"></div>AI 교육 혁신</a>
+          <a href="/s30/programs/research/"><div class="d-i"></div>AI 연구 강화</a>
+          <a href="/s30/programs/industry/"><div class="d-i"></div>산학 협력</a>
+          <a href="/s30/programs/infra/"><div class="d-i"></div>AI 인프라</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/s30/achievements/" class="nav-link active">성과 </a>
+        <div class="dropdown">
+          <a href="/s30/achievements/robocup/"><div class="d-i"></div>RoboCup 2025 우승</a>
+          <a href="/s30/achievements/quantum/"><div class="d-i"></div>양자AI 47억 사업</a>
+          <a href="/s30/achievements/papers/"><div class="d-i"></div>논문 · 특허</a>
+          <a href="/s30/achievements/transfer/"><div class="d-i"></div>기술이전 · 창업</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/s30/partners/" class="nav-link">파트너십 </a>
+        <div class="dropdown">
+          <a href="/s30/partners/google/"><div class="d-i"></div>Google for Education</a>
+          <a href="/s30/partners/industry/"><div class="d-i"></div>산학 협약 (35+)</a>
+          <a href="/s30/partners/global/"><div class="d-i"></div>글로벌 협력</a>
+          <a href="/s30/partners/govt/"><div class="d-i"></div>정부·공공기관</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/s30/news/" class="nav-link">알림마당 </a>
+        <div class="dropdown">
+          <a href="/s30/news/?cat=notice"><div class="d-i"></div>공지사항</a>
+          <a href="/s30/news/?cat=news"><div class="d-i"></div>뉴스·보도자료</a>
+          <a href="/s30/news/?cat=event"><div class="d-i"></div>행사·일정</a>
+          <a href="/s30/news/?cat=resource"><div class="d-i"></div>자료실</a>
+        </div>
+      </div>
+      <a href="/s30/partners/#contact" class="nav-link nav-cta">참여 신청 →</a>
+      <div class="lang-toggle">KOR | ENG</div>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container ph-inner">
+    <div class="ph-left">
+      <div class="ph-eyebrow">Tech Transfer · Startup</div>
+      <h1 class="ph-title">기술이전 · <em>창업</em></h1>
+      <p class="ph-sub">산학협력 기술이전·창업 누적 12억 유치</p>
+      <div class="breadcrumb">
+        <a href="/s30/"> 홈</a>
+        
+        <a href="/s30/achievements/">성과</a>
+        
+        <span class="current">기술이전 · 창업</span>
+      </div>
+    </div>
+    <div class="ph-icon"></div>
+  </div>
+</section>
+
+<!-- BIG NUMBERS BAND -->
+<section class="tr-bignum-band">
+  <div class="container">
+    <div class="tr-bignum-grid">
+      <div class="tr-bignum">
+        <div class="t">Funds Raised</div>
+        <div class="n">12<span>억</span></div>
+        <div class="l">기술이전·창업 누적 유치</div>
+      </div>
+      <div class="tr-bignum">
+        <div class="t">National R&amp;D</div>
+        <div class="n">3,111<span>억</span></div>
+        <div class="l">국책사업 누적</div>
+      </div>
+      <div class="tr-bignum">
+        <div class="t">Mega Projects</div>
+        <div class="n">8<span>개</span></div>
+        <div class="l">대형 국책사업</div>
+      </div>
+      <div class="tr-bignum">
+        <div class="t">Industry MOU</div>
+        <div class="n">35<span>+</span></div>
+        <div class="l">산학 협약 기업</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHARTS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="s-eyebrow">Funding Engine</div>
+      <h2 class="s-title">기술사업화 <em>재원 구조</em></h2>
+    </div>
+    <div class="tr-two">
+      <div class="tr-chart-wrap">
+        <div class="tr-chart-head">국책사업 누적 3,111억 · 구성</div>
+        <div class="tr-chart-box"><canvas id="fundChart"></canvas></div>
+      </div>
+      <div class="tr-chart-wrap">
+        <div class="tr-chart-head">분야별 산학 기술협력</div>
+        <div class="tr-chart-box"><canvas id="domainChart"></canvas></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE CARDS -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header center">
+      <div class="s-eyebrow">Industry Cases</div>
+      <h2 class="s-title">산학 <em>기술협력 사례</em></h2>
+    </div>
+    <div class="tr-case-grid">
+      <div class="tr-case">
+        <div class="ci"></div>
+        <div class="ctag">Marine AX</div>
+        <div class="cttl">삼성중공업</div>
+        <div class="crow"> 해양 AI 센터</div>
+        <div class="crow"> 산학 협약</div>
+      </div>
+      <div class="tr-case green">
+        <div class="ci"></div>
+        <div class="ctag">Healthcare AX</div>
+        <div class="cttl">은성의료재단</div>
+        <div class="crow"> AX 헬스케어</div>
+        <div class="crow"> 산학 협약</div>
+      </div>
+      <div class="tr-case">
+        <div class="ci"></div>
+        <div class="ctag">Materials AI</div>
+        <div class="cttl">한국재료연구원</div>
+        <div class="crow"> 소재 AI</div>
+        <div class="crow"> KIMS 협약</div>
+      </div>
+      <div class="tr-case">
+        <div class="ci"></div>
+        <div class="ctag">Defense AI</div>
+        <div class="cttl">한화에어로스페이스</div>
+        <div class="crow"> 방산 AI</div>
+        <div class="crow"> 산학 협약</div>
+      </div>
+      <div class="tr-case green">
+        <div class="ci"></div>
+        <div class="ctag">Finance AI</div>
+        <div class="cttl">BNK 부산은행</div>
+        <div class="crow"> 금융 AI</div>
+        <div class="crow"> 산학 협약</div>
+      </div>
+      <div class="tr-case">
+        <div class="ci"></div>
+        <div class="ctag">Talent Pipeline</div>
+        <div class="cttl">LG전자</div>
+        <div class="crow"> 스마트가전공학과 2027</div>
+        <div class="crow"> 채용연계 · 등록금 전액</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMERCIALIZATION PIPELINE -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="s-eyebrow">Pipeline</div>
+      <h2 class="s-title">기술 <em>사업화 흐름</em></h2>
+    </div>
+    <div class="tr-pipe">
+      <div class="tr-pipe-flow">
+        <div class="tr-pipe-step">
+          <div class="pi"></div>
+          <div class="pl">연구 · 논문</div>
+          <div class="pn">480+편 / 연</div>
+        </div>
+        <div class="tr-pipe-step">
+          <div class="pi"></div>
+          <div class="pl">특허 · IP</div>
+          <div class="pn">지식재산 확보</div>
+        </div>
+        <div class="tr-pipe-step">
+          <div class="pi"></div>
+          <div class="pl">기술이전</div>
+          <div class="pn">기업 라이선싱</div>
+        </div>
+        <div class="tr-pipe-step end">
+          <div class="pi"></div>
+          <div class="pl">창업 · 사업화</div>
+          <div class="pn">누적 12억 유치</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRESS METRICS -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header center">
+      <div class="s-eyebrow">At a Glance</div>
+      <h2 class="s-title">사업화 <em>역량 지표</em></h2>
+    </div>
+    <div class="tr-pipe" style="max-width:820px;margin:0 auto">
+      <div class="tr-bar-row">
+        <div class="tr-bar-lbl">기술이전·창업 유치</div>
+        <div class="tr-bar-track"><div class="tr-bar-fill green" style="width:100%"></div></div>
+        <div class="tr-bar-val">12억</div>
+      </div>
+      <div class="tr-bar-row">
+        <div class="tr-bar-lbl">산학 협약 기업</div>
+        <div class="tr-bar-track"><div class="tr-bar-fill" style="width:88%"></div></div>
+        <div class="tr-bar-val">35+</div>
+      </div>
+      <div class="tr-bar-row">
+        <div class="tr-bar-lbl">대형 국책사업</div>
+        <div class="tr-bar-track"><div class="tr-bar-fill" style="width:64%"></div></div>
+        <div class="tr-bar-val">8개</div>
+      </div>
+      <div class="tr-bar-row">
+        <div class="tr-bar-lbl">연간 논문</div>
+        <div class="tr-bar-track"><div class="tr-bar-fill" style="width:96%"></div></div>
+        <div class="tr-bar-val">480+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED ACHIEVEMENTS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header center">
+      <div class="s-eyebrow">Track Record</div>
+      <h2 class="s-title">사업화 <em>핵심 성과</em></h2>
+    </div>
+    <div class="tr-related-grid">
+      <div class="ach-card gold">
+        <div class="ach-icon"></div>
+        <span class="ach-tag">Raised</span>
+        <div class="ach-num">12<span>억</span></div>
+        <div class="ach-num-lbl">기술이전·창업 유치</div>
+      </div>
+      <div class="ach-card green">
+        <div class="ach-icon"></div>
+        <span class="ach-tag">National</span>
+        <div class="ach-num">3,111<span>억</span></div>
+        <div class="ach-num-lbl">국책사업 누적</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon"></div>
+        <span class="ach-tag">Partners</span>
+        <div class="ach-num">35<span>+</span></div>
+        <div class="ach-num-lbl">산학 협약 기업</div>
+      </div>
+      <div class="ach-card violet">
+        <div class="ach-icon"></div>
+        <span class="ach-tag">Projects</span>
+        <div class="ach-num">8<span>개</span></div>
+        <div class="ach-num-lbl">대형 국책사업</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="ft-top">
+      <div>
+        <div class="ft-brand-row">
+          <img src="/s30/assets/pnu-signature.jpg" alt="부산대학교" class="ft-logo-img" style="filter:brightness(0) invert(1)">
+        </div>
+        <div class="ft-brand-name">AI 거점대학육성사업단 · ARISE PNU<small>arise-ai.pusan.ac.kr · A.U.R.A 2.0 마스터플랜</small></div>
+        <div class="ft-desc" style="margin-top:16px"><em>"Arise PNU, 같이 더 높게"</em> — 동남권 AX 생태계의 중심 거점, 부산대학교 AI 거점대학육성사업단입니다.</div>
+        <div class="ft-addr">📍 부산광역시 금정구 부산대학로 63번길 2 · IT관 3층 AI 거점사업단<br>📞 051-510-0000 · ✉ arise@pusan.ac.kr<br>⏰ 평일 09:00 – 18:00</div>
+        <div class="ft-sns" style="margin-top:24px">
+          <a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a>
+        </div>
+      </div>
+      <div class="ft-col"><h4>사업 소개</h4>
+        <a href="/s30/about/#overview">사업 개요 · 비전</a><a href="/s30/about/#aura">A.U.R.A 2.0</a><a href="/s30/about/governance/">거버넌스</a><a href="/s30/roadmap/">3개년 로드맵</a>
+      </div>
+      <div class="ft-col"><h4>핵심 사업</h4>
+        <a href="/s30/programs/education/">AI 교육 혁신</a><a href="/s30/programs/research/">AI 연구 강화</a><a href="/s30/programs/industry/">산학 협력</a><a href="/s30/programs/infra/">AI 인프라</a>
+      </div>
+      <div class="ft-col"><h4>관련 사이트</h4>
+        <a href="https://www.pusan.ac.kr" target="_blank">부산대학교 ↗</a><a href="https://ai.pusan.ac.kr" target="_blank">AI 대학 ↗</a><a href="https://airc.pusan.ac.kr" target="_blank">장영실연구원 ↗</a><a href="https://aiedu.pusan.ac.kr" target="_blank">AI 융합교육원 ↗</a><a href="https://uitc.pusan.ac.kr" target="_blank">AX·정보화혁신본부 ↗</a>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <div class="ft-copy">© 2026 Pusan National University ARISE-AI. All rights reserved.</div>
+      <div class="ft-policy"><a href="#">개인정보처리방침</a><a href="#">이메일무단수집거부</a><a href="#">사이트맵</a><a href="#">접근성 정책</a></div>
+    </div>
+  </div>
+</footer>
+<script type="module" src="/src/scripts/main.js"></script>
+<script>
+(function(){
+  if (typeof Chart === 'undefined') return;
+  Chart.defaults.font.family = "'Noto Sans KR','Inter',sans-serif";
+  Chart.defaults.color = '#475569';
+  var blue='#005BAA', blueDark='#143F90', blueSub='#0075C9', green='#00A651', navy='#0F1F45', light='#7EC8FF';
+
+  var f = document.getElementById('fundChart');
+  if (f) new Chart(f, {
+    type:'doughnut',
+    data:{
+      labels:['글로컬대학30 1,500억','RISE 956억','반도체특성화 328억','SW중심대학 142억','부트캠프 75억','AI융합대학원 63억','양자 47억'],
+      datasets:[{
+        data:[1500,956,328,142,75,63,47],
+        backgroundColor:[blue,blueSub,blueDark,green,light,navy,'#9DBCDC'],
+        borderColor:'#fff', borderWidth:2
+      }]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false, cutout:'58%',
+      plugins:{ legend:{ position:'right', labels:{ boxWidth:12, padding:10, font:{size:11} } } }
+    }
+  });
+
+  var d = document.getElementById('domainChart');
+  if (d) new Chart(d, {
+    type:'bar',
+    data:{
+      labels:['해양','의료','소재','방산','금융','에듀테크'],
+      datasets:[{
+        label:'산학 기술협력 분야',
+        data:[5,4,4,3,3,3],
+        backgroundColor:blue, borderRadius:6, barThickness:30
+      }]
+    },
+    options:{
+      indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ display:false } },
+      scales:{ x:{ display:false, grid:{display:false} }, y:{ grid:{display:false}, ticks:{font:{size:12,weight:'600'}} } }
+    }
+  });
+})();
+</script>
+</body>
+</html>

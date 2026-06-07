@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>양자AI 47억 — 부산대학교 AI 거점대학육성사업단 | ARISE PNU</title>
+<meta name="description" content="국내 최초 양자AI 원천연구 47억 원 국가 R&D 선정 · 위상초전도체 · 2025–2029 · 과학기술정보통신부(MSIT) · 부산대 연구진. 양자컴퓨팅 시범 인프라 2027.">
+<link rel="icon" type="image/jpeg" href="/s30/assets/pnu-symbol-color.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+4:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/src/styles/main.css">
+<style>
+/* ===== 양자AI 47억 페이지 고유 CSS (평면색만 · main.css 미수정) ===== */
+
+/* 히어로 — 단색 네이비 */
+.q-hero { background:#0F1F45; position:relative; overflow:hidden; }
+.q-hero .ph-eyebrow { color:#7EC8FF; }
+.q-hero .ph-title { color:#fff; }
+.q-hero .ph-title em { color:#7EC8FF; font-style:normal; }
+.q-hero .ph-sub { color:rgba(255,255,255,.78); }
+.q-hero .breadcrumb, .q-hero .breadcrumb a { color:rgba(255,255,255,.7); }
+.q-hero .breadcrumb .current { color:#fff; }
+.q-hero .ph-icon { color:rgba(126,200,255,.92); }
+/* 히어로 배경 격자 도식 (평면 · SVG 단색 라인) */
+.q-hero .qgrid { position:absolute; inset:0; pointer-events:none; opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='46'%3E%3Cpath d='M46 0H0V46' fill='none' stroke='%237EC8FF' stroke-width='1' stroke-opacity='0.12'/%3E%3C/svg%3E");
+  background-size:46px 46px; }
+
+/* 헤드라인 띠 (단색) */
+.q-strip { background:#143F90; }
+.q-strip-row { display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; padding:16px 0; color:#fff; }
+.q-strip-left { display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+.q-strip-badge { display:inline-flex; align-items:center; gap:8px; padding:7px 16px; background:rgba(126,200,255,.16); border:1px solid rgba(126,200,255,.5); color:#BFE3FF; border-radius:100px; font-size:12px; font-weight:800; letter-spacing:.06em; }
+.q-strip-text { font-size:14px; font-weight:600; }
+.q-strip-text strong { color:#7EC8FF; }
+
+/* 스탯밴드 — 단색 네이비 */
+.stats-band.q-band { background:#0F1F45; }
+.stats-band.q-band .stat-cell-num span { color:#7EC8FF; }
+
+/* 피처카드 사진 hover */
+.feat-card .img-wrap { overflow:hidden; }
+.feat-card .img-wrap img { transition:transform .7s cubic-bezier(.16,1,.3,1); will-change:transform; }
+.feat-card:hover .img-wrap img { transform:scale(1.06); }
+.feat-card .badge.atom { background:#005BAA; color:#fff; }
+
+/* 사실 메타 칩 */
+.q-fact-chips { display:flex; flex-wrap:wrap; gap:6px; margin:4px 0 16px; }
+.q-fact-chips span { display:inline-flex; align-items:center; gap:6px; padding:6px 13px; border-radius:100px; font-size:11.5px; font-weight:700; background:var(--blue-tint); color:var(--pnu-blue); border:1px solid var(--blue-light); }
+.q-fact-chips span i { font-size:10px; opacity:.85; }
+
+/* 큰 숫자 KPI 타일 (라이트) */
+.q-kpi-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+.q-kpi { background:var(--white); border:1px solid var(--border); border-radius:18px; padding:30px 24px; text-align:center; position:relative; overflow:hidden; transition:transform .25s, box-shadow .25s; }
+.q-kpi:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,91,170,.12); }
+.q-kpi::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:var(--pnu-blue); }
+.q-kpi.green::before { background:var(--pnu-green); }
+.q-kpi.navy::before { background:var(--pnu-navy); }
+.q-kpi .kc-ic { width:54px; height:54px; margin:0 auto 16px; border-radius:14px; background:var(--blue-tint); color:var(--pnu-blue); display:flex; align-items:center; justify-content:center; font-size:22px; }
+.q-kpi.green .kc-ic { background:#E6F6EE; color:var(--pnu-green); }
+.q-kpi .kc-num { font-family:'Inter',sans-serif; font-size:42px; font-weight:900; color:var(--ink); letter-spacing:-.04em; line-height:1; }
+.q-kpi .kc-num span { font-size:18px; color:var(--text-m); }
+.q-kpi.green .kc-num span { color:var(--pnu-green); }
+.q-kpi .kc-lbl { font-size:13px; color:var(--text-b); margin-top:9px; font-weight:600; }
+.q-kpi .kc-note { font-size:11.5px; color:var(--text-m); margin-top:5px; }
+
+/* 예산 컨텍스트 메가 숫자 패널 (단색 네이비) */
+.q-budget-head { display:grid; grid-template-columns:1fr 1.3fr; gap:40px; align-items:center;
+  background:#0F1F45; border-radius:24px; padding:40px 42px; color:#fff; margin-bottom:38px; position:relative; overflow:hidden; }
+.q-budget-head .qbh-left { position:relative; z-index:1; }
+.qbh-eyebrow { color:#7EC8FF; font-size:11.5px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; font-family:'Inter',sans-serif; margin-bottom:12px; }
+.qbh-mega { font-family:'Inter',sans-serif; font-size:84px; font-weight:900; letter-spacing:-.05em; line-height:.9; color:#fff; }
+.qbh-mega span { font-size:30px; color:#7EC8FF; }
+.qbh-sub { font-size:12.5px; color:rgba(255,255,255,.62); margin-top:12px; }
+.qbh-chips { display:flex; gap:7px; flex-wrap:wrap; margin-top:18px; }
+.qbh-chips span { padding:6px 13px; border-radius:100px; font-size:11.5px; font-weight:700; color:#CFE7FF; background:rgba(126,200,255,.12); border:1px solid rgba(126,200,255,.26); }
+.qbh-right { position:relative; z-index:1; }
+.qbh-donut-box { position:relative; height:240px; }
+
+/* 예산 바 카드 래퍼 (라이트) */
+.q-budget-card { background:var(--white); border:1px solid var(--border); border-radius:22px; padding:32px 36px; box-shadow:0 14px 40px rgba(0,91,170,.07); }
+.q-budget-card .bar-fill.qhi { background:var(--pnu-blue) !important; }
+.q-budget-card .bar-fill.qhi.now { background:var(--pnu-green) !important; box-shadow:0 0 0 2px rgba(0,166,81,.18) inset; }
+
+/* 연구 로드맵 타임라인 (단색 네이비 밴드) */
+.q-timeline-band { background:#0F1F45; padding:80px 0; position:relative; overflow:hidden; }
+.q-tl-track { display:grid; grid-template-columns:repeat(5,1fr); gap:0; position:relative; margin-top:50px; }
+.q-tl-track::before { content:''; position:absolute; top:13px; left:8%; right:8%; height:2px; background:rgba(126,200,255,.45); }
+.q-tl-item { text-align:center; padding:0 10px; position:relative; }
+.q-tl-dot { width:28px; height:28px; border-radius:50%; background:#143F90; border:3px solid #7EC8FF; margin:0 auto 16px; position:relative; z-index:2; display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; }
+.q-tl-item.on .q-tl-dot { background:var(--pnu-green); border-color:#5BE39B; box-shadow:0 0 0 6px rgba(0,166,81,.18); }
+.q-tl-date { font-family:'Inter',sans-serif; font-size:13px; font-weight:900; color:#7EC8FF; letter-spacing:.04em; }
+.q-tl-item.on .q-tl-date { color:#5BE39B; }
+.q-tl-title { font-size:14px; font-weight:800; color:#fff; margin-top:8px; line-height:1.35; }
+.q-tl-cap { font-size:11.5px; color:rgba(255,255,255,.6); margin-top:6px; }
+
+/* SVG 위상초전도체 도식 (평면 노드 다이어그램) */
+.q-diagram { display:grid; grid-template-columns:1.1fr 1fr; gap:36px; align-items:center;
+  background:var(--white); border:1px solid var(--border); border-radius:24px; padding:34px 38px; box-shadow:0 14px 40px rgba(0,91,170,.07); }
+.q-diagram .qd-svg { width:100%; height:auto; }
+.q-diagram .qd-nodes { display:grid; gap:12px; }
+.q-node { display:flex; align-items:center; gap:14px; padding:13px 16px; border:1px solid var(--border); border-radius:14px; background:var(--bg-off); }
+.q-node .qn-ic { width:42px; height:42px; flex:0 0 auto; border-radius:11px; display:flex; align-items:center; justify-content:center; font-size:18px; background:var(--blue-tint); color:var(--pnu-blue); }
+.q-node.green .qn-ic { background:#E6F6EE; color:var(--pnu-green); }
+.q-node .qn-t { font-size:13.5px; font-weight:800; color:var(--ink); }
+.q-node .qn-s { font-size:11.5px; color:var(--text-m); margin-top:2px; }
+
+.count-up { font-variant-numeric:tabular-nums; }
+
+@media(max-width:920px){
+  .q-budget-head { grid-template-columns:1fr; gap:26px; }
+  .q-diagram { grid-template-columns:1fr; gap:24px; }
+  .q-kpi-grid { grid-template-columns:1fr 1fr; }
+  .q-tl-track { grid-template-columns:1fr; gap:24px; }
+  .q-tl-track::before { display:none; }
+}
+@media(max-width:560px){ .q-kpi-grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="left">
+      <span class="live"><span class="live-dot"></span> 2026 AI 거점대학사업 운영 중</span>
+      <span style="margin-left:14px">·</span>
+      <span class="slogan-strip" style="margin-left:14px">Arise PNU, 같이 더 높게</span>
+    </div>
+    <div class="right">
+      <a href="https://www.pusan.ac.kr" target="_blank">부산대학교</a>
+      <a href="https://ai.pusan.ac.kr" target="_blank">AI 대학</a>
+      <a href="https://airc.pusan.ac.kr" target="_blank">장영실연구원</a>
+      <a href="#">로그인</a>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN HEADER -->
+<header class="main-hdr">
+  <div class="container hdr-inner">
+    <a href="/s30/" class="brand">
+      <img src="/s30/assets/pnu-signature.jpg" alt="부산대학교 공식 시그니처" class="brand-logo">
+      <div class="brand-divider"></div>
+      <div>
+        <div class="brand-text-ko">AI 거점대학육성사업단</div>
+        <div class="brand-text-en">ARISE · arise-ai.pusan.ac.kr</div>
+      </div>
+    </a>
+    <nav class="main-nav">
+      <div class="nav-item">
+        <a href="/s30/about/" class="nav-link">사업 소개 </a>
+        <div class="dropdown">
+          <a href="/s30/about/"><div class="d-i"></div>사업 개요 · 비전</a>
+          <a href="/s30/aura/"><div class="d-i"></div>A.U.R.A 2.0 마스터플랜</a>
+          <a href="/s30/about/governance/"><div class="d-i"></div>거버넌스</a>
+          <a href="/s30/roadmap/"><div class="d-i"></div>3개년 로드맵</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/s30/programs/" class="nav-link">핵심 사업 </a>
+        <div class="dropdown">
+          <a href="/s30/programs/education/"><div class="d-i"></div>AI 교육 혁신</a>
+          <a href="/s30/programs/research/"><div class="d-i"></div>AI 연구 강화</a>
+          <a href="/s30/programs/industry/"><div class="d-i"></div>산학 협력</a>
+          <a href="/s30/programs/infra/"><div class="d-i"></div>AI 인프라</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/s30/achievements/" class="nav-link active">성과 </a>
+        <div class="dropdown">
+          <a href="/s30/achievements/robocup/"><div class="d-i"></div>RoboCup 2025 우승</a>
+          <a href="/s30/achievements/quantum/"><div class="d-i"></div>양자AI 47억 사업</a>
+          <a href="/s30/achievements/papers/"><div class="d-i"></div>논문 · 특허</a>
+          <a href="/s30/achievements/transfer/"><div class="d-i"></div>기술이전 · 창업</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/s30/partners/" class="nav-link">파트너십 </a>
+        <div class="dropdown">
+          <a href="/s30/partners/google/"><div class="d-i"></div>Google for Education</a>
+          <a href="/s30/partners/industry/"><div class="d-i"></div>산학 협약 (35+)</a>
+          <a href="/s30/partners/global/"><div class="d-i"></div>글로벌 협력</a>
+          <a href="/s30/partners/govt/"><div class="d-i"></div>정부·공공기관</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/s30/news/" class="nav-link">알림마당 </a>
+        <div class="dropdown">
+          <a href="/s30/news/?cat=notice"><div class="d-i"></div>공지사항</a>
+          <a href="/s30/news/?cat=news"><div class="d-i"></div>뉴스·보도자료</a>
+          <a href="/s30/news/?cat=event"><div class="d-i"></div>행사·일정</a>
+          <a href="/s30/news/?cat=resource"><div class="d-i"></div>자료실</a>
+        </div>
+      </div>
+      <a href="/s30/partners/#contact" class="nav-link nav-cta">참여 신청 →</a>
+      <div class="lang-toggle">KOR | ENG</div>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero q-hero">
+  <div class="qgrid"></div>
+  <div class="container ph-inner">
+    <div class="ph-left">
+      <div class="ph-eyebrow">QUANTUM AI · 양자AI 원천연구</div>
+      <h1 class="ph-title">국내 최초 <em>양자AI 47억</em></h1>
+      <p class="ph-sub">위상초전도체 · 2025–2029 · 과학기술정보통신부</p>
+      <div class="breadcrumb">
+        <a href="/s30/"> 홈</a>
+        
+        <a href="/s30/achievements/">성과</a>
+        
+        <span class="current">양자AI 47억</span>
+      </div>
+    </div>
+    <div class="ph-icon"></div>
+  </div>
+</section>
+
+<!-- HEADLINE STRIP -->
+<div class="q-strip">
+  <div class="container q-strip-row">
+    <div class="q-strip-left">
+      <span class="q-strip-badge"> 국내 최초</span>
+      <span class="q-strip-text">2025.06.15 선정 · <strong>양자AI 원천연구 47억 원</strong> — MSIT 국가 R&D</span>
+    </div>
+    <span class="q-strip-badge"> 위상초전도체</span>
+  </div>
+</div>
+
+<!-- STATS BAND -->
+<section class="stats-band q-band">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-cell">
+        <div class="stat-cell-tag">Funding</div>
+        <div class="stat-cell-num count-up" data-target="47">47<span>억</span></div>
+        <div class="stat-cell-lbl">국가 R&D 사업비</div>
+        <div class="stat-cell-note">과학기술정보통신부(MSIT)</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-tag">First in Korea</div>
+        <div class="stat-cell-num">국내 최초</div>
+        <div class="stat-cell-lbl">양자AI 원천연구</div>
+        <div class="stat-cell-note">부산대 연구진</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-tag">Period</div>
+        <div class="stat-cell-num count-up" data-target="5">5<span>년</span></div>
+        <div class="stat-cell-lbl">연구 수행 기간</div>
+        <div class="stat-cell-note">2025 — 2029</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-tag">Domain</div>
+        <div class="stat-cell-num">위상<span>초전도체</span></div>
+        <div class="stat-cell-lbl">핵심 연구 주제</div>
+        <div class="stat-cell-note">Topological Superconductor</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-tag">Infra</div>
+        <div class="stat-cell-num count-up" data-target="2027">2027</div>
+        <div class="stat-cell-lbl">양자컴퓨팅 시범 인프라</div>
+        <div class="stat-cell-note">단계적 구축 목표</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE CARD -->
+<section class="section">
+  <div class="container">
+    <div class="section-header row">
+      <div>
+        <div class="s-eyebrow">Original Research · 원천연구</div>
+        <div class="s-title">국내 최초 <em>양자AI 국가 과제</em></div>
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <div class="img-wrap">
+        <img src="/s30/assets/img/quantum.jpg" alt="양자AI 원천연구" onerror="this.style.display='none';this.parentElement.style.background='#0d3b6e'">
+        <div class="badge-strip">
+          <span class="badge atom"> QUANTUM AI</span>
+          <span class="badge dark">국내 최초</span>
+        </div>
+      </div>
+      <div class="feat-body">
+        <span class="feat-cat">MSIT 국가 R&D · 원천연구</span>
+        <h3 class="feat-title">양자AI 원천연구 47억 원 선정</h3>
+        <div class="q-fact-chips">
+          <span> 위상초전도체</span>
+          <span> 국내 최초</span>
+          <span> 양자컴퓨팅</span>
+          <span> AI 융합</span>
+        </div>
+        <div class="feat-meta">
+          <div class="feat-meta-cell"><div class="k">Funding</div><div class="v">47억 원 · 국가 R&D</div></div>
+          <div class="feat-meta-cell"><div class="k">Agency</div><div class="v">과학기술정보통신부(MSIT)</div></div>
+          <div class="feat-meta-cell"><div class="k">Period</div><div class="v">2025 — 2029 (5년)</div></div>
+          <div class="feat-meta-cell"><div class="k">Selected</div><div class="v">2025.06.15</div></div>
+        </div>
+        <div class="feat-defeated">
+          <span class="def-chip"> 국내 최초 원천연구</span>
+          <span class="def-chip"> MSIT 선정</span>
+          <span class="def-chip"> 장영실 AI융합연구원</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KPI BIG NUMBERS -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header center">
+      <div class="s-eyebrow" style="justify-content:center">Project Scale · 사업 규모</div>
+      <div class="s-title">한눈에 보는 <em>47억 양자AI</em></div>
+    </div>
+    <div class="q-kpi-grid">
+      <div class="q-kpi">
+        <div class="kc-ic"></div>
+        <div class="kc-num count-up" data-target="47">47<span>억</span></div>
+        <div class="kc-lbl">국가 R&D 사업비</div>
+        <div class="kc-note">MSIT 원천연구</div>
+      </div>
+      <div class="q-kpi green">
+        <div class="kc-ic"></div>
+        <div class="kc-num count-up" data-target="5">5<span>년</span></div>
+        <div class="kc-lbl">연구 수행 기간</div>
+        <div class="kc-note">2025 — 2029</div>
+      </div>
+      <div class="q-kpi navy">
+        <div class="kc-ic"></div>
+        <div class="kc-num">국내<span> 최초</span></div>
+        <div class="kc-lbl">양자AI 원천연구</div>
+        <div class="kc-note">2025.06.15 선정</div>
+      </div>
+      <div class="q-kpi">
+        <div class="kc-ic"></div>
+        <div class="kc-num count-up" data-target="2027">2027</div>
+        <div class="kc-lbl">양자컴퓨팅 시범 인프라</div>
+        <div class="kc-note">단계적 구축</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUDGET CONTEXT -->
+<section class="section">
+  <div class="container">
+    <div class="section-header center">
+      <div class="s-eyebrow" style="justify-content:center">Funding Portfolio · 국책사업 누적</div>
+      <div class="s-title">3,111억 중 <em>양자AI 47억</em>의 위치</div>
+    </div>
+
+    <!-- 메가 숫자 + 도넛 -->
+    <div class="q-budget-head">
+      <div class="qbh-left">
+        <div class="qbh-eyebrow">Cumulative Funding · 누적</div>
+        <div class="qbh-mega"><span class="count-up" data-target="3111" style="font-size:inherit;color:inherit">3,111</span><span>억 원</span></div>
+        <div class="qbh-sub">8개 대형 국책사업 누적 · 출처: 부산대 기획처 (UPDATED 2026.05.26)</div>
+        <div class="qbh-chips">
+          <span>양자AI 47억 = 1.5%</span>
+          <span>국내 최초</span>
+          <span>MSIT</span>
+        </div>
+      </div>
+      <div class="qbh-right">
+        <div class="qbh-donut-box">
+          <canvas id="fundDonut" aria-label="국책사업 누적 3,111억 중 양자AI 47억 비중 도넛 차트" role="img"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- 예산 바 (.budget-flow 재사용) -->
+    <div class="q-budget-card">
+      <div class="budget-flow">
+        <div class="bar-row">
+          <div class="bar-label">글로컬대학30<small>2023–27 · 교육부</small></div>
+          <div class="bar-track"><div class="bar-fill b1">48.2%</div></div>
+          <div class="bar-value">1,500억</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">RISE 지역혁신<small>2025–29 · 교육부×부산시</small></div>
+          <div class="bar-track"><div class="bar-fill b2">30.7%</div></div>
+          <div class="bar-value">956억</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">반도체특성화대학<small>KIAT</small></div>
+          <div class="bar-track"><div class="bar-fill b3">10.5%</div></div>
+          <div class="bar-value">328억</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">SW중심대학 2단계<small>MSIT</small></div>
+          <div class="bar-track"><div class="bar-fill b4">4.6%</div></div>
+          <div class="bar-value">142억</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">AI 첨단산업 부트캠프<small>교육부×KIAT</small></div>
+          <div class="bar-track"><div class="bar-fill b5">2.4%</div></div>
+          <div class="bar-value">75억</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">AI융합대학원 2기<small>IITP</small></div>
+          <div class="bar-track"><div class="bar-fill b6">2.0%</div></div>
+          <div class="bar-value">63억</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label" style="color:var(--pnu-green);font-weight:800">양자과학기술 원천연구<small>MSIT · 국내 최초</small></div>
+          <div class="bar-track"><div class="bar-fill qhi now" style="width:1.5%;min-width:54px">47억</div></div>
+          <div class="bar-value" style="color:var(--pnu-green)">1.5%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH DIAGRAM (SVG, flat) -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="section-header center">
+      <div class="s-eyebrow" style="justify-content:center">Research Pillars · 연구 축</div>
+      <div class="s-title">양자 + <em>AI 융합 연구</em></div>
+    </div>
+    <div class="q-diagram">
+      <svg class="qd-svg" viewBox="0 0 460 300" role="img" aria-label="위상초전도체 양자AI 융합 노드 다이어그램">
+        <!-- connectors -->
+        <line x1="230" y1="150" x2="90" y2="70" stroke="#DBEAFE" stroke-width="3"/>
+        <line x1="230" y1="150" x2="90" y2="230" stroke="#DBEAFE" stroke-width="3"/>
+        <line x1="230" y1="150" x2="380" y2="70" stroke="#DBEAFE" stroke-width="3"/>
+        <line x1="230" y1="150" x2="380" y2="230" stroke="#DBEAFE" stroke-width="3"/>
+        <!-- center -->
+        <circle cx="230" cy="150" r="52" fill="#0F1F45"/>
+        <text x="230" y="144" text-anchor="middle" fill="#7EC8FF" font-family="Inter" font-weight="800" font-size="13">양자AI</text>
+        <text x="230" y="164" text-anchor="middle" fill="#fff" font-family="Inter" font-weight="800" font-size="13">47억</text>
+        <!-- satellites -->
+        <circle cx="90" cy="70" r="34" fill="#005BAA"/>
+        <text x="90" y="75" text-anchor="middle" fill="#fff" font-family="Inter" font-weight="700" font-size="11">위상초전도체</text>
+        <circle cx="90" cy="230" r="34" fill="#0075C9"/>
+        <text x="90" y="235" text-anchor="middle" fill="#fff" font-family="Inter" font-weight="700" font-size="11">양자컴퓨팅</text>
+        <circle cx="380" cy="70" r="34" fill="#00A651"/>
+        <text x="380" y="75" text-anchor="middle" fill="#fff" font-family="Inter" font-weight="700" font-size="11">AI 융합</text>
+        <circle cx="380" cy="230" r="34" fill="#143F90"/>
+        <text x="380" y="235" text-anchor="middle" fill="#fff" font-family="Inter" font-weight="700" font-size="11">원천기술</text>
+      </svg>
+      <div class="qd-nodes">
+        <div class="q-node"><div class="qn-ic"></div><div><div class="qn-t">위상초전도체</div><div class="qn-s">Topological Superconductor</div></div></div>
+        <div class="q-node"><div class="qn-ic"></div><div><div class="qn-t">양자컴퓨팅</div><div class="qn-s">시범 인프라 2027</div></div></div>
+        <div class="q-node green"><div class="qn-ic"></div><div><div class="qn-t">AI 융합</div><div class="qn-s">장영실 AI융합연구원 거점</div></div></div>
+        <div class="q-node"><div class="qn-ic"></div><div><div class="qn-t">원천기술</div><div class="qn-s">국내 최초 · MSIT</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH TIMELINE -->
+<section class="q-timeline-band">
+  <div class="container" style="position:relative">
+    <div class="section-header center">
+      <div class="s-eyebrow" style="color:#7EC8FF;justify-content:center">Research Roadmap · 2025 → 2029</div>
+      <div class="s-title" style="color:#fff">양자AI <em style="color:#7EC8FF;font-style:normal">5개년 연구</em></div>
+    </div>
+    <div class="q-tl-track">
+      <div class="q-tl-item on">
+        <div class="q-tl-dot"></div>
+        <div class="q-tl-date">2025</div>
+        <div class="q-tl-title">과제 선정</div>
+        <div class="q-tl-cap">2025.06.15 · MSIT 47억</div>
+      </div>
+      <div class="q-tl-item on">
+        <div class="q-tl-dot"></div>
+        <div class="q-tl-date">2026</div>
+        <div class="q-tl-title">위상초전도체 연구</div>
+        <div class="q-tl-cap">원천연구 본격 수행</div>
+      </div>
+      <div class="q-tl-item">
+        <div class="q-tl-dot"></div>
+        <div class="q-tl-date">2027</div>
+        <div class="q-tl-title">양자컴퓨팅 시범 인프라</div>
+        <div class="q-tl-cap">단계적 구축</div>
+      </div>
+      <div class="q-tl-item">
+        <div class="q-tl-dot"></div>
+        <div class="q-tl-date">2028</div>
+        <div class="q-tl-title">양자 + AI 융합</div>
+        <div class="q-tl-cap">장영실 연구원 거점</div>
+      </div>
+      <div class="q-tl-item">
+        <div class="q-tl-dot"></div>
+        <div class="q-tl-date">2029</div>
+        <div class="q-tl-title">원천기술 확보</div>
+        <div class="q-tl-cap">과제 종료 · 성과 확산</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="ft-top">
+      <div>
+        <div class="ft-brand-row">
+          <img src="/s30/assets/pnu-signature.jpg" alt="부산대학교" class="ft-logo-img" style="filter:brightness(0) invert(1)">
+        </div>
+        <div class="ft-brand-name">AI 거점대학육성사업단 · ARISE PNU<small>arise-ai.pusan.ac.kr · A.U.R.A 2.0 마스터플랜</small></div>
+        <div class="ft-desc" style="margin-top:16px"><em>"Arise PNU, 같이 더 높게"</em> — 동남권 AX 생태계의 중심 거점, 부산대학교 AI 거점대학육성사업단입니다.</div>
+        <div class="ft-addr">📍 부산광역시 금정구 부산대학로 63번길 2 · IT관 3층 AI 거점사업단<br>📞 051-510-0000 · ✉ arise@pusan.ac.kr<br>⏰ 평일 09:00 – 18:00</div>
+        <div class="ft-sns" style="margin-top:24px">
+          <a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a>
+        </div>
+      </div>
+      <div class="ft-col"><h4>사업 소개</h4>
+        <a href="/s30/about/">사업 개요 · 비전</a><a href="/s30/aura/">A.U.R.A 2.0</a><a href="/s30/about/governance/">거버넌스</a><a href="/s30/roadmap/">3개년 로드맵</a>
+      </div>
+      <div class="ft-col"><h4>핵심 사업</h4>
+        <a href="/s30/programs/education/">AI 교육 혁신</a><a href="/s30/programs/research/">AI 연구 강화</a><a href="/s30/programs/industry/">산학 협력</a><a href="/s30/programs/infra/">AI 인프라</a>
+      </div>
+      <div class="ft-col"><h4>관련 사이트</h4>
+        <a href="https://www.pusan.ac.kr" target="_blank">부산대학교 ↗</a><a href="https://ai.pusan.ac.kr" target="_blank">AI 대학 ↗</a><a href="https://airc.pusan.ac.kr" target="_blank">장영실연구원 ↗</a><a href="https://aiedu.pusan.ac.kr" target="_blank">AI 융합교육원 ↗</a><a href="https://uitc.pusan.ac.kr" target="_blank">AX·정보화혁신본부 ↗</a>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <div class="ft-copy">© 2026 Pusan National University ARISE-AI. All rights reserved.</div>
+      <div class="ft-policy"><a href="#">개인정보처리방침</a><a href="#">이메일무단수집거부</a><a href="#">사이트맵</a><a href="#">접근성 정책</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // 펀딩 도넛 (양자AI 47억 강조)
+  function buildDonut(){
+    var cv = document.getElementById('fundDonut');
+    if (!cv || typeof Chart === 'undefined') return;
+    new Chart(cv, {
+      type: 'doughnut',
+      data: {
+        labels: ['글로컬대학30','RISE','반도체특성화','SW중심대학','AI 부트캠프','AI융합대학원','양자AI 원천연구'],
+        datasets: [{
+          data: [1500, 956, 328, 142, 75, 63, 47],
+          backgroundColor: ['#143F90','#005BAA','#0075C9','#7EC8FF','#BFD9F2','#9CC4EA','#00A651'],
+          borderColor: '#0F1F45',
+          borderWidth: 3,
+          hoverOffset: 12
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false, cutout: '64%',
+        animation: reduce ? false : { animateRotate: true, duration: 1400, easing: 'easeOutQuart' },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: 'rgba(15,31,69,.96)', padding: 12, cornerRadius: 10,
+            titleFont: { family: 'Inter', weight: '700' },
+            callbacks: { label: function(c){ var pct=(c.parsed/3111*100).toFixed(1); return ' '+c.parsed.toLocaleString()+'억 원 ('+pct+'%)'; } }
+          }
+        }
+      }
+    });
+  }
+  if (typeof Chart !== 'undefined') buildDonut();
+  else window.addEventListener('load', buildDonut);
+
+  // 타임라인 진입 강조
+  var tlItems = document.querySelectorAll('.q-tl-item');
+  if (tlItems.length && !reduce) {
+    var to = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); to.unobserve(e.target); }});
+    }, {threshold:.5});
+    tlItems.forEach(function(t){ to.observe(t); });
+  }
+
+  // 큰 숫자 카운트업
+  var counters = document.querySelectorAll('.count-up[data-target]');
+  if (counters.length) {
+    var co = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        var el = e.target, target = parseInt(el.getAttribute('data-target'),10),
+            span = el.querySelector('span'), suffix = span ? span.outerHTML : '';
+        if (reduce){ el.innerHTML = target.toLocaleString() + suffix; co.unobserve(el); return; }
+        var start = null, dur = 1400;
+        function step(ts){
+          if(!start) start = ts;
+          var p = Math.min((ts-start)/dur, 1), val = Math.round((1-Math.pow(1-p,3))*target);
+          el.innerHTML = val.toLocaleString() + suffix;
+          if(p<1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+        co.unobserve(el);
+      });
+    }, {threshold:.5});
+    counters.forEach(function(c){ co.observe(c); });
+  }
+})();
+</script>
+<script type="module" src="/src/scripts/main.js"></script>
+</body>
+</html>

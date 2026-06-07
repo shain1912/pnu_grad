@@ -39,11 +39,18 @@ const serveS30 = {
       try {
         const rel = decodeURIComponent(url.slice(4).replace(/^\/+/, ''));
         let file = join(S30_DIST, rel);
-        if (!existsSync(file)) return next();
+        if (!existsSync(file)) {
+          if (existsSync(file + '.html')) {
+            file = file + '.html';
+          } else {
+            return next();
+          }
+        }
         let st = statSync(file);
         if (st.isDirectory()) { file = join(file, 'index.html'); if (!existsSync(file)) return next(); st = statSync(file); }
         const type = MIME[extname(file).toLowerCase()] || 'application/octet-stream';
         res.setHeader('Content-Type', type);
+        res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0');
         const range = req.headers.range;
         if (range && type.startsWith('video')) {
           const m = /bytes=(\d+)-(\d*)/.exec(range);

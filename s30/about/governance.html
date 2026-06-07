@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>거버넌스 — 부산대학교 AI 거점대학육성사업단 | ARISE PNU</title>
+<meta name="description" content="부산대학교 AI 거점대학육성사업단의 총장 직속 AX 추진 거버넌스 체계를 소개합니다. AX 선도위원회와 AX·정보화혁신본부의 구조와 역할을 확인하세요.">
+<link rel="icon" type="image/jpeg" href="/s30/assets/pnu-symbol-color.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+4:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="/src/styles/main.css">
+<style>
+/* 페이지 고유 CSS — main.css는 건드리지 않음 */
+
+/* 다이어그램 노드 효과 */
+.gov-svg .dnode { cursor:default; }
+.flow-dash { stroke-dasharray:7 6; animation:flowmove 1.1s linear infinite; }
+@keyframes flowmove { to { stroke-dashoffset:-26; } }
+@media (prefers-reduced-motion: reduce){ .flow-dash { animation:none; } }
+
+/* 거버넌스 카드 내부 작은 리스트 */
+.gov-card .gov-list { list-style:none; margin-top:14px; display:flex; flex-direction:column; gap:9px; }
+.gov-card .gov-list li { display:flex; gap:10px; align-items:flex-start; font-size:16px; color:var(--text-b); line-height:1.55; }
+.gov-card .gov-list li i { color:var(--pnu-blue); font-size:11px; margin-top:5px; flex-shrink:0; }
+.gov-title { font-size:19.5px; font-weight:800; color:var(--ink); margin-bottom:6px; }
+.gov-link { display:inline-flex; align-items:center; gap:6px; margin-top:16px; font-size:15.5px; font-weight:700; color:var(--pnu-blue); font-family:'Inter',sans-serif; }
+
+/* 가독성 증진을 위한 로컬 카드 폰트 스케일 상향 */
+.gov-desc { font-size: 16px !important; }
+
+@media (max-width:1024px){
+  .gov-grid { grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:900px){
+  .gov-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="left">
+      <span class="live"><span class="live-dot"></span> 2026 AI 거점대학사업 운영 중</span>
+      <span style="margin-left:14px">·</span>
+      <span class="slogan-strip" style="margin-left:14px">Arise PNU, 같이 더 높게</span>
+    </div>
+    <div class="right">
+      <a href="https://www.pusan.ac.kr" target="_blank"><i class="fas fa-external-link-alt" style="font-size:9px;margin-right:4px"></i>부산대학교</a>
+      <a href="https://ai.pusan.ac.kr" target="_blank">AI 대학</a>
+      <a href="https://airc.pusan.ac.kr" target="_blank">장영실연구원</a>
+      <a href="#">로그인</a>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN HEADER -->
+<header class="main-hdr">
+  <div class="container hdr-inner">
+    <a href="/s30/" class="brand">
+      <img src="/s30/assets/pnu-signature.jpg" alt="부산대학교 공식 시그니처" class="brand-logo">
+      <div class="brand-divider"></div>
+      <div>
+        <div class="brand-text-ko">AI 거점대학육성사업단</div>
+        <div class="brand-text-en">ARISE · arise-ai.pusan.ac.kr</div>
+      </div>
+    </a>
+    <nav class="main-nav">
+      <div class="nav-item">
+        <a href="/s30/about/" class="nav-link active">사업 소개 <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="/s30/about/"><div class="d-i"><i class="fas fa-flag"></i></div>사업 개요 · 비전</a>
+          <a href="/s30/about/aura"><div class="d-i"><i class="fas fa-sitemap"></i></div>A.U.R.A 2.0 마스터플랜</a>
+          <a href="/s30/about/governance"><div class="d-i"><i class="fas fa-users-cog"></i></div>거버넌스</a>
+          <a href="/s30/roadmap/"><div class="d-i"><i class="fas fa-bullseye"></i></div>3개년 로드맵</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/s30/programs/" class="nav-link">핵심 사업 <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="/s30/programs/#education"><div class="d-i"><i class="fas fa-graduation-cap"></i></div>AI 교육 혁신</a>
+          <a href="/s30/programs/#research"><div class="d-i"><i class="fas fa-microscope"></i></div>AI 연구 강화</a>
+          <a href="/s30/programs/#industry"><div class="d-i"><i class="fas fa-handshake"></i></div>산학 협력</a>
+          <a href="/s30/programs/#infra"><div class="d-i"><i class="fas fa-server"></i></div>AI 인프라</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/s30/achievements/" class="nav-link">성과 <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="/s30/achievements/#robocup"><div class="d-i"><i class="fas fa-trophy"></i></div>RoboCup 2025 우승</a>
+          <a href="/s30/achievements/#quantum"><div class="d-i"><i class="fas fa-atom"></i></div>양자AI 47억 사업</a>
+          <a href="/s30/achievements/#papers"><div class="d-i"><i class="fas fa-file-alt"></i></div>논문 · 특허</a>
+          <a href="/s30/achievements/#transfer"><div class="d-i"><i class="fas fa-exchange-alt"></i></div>기술이전 · 창업</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/s30/partners/" class="nav-link">파트너십 <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="/s30/partners/#google"><div class="d-i"><i class="fab fa-google"></i></div>Google for Education</a>
+          <a href="/s30/partners/#industry"><div class="d-i"><i class="fas fa-industry"></i></div>산학 협약 (35+)</a>
+          <a href="/s30/partners/#global"><div class="d-i"><i class="fas fa-globe"></i></div>글로벌 협력</a>
+          <a href="/s30/partners/#govt"><div class="d-i"><i class="fas fa-landmark"></i></div>정부·공공기관</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/s30/news/" class="nav-link">알림마당 <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="/s30/news/?cat=notice"><div class="d-i"><i class="fas fa-bullhorn"></i></div>공지사항</a>
+          <a href="/s30/news/?cat=news"><div class="d-i"><i class="fas fa-newspaper"></i></div>뉴스·보도자료</a>
+          <a href="/s30/news/?cat=event"><div class="d-i"><i class="fas fa-calendar-alt"></i></div>행사·일정</a>
+          <a href="/s30/news/?cat=resource"><div class="d-i"><i class="fas fa-download"></i></div>자료실</a>
+        </div>
+      </div>
+      <a href="/s30/partners/#contact" class="nav-link nav-cta">참여 신청 →</a>
+      <div class="lang-toggle">KOR | ENG</div>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container ph-inner">
+    <div class="ph-left">
+      <h1 class="ph-title">거버넌스 <em>Governance</em></h1>
+      <p class="ph-sub">총장 직속 AX 추진 체계와 협력 구조</p>
+      <div class="breadcrumb">
+        <a href="/s30/"><i class="fas fa-home"></i> 홈</a>
+        <i class="fas fa-chevron-right"></i>
+        <span>사업 소개</span>
+        <i class="fas fa-chevron-right"></i>
+        <span class="current">거버넌스</span>
+      </div>
+    </div>
+    <div class="ph-icon"><i class="fas fa-users-cog"></i></div>
+  </div>
+</section>
+
+<!-- GOVERNANCE STRUCTURE DIAGRAM -->
+<section class="section" id="structure">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="s-title">총장 직속 <span class="grad">AX 추진 거버넌스</span></div>
+    </div>
+
+    <div class="diagram-wrap reveal">
+      <svg class="diagram-svg gov-svg" viewBox="0 0 1080 560" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="garr" markerWidth="9" markerHeight="9" refX="6" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="#143F90" opacity="0.7"/>
+          </marker>
+          <linearGradient id="topGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#143F90"/>
+            <stop offset="100%" stop-color="#0B1A3E"/>
+          </linearGradient>
+          <linearGradient id="midGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#0075C9"/>
+            <stop offset="100%" stop-color="#005BAA"/>
+          </linearGradient>
+        </defs>
+
+        <text x="540" y="26" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#64748B" letter-spacing="2">AI 거점 사업 추진 체계 · 2025–2030</text>
+
+        <!-- 총장 -->
+        <g class="dnode">
+          <rect x="390" y="50" width="300" height="62" rx="14" fill="url(#topGrad)" stroke="#143F90" stroke-width="2"/>
+          <text x="540" y="80" text-anchor="middle" font-family="Noto Sans KR" font-size="17" font-weight="900" fill="#fff">최재원 총장</text>
+          <text x="540" y="99" text-anchor="middle" font-family="Noto Sans KR" font-size="11" fill="rgba(255,255,255,.8)">사업 총괄</text>
+        </g>
+        <line x1="540" y1="112" x2="540" y2="148" stroke="#143F90" stroke-width="2.2" marker-end="url(#garr)"/>
+
+        <!-- AX 선도위원회 (총장 직속) -->
+        <g class="dnode">
+          <rect x="370" y="150" width="340" height="58" rx="13" fill="#EFF6FF" stroke="#143F90" stroke-width="2"/>
+          <text x="540" y="178" text-anchor="middle" font-family="Noto Sans KR" font-size="15" font-weight="800" fill="#0F172A">AX 선도위원회</text>
+          <text x="540" y="196" text-anchor="middle" font-family="Noto Sans KR" font-size="10.5" fill="#1E3A5F">총장 직속 · 의사결정 기구</text>
+        </g>
+        <line x1="540" y1="208" x2="540" y2="244" stroke="#143F90" stroke-width="2.2" marker-end="url(#garr)"/>
+
+        <!-- AX·정보화혁신본부 (실행 본부) -->
+        <g class="dnode">
+          <rect x="350" y="246" width="380" height="58" rx="13" fill="url(#midGrad)" stroke="#005BAA" stroke-width="2"/>
+          <text x="540" y="274" text-anchor="middle" font-family="Noto Sans KR" font-size="15" font-weight="800" fill="#fff">AX · 정보화혁신본부</text>
+          <text x="540" y="292" text-anchor="middle" font-family="Inter" font-size="11" fill="rgba(255,255,255,.85)">2025 신설 · 실행 본부 · uitc.pusan.ac.kr</text>
+        </g>
+
+        <!-- 분기선: 본부 → 4 전담기관 -->
+        <line x1="540" y1="304" x2="540" y2="330" stroke="#005BAA" stroke-width="2.2"/>
+        <path d="M540 330 H165" stroke="#005BAA" stroke-width="2" fill="none"/>
+        <path d="M540 330 H915" stroke="#005BAA" stroke-width="2" fill="none"/>
+        <line x1="165" y1="330" x2="165" y2="372" stroke="#005BAA" stroke-width="2" class="flow-dash" marker-end="url(#garr)"/>
+        <line x1="415" y1="330" x2="415" y2="372" stroke="#005BAA" stroke-width="2" class="flow-dash" marker-end="url(#garr)"/>
+        <line x1="665" y1="330" x2="665" y2="372" stroke="#005BAA" stroke-width="2" class="flow-dash" marker-end="url(#garr)"/>
+        <line x1="915" y1="330" x2="915" y2="372" stroke="#005BAA" stroke-width="2" class="flow-dash" marker-end="url(#garr)"/>
+
+        <!-- 4 전담기관 -->
+        <g class="dnode">
+          <rect x="60" y="374" width="210" height="78" rx="13" fill="#0F172A" stroke="#143F90" stroke-width="1.5"/>
+          <text x="165" y="404" text-anchor="middle" font-family="Noto Sans KR" font-size="14" font-weight="800" fill="#fff">AI 대학</text>
+          <text x="165" y="423" text-anchor="middle" font-family="Noto Sans KR" font-size="10" fill="rgba(255,255,255,.7)">2027 신설 · 424명</text>
+          <text x="165" y="439" text-anchor="middle" font-family="Inter" font-size="9" fill="#7EC8FF">ai.pusan.ac.kr</text>
+        </g>
+        <g class="dnode">
+          <rect x="310" y="374" width="210" height="78" rx="13" fill="#0a3d1e" stroke="#00A651" stroke-width="1.5"/>
+          <text x="415" y="404" text-anchor="middle" font-family="Noto Sans KR" font-size="14" font-weight="800" fill="#fff">장영실 AI</text>
+          <text x="415" y="421" text-anchor="middle" font-family="Noto Sans KR" font-size="11" font-weight="700" fill="#fff">융합연구원</text>
+          <text x="415" y="439" text-anchor="middle" font-family="Inter" font-size="9" fill="#7CF0B5">airc.pusan.ac.kr</text>
+        </g>
+        <g class="dnode">
+          <rect x="560" y="374" width="210" height="78" rx="13" fill="#0F172A" stroke="#143F90" stroke-width="1.5"/>
+          <text x="665" y="404" text-anchor="middle" font-family="Noto Sans KR" font-size="14" font-weight="800" fill="#fff">AI 융합교육원</text>
+          <text x="665" y="423" text-anchor="middle" font-family="Noto Sans KR" font-size="10" fill="rgba(255,255,255,.7)">전교 AI 리터러시</text>
+          <text x="665" y="439" text-anchor="middle" font-family="Inter" font-size="9" fill="#7EC8FF">aiedu.pusan.ac.kr</text>
+        </g>
+        <g class="dnode">
+          <rect x="810" y="374" width="210" height="78" rx="13" fill="#1E293B" stroke="#143F90" stroke-width="1.5"/>
+          <text x="915" y="404" text-anchor="middle" font-family="Noto Sans KR" font-size="13" font-weight="800" fill="#fff">산학·공공 협력망</text>
+          <text x="915" y="423" text-anchor="middle" font-family="Noto Sans KR" font-size="10" fill="rgba(255,255,255,.7)">기업·정부·지자체 (35+)</text>
+          <text x="915" y="439" text-anchor="middle" font-family="Inter" font-size="9" fill="#94A3B8">Consortium</text>
+        </g>
+
+        <!-- 하단: 산출 -->
+        <line x1="165" y1="452" x2="165" y2="488" stroke="#94A3B8" stroke-width="1.6" stroke-dasharray="3 3"/>
+        <line x1="415" y1="452" x2="415" y2="488" stroke="#94A3B8" stroke-width="1.6" stroke-dasharray="3 3"/>
+        <line x1="665" y1="452" x2="665" y2="488" stroke="#94A3B8" stroke-width="1.6" stroke-dasharray="3 3"/>
+        <line x1="915" y1="452" x2="915" y2="488" stroke="#94A3B8" stroke-width="1.6" stroke-dasharray="3 3"/>
+        <g class="dnode">
+          <rect x="120" y="490" width="840" height="40" rx="20" fill="#EFF6FF" stroke="#005BAA" stroke-width="1.5"/>
+          <text x="540" y="515" text-anchor="middle" font-family="Noto Sans KR" font-size="12.5" font-weight="700" fill="#0F172A">동남권 AX 생태계 완성 · 교육 · 연구 · 행정 전 영역 AI 전환 (2030 Top 200)</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- GOVERNANCE CARDS -->
+<section class="section section-alt" id="governance">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="s-title">사업을 움직이는 <em>핵심 조직</em></div>
+    </div>
+
+    <div class="gov-grid">
+      <div class="gov-card reveal">
+        <span class="gov-tag gold">총장 직속 · 의사결정</span>
+        <div class="gov-title">AX 선도위원회</div>
+        <ul class="gov-list">
+          <li><i class="fas fa-check"></i> 총장 직속 추진체계</li>
+          <li><i class="fas fa-check"></i> 8·22·47 전략 체계 총괄 관리</li>
+          <li><i class="fas fa-check"></i> AI 윤리·사용 가이드라인 심의</li>
+        </ul>
+      </div>
+
+      <div class="gov-card reveal">
+        <span class="gov-tag">2025 신설 · 실행 본부</span>
+        <div class="gov-title">AX · 정보화혁신본부</div>
+        <ul class="gov-list">
+          <li><i class="fas fa-check"></i> AI 인프라·정보화 통합 운영</li>
+          <li><i class="fas fa-check"></i> 산지니 AI · 다국어 통번역 운영</li>
+          <li><i class="fas fa-check"></i> uitc.pusan.ac.kr</li>
+        </ul>
+        <a href="https://uitc.pusan.ac.kr" target="_blank" class="gov-link">본부 바로가기 <i class="fas fa-arrow-up-right-from-square"></i></a>
+      </div>
+
+      <div class="gov-card reveal">
+        <span class="gov-tag green">관련 전담기관</span>
+        <div class="gov-title">4대 전담기관</div>
+        <ul class="gov-list">
+          <li><i class="fas fa-check"></i> AI 대학 (2027 신설 · 424명)</li>
+          <li><i class="fas fa-check"></i> 장영실 AI 융합연구원 (2025.12.30 개원)</li>
+          <li><i class="fas fa-check"></i> AI 융합교육원 · AX·정보화혁신본부</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="ft-top">
+      <div>
+        <div class="ft-brand-row">
+          <img src="/s30/assets/pnu-signature.jpg" alt="부산대학교" class="ft-logo-img" style="filter:brightness(0) invert(1)">
+        </div>
+        <div class="ft-brand-name">AI 거점대학육성사업단 · ARISE PNU<small>arise-ai.pusan.ac.kr · A.U.R.A 2.0 마스터플랜</small></div>
+        <div class="ft-desc" style="margin-top:16px"><em>"Arise PNU, 같이 더 높게"</em> — 동남권 AX 생태계의 중심 거점, 부산대학교 AI 거점대학육성사업단입니다.</div>
+        <div class="ft-addr">📍  부산광역시 금정구 부산대학로 63번길 2 · IT관 3층 AI 거점사업단<br>📞 051-510-0000 · ✉ arise@pusan.ac.kr<br>⏰ 평일 09:00 – 18:00</div>
+        <div class="ft-sns" style="margin-top:24px">
+          <a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="ft-col"><h4>사업 소개</h4>
+        <a href="/s30/about/">사업 개요 · 비전</a><a href="/s30/about/aura">A.U.R.A 2.0</a><a href="/s30/about/governance">거버넌스</a><a href="/s30/roadmap/">3개년 로드맵</a>
+      </div>
+      <div class="ft-col"><h4>핵심 사업</h4>
+        <a href="/s30/programs/#education">AI 교육 혁신</a><a href="/s30/programs/#research">AI 연구 강화</a><a href="/s30/programs/#industry">산학 협력</a><a href="/s30/programs/#infra">AI 인프라</a>
+      </div>
+      <div class="ft-col"><h4>관련 사이트</h4>
+        <a href="https://www.pusan.ac.kr" target="_blank">부산대학교 ↗</a><a href="https://ai.pusan.ac.kr" target="_blank">AI 대학 ↗</a><a href="https://airc.pusan.ac.kr" target="_blank">장영실연구원 ↗</a><a href="https://aiedu.pusan.ac.kr" target="_blank">AI 융합교육원 ↗</a><a href="https://uitc.pusan.ac.kr" target="_blank">AX·정보화혁신본부 ↗</a>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <div class="ft-copy">© 2026 Pusan National University ARISE-AI. All rights reserved.</div>
+      <div class="ft-policy"><a href="#">개인정보처리방침</a><a href="#">이메일무단수집거부</a><a href="#">사이트맵</a><a href="#">접근성 정책</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  function checkScrollReveal() {
+    var reveals = document.querySelectorAll('.reveal');
+    var clientHeight = window.innerHeight || document.documentElement.clientHeight;
+    
+    reveals.forEach(function(el) {
+      var rect = el.getBoundingClientRect();
+      var hasActive = el.classList.contains('active');
+      
+      // 아직 active 상태가 아니고 실제 뷰포트 영역 하단 경계선 안으로 들어오는 순간 감지
+      if (!hasActive && rect.top < clientHeight - 40) {
+        el.classList.add('active');
+      }
+    });
+  }
+
+  function initAll(){ 
+    // capture: true를 설정하여 하위 div 등 돔 트리 내 어느 곳에서 발생하는 스크롤이라도 전부 감지
+    window.addEventListener('scroll', checkScrollReveal, { capture: true, passive: true });
+    window.addEventListener('resize', checkScrollReveal, { passive: true });
+
+    // 최초 렌더링 완료 시점에 화면에 보이는 상단 요소들을 위해 1회 선 실행 (여유 있게 400ms 대기)
+    setTimeout(function() {
+      requestAnimationFrame(function() {
+        checkScrollReveal();
+      });
+    }, 400);
+  }
+  if(document.readyState !== 'loading'){ initAll(); }
+  else document.addEventListener('DOMContentLoaded', initAll);
+})();
+</script>
+<script type="module" src="/src/scripts/main.js"></script>
+</body>
+</html>

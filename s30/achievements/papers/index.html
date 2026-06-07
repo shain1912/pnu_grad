@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>논문 · 특허 — 부산대학교 AI 거점대학육성사업단 | ARISE PNU</title>
+<meta name="description" content="ARISE PNU 논문·특허 성과 — 연간 논문 480+편, AI 교수진 58명, 연구그룹 14+, QS 473위, University AI-MASTER 국내 대학 최초 인증.">
+<link rel="icon" type="image/jpeg" href="/s30/assets/pnu-symbol-color.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+4:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/src/styles/main.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+/* Papers & Patents page-specific (flat palette only, no gradients) */
+.pp-bignum-band { background:var(--pnu-navy); padding:60px 0; }
+.pp-bignum-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+.pp-bignum { text-align:center; padding:0 24px; border-right:1px solid rgba(255,255,255,.14); }
+.pp-bignum:last-child { border-right:none; }
+.pp-bignum .n { font-family:'Inter',sans-serif; font-size:3.4rem; font-weight:900; color:#fff; line-height:1; letter-spacing:-.04em; }
+.pp-bignum .n span { font-size:1.6rem; color:#7EC8FF; }
+.pp-bignum .l { font-size:13px; color:rgba(255,255,255,.74); margin-top:10px; font-weight:600; letter-spacing:.02em; }
+.pp-bignum .t { font-size:11px; color:#7EC8FF; font-weight:800; letter-spacing:.1em; text-transform:uppercase; font-family:'Inter',sans-serif; margin-bottom:10px; }
+.pp-split { display:grid; grid-template-columns:1.1fr .9fr; gap:24px; align-items:stretch; }
+.pp-panel { background:#fff; border:1px solid var(--border); border-radius:18px; padding:30px 32px; box-shadow:0 8px 28px rgba(15,31,69,.06); }
+.pp-panel h3 { font-size:13px; font-weight:800; color:var(--pnu-blue); letter-spacing:.04em; text-transform:uppercase; font-family:'Inter',sans-serif; margin-bottom:18px; }
+.pp-chart-box { position:relative; height:300px; }
+.pp-progress-wrap { background:#fff; border:1px solid var(--border); border-radius:18px; padding:30px 34px; box-shadow:0 8px 28px rgba(15,31,69,.06); }
+.pp-bar-row { display:grid; grid-template-columns:150px 1fr 64px; align-items:center; gap:16px; margin-bottom:16px; }
+.pp-bar-row:last-child { margin-bottom:0; }
+.pp-bar-lbl { font-size:13px; font-weight:700; color:var(--ink); }
+.pp-bar-track { height:14px; background:var(--blue-tint); border-radius:100px; overflow:hidden; }
+.pp-bar-fill { height:100%; background:var(--pnu-blue); border-radius:100px; }
+.pp-bar-fill.green { background:var(--pnu-green); }
+.pp-bar-fill.navy { background:var(--pnu-navy); }
+.pp-bar-val { font-family:'Inter',sans-serif; font-size:13px; font-weight:800; color:var(--pnu-blue); text-align:right; }
+.pp-rank-table { background:#fff; border:1px solid var(--border); border-radius:18px; overflow:hidden; box-shadow:0 8px 28px rgba(15,31,69,.06); }
+.pp-rank-table table { width:100%; border-collapse:collapse; }
+.pp-rank-table th { background:var(--pnu-navy); color:#fff; font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; font-family:'Inter',sans-serif; padding:16px 22px; text-align:left; }
+.pp-rank-table td { padding:18px 22px; border-top:1px solid var(--border); font-size:14px; color:var(--ink); }
+.pp-rank-table tr:nth-child(even) td { background:var(--blue-tint); }
+.pp-rank-pos { font-family:'Inter',sans-serif; font-weight:900; font-size:18px; color:var(--pnu-blue); }
+.pp-rank-name { font-weight:700; }
+.pp-rank-delta { font-size:12px; font-weight:800; color:var(--pnu-green); }
+.pp-rank-delta i { margin-right:3px; }
+.pp-badge { display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:800; padding:5px 12px; border-radius:100px; background:var(--blue-tint); color:var(--pnu-blue); border:1px solid var(--blue-light); letter-spacing:.02em; }
+.pp-spec-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.pp-spec { background:var(--blue-tint); border:1px solid var(--blue-light); border-radius:16px; padding:24px; border-left:4px solid var(--pnu-blue); }
+.pp-spec .si { width:44px; height:44px; border-radius:11px; background:#fff; color:var(--pnu-blue); display:flex; align-items:center; justify-content:center; font-size:18px; margin-bottom:14px; }
+.pp-spec .sk { font-size:11px; font-weight:800; color:var(--pnu-blue); letter-spacing:.08em; text-transform:uppercase; font-family:'Inter',sans-serif; margin-bottom:6px; }
+.pp-spec .sv { font-size:17px; font-weight:800; color:var(--ink); }
+.pp-cert { background:var(--pnu-blue-dark); border-radius:20px; padding:40px 44px; display:grid; grid-template-columns:auto 1fr; gap:30px; align-items:center; }
+.pp-cert .cseal { width:96px; height:96px; flex:none; border-radius:50%; background:rgba(255,255,255,.1); border:2px solid rgba(255,255,255,.3); display:flex; align-items:center; justify-content:center; color:#fff; font-size:38px; }
+.pp-cert .ceyebrow { font-size:11px; font-weight:800; color:#7EC8FF; letter-spacing:.1em; text-transform:uppercase; font-family:'Inter',sans-serif; margin-bottom:8px; }
+.pp-cert .ctitle { font-family:'Source Serif 4',serif; font-size:1.9rem; font-weight:800; color:#fff; line-height:1.15; }
+.pp-cert .cchips { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+.pp-cert .cchip { font-size:12px; font-weight:700; padding:6px 14px; border-radius:100px; background:rgba(255,255,255,.12); color:#fff; }
+.pp-related-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+@media (max-width:860px){
+  .pp-bignum-grid,.pp-spec-grid,.pp-related-grid{ grid-template-columns:repeat(2,1fr); }
+  .pp-split{ grid-template-columns:1fr; }
+  .pp-bar-row{ grid-template-columns:110px 1fr 52px; }
+  .pp-cert{ grid-template-columns:1fr; text-align:center; }
+  .pp-cert .cseal{ margin:0 auto; }
+  .pp-cert .cchips{ justify-content:center; }
+}
+</style>
+</head>
+<body>
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="left">
+      <span class="live"><span class="live-dot"></span> 2026 AI 거점대학사업 운영 중</span>
+      <span style="margin-left:14px">·</span>
+      <span class="slogan-strip" style="margin-left:14px">Arise PNU, 같이 더 높게</span>
+    </div>
+    <div class="right">
+      <a href="https://www.pusan.ac.kr" target="_blank">부산대학교</a>
+      <a href="https://ai.pusan.ac.kr" target="_blank">AI 대학</a>
+      <a href="https://airc.pusan.ac.kr" target="_blank">장영실연구원</a>
+      <a href="#">로그인</a>
+    </div>
+  </div>
+</div>
+<!-- MAIN HEADER -->
+<header class="main-hdr">
+  <div class="container hdr-inner">
+    <a href="/s30/" class="brand">
+      <img src="/s30/assets/pnu-signature.jpg" alt="부산대학교 공식 시그니처" class="brand-logo">
+      <div class="brand-divider"></div>
+      <div>
+        <div class="brand-text-ko">AI 거점대학육성사업단</div>
+        <div class="brand-text-en">ARISE · arise-ai.pusan.ac.kr</div>
+      </div>
+    </a>
+    <nav class="main-nav">
+      <div class="nav-item">
+        <a href="/s30/about/" class="nav-link">사업 소개 </a>
+        <div class="dropdown">
+          <a href="/s30/about/"><div class="d-i"></div>사업 개요 · 비전</a>
+          <a href="/s30/aura/"><div class="d-i"></div>A.U.R.A 2.0 마스터플랜</a>
+          <a href="/s30/about/governance/"><div class="d-i"></div>거버넌스</a>
+          <a href="/s30/roadmap/"><div class="d-i"></div>3개년 로드맵</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/s30/programs/" class="nav-link">핵심 사업 </a>
+        <div class="dropdown">
+          <a href="/s30/programs/education/"><div class="d-i"></div>AI 교육 혁신</a>
+          <a href="/s30/programs/research/"><div class="d-i"></div>AI 연구 강화</a>
+          <a href="/s30/programs/industry/"><div class="d-i"></div>산학 협력</a>
+          <a href="/s30/programs/infra/"><div class="d-i"></div>AI 인프라</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/s30/achievements/" class="nav-link active">성과 </a>
+        <div class="dropdown">
+          <a href="/s30/achievements/robocup/"><div class="d-i"></div>RoboCup 2025 우승</a>
+          <a href="/s30/achievements/quantum/"><div class="d-i"></div>양자AI 47억 사업</a>
+          <a href="/s30/achievements/papers/"><div class="d-i"></div>논문 · 특허</a>
+          <a href="/s30/achievements/transfer/"><div class="d-i"></div>기술이전 · 창업</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/s30/partners/" class="nav-link">파트너십 </a>
+        <div class="dropdown">
+          <a href="/s30/partners/google/"><div class="d-i"></div>Google for Education</a>
+          <a href="/s30/partners/industry/"><div class="d-i"></div>산학 협약 (35+)</a>
+          <a href="/s30/partners/global/"><div class="d-i"></div>글로벌 협력</a>
+          <a href="/s30/partners/govt/"><div class="d-i"></div>정부·공공기관</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/s30/news/" class="nav-link">알림마당 </a>
+        <div class="dropdown">
+          <a href="/s30/news/?cat=notice"><div class="d-i"></div>공지사항</a>
+          <a href="/s30/news/?cat=news"><div class="d-i"></div>뉴스·보도자료</a>
+          <a href="/s30/news/?cat=event"><div class="d-i"></div>행사·일정</a>
+          <a href="/s30/news/?cat=resource"><div class="d-i"></div>자료실</a>
+        </div>
+      </div>
+      <a href="/s30/partners/#contact" class="nav-link nav-cta">참여 신청 →</a>
+      <div class="lang-toggle">KOR | ENG</div>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container ph-inner">
+    <div class="ph-left">
+      <div class="ph-eyebrow">Research Output · Papers & Patents</div>
+      <h1 class="ph-title">논문 · <em>특허</em></h1>
+      <p class="ph-sub">연간 480+편 · 교수진 58명 · 연구그룹 14+</p>
+      <div class="breadcrumb">
+        <a href="/s30/"> 홈</a>
+        
+        <a href="/s30/achievements/">성과</a>
+        
+        <span class="current">논문 · 특허</span>
+      </div>
+    </div>
+    <div class="ph-icon"></div>
+  </div>
+</section>
+
+<!-- BIG NUMBERS BAND -->
+<section class="pp-bignum-band">
+  <div class="container">
+    <div class="pp-bignum-grid">
+      <div class="pp-bignum">
+        <div class="t">Papers / Year</div>
+        <div class="n">480<span>+</span></div>
+        <div class="l">연간 발표 논문</div>
+      </div>
+      <div class="pp-bignum">
+        <div class="t">AI Faculty</div>
+        <div class="n">58<span>명</span></div>
+        <div class="l">AI 전임 교수진</div>
+      </div>
+      <div class="pp-bignum">
+        <div class="t">Research Groups</div>
+        <div class="n">14<span>+</span></div>
+        <div class="l">AI 연구그룹</div>
+      </div>
+      <div class="pp-bignum">
+        <div class="t">QS Ranking</div>
+        <div class="n">473<span>위</span></div>
+        <div class="l">QS 세계대학 순위</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHART + FACULTY COMPOSITION -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="s-eyebrow">Output & Capacity</div>
+      <h2 class="s-title">연구 <em>생산성</em> 한눈에</h2>
+    </div>
+    <div class="pp-split">
+      <div class="pp-panel">
+        <h3> 연간 논문 발표 추이</h3>
+        <div class="pp-chart-box"><canvas id="ppPapers"></canvas></div>
+      </div>
+      <div class="pp-panel">
+        <h3> AI 교수진 구성 (58명)</h3>
+        <div class="pp-chart-box"><canvas id="ppFaculty"></canvas></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACULTY BREAKDOWN BARS -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <div class="s-eyebrow">Faculty Composition</div>
+      <h2 class="s-title">교수진 <em>58명</em> 분포</h2>
+    </div>
+    <div class="pp-progress-wrap">
+      <div class="pp-bar-row">
+        <div class="pp-bar-lbl">정보컴퓨터공학</div>
+        <div class="pp-bar-track"><div class="pp-bar-fill" style="width:100%"></div></div>
+        <div class="pp-bar-val">24명</div>
+      </div>
+      <div class="pp-bar-row">
+        <div class="pp-bar-lbl">통계학</div>
+        <div class="pp-bar-track"><div class="pp-bar-fill green" style="width:29%"></div></div>
+        <div class="pp-bar-val">7명</div>
+      </div>
+      <div class="pp-bar-row">
+        <div class="pp-bar-lbl">데이터사이언스</div>
+        <div class="pp-bar-track"><div class="pp-bar-fill navy" style="width:21%"></div></div>
+        <div class="pp-bar-val">5명</div>
+      </div>
+      <div class="pp-bar-row">
+        <div class="pp-bar-lbl">융합 · 기타 학과</div>
+        <div class="pp-bar-track"><div class="pp-bar-fill" style="width:92%"></div></div>
+        <div class="pp-bar-val">22명</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH GROUPS / LABS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="s-eyebrow">Research Groups</div>
+      <h2 class="s-title">대표 <em>AI 연구실</em></h2>
+    </div>
+    <div class="pp-spec-grid">
+      <div class="pp-spec">
+        <div class="si"></div>
+        <div class="sk">AI Lab</div>
+        <div class="sv">AILab</div>
+      </div>
+      <div class="pp-spec">
+        <div class="si"></div>
+        <div class="sk">Vision · Pattern</div>
+        <div class="sv">VIPLab</div>
+      </div>
+      <div class="pp-spec">
+        <div class="si"></div>
+        <div class="sk">XR · Learning</div>
+        <div class="sv">XRL</div>
+      </div>
+      <div class="pp-spec">
+        <div class="si"></div>
+        <div class="sk">Secure Systems</div>
+        <div class="sv">S3Lab</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RANK TABLE -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <div class="s-eyebrow">Position</div>
+      <h2 class="s-title">위상 · <em>순위 지표</em></h2>
+    </div>
+    <div class="pp-rank-table">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:80px">지표</th>
+            <th>구분</th>
+            <th>수치</th>
+            <th style="width:160px">상태</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="pp-rank-pos">#1</span></td>
+            <td class="pp-rank-name">국립대 종합</td>
+            <td>3년 연속 1위</td>
+            <td><span class="pp-rank-delta"> 1위 유지</span></td>
+          </tr>
+          <tr>
+            <td><span class="pp-rank-pos">473</span></td>
+            <td class="pp-rank-name">QS 세계대학</td>
+            <td>473위</td>
+            <td><span class="pp-rank-delta"> Top 200 목표</span></td>
+          </tr>
+          <tr>
+            <td><span class="pp-rank-pos">480+</span></td>
+            <td class="pp-rank-name">연간 논문</td>
+            <td>480+편 / 년</td>
+            <td><span class="pp-badge"> Active</span></td>
+          </tr>
+          <tr>
+            <td><span class="pp-rank-pos">28+</span></td>
+            <td class="pp-rank-name">국제 경진대회</td>
+            <td>28+ 수상</td>
+            <td><span class="pp-rank-delta"> 누적</span></td>
+          </tr>
+          <tr>
+            <td><span class="pp-rank-pos">14+</span></td>
+            <td class="pp-rank-name">AI 연구그룹</td>
+            <td>14+ 그룹</td>
+            <td><span class="pp-badge"> 운영</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- AI-MASTER CERTIFICATION -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="s-eyebrow">Certification</div>
+      <h2 class="s-title">국내 대학 <em>최초 인증</em></h2>
+    </div>
+    <div class="pp-cert">
+      <div class="cseal"></div>
+      <div>
+        <div class="ceyebrow">University AI-MASTER · 2026.03.05</div>
+        <div class="ctitle">University AI-MASTER<br>국내 대학 최초 인증</div>
+        <div class="cchips">
+          <span class="cchip"> 시스템 신뢰성</span>
+          <span class="cchip"> 알고리즘 윤리성</span>
+          <span class="cchip"> 기술적 안정성</span>
+          <span class="cchip"> 한국인공지능산업협회</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED KPI -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header center">
+      <div class="s-eyebrow">Research Snapshot</div>
+      <h2 class="s-title">연구 성과 <em>요약</em></h2>
+    </div>
+    <div class="pp-related-grid">
+      <div class="ach-card gold">
+        <div class="ach-icon"></div>
+        <span class="ach-tag">Papers</span>
+        <div class="ach-num">480<span>+</span></div>
+        <div class="ach-num-lbl">연간 발표 논문</div>
+      </div>
+      <div class="ach-card green">
+        <div class="ach-icon"></div>
+        <span class="ach-tag">Faculty</span>
+        <div class="ach-num">58<span>명</span></div>
+        <div class="ach-num-lbl">AI 전임 교수진</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon"></div>
+        <span class="ach-tag">Labs</span>
+        <div class="ach-num">14<span>+</span></div>
+        <div class="ach-num-lbl">AI 연구그룹</div>
+      </div>
+      <div class="ach-card violet">
+        <div class="ach-icon"></div>
+        <span class="ach-tag">Awards</span>
+        <div class="ach-num">28<span>+</span></div>
+        <div class="ach-num-lbl">국제 경진대회 수상</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="ft-top">
+      <div>
+        <div class="ft-brand-row">
+          <img src="/s30/assets/pnu-signature.jpg" alt="부산대학교" class="ft-logo-img" style="filter:brightness(0) invert(1)">
+        </div>
+        <div class="ft-brand-name">AI 거점대학육성사업단 · ARISE PNU<small>arise-ai.pusan.ac.kr · A.U.R.A 2.0 마스터플랜</small></div>
+        <div class="ft-desc" style="margin-top:16px"><em>"Arise PNU, 같이 더 높게"</em> — 동남권 AX 생태계의 중심 거점, 부산대학교 AI 거점대학육성사업단입니다.</div>
+        <div class="ft-addr">📍 부산광역시 금정구 부산대학로 63번길 2 · IT관 3층 AI 거점사업단<br>📞 051-510-0000 · ✉ arise@pusan.ac.kr<br>⏰ 평일 09:00 – 18:00</div>
+        <div class="ft-sns" style="margin-top:24px">
+          <a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a>
+        </div>
+      </div>
+      <div class="ft-col"><h4>사업 소개</h4>
+        <a href="/s30/about/#overview">사업 개요 · 비전</a><a href="/s30/about/#aura">A.U.R.A 2.0</a><a href="/s30/about/governance/">거버넌스</a><a href="/s30/roadmap/">3개년 로드맵</a>
+      </div>
+      <div class="ft-col"><h4>핵심 사업</h4>
+        <a href="/s30/programs/education/">AI 교육 혁신</a><a href="/s30/programs/research/">AI 연구 강화</a><a href="/s30/programs/industry/">산학 협력</a><a href="/s30/programs/infra/">AI 인프라</a>
+      </div>
+      <div class="ft-col"><h4>관련 사이트</h4>
+        <a href="https://www.pusan.ac.kr" target="_blank">부산대학교 ↗</a><a href="https://ai.pusan.ac.kr" target="_blank">AI 대학 ↗</a><a href="https://airc.pusan.ac.kr" target="_blank">장영실연구원 ↗</a><a href="https://aiedu.pusan.ac.kr" target="_blank">AI 융합교육원 ↗</a><a href="https://uitc.pusan.ac.kr" target="_blank">AX·정보화혁신본부 ↗</a>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <div class="ft-copy">© 2026 Pusan National University ARISE-AI. All rights reserved.</div>
+      <div class="ft-policy"><a href="#">개인정보처리방침</a><a href="#">이메일무단수집거부</a><a href="#">사이트맵</a><a href="#">접근성 정책</a></div>
+    </div>
+  </div>
+</footer>
+<script type="module" src="/src/scripts/main.js"></script>
+<script>
+(function(){
+  if (typeof Chart === 'undefined') return;
+  var ink = '#0F172A', blue = '#005BAA', navy = '#0F1F45', green = '#00A651', sub = '#0075C9', grid = 'rgba(15,31,69,.08)';
+  Chart.defaults.font.family = "'Inter','Noto Sans KR',sans-serif";
+  Chart.defaults.color = '#475569';
+  // Annual papers line
+  var p = document.getElementById('ppPapers');
+  if (p) new Chart(p, {
+    type:'line',
+    data:{ labels:['2022','2023','2024','2025'],
+      datasets:[{ label:'연간 논문(편)', data:[360,410,455,480], borderColor:blue, backgroundColor:'rgba(0,91,170,.10)', borderWidth:3, fill:true, tension:.35, pointRadius:5, pointBackgroundColor:blue, pointBorderColor:'#fff', pointBorderWidth:2 }] },
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ display:false } },
+      scales:{ y:{ beginAtZero:false, grid:{ color:grid }, ticks:{ font:{ weight:700 } } }, x:{ grid:{ display:false }, ticks:{ font:{ weight:700 } } } } }
+  });
+  // Faculty doughnut
+  var f = document.getElementById('ppFaculty');
+  if (f) new Chart(f, {
+    type:'doughnut',
+    data:{ labels:['정보컴퓨터공학 24','통계학 7','데이터사이언스 5','융합·기타 22'],
+      datasets:[{ data:[24,7,5,22], backgroundColor:[blue,green,navy,sub], borderColor:'#fff', borderWidth:3 }] },
+    options:{ responsive:true, maintainAspectRatio:false, cutout:'62%',
+      plugins:{ legend:{ position:'bottom', labels:{ boxWidth:12, padding:14, font:{ size:11, weight:700 } } } } }
+  });
+})();
+</script>
+</body>
+</html>

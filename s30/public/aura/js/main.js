@@ -119,22 +119,135 @@ function updateActiveNav() {
   navLinks.forEach((l) => l.classList.toggle('is-active', l.dataset.nav === activeZone));
 }
 
+let isAnimating = false;
+let currentIndex = 0;
+
+function getInitialIndex() {
+  const currentScroll = snap.scrollTop;
+  let closestIndex = 0;
+  let minDiff = Infinity;
+  sections.forEach((sec, idx) => {
+    const diff = Math.abs(sec.offsetTop - currentScroll);
+    if (diff < minDiff) {
+      minDiff = diff;
+      closestIndex = idx;
+    }
+  });
+  return closestIndex;
+}
+
+function scrollToSection(index) {
+  if (index < 0 || index >= sections.length) return;
+  
+  isAnimating = true;
+  currentIndex = index;
+  
+  const targetScroll = sections[index].offsetTop;
+  
+  // UI 반응성 향상을 위해 GNB 활성화 상태를 미리 조절
+  const activeZone = sections[index].getAttribute('data-zone');
+  navLinks.forEach((l) => l.classList.toggle('is-active', l.dataset.nav === activeZone));
+  
+  const { gsap } = window;
+  if (gsap) {
+    gsap.to(snap, {
+      scrollTop: targetScroll,
+      duration: 1.1,
+      ease: "power2.out",
+      overwrite: "auto",
+      onComplete: () => {
+        isAnimating = false;
+      }
+    });
+  } else {
+    snap.scrollTop = targetScroll;
+    isAnimating = false;
+  }
+}
+
+function handleWheel(e) {
+  if (window.innerWidth <= 760) return; // 모바일은 네이티브 브라우저 스냅 사용
+  
+  e.preventDefault();
+  if (isAnimating) return;
+  
+  if (e.deltaY > 0) {
+    if (currentIndex < sections.length - 1) {
+      scrollToSection(currentIndex + 1);
+    }
+  } else if (e.deltaY < 0) {
+    if (currentIndex > 0) {
+      scrollToSection(currentIndex - 1);
+    }
+  }
+}
+
+function handleKeydown(e) {
+  if (window.innerWidth <= 760) return;
+  
+  const keys = ['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', ' '];
+  if (!keys.includes(e.key)) return;
+  
+  if (isAnimating) {
+    e.preventDefault();
+    return;
+  }
+  
+  if (e.key === 'ArrowDown' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
+    e.preventDefault();
+    if (currentIndex < sections.length - 1) scrollToSection(currentIndex + 1);
+  } else if (e.key === 'ArrowUp' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {
+    e.preventDefault();
+    if (currentIndex > 0) scrollToSection(currentIndex - 1);
+  }
+}
+
+function initNavClick() {
+  navLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetZone = link.dataset.nav;
+      const targetSecIdx = sections.findIndex(sec => sec.getAttribute('data-zone') === targetZone);
+      if (targetSecIdx !== -1) {
+        scrollToSection(targetSecIdx);
+      }
+    });
+  });
+}
+
 function onScroll() {
   const max = snap.scrollHeight - snap.clientHeight;
   targetT = max > 0 ? snap.scrollTop / max : 0;
-  setProgressUI(targetT);
-  updateActiveNav();
+  
+  // 애니메이션 중이 아닐 때만 스크롤 위치 기반으로 activeNav 업데이트
+  if (!isAnimating) {
+    updateActiveNav();
+    // 현재 스크롤 위치 기반으로 currentIndex 동기화
+    currentIndex = getInitialIndex();
+  }
 }
 
 function initScrollTrigger() {
   const { gsap, ScrollTrigger } = window;
   if (gsap && ScrollTrigger) {
-    // Keep ScrollTrigger available for layout refresh; not used for t-mapping.
     gsap.registerPlugin(ScrollTrigger);
     ScrollTrigger.refresh();
   }
+  
   snap.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
+  window.addEventListener('resize', () => {
+    onScroll();
+    if (window.innerWidth > 760) {
+      snap.scrollTop = sections[currentIndex].offsetTop;
+    }
+  });
+  
+  snap.addEventListener('wheel', handleWheel, { passive: false });
+  window.addEventListener('keydown', handleKeydown, { passive: false });
+  
+  initNavClick();
+  
+  currentIndex = getInitialIndex();
   onScroll();
 }
 
@@ -156,8 +269,10 @@ function animate() {
   const elapsed = clock.getElapsedTime();
 
   // Ease scroll progress toward target for smooth cinematic travel
-  smoothT += (targetT - smoothT) * 0.06;
+  smoothT += (targetT - smoothT) * 0.09;
   const t = THREE.MathUtils.clamp(smoothT, 0, 1);
+
+  setProgressUI(t);
 
   probe.update(t, curve);
   if (buildings.update) buildings.update(elapsed, t);

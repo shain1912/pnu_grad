@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RoboCup 2025 우승 — 부산대학교 AI 거점대학육성사업단 | ARISE PNU</title>
+<meta name="description" content="RoboCup 2025 세계 챔피언십 우승 — 부산대 TidyBoy 팀, 휴머노이드 Anubis, 8/8 미션 완수.">
+<link rel="icon" type="image/jpeg" href="/s30/assets/pnu-symbol-color.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+4:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/src/styles/main.css">
+<style>
+/* RoboCup page-specific (flat palette only, no gradients) */
+.rc-bignum-band { background:var(--pnu-navy); padding:60px 0; }
+.rc-bignum-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+.rc-bignum { text-align:center; padding:0 24px; border-right:1px solid rgba(255,255,255,.14); }
+.rc-bignum:last-child { border-right:none; }
+.rc-bignum .n { font-family:'Inter',sans-serif; font-size:3.4rem; font-weight:900; color:#fff; line-height:1; letter-spacing:-.04em; }
+.rc-bignum .n span { font-size:1.6rem; color:#7EC8FF; }
+.rc-bignum .l { font-size:13px; color:rgba(255,255,255,.74); margin-top:10px; font-weight:600; letter-spacing:.02em; }
+.rc-bignum .t { font-size:11px; color:#7EC8FF; font-weight:800; letter-spacing:.1em; text-transform:uppercase; font-family:'Inter',sans-serif; margin-bottom:10px; }
+.rc-missions { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:8px; }
+.rc-mission { background:#fff; border:1px solid var(--border); border-radius:14px; padding:18px 16px; display:flex; align-items:center; gap:12px; }
+.rc-mission i.dot { width:30px; height:30px; flex:none; border-radius:50%; background:#D1FAE5; color:var(--pnu-green); display:flex; align-items:center; justify-content:center; font-size:13px; }
+.rc-mission .mlbl { font-size:13px; font-weight:700; color:var(--ink); }
+.rc-mission .mnum { margin-left:auto; font-family:'Inter',sans-serif; font-size:12px; font-weight:800; color:var(--pnu-blue); }
+.rc-spec-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.rc-spec { background:var(--blue-tint); border:1px solid var(--blue-light); border-radius:16px; padding:24px; border-left:4px solid var(--pnu-blue); }
+.rc-spec .si { width:44px; height:44px; border-radius:11px; background:#fff; color:var(--pnu-blue); display:flex; align-items:center; justify-content:center; font-size:18px; margin-bottom:14px; }
+.rc-spec .sk { font-size:11px; font-weight:800; color:var(--pnu-blue); letter-spacing:.08em; text-transform:uppercase; font-family:'Inter',sans-serif; margin-bottom:6px; }
+.rc-spec .sv { font-size:18px; font-weight:800; color:var(--ink); }
+.rc-progress-wrap { background:#fff; border:1px solid var(--border); border-radius:18px; padding:34px 38px; box-shadow:0 8px 28px rgba(15,31,69,.06); }
+.rc-bar-row { display:grid; grid-template-columns:120px 1fr 56px; align-items:center; gap:16px; margin-bottom:14px; }
+.rc-bar-row:last-child { margin-bottom:0; }
+.rc-bar-lbl { font-size:13px; font-weight:700; color:var(--ink); }
+.rc-bar-track { height:14px; background:var(--blue-tint); border-radius:100px; overflow:hidden; }
+.rc-bar-fill { height:100%; background:var(--pnu-blue); border-radius:100px; }
+.rc-bar-fill.green { background:var(--pnu-green); }
+.rc-bar-val { font-family:'Inter',sans-serif; font-size:13px; font-weight:800; color:var(--pnu-blue); text-align:right; }
+.rc-tl { position:relative; padding-left:26px; }
+.rc-tl::before { content:''; position:absolute; left:7px; top:6px; bottom:6px; width:2px; background:var(--blue-light); }
+.rc-tl-item { position:relative; padding:0 0 22px 18px; }
+.rc-tl-item:last-child { padding-bottom:0; }
+.rc-tl-item::before { content:''; position:absolute; left:-23px; top:4px; width:12px; height:12px; border-radius:50%; background:var(--pnu-blue); border:3px solid #fff; box-shadow:0 0 0 2px var(--pnu-blue); }
+.rc-tl-item.win::before { background:var(--pnu-green); box-shadow:0 0 0 2px var(--pnu-green); }
+.rc-tl-date { font-family:'Inter',sans-serif; font-size:11px; font-weight:800; color:var(--pnu-blue); letter-spacing:.06em; }
+.rc-tl-text { font-size:14px; font-weight:700; color:var(--ink); margin-top:3px; }
+.rc-chips { display:flex; flex-wrap:wrap; gap:8px; }
+.rc-related-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+@media (max-width:860px){
+  .rc-bignum-grid,.rc-spec-grid,.rc-related-grid{ grid-template-columns:repeat(2,1fr); }
+  .rc-missions{ grid-template-columns:repeat(2,1fr); }
+  .rc-bar-row{ grid-template-columns:90px 1fr 44px; }
+}
+</style>
+</head>
+<body>
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="left">
+      <span class="live"><span class="live-dot"></span> 2026 AI 거점대학사업 운영 중</span>
+      <span style="margin-left:14px">·</span>
+      <span class="slogan-strip" style="margin-left:14px">Arise PNU, 같이 더 높게</span>
+    </div>
+    <div class="right">
+      <a href="https://www.pusan.ac.kr" target="_blank">부산대학교</a>
+      <a href="https://ai.pusan.ac.kr" target="_blank">AI 대학</a>
+      <a href="https://airc.pusan.ac.kr" target="_blank">장영실연구원</a>
+      <a href="#">로그인</a>
+    </div>
+  </div>
+</div>
+<!-- MAIN HEADER -->
+<header class="main-hdr">
+  <div class="container hdr-inner">
+    <a href="/s30/" class="brand">
+      <img src="/s30/assets/pnu-signature.jpg" alt="부산대학교 공식 시그니처" class="brand-logo">
+      <div class="brand-divider"></div>
+      <div>
+        <div class="brand-text-ko">AI 거점대학육성사업단</div>
+        <div class="brand-text-en">ARISE · arise-ai.pusan.ac.kr</div>
+      </div>
+    </a>
+    <nav class="main-nav">
+      <div class="nav-item">
+        <a href="/s30/about/" class="nav-link">사업 소개 </a>
+        <div class="dropdown">
+          <a href="/s30/about/"><div class="d-i"></div>사업 개요 · 비전</a>
+          <a href="/s30/aura/"><div class="d-i"></div>A.U.R.A 2.0 마스터플랜</a>
+          <a href="/s30/about/governance/"><div class="d-i"></div>거버넌스</a>
+          <a href="/s30/roadmap/"><div class="d-i"></div>3개년 로드맵</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/s30/programs/" class="nav-link">핵심 사업 </a>
+        <div class="dropdown">
+          <a href="/s30/programs/education/"><div class="d-i"></div>AI 교육 혁신</a>
+          <a href="/s30/programs/research/"><div class="d-i"></div>AI 연구 강화</a>
+          <a href="/s30/programs/industry/"><div class="d-i"></div>산학 협력</a>
+          <a href="/s30/programs/infra/"><div class="d-i"></div>AI 인프라</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/s30/achievements/" class="nav-link active">성과 </a>
+        <div class="dropdown">
+          <a href="/s30/achievements/robocup/"><div class="d-i"></div>RoboCup 2025 우승</a>
+          <a href="/s30/achievements/quantum/"><div class="d-i"></div>양자AI 47억 사업</a>
+          <a href="/s30/achievements/papers/"><div class="d-i"></div>논문 · 특허</a>
+          <a href="/s30/achievements/transfer/"><div class="d-i"></div>기술이전 · 창업</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/s30/partners/" class="nav-link">파트너십 </a>
+        <div class="dropdown">
+          <a href="/s30/partners/google/"><div class="d-i"></div>Google for Education</a>
+          <a href="/s30/partners/industry/"><div class="d-i"></div>산학 협약 (35+)</a>
+          <a href="/s30/partners/global/"><div class="d-i"></div>글로벌 협력</a>
+          <a href="/s30/partners/govt/"><div class="d-i"></div>정부·공공기관</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/s30/news/" class="nav-link">알림마당 </a>
+        <div class="dropdown">
+          <a href="/s30/news/?cat=notice"><div class="d-i"></div>공지사항</a>
+          <a href="/s30/news/?cat=news"><div class="d-i"></div>뉴스·보도자료</a>
+          <a href="/s30/news/?cat=event"><div class="d-i"></div>행사·일정</a>
+          <a href="/s30/news/?cat=resource"><div class="d-i"></div>자료실</a>
+        </div>
+      </div>
+      <a href="/s30/partners/#contact" class="nav-link nav-cta">참여 신청 →</a>
+      <div class="lang-toggle">KOR | ENG</div>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container ph-inner">
+    <div class="ph-left">
+      <div class="ph-eyebrow">RoboCup 2025 · World Champion</div>
+      <h1 class="ph-title">RoboCup 2025 <em>세계 우승</em></h1>
+      <p class="ph-sub">TidyBoy · 휴머노이드 Anubis · 8/8 미션 완수</p>
+      <div class="breadcrumb">
+        <a href="/s30/"> 홈</a>
+        
+        <a href="/s30/achievements/">성과</a>
+        
+        <span class="current">RoboCup 2025</span>
+      </div>
+    </div>
+    <div class="ph-icon"></div>
+  </div>
+</section>
+
+<!-- BIG NUMBERS BAND -->
+<section class="rc-bignum-band">
+  <div class="container">
+    <div class="rc-bignum-grid">
+      <div class="rc-bignum">
+        <div class="t">World Rank</div>
+        <div class="n">1<span>위</span></div>
+        <div class="l">세계 챔피언십 우승</div>
+      </div>
+      <div class="rc-bignum">
+        <div class="t">Missions</div>
+        <div class="n">8<span>/8</span></div>
+        <div class="l">전 미션 완수</div>
+      </div>
+      <div class="rc-bignum">
+        <div class="t">Teams Beaten</div>
+        <div class="n">1,500<span>팀</span></div>
+        <div class="l">참가팀 격파</div>
+      </div>
+      <div class="rc-bignum">
+        <div class="t">Award Date</div>
+        <div class="n">08<span>.21</span></div>
+        <div class="l">2025년 수상</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE CARD -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="s-eyebrow">Champion Highlight</div>
+      <h2 class="s-title">휴머노이드 <em>Anubis</em>, 세계를 정리하다</h2>
+    </div>
+    <div class="feat-card">
+      <div class="img-wrap">
+        <img src="/s30/assets/img/robocup.jpg" alt="RoboCup 2025 우승 휴머노이드 로봇" onerror="this.style.display='none';this.parentElement.style.background='#0d3b6e'">
+        <div class="badge-strip">
+          <span class="badge"> Champion</span>
+          <span class="badge dark"> RoboCup 2025</span>
+        </div>
+      </div>
+      <div class="feat-body">
+        <span class="feat-cat">World Championship</span>
+        <h3 class="feat-title">TidyBoy · Anubis</h3>
+        <div class="feat-meta">
+          <div class="feat-meta-cell"><div class="k">Team</div><div class="v">TidyBoy</div></div>
+          <div class="feat-meta-cell"><div class="k">Robot</div><div class="v">휴머노이드 Anubis</div></div>
+          <div class="feat-meta-cell"><div class="k">Lead</div><div class="v">이승준 교수 (전기공학부)</div></div>
+          <div class="feat-meta-cell"><div class="k">Date</div><div class="v">2025.08.21</div></div>
+        </div>
+        <div class="rc-chips">
+          <span class="def-chip"> 8/8 미션</span>
+          <span class="def-chip"> 1,500팀 격파</span>
+          <span class="def-chip"> 세계 1위</span>
+          <span class="def-chip"> 휴머노이드</span>
+          <span class="def-chip"> 전기공학부</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSIONS 8/8 -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header center">
+      <div class="s-eyebrow">Mission Sweep</div>
+      <h2 class="s-title"><em>8 / 8</em> 미션 완수</h2>
+    </div>
+    <div class="rc-progress-wrap" style="margin-bottom:26px">
+      <div class="rc-bar-row">
+        <div class="rc-bar-lbl">미션 완수율</div>
+        <div class="rc-bar-track"><div class="rc-bar-fill green" style="width:100%"></div></div>
+        <div class="rc-bar-val">100%</div>
+      </div>
+      <div class="rc-bar-row">
+        <div class="rc-bar-lbl">참가팀 대비 순위</div>
+        <div class="rc-bar-track"><div class="rc-bar-fill" style="width:100%"></div></div>
+        <div class="rc-bar-val">1 / 1,500</div>
+      </div>
+    </div>
+    <div class="rc-missions">
+      <div class="rc-mission"><span class="mlbl">Mission</span><span class="mnum">01</span></div>
+      <div class="rc-mission"><span class="mlbl">Mission</span><span class="mnum">02</span></div>
+      <div class="rc-mission"><span class="mlbl">Mission</span><span class="mnum">03</span></div>
+      <div class="rc-mission"><span class="mlbl">Mission</span><span class="mnum">04</span></div>
+      <div class="rc-mission"><span class="mlbl">Mission</span><span class="mnum">05</span></div>
+      <div class="rc-mission"><span class="mlbl">Mission</span><span class="mnum">06</span></div>
+      <div class="rc-mission"><span class="mlbl">Mission</span><span class="mnum">07</span></div>
+      <div class="rc-mission"><span class="mlbl">Mission</span><span class="mnum">08</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECS + TIMELINE -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="s-eyebrow">At a Glance</div>
+      <h2 class="s-title">대회 <em>핵심 정보</em></h2>
+    </div>
+    <div class="rc-spec-grid" style="margin-bottom:34px">
+      <div class="rc-spec">
+        <div class="si"></div>
+        <div class="sk">Robot</div>
+        <div class="sv">휴머노이드 Anubis</div>
+      </div>
+      <div class="rc-spec">
+        <div class="si"></div>
+        <div class="sk">Team</div>
+        <div class="sv">TidyBoy · 이승준 교수팀</div>
+      </div>
+      <div class="rc-spec">
+        <div class="si"></div>
+        <div class="sk">Department</div>
+        <div class="sv">전기공학부</div>
+      </div>
+    </div>
+    <div class="rc-progress-wrap">
+      <div class="rc-tl">
+        <div class="rc-tl-item">
+          <div class="rc-tl-date">RoboCup 2025</div>
+          <div class="rc-tl-text">세계 챔피언십 본선 진출</div>
+        </div>
+        <div class="rc-tl-item">
+          <div class="rc-tl-date">FINAL</div>
+          <div class="rc-tl-text">8개 미션 전부 완수</div>
+        </div>
+        <div class="rc-tl-item win">
+          <div class="rc-tl-date">2025.08.21</div>
+          <div class="rc-tl-text">세계 1위 · 우승 확정</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS CONTEXT -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header center">
+      <div class="s-eyebrow">Track Record</div>
+      <h2 class="s-title">국제 경진대회 <em>수상 행보</em></h2>
+    </div>
+    <div class="rc-related-grid">
+      <div class="ach-card gold">
+        <div class="ach-icon"></div>
+        <span class="ach-tag">World #1</span>
+        <div class="ach-num">1<span>위</span></div>
+        <div class="ach-num-lbl">RoboCup 2025 우승</div>
+      </div>
+      <div class="ach-card green">
+        <div class="ach-icon"></div>
+        <span class="ach-tag">Global</span>
+        <div class="ach-num">28<span>+</span></div>
+        <div class="ach-num-lbl">국제 경진대회 수상</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon"></div>
+        <span class="ach-tag">Missions</span>
+        <div class="ach-num">8<span>/8</span></div>
+        <div class="ach-num-lbl">전 미션 완수</div>
+      </div>
+      <div class="ach-card violet">
+        <div class="ach-icon"></div>
+        <span class="ach-tag">Beaten</span>
+        <div class="ach-num">1,500<span>팀</span></div>
+        <div class="ach-num-lbl">참가팀 격파</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="ft-top">
+      <div>
+        <div class="ft-brand-row">
+          <img src="/s30/assets/pnu-signature.jpg" alt="부산대학교" class="ft-logo-img" style="filter:brightness(0) invert(1)">
+        </div>
+        <div class="ft-brand-name">AI 거점대학육성사업단 · ARISE PNU<small>arise-ai.pusan.ac.kr · A.U.R.A 2.0 마스터플랜</small></div>
+        <div class="ft-desc" style="margin-top:16px"><em>"Arise PNU, 같이 더 높게"</em> — 동남권 AX 생태계의 중심 거점, 부산대학교 AI 거점대학육성사업단입니다.</div>
+        <div class="ft-addr">📍 부산광역시 금정구 부산대학로 63번길 2 · IT관 3층 AI 거점사업단<br>📞 051-510-0000 · ✉ arise@pusan.ac.kr<br>⏰ 평일 09:00 – 18:00</div>
+        <div class="ft-sns" style="margin-top:24px">
+          <a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a>
+        </div>
+      </div>
+      <div class="ft-col"><h4>사업 소개</h4>
+        <a href="/s30/about/#overview">사업 개요 · 비전</a><a href="/s30/about/#aura">A.U.R.A 2.0</a><a href="/s30/about/governance/">거버넌스</a><a href="/s30/roadmap/">3개년 로드맵</a>
+      </div>
+      <div class="ft-col"><h4>핵심 사업</h4>
+        <a href="/s30/programs/education/">AI 교육 혁신</a><a href="/s30/programs/research/">AI 연구 강화</a><a href="/s30/programs/industry/">산학 협력</a><a href="/s30/programs/infra/">AI 인프라</a>
+      </div>
+      <div class="ft-col"><h4>관련 사이트</h4>
+        <a href="https://www.pusan.ac.kr" target="_blank">부산대학교 ↗</a><a href="https://ai.pusan.ac.kr" target="_blank">AI 대학 ↗</a><a href="https://airc.pusan.ac.kr" target="_blank">장영실연구원 ↗</a><a href="https://aiedu.pusan.ac.kr" target="_blank">AI 융합교육원 ↗</a><a href="https://uitc.pusan.ac.kr" target="_blank">AX·정보화혁신본부 ↗</a>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <div class="ft-copy">© 2026 Pusan National University ARISE-AI. All rights reserved.</div>
+      <div class="ft-policy"><a href="#">개인정보처리방침</a><a href="#">이메일무단수집거부</a><a href="#">사이트맵</a><a href="#">접근성 정책</a></div>
+    </div>
+  </div>
+</footer>
+<script type="module" src="/src/scripts/main.js"></script>
+</body>
+</html>
