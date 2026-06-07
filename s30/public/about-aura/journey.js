@@ -111,7 +111,7 @@ function bootstrap() {
 
   // ── FX modules (detail + atmosphere + motion) — added to scene; updated each frame ──
   const fxCtx = { THREE, scene, curve, zones, palette, reducedMotion };
-  const fx = [ createGroundFX(fxCtx), createZoneFX(fxCtx), createFlowFX(fxCtx), createMotesFX(fxCtx) ];
+  const fx = [ createGroundFX(fxCtx), createZoneFX(fxCtx), createFlowFX(fxCtx) ];
   fx.forEach(f => f.objects.forEach(o => scene.add(o)));
 
   /* ───────── Camera keyframes (scroll stops) ───────── */
@@ -487,48 +487,6 @@ function bootstrap() {
     } };
   }
 
-  // ── Ambient floating motes (very faint atmosphere) ──
-  function createMotesFX(ctx){
-    const T = ctx.THREE;
-    const S = 64;
-    const cnv = document.createElement('canvas'); cnv.width = cnv.height = S;
-    const c2d = cnv.getContext('2d');
-    const g = c2d.createRadialGradient(S/2, S/2, 0, S/2, S/2, S/2);
-    g.addColorStop(0.0, 'rgba(255,255,255,1)'); g.addColorStop(0.35, 'rgba(255,255,255,0.55)'); g.addColorStop(1.0, 'rgba(255,255,255,0)');
-    c2d.fillStyle = g; c2d.fillRect(0, 0, S, S);
-    const sprite = new T.CanvasTexture(cnv); sprite.colorSpace = T.SRGBColorSpace;
-
-    const N = 120;
-    const X0 = -100, X1 = 100, Y0 = 2, Y1 = 40, Z0 = -80, Z1 = 60;
-    const SPAN_X = X1 - X0, SPAN_Y = Y1 - Y0, SPAN_Z = Z1 - Z0;
-    const pos = new Float32Array(N * 3), base = new Float32Array(N * 3), phase = new Float32Array(N);
-    for (let i = 0; i < N; i++){
-      const x = X0 + Math.random() * SPAN_X, y = Y0 + Math.random() * SPAN_Y, z = Z0 + Math.random() * SPAN_Z;
-      base[i*3] = x; base[i*3+1] = y; base[i*3+2] = z; pos[i*3] = x; pos[i*3+1] = y; pos[i*3+2] = z;
-      phase[i] = Math.random() * Math.PI * 2;
-    }
-    const geo = new T.BufferGeometry();
-    geo.setAttribute('position', new T.Float32BufferAttribute(pos, 3));
-    const points = new T.Points(geo, new T.PointsMaterial({
-      map: sprite, color: new T.Color('#cfe2ff'), size: 3.2, sizeAttenuation: true,
-      transparent: true, opacity: 0.5, depthWrite: false, blending: T.AdditiveBlending, toneMapped: false
-    }));
-    points.frustumCulled = false;
-
-    return { objects: [ points ], update(elapsed, delta, progress){
-      if (ctx.reducedMotion) return;
-      const arr = geo.attributes.position.array; const t = elapsed;
-      for (let i = 0; i < N; i++){
-        const ph = phase[i];
-        const y = base[i*3+1] + Math.sin(t * 0.18 + ph) * 1.6;
-        let x = base[i*3] + (t * 1.2 + Math.sin(t * 0.07 + ph) * 4.0);
-        x = X0 + (((x - X0) % SPAN_X) + SPAN_X) % SPAN_X;
-        const z = base[i*3+2] + Math.cos(t * 0.12 + ph) * 1.2;
-        arr[i*3] = x; arr[i*3+1] = y; arr[i*3+2] = z;
-      }
-      geo.attributes.position.needsUpdate = true;
-    } };
-  }
   function scatter(scene, curve) {
     const grp = new THREE.Group();
     for (let i = 0; i < 26; i++) {
