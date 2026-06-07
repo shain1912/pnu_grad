@@ -1,0 +1,1321 @@
+/* ============================================================
+   bymonolog — Dark Cinematic studio rendition (variant-only CSS)
+   Palette tokens scoped to the page root.
+   ============================================================ */
+.mono-root {
+  --bg: #0e0e0f;
+  --surface: #1a1a1b;
+  --text: #edede8;
+  /* Bumped lighter for legibility on charcoal (WCAG AA on #0E0E0F). */
+  --muted: #b8b8b2;
+  --metal: #cfcdc4;
+  --gold: #c9a227;
+  --cream: #f4f1ec;
+  --cream-text: #1a1a1b;
+  --hairline: rgba(185, 182, 172, 0.18);
+
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+  position: relative;
+}
+
+/* Film grain overlay — SVG-data-uri noise, subtly animated */
+.mono-grain {
+  position: fixed;
+  inset: -50%;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: mono-grain-shift 0.6s steps(3) infinite;
+  will-change: transform;
+}
+@keyframes mono-grain-shift {
+  0% { transform: translate(0, 0); }
+  33% { transform: translate(-3%, 2%); }
+  66% { transform: translate(2%, -2%); }
+  100% { transform: translate(-1%, 1%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mono-grain { animation: none; }
+}
+
+/* Hairline divider under stats / sections */
+.mono-hairline {
+  height: 1px;
+  width: 100%;
+  background: var(--hairline);
+}
+
+/* Pill CTA */
+.mono-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--hairline);
+  padding: 0.65rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+  background: transparent;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  white-space: nowrap;
+}
+.mono-pill:hover {
+  background: var(--gold);
+  color: var(--cream-text);
+  border-color: var(--gold);
+}
+.mono-pill--solid {
+  background: var(--gold);
+  color: var(--cream-text);
+  border-color: var(--gold);
+}
+.mono-pill--solid:hover {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--gold);
+}
+
+/* Mono label */
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Spotlight bloom behind hero word */
+.mono-bloom {
+  position: absolute;
+  left: 50%;
+  top: 38%;
+  width: min(120vw, 1400px);
+  aspect-ratio: 1 / 0.62;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(201, 162, 39, 0.16) 0%,
+    rgba(201, 162, 39, 0.06) 30%,
+    rgba(14, 14, 15, 0) 62%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Cinematic hero video background + scrim */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  /* Top-to-bottom darken + vignette so the metal wordmark + copy stay legible. */
+  background:
+    radial-gradient(120% 90% at 50% 35%, rgba(14, 14, 15, 0.2) 0%, rgba(14, 14, 15, 0.78) 70%, rgba(14, 14, 15, 0.96) 100%),
+    linear-gradient(to bottom, rgba(14, 14, 15, 0.72) 0%, rgba(14, 14, 15, 0.5) 42%, rgba(14, 14, 15, 0.9) 100%);
+}
+
+/* Hero colossal wordmark */
+.hero-word {
+  font-family: var(--font-heavy);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.82;
+  color: var(--metal);
+  white-space: nowrap;
+  will-change: transform;
+}
+
+/* Masked manifesto line wrapper */
+.mono-line-mask {
+  overflow: hidden;
+  display: block;
+}
+.mono-line {
+  display: block;
+  will-change: transform;
+}
+
+/* Cream inverted section */
+.mono-cream {
+  background: var(--cream);
+  color: var(--cream-text);
+}
+.mono-cream .mono-label { color: rgba(26, 26, 27, 0.55); }
+.mono-cream .mono-hairline { background: rgba(26, 26, 27, 0.16); }
+
+/* ============================================================
+   MULTI-PAGE LAYOUT (stack deck retired)
+   Each route is a short normal-flow page of <=4 sections.
+   .mono-section = standard padded band; the hero keeps its own 100dvh.
+   ============================================================ */
+.mono-page {
+  min-height: 100dvh;
+}
+.mono-section {
+  position: relative;
+  padding-block: clamp(4.5rem, 11vh, 8rem);
+  padding-inline: 1.5rem;
+}
+@media (min-width: 640px) {
+  .mono-section { padding-inline: 2rem; }
+}
+.mono-section--tight {
+  padding-block: clamp(3rem, 7vh, 5rem);
+}
+.mono-section__inner {
+  position: relative;
+  z-index: 10;
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1400px;
+}
+
+/* Hero band keeps the cinematic full-viewport treatment. */
+.mono-hero {
+  position: relative;
+  min-height: 100dvh;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* Cream / gold-wash accent panels — break the all-charcoal rhythm. */
+.mono-cream.mono-section {
+  background: var(--cream);
+  color: var(--cream-text);
+}
+.mono-goldwash {
+  background:
+    radial-gradient(120% 120% at 80% 0%, rgba(201, 162, 39, 0.16) 0%, rgba(14, 14, 15, 0) 55%),
+    linear-gradient(160deg, #1c1a15 0%, var(--bg) 70%);
+}
+
+/* Dark / light ALTERNATION — bymonolog was all-dark; now top-level sections go
+   dark · light · dark · light. EVEN sections become a bright cream slide (with the
+   colour tokens remapped so all var()-driven text stays legible on cream); ODD
+   sections stay dark with subtle tonal variety. Cream / goldwash accent slides
+   keep their own treatment. */
+.mono-page main > section:not(.mono-cream):not(.mono-goldwash):nth-of-type(4n + 1) {
+  background: #0c0f17;
+}
+.mono-page main > section:not(.mono-cream):not(.mono-goldwash):nth-of-type(4n + 3) {
+  background: #17120d;
+}
+.mono-page main > section:not(.mono-cream):not(.mono-goldwash):nth-of-type(even) {
+  background: var(--cream);
+  color: #1a1a1b;
+  --text: #1a1a1b;
+  --metal: #45433d;
+  --muted: rgba(26, 26, 27, 0.62);
+  --surface: #ffffff;
+  --hairline: rgba(26, 26, 27, 0.16);
+}
+
+/* ── Light one-idea slide — centred, breathable, ~one viewport ── */
+.mono-slide {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100dvh;
+  padding-block: clamp(4rem, 10vh, 7rem);
+  padding-inline: 1.5rem;
+}
+@media (min-width: 640px) {
+  .mono-slide { padding-inline: 2rem; }
+}
+/* On short / reduced-motion contexts the slide may relax below a full screen. */
+@media (prefers-reduced-motion: reduce) {
+  .mono-slide { min-height: 0; }
+}
+.mono-slide__inner {
+  position: relative;
+  z-index: 10;
+  margin-inline: auto;
+  width: 100%;
+  max-width: 880px;
+}
+/* One focused bullet list — generous line-height, no cramming. */
+.mono-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.9rem, 2.2vh, 1.4rem);
+}
+.mono-bullet {
+  display: flex;
+  gap: 0.85rem;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--metal);
+}
+.mono-bullet > .dot {
+  margin-top: 0.7rem;
+  height: 0.3rem;
+  width: 0.3rem;
+  flex: none;
+  border-radius: 999px;
+  background: var(--gold);
+}
+
+/* ── Horizontal pan track (useHorizontalPan) — wide flow, right→left ── */
+.mono-pan {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+.mono-pan__track {
+  display: flex;
+  gap: clamp(1rem, 2vw, 1.75rem);
+  padding-inline: clamp(1.5rem, 6vw, 6rem);
+  will-change: transform;
+}
+.mono-pan__card {
+  flex: 0 0 auto;
+  width: min(78vw, 340px);
+}
+/* On reduced-motion the track stays a normal wrapping grid (no clipping). */
+@media (prefers-reduced-motion: reduce) {
+  .mono-pan { min-height: 0; }
+  .mono-pan__track {
+    flex-wrap: wrap;
+    transform: none !important;
+  }
+  .mono-pan__card { width: min(100%, 340px); }
+}
+
+/* ── Sticky split: left column pins while the right column scrolls ── */
+.mono-split {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+@media (min-width: 900px) {
+  .mono-split {
+    grid-template-columns: 0.85fr 1.15fr;
+    align-items: start;
+  }
+  .mono-split__sticky {
+    position: sticky;
+    top: clamp(5rem, 14vh, 8rem);
+  }
+}
+
+/* ============================================================
+   AURA reveal stage (replaces the awkward split-apart animation)
+   Clean count-up + staggered entrance of 8 / 22 / 47.
+   ============================================================ */
+.aura-stage {
+  position: relative;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+/* Hoverable masterplan title */
+.aura-title {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  cursor: default;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.aura-title__main {
+  font-family: var(--font-heavy);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  color: var(--text);
+  transition: color 0.4s ease, letter-spacing 0.4s ease;
+}
+.aura-title__sub {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.4s ease;
+}
+/* Animated gold underline that sweeps in on hover */
+.aura-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.35rem;
+  height: 2px;
+  width: 100%;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.aura-title:hover {
+  transform: translateY(-2px);
+}
+.aura-title:hover::after {
+  transform: scaleX(1);
+}
+.aura-title:hover .aura-title__main {
+  color: var(--gold);
+  letter-spacing: 0.005em;
+}
+.aura-title:hover .aura-title__sub {
+  color: var(--text);
+}
+@media (prefers-reduced-motion: reduce) {
+  .aura-title,
+  .aura-title__main,
+  .aura-title__sub,
+  .aura-title::after {
+    transition: none;
+  }
+}
+
+/* A.U.R.A vision-diagram tiers + connectors */
+.aura-vision,
+.aura-goal {
+  width: 100%;
+  max-width: 720px;
+  text-align: center;
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  padding: 1.1rem 1.5rem;
+  background: rgba(237, 237, 232, 0.02);
+}
+.aura-vision {
+  border-color: rgba(201, 162, 39, 0.4);
+  background: rgba(201, 162, 39, 0.06);
+}
+.aura-connector {
+  display: block;
+  width: 2px;
+  height: clamp(0.9rem, 2.2vh, 1.6rem);
+  background: linear-gradient(
+    to bottom,
+    rgba(201, 162, 39, 0.7),
+    rgba(201, 162, 39, 0.2)
+  );
+}
+
+/* Big numeral figures */
+.aura-figure-num {
+  font-family: var(--font-heavy);
+  line-height: 0.82;
+  letter-spacing: -0.03em;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Stepped pillar structure (cura A.U.R.A) — gold-recolored ascending steps */
+.aura-step {
+  position: relative;
+  padding-bottom: 1.75rem;
+}
+.aura-step__index {
+  color: var(--gold);
+}
+/* ascending under-bar; later steps sit taller via padding-bottom */
+.aura-step[data-step="1"] {
+  padding-bottom: 1.75rem;
+}
+.aura-step[data-step="2"] {
+  padding-bottom: 3rem;
+}
+.aura-step[data-step="3"] {
+  padding-bottom: 4.25rem;
+}
+.aura-step__bar {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    var(--gold) 0%,
+    rgba(201, 162, 39, 0) 100%
+  );
+}
+.aura-step[data-step="1"] .aura-step__bar {
+  height: 1.5rem;
+}
+.aura-step[data-step="2"] .aura-step__bar {
+  height: 2.75rem;
+}
+.aura-step[data-step="3"] .aura-step__bar {
+  height: 4rem;
+}
+.aura-step__bar::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--gold);
+  transform: translate(-50%, 50%);
+  box-shadow: 0 0 0 4px rgba(201, 162, 39, 0.18);
+}
+
+/* Footer smoke gradient */
+.mono-smoke {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 320px;
+  background: linear-gradient(
+    to top,
+    rgba(237, 237, 232, 0.1) 0%,
+    rgba(237, 237, 232, 0.03) 40%,
+    rgba(237, 237, 232, 0) 100%
+  );
+  pointer-events: none;
+}
+
+/* Contact footer — drifting giant wordmark (cura footer feel) */
+.contact-ghost {
+  position: absolute;
+  left: 50%;
+  bottom: 0.5rem;
+  transform: translateX(-50%);
+  font-family: var(--font-heavy);
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  font-size: clamp(5rem, 22vw, 20rem);
+  line-height: 0.8;
+  color: rgba(237, 237, 232, 0.04);
+  white-space: nowrap;
+  z-index: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* RoboCup clip-card */
+.robo-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  will-change: transform, clip-path;
+}
+
+/* Roadmap active node glow */
+.roadmap-card--active {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 0 1px rgba(201, 162, 39, 0.4),
+    0 24px 60px -30px rgba(201, 162, 39, 0.5);
+}
+
+/* ============================================================
+   ROADMAP — harvested from curaclimate (progress-line + markers).
+   Horizontal track that reveals on the stack card's entrance.
+   No long pin — the sticky stack provides the lock.
+   ============================================================ */
+.mono-roadmap__ghost {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-heavy);
+  font-size: clamp(16rem, 46vw, 46rem);
+  line-height: 1;
+  color: rgba(201, 162, 39, 0.04);
+  z-index: 0;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* progress line */
+.mono-roadmap__line {
+  position: relative;
+  z-index: 2;
+  height: 2px;
+  background: var(--hairline);
+  margin-block: clamp(1.5rem, 4vh, 2.5rem);
+}
+.mono-roadmap__line i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 100%;
+  background: var(--gold);
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.mono-roadmap--animated .mono-roadmap__line i {
+  transform: scaleX(0);
+}
+
+.mono-roadmap__track {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+@media (min-width: 900px) {
+  .mono-roadmap__track {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.mono-roadmap__col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  will-change: transform, opacity;
+}
+
+.mono-roadmap__marker {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  position: relative;
+}
+/* node dot sitting on the progress line — clearer ring for legibility */
+.mono-roadmap__marker::before {
+  content: "";
+  position: absolute;
+  top: -1.6rem;
+  left: 0;
+  width: 13px;
+  height: 13px;
+  border-radius: 999px;
+  background: var(--bg);
+  border: 2px solid var(--metal);
+}
+.mono-roadmap__col[data-active="true"] .mono-roadmap__marker::before {
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 5px rgba(201, 162, 39, 0.3);
+}
+
+.mono-roadmap__year {
+  font-family: var(--font-heavy);
+  font-size: clamp(2.75rem, 7vw, 4.5rem);
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  /* Legibility: inactive years brighter than before (was 0.4) */
+  color: rgba(237, 237, 232, 0.66);
+  transition: color 0.3s ease;
+}
+.mono-roadmap__col[data-active="true"] .mono-roadmap__year {
+  color: var(--gold);
+}
+
+.mono-roadmap__phase {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.mono-roadmap__phase b {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--text);
+}
+.mono-roadmap__phase span {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--metal);
+}
+/* Active phase label reads gold for a clear current-year cue */
+.mono-roadmap__col[data-active="true"] .mono-roadmap__phase b {
+  color: var(--gold);
+}
+
+.mono-roadmap__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+.mono-roadmap__card {
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 0.85rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  background: rgba(237, 237, 232, 0.02);
+  will-change: transform, opacity;
+}
+.mono-roadmap__col[data-active="true"] .mono-roadmap__card {
+  border-color: rgba(201, 162, 39, 0.4);
+  background: var(--surface);
+}
+.mono-roadmap__card-tag {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.25em 0.7em;
+  border-radius: 999px;
+  background: rgba(201, 162, 39, 0.18);
+  color: var(--gold);
+}
+.mono-roadmap__card-text {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* ============================================================
+   SIGNATURE (only /aura) — "A.U.R.A 워드마크 핀 분할 리빌".
+   The pinned stage holds the colossal A·U·R·A wordmark; on scrub the four
+   letters split apart and the 8 / 22 / 47 scale rises through the gap.
+   ============================================================ */
+.aura-sig {
+  position: relative;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.aura-sig__word {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.15rem, 1.2vw, 1rem);
+  font-family: var(--font-heavy);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.82;
+  color: var(--metal);
+  font-size: clamp(4rem, 20vw, 16rem);
+  pointer-events: none;
+}
+.aura-sig__letter {
+  display: inline-block;
+  will-change: transform;
+}
+.aura-sig__letter--accent {
+  color: var(--gold);
+}
+/* The 8 / 22 / 47 reveal sits centred behind the splitting letters. */
+.aura-sig__scale {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.5rem, 6vw, 5rem);
+  opacity: 0;
+  will-change: opacity, transform;
+}
+/* Without JS scrub (reduced-motion), show the scale and split the word gently. */
+@media (prefers-reduced-motion: reduce) {
+  .aura-sig { min-height: 0; padding-block: 4rem; }
+  .aura-sig__scale {
+    position: relative;
+    opacity: 1;
+    margin-top: 2rem;
+  }
+  .aura-sig__word { font-size: clamp(3rem, 14vw, 9rem); }
+}
+
+/* Vision-diagram summary tier wrapper reused on the home page. */
+.aura-tier { will-change: transform, opacity; }
+
+/* ============================================================
+   /grad VISUAL LAYER — data-viz + diagram + atmosphere.
+   Scoped to the 대학원 육성 page; gates motion behind reduced-motion.
+   ============================================================ */
+
+/* ── Atmosphere: faint blueprint grid behind a slide ── */
+.grad-blueprint {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(185, 182, 172, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(185, 182, 172, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(120% 90% at 50% 30%, #000 0%, transparent 78%);
+  mask-image: radial-gradient(120% 90% at 50% 30%, #000 0%, transparent 78%);
+}
+
+/* ── Atmosphere: giant ghosted numeral / glyph drifting on scroll ── */
+.grad-ghost {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  font-family: var(--font-heavy);
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: rgba(201, 162, 39, 0.05);
+  white-space: nowrap;
+  will-change: transform;
+}
+.grad-ghost--right {
+  right: -2vw;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: clamp(12rem, 40vw, 40rem);
+}
+.grad-ghost--left {
+  left: -2vw;
+  bottom: -4vh;
+  font-size: clamp(10rem, 34vw, 34rem);
+  color: rgba(237, 237, 232, 0.035);
+}
+@media (prefers-reduced-motion: reduce) {
+  .grad-ghost { transform: none; }
+}
+
+/* ── Topic icon chip per slide ── */
+.grad-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.6rem;
+  width: 2.6rem;
+  border-radius: 12px;
+  border: 1px solid rgba(201, 162, 39, 0.4);
+  background: rgba(201, 162, 39, 0.07);
+  color: var(--gold);
+}
+
+/* ── Data-viz: count-up figure shares the gold display look ── */
+.grad-count {
+  font-variant-numeric: tabular-nums;
+  will-change: contents;
+}
+
+/* ── SVG LINE CHART (전국 10년 추이) — signature scrub-draw moment ── */
+.grad-linechart {
+  position: relative;
+  width: 100%;
+}
+.grad-linechart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.grad-line {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.grad-line--down { stroke: var(--gold); }
+.grad-line--up { stroke: rgba(185, 182, 172, 0.6); }
+.grad-line__grid { stroke: rgba(185, 182, 172, 0.12); stroke-width: 1; }
+.grad-line__dot--self { fill: var(--gold); }
+.grad-line__dot--other { fill: rgba(185, 182, 172, 0.7); }
+.grad-line__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+/* On reduced-motion, the strokes are shown fully (no dash offset). */
+.grad-line--animated {
+  stroke-dasharray: var(--len);
+  stroke-dashoffset: var(--len);
+}
+@media (prefers-reduced-motion: reduce) {
+  .grad-line--animated {
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ── Diagram: PNU 1000 AX ecosystem flow ── */
+.grad-flow {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 820px) {
+  .grad-flow {
+    grid-template-columns: repeat(4, 1fr);
+    align-items: stretch;
+  }
+}
+.grad-flow__node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border-radius: 14px;
+  border: 1px solid var(--hairline);
+  background: rgba(237, 237, 232, 0.02);
+  padding: 1.1rem 1.15rem;
+}
+.grad-flow__node--core {
+  border-color: rgba(201, 162, 39, 0.5);
+  background: rgba(201, 162, 39, 0.07);
+}
+.grad-flow__node b {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.grad-flow__node span {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--metal);
+}
+.grad-flow__k {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+/* connector arrows between flow nodes */
+.grad-flow__node + .grad-flow__node::before {
+  content: "→";
+  position: absolute;
+  left: -0.62rem;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(201, 162, 39, 0.6);
+  font-size: 0.85rem;
+}
+@media (max-width: 819px) {
+  .grad-flow__node + .grad-flow__node::before {
+    content: "↓";
+    left: 50%;
+    top: -0.62rem;
+  }
+}
+
+/* ── Diagram: Bottom-Up 3-step stepper ── */
+.grad-stepper {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr;
+  counter-reset: grad-step;
+}
+@media (min-width: 820px) {
+  .grad-stepper { grid-template-columns: repeat(3, 1fr); }
+}
+.grad-stepper__step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  border-radius: 16px;
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  padding: 1.4rem 1.3rem 1.5rem;
+}
+.grad-stepper__num {
+  display: inline-flex;
+  height: 2.4rem;
+  width: 2.4rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 162, 39, 0.5);
+  font-family: var(--font-display, var(--font-heavy));
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--gold);
+}
+/* progress rail connecting the steps */
+.grad-stepper__step + .grad-stepper__step::before {
+  content: "";
+  position: absolute;
+  background: linear-gradient(to right, rgba(201, 162, 39, 0.6), rgba(201, 162, 39, 0.15));
+  left: -0.75rem;
+  top: 2.6rem;
+  width: 0.75rem;
+  height: 2px;
+}
+@media (max-width: 819px) {
+  .grad-stepper__step + .grad-stepper__step::before {
+    left: 2.6rem;
+    top: -0.75rem;
+    width: 2px;
+    height: 0.75rem;
+    background: linear-gradient(to bottom, rgba(201, 162, 39, 0.6), rgba(201, 162, 39, 0.15));
+  }
+}
+
+/* ── Special GSAP beat: scoped sticky-stack (진단 1.1/1.2/1.3) ──
+   Next slide scrolls up and covers the previous; outgoing dims + shrinks.
+   Mirrors useStackScroll but scoped to one wrapper so the rest of the page
+   keeps normal flow. */
+.grad-stack {
+  position: relative;
+}
+.grad-stack__card {
+  position: sticky;
+  top: 0;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  will-change: transform, filter;
+}
+/* faint PNU symbol watermark (one slide max) */
+.grad-watermark {
+  position: absolute;
+  right: 4vw;
+  bottom: 6vh;
+  z-index: 0;
+  width: clamp(7rem, 16vw, 13rem);
+  height: auto;
+  opacity: 0.05;
+  pointer-events: none;
+  user-select: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .grad-stack__card {
+    position: relative;
+    min-height: 0;
+    filter: none !important;
+    transform: none !important;
+  }
+}
+
+/* ============================================================
+   /hub VISUAL LAYER — org-chart · ADP+X quadrant · GPU gauge.
+   Diagram + text colours use the page tokens (--text/--metal/--muted
+   /--gold/--surface/--hairline) so everything stays legible on BOTH
+   the dark and the remapped CREAM alternation slides.
+   ============================================================ */
+
+/* ── Atmosphere: blueprint grid (re-uses the /grad backdrop, token-driven) ── */
+.hub-blueprint {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--hairline) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hairline) 1px, transparent 1px);
+  background-size: 52px 52px;
+  opacity: 0.5;
+  -webkit-mask-image: radial-gradient(120% 90% at 50% 28%, #000 0%, transparent 76%);
+  mask-image: radial-gradient(120% 90% at 50% 28%, #000 0%, transparent 76%);
+}
+
+/* ── Atmosphere: ghost glyph (token-driven so it dims on cream too) ── */
+.hub-ghost {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  font-family: var(--font-heavy);
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: var(--gold);
+  opacity: 0.06;
+  white-space: nowrap;
+  right: -2vw;
+  bottom: -4vh;
+  font-size: clamp(10rem, 34vw, 32rem);
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hub-ghost { transform: none; }
+}
+
+/* ── Icon chip (token-driven sibling of .grad-icon) ── */
+.hub-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.6rem;
+  width: 2.6rem;
+  border-radius: 12px;
+  border: 1px solid rgba(201, 162, 39, 0.4);
+  background: rgba(201, 162, 39, 0.08);
+  color: var(--gold);
+}
+
+.hub-count {
+  font-variant-numeric: tabular-nums;
+  will-change: contents;
+}
+
+/* ── GOVERNANCE org-chart diagram ────────────────────────────
+   총장 → 교육부총장 → 운영위 spine, then the 4 기구 fan out as cards.
+   Connectors are token-driven gradients (visible on dark + cream). */
+.hub-org {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hub-org__node {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  width: min(100%, 460px);
+  text-align: center;
+  border-radius: 14px;
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  padding: 1rem 1.4rem;
+}
+.hub-org__node--head {
+  border-color: rgba(201, 162, 39, 0.5);
+  background: rgba(201, 162, 39, 0.07);
+}
+.hub-org__role {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.hub-org__name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.hub-org__sub {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--metal);
+}
+.hub-org__spine {
+  width: 2px;
+  height: clamp(1rem, 2.6vh, 1.8rem);
+  background: linear-gradient(
+    to bottom,
+    rgba(201, 162, 39, 0.75),
+    rgba(201, 162, 39, 0.25)
+  );
+}
+
+/* the 4-기구 row, fed by a top rail */
+.hub-org__bodies {
+  position: relative;
+  width: 100%;
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 760px) {
+  .hub-org__bodies {
+    grid-template-columns: repeat(4, 1fr);
+    padding-top: 1.6rem;
+  }
+  /* horizontal rail above the four cards */
+  .hub-org__bodies::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 12.5%;
+    right: 12.5%;
+    height: 2px;
+    background: rgba(201, 162, 39, 0.4);
+  }
+}
+.hub-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 14px;
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  padding: 1.15rem 1.15rem 1.25rem;
+}
+/* drop connector from rail into each card (desktop) */
+@media (min-width: 760px) {
+  .hub-body::before {
+    content: "";
+    position: absolute;
+    top: -1.6rem;
+    left: 50%;
+    width: 2px;
+    height: 1.6rem;
+    background: linear-gradient(to bottom, rgba(201, 162, 39, 0.4), rgba(201, 162, 39, 0.18));
+  }
+}
+.hub-body__num {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  color: var(--gold);
+}
+.hub-body__name {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text);
+}
+.hub-body__desc {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--metal);
+}
+.hub-body__dot {
+  position: absolute;
+  top: -1.95rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--gold);
+  box-shadow: 0 0 0 4px rgba(201, 162, 39, 0.16);
+}
+@media (max-width: 759px) {
+  .hub-body__dot { display: none; }
+}
+
+/* status pill — "3개 기구 실제 가동 중" */
+.hub-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 162, 39, 0.5);
+  background: rgba(201, 162, 39, 0.08);
+  padding: 0.6rem 1.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+}
+.hub-status__pulse {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--gold);
+  box-shadow: 0 0 0 0 rgba(201, 162, 39, 0.5);
+  animation: hub-pulse 2.4s ease-out infinite;
+}
+@keyframes hub-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(201, 162, 39, 0.5); }
+  70% { box-shadow: 0 0 0 8px rgba(201, 162, 39, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(201, 162, 39, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hub-status__pulse { animation: none; }
+}
+
+/* ── GPU gauge (303 → 800, token-driven) ── */
+.hub-gauge {
+  height: 0.85rem;
+  width: 100%;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(185, 182, 172, 0.16);
+}
+.mono-page main > section:nth-of-type(even) .hub-gauge {
+  background: rgba(26, 26, 27, 0.1);
+}
+.hub-gauge__fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(201, 162, 39, 0.55), var(--gold));
+  transform-origin: left;
+}
+.hub-gauge__base {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: rgba(201, 162, 39, 0.35);
+}
+
+/* ── ADP+X 4-QUADRANT diagram (D · A · P · X) ────────────────
+   2×2 grid with a gold cross-hair seam + central AX hub badge. */
+.hub-quad {
+  position: relative;
+  display: grid;
+  gap: 1px;
+  grid-template-columns: 1fr;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--hairline);
+  border: 1px solid var(--hairline);
+}
+@media (min-width: 720px) {
+  .hub-quad {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.hub-quad__cell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-height: clamp(9rem, 22vh, 13rem);
+  background: var(--surface);
+  padding: clamp(1.3rem, 3vw, 2rem);
+}
+.hub-quad__k {
+  font-family: var(--font-heavy);
+  font-size: clamp(2.75rem, 6vw, 4.5rem);
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  color: var(--gold);
+}
+.hub-quad__name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.hub-quad__body {
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--metal);
+}
+/* centre AX hub badge sitting on the seam (desktop only) */
+.hub-quad__hub {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  height: 4.6rem;
+  width: 4.6rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 162, 39, 0.6);
+  background: var(--surface);
+  box-shadow: 0 0 0 6px rgba(201, 162, 39, 0.1);
+  text-align: center;
+}
+@media (min-width: 720px) {
+  .hub-quad__hub { display: flex; }
+}
+.hub-quad__hub b {
+  font-family: var(--font-heavy);
+  font-size: 1.1rem;
+  color: var(--gold);
+  line-height: 1;
+}
+.hub-quad__hub span {
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}

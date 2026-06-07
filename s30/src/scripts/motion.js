@@ -18,20 +18,22 @@ const GRID_SEL = [
   '.partners-grid', '.impact-grid', '.press-grid', '.reach-grid', '.momentum-kpis',
   '.counter-grid', '.dom-grid', '.infra-grid', '.qnodes', '.phases', '.global-list',
   '.govt-grid', '.ind-grid', '.data-grid', '.minichart-row', '.htl', '.maplist',
-  '.pt-metricband', '.eco-legend', '.legend'
+  '.pt-metricband', '.eco-legend', '.legend',
+  '.s4-stats', '.s4-cards', '.s4-features', '.s4-tracks', '.s4-grid4', '.s4-floors', '.s4-hero__stats'
 ];
 
 /* 단일 블록 reveal (그리드 자식이 아닌 큰 단위) */
 const BLOCK_SEL = [
   '.sec-head', '.section-header', '.panel', '.figband', '.figsplit', '.matrix',
   '.majors', '.closing', '.spotlight', '.gfe-feature', '.ranktable', '.certcard',
-  '.news-feature', '.notice-box', '.pipe-band', '.split-block', '.vtl', '.eco-chart-box'
+  '.news-feature', '.notice-box', '.pipe-band', '.split-block', '.vtl', '.eco-chart-box',
+  '.s4-head', '.s4-photoband', '.s4-cta', '.s4-panel', '.s4-split'
 ];
 
 /* 숫자 카운트업 대상 */
 const NUM_SEL = [
   '.dstrip__n', '.prog-hero__fact .n', '.metric .mn', '.ministat .n', '.tgt .tn',
-  '[data-count]'
+  '.s4-stat__n', '.s4-card__n', '[data-count]'
 ];
 
 function ready(fn) {

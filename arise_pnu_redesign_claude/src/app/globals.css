@@ -1,0 +1,96 @@
+/* --- External fonts (loaded at runtime via CDN, so the build never depends on font fetches) --- */
+/* Pretendard: the de-facto Korean web font — universal base for all variants */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+/* Latin display + Korean display faces, mapped per reference variant */
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800;900&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&family=Black+Han+Sans&family=Jua&family=Do+Hyeon&family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Batang:wght@400;700&display=swap");
+
+@import "tailwindcss";
+
+/* --- Design tokens: Tailwind v4 auto-generates font-* utilities from these --- */
+@theme inline {
+  --font-sans: "Pretendard Variable", Pretendard, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "Geist Mono", ui-monospace, monospace;
+  --font-serif: "Newsreader", "Nanum Myeongjo", "Gowun Batang", Georgia, serif;
+  --font-display: "Archivo", "Pretendard Variable", sans-serif;
+  --font-grotesk: "Space Grotesk", "Pretendard Variable", sans-serif;
+  --font-heavy: "Black Han Sans", "Archivo", "Pretendard Variable", sans-serif;
+  --font-jakarta: "Plus Jakarta Sans", "Pretendard Variable", sans-serif;
+  --font-rounded: "Jua", "Pretendard Variable", sans-serif;
+  --font-myeongjo: "Nanum Myeongjo", "Gowun Batang", serif;
+  --font-dohyeon: "Do Hyeon", "Pretendard Variable", sans-serif;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #111111;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Korean line-breaking: never split a word/phrase mid-way (fixes orphans like
+   "같이 더 높/게"). keep-all breaks only at spaces; balance evens ragged lines. */
+:lang(ko),
+h1, h2, h3, h4, h5, .display, .headline {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+.tw-balance {
+  text-wrap: balance;
+}
+.tw-nowrap {
+  white-space: nowrap;
+}
+
+/* Each variant sets its own --page-accent on its root wrapper; the selection
+   color follows it so the whole experience stays cohesive per page. */
+::selection {
+  background: var(--page-accent, #111111);
+  color: var(--page-accent-text, #ffffff);
+}
+
+/* Honor reduced-motion globally as a safety net; variants also gate GSAP setup. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* --- Shared full-screen scroll-snap deck (enabled by useLenis on variant pages) ---
+   Each top-level section gets `.snap-panel` so it fills the viewport and the
+   scroll locks to it. `proximity` keeps it smooth alongside Lenis and never
+   traps long pinned/scrub sections; switch to `mandatory` for a harder lock.
+   Long pinned-scrub signature sections opt out with `.snap-panel--free`. */
+html.snap-deck {
+  scroll-snap-type: y proximity;
+}
+.snap-panel {
+  min-height: 100dvh;
+  scroll-snap-align: start;
+}
+.snap-panel--free {
+  scroll-snap-align: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.snap-deck {
+    scroll-snap-type: none;
+  }
+  .snap-panel {
+    min-height: 0;
+  }
+}
