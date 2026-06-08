@@ -1,5 +1,5 @@
 /* =============================================================================
-   tailwind.css — 디자인 변형(bymonolog / tresmares)용 Tailwind v4 + 전역 토큰
+   tailwind.css — 디자인 변형(bymonolog)용 Tailwind v4 + 전역 토큰
    원본 arise_pnu_redesign_claude/src/app/globals.css 를 "그대로" 포팅한다.
    변형 페이지는 원본과 동일하게 풀 Tailwind(preflight 포함)로 렌더된다.
 
@@ -32,13 +32,11 @@
   --font-grotesk: "Space Grotesk Variable", "Space Grotesk", "Pretendard Variable", sans-serif;
   --font-heavy: "Black Han Sans", "Archivo Variable", "Pretendard Variable", sans-serif;
   --font-jakarta: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", "Pretendard Variable", sans-serif;
-  --font-rounded: "Jua", "Pretendard Variable", sans-serif;
   --font-myeongjo: "Nanum Myeongjo", "Gowun Batang", serif;
-  --font-dohyeon: "Do Hyeon", "Pretendard Variable", sans-serif;
 }
 
 /* --- 원본 globals.css 의 baseline. @layer base 에 둬서 pnug(위)·변형 루트
-       (.tm/.mono-root, unlayered)가 각 페이지에서 덮어쓸 수 있게 한다. --- */
+       (.mono-root, unlayered)가 각 페이지에서 덮어쓸 수 있게 한다. --- */
 @layer base {
   :root {
     --background: #ffffff;
@@ -88,25 +86,5 @@
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-}
-
-/* Shared full-screen scroll-snap deck (useLenis 가 html.snap-deck 토글). */
-html.snap-deck {
-  scroll-snap-type: y proximity;
-}
-.snap-panel {
-  min-height: 100dvh;
-  scroll-snap-align: start;
-}
-.snap-panel--free {
-  scroll-snap-align: none;
-}
-@media (prefers-reduced-motion: reduce) {
-  html.snap-deck {
-    scroll-snap-type: none;
-  }
-  .snap-panel {
-    min-height: 0;
   }
 }
