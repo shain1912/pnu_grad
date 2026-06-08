@@ -7,10 +7,10 @@ echo ============================================================
 echo.
 echo  Prerequisites:
 echo    1) backend\.env  NODE_ENV=production
-echo    2) backend\.env  FRONTEND_URL=https://pnug.kodekorea.kr
-echo    3) backend\.env  GOOGLE_REDIRECT_URI=https://pnug.kodekorea.kr/auth/google/callback
+echo    2) backend\.env  FRONTEND_URL=https://arise-ai.pusan.ac.kr
+echo    3) backend\.env  GOOGLE_REDIRECT_URI=https://arise-ai.pusan.ac.kr/auth/google/callback
 echo    4) Google Cloud Console OAuth redirect URI registered
-echo    5) HTTPS reverse-proxy (Caddy) running in another terminal
+echo    5) HTTPS reverse-proxy running in another terminal (see DEPLOY.md section 4)
 echo.
 echo  Steps:
 echo    [1/2] Build frontend (creates frontend\dist)

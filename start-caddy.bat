@@ -5,15 +5,15 @@ echo ============================================================
 echo  PNU-GRAD - Caddy reverse proxy
 echo ============================================================
 echo.
-echo  Domain   pnug.kodekorea.kr
+echo  Domain   arise-ai.pusan.ac.kr
 echo  Upstream http://localhost:3001
-echo  Cert     Let's Encrypt auto
+echo  Cert     issued SSL cert via Caddyfile tls directive (see DEPLOY.md section 4)
 echo.
 echo  Prerequisites
 echo    1. caddy.exe in PATH or in this folder
-echo    2. Router port-forward 80,443 to this PC LAN IP
-echo    3. Windows firewall inbound 80,443 allowed
-echo    4. DNS A record pnug.kodekorea.kr to public IP
+echo    2. Caddyfile in this folder with: tls ^<crt^> ^<key^> + reverse_proxy localhost:3001
+echo    3. Firewall inbound 443 (and 80 for redirect) allowed
+echo    4. DNS A record arise-ai.pusan.ac.kr to server IP
 echo    5. backend running in another terminal
 echo ============================================================
 echo.
