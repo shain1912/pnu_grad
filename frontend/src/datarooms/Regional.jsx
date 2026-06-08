@@ -118,7 +118,7 @@ function fmtVal(v, metric) {
   return v.toFixed(4);
 }
 
-// React Custom hook to load Plotly.js CDN
+// React Custom hook to load Plotly.js — bundled locally for closed-network support
 function usePlotly() {
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
@@ -127,7 +127,7 @@ function usePlotly() {
       return;
     }
     const script = document.createElement('script');
-    script.src = "https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js";
+    script.src = "/vendor/plotly-2.26.0.min.js";
     script.async = true;
     script.onload = () => setLoaded(true);
     document.head.appendChild(script);

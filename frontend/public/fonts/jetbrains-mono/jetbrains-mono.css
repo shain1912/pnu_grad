@@ -1,0 +1,9 @@
+/* Local JetBrains Mono (variable, latin) — closed-network replacement for Google Fonts.
+   Single variable file covers weights 100-800, so 400/500/700 all resolve. */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 800;
+  src: url('./jetbrains-mono-latin-wght-normal.woff2') format('woff2-variations');
+}

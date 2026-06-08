@@ -1,19 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './gateway.css';
 
 export default function Gateway() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = (e) => {
-    e.preventDefault();
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
   return (
     <div className="gateway-container">
       <div className="gateway-wrap">
@@ -48,18 +37,15 @@ export default function Gateway() {
               <p>원하는 메뉴를 선택하세요.</p>
             </li>
 
-            {/* Menu 1: Modal Trigger */}
+            {/* Menu 1: Direct routing to dark site */}
             <li>
-              <button 
-                className="gateway-btn aura"
-                onClick={openModal}
-              >
+              <Link className="gateway-btn aura" to="/bymonolog">
                 <span className="num">01</span>
                 <span className="org">AI 거점대학육성사업단</span>
                 <strong>A.U.R.A 마스터플랜 및 데이터룸</strong>
                 <span className="desc">부산대학교 AI 대전환 추진 전략 및 성과 분석 데이터룸</span>
                 <span className="btn-arrow"><span className="arrow-icon"></span></span>
-              </button>
+              </Link>
             </li>
 
             {/* Menu 2: Google Partnership (Disabled/Coming Soon) */}
@@ -87,34 +73,6 @@ export default function Gateway() {
 
         <footer>ARISE PNU AI · 부산대학교 AI 거점대학</footer>
       </div>
-
-      {/* Premium Glassmorphism Modal */}
-      {isModalOpen && (
-        <div className="gateway-modal-overlay" onClick={closeModal}>
-          <div className="gateway-modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close-btn" onClick={closeModal} aria-label="닫기">
-              &times;
-            </button>
-            <div className="modal-header">
-              <span className="modal-subtitle">A.U.R.A Masterplan & Datarooms</span>
-              <h2 className="modal-title">AI 거점대학육성사업단</h2>
-              <p className="modal-desc">부산대학교 AI 대전환 추진 전략 및 성과 분석 데이터룸</p>
-            </div>
-            
-            <div className="modal-sections">
-              {/* A.U.R.A 마스터플랜 & 디자인 시안 — 위계 없이 동등한 형제 카드 */}
-              <div className="modal-section">
-                <div className="modal-variants-grid">
-                  <Link to="/bymonolog" className="modal-variant-card dark">
-                    <strong>다크 시네마틱 시안 (최종)</strong>
-                    <span>고급스럽고 중후한 무비 스타일의 다크 모드 — 최종 승인 디자인</span>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
