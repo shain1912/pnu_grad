@@ -575,7 +575,7 @@ export const nav = [
 
 export const qrLink = "https://inetguru.github.io/pnu_ai/";
 
-/** The two FINAL variants (다크 1 + 라이트 1). Used by the hub. */
+/** 최종 승인 변형 (다크 1). */
 export const variants = [
   {
     slug: "bymonolog",
@@ -584,13 +584,5 @@ export const variants = [
     desc: "차콜 시네마틱 · 스택 스크롤 · 골드 액센트",
     accent: "#c9a227",
     bg: "#0e0e0f",
-  },
-  {
-    slug: "tresmares",
-    name: "ARISE · Light",
-    vibe: "Premium Editorial (최종)",
-    desc: "화이트 에디토리얼 · 스택 스크롤 · 레드 액센트 + 컬러 패널",
-    accent: "#e2231a",
-    bg: "#ffffff",
   },
 ];

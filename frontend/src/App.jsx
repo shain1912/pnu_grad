@@ -13,12 +13,6 @@ import BymonologHubPage from './variants/bymonolog/hub/page.jsx';
 import BymonologGradPage from './variants/bymonolog/grad/page.jsx';
 import BymonologAuraPage from './variants/bymonolog/aura/page.jsx';
 
-// Tresmares variant
-import TresmaresPage from './variants/tresmares/page.jsx';
-import TresmaresHubPage from './variants/tresmares/hub/page.jsx';
-import TresmaresGradPage from './variants/tresmares/grad/page.jsx';
-import TresmaresAuraPage from './variants/tresmares/aura/page.jsx';
-
 // Datarooms
 import Regional from './datarooms/Regional.jsx';
 import Comparison from './datarooms/Comparison.jsx';
@@ -50,12 +44,6 @@ export default function App() {
       <Route path="/bymonolog/hub" element={<BymonologHubPage />} />
       <Route path="/bymonolog/grad" element={<BymonologGradPage />} />
       <Route path="/bymonolog/aura" element={<BymonologAuraPage />} />
-
-      {/* Tresmares routes */}
-      <Route path="/tresmares" element={<TresmaresPage />} />
-      <Route path="/tresmares/hub" element={<TresmaresHubPage />} />
-      <Route path="/tresmares/grad" element={<TresmaresGradPage />} />
-      <Route path="/tresmares/aura" element={<TresmaresAuraPage />} />
 
       {/* Datarooms */}
       <Route path="/dataroom/regional" element={<Regional />} />

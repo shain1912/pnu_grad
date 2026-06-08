@@ -104,18 +104,10 @@ export default function Gateway() {
             <div className="modal-sections">
               {/* A.U.R.A 마스터플랜 & 디자인 시안 — 위계 없이 동등한 형제 카드 */}
               <div className="modal-section">
-                <div className="modal-variants-grid trio">
-                  <a href="/s30/about/aura.html" className="modal-variant-card aura3d">
-                    <strong>A.U.R.A v4.1 3D 마스터플랜</strong>
-                    <span>Three.js 기반 인터랙티브 3D 여정으로 만나는 AI 대전환 비전</span>
-                  </a>
+                <div className="modal-variants-grid">
                   <Link to="/bymonolog" className="modal-variant-card dark">
-                    <strong>다크 시네마틱 시안</strong>
-                    <span>고급스럽고 중후한 무비 스타일의 다크 모드 시안</span>
-                  </Link>
-                  <Link to="/tresmares" className="modal-variant-card light">
-                    <strong>라이트 에디토리얼 시안</strong>
-                    <span>매거진 느낌의 깔끔하고 화사한 라이트 모드 시안</span>
+                    <strong>다크 시네마틱 시안 (최종)</strong>
+                    <span>고급스럽고 중후한 무비 스타일의 다크 모드 — 최종 승인 디자인</span>
                   </Link>
                 </div>
               </div>
