@@ -32,7 +32,7 @@ echo [OK] dist generated. Starting backend...
 echo.
 
 cd /d "%~dp0backend"
-node --experimental-sqlite src/server.js
+node src/server.js
 
 pause
 exit /b 0

@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve, extname } from 'node:path';
 import { existsSync, statSync, createReadStream } from 'node:fs';
@@ -70,7 +71,12 @@ const serveS30 = {
 };
 
 export default defineConfig({
-  plugins: [react(), rootToArise, serveS30],
+  plugins: [react(), tailwindcss(), serveS30],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+    },
+  },
   server: {
     host: true,           // 0.0.0.0 — LAN 전역 노출
     port: 5173,

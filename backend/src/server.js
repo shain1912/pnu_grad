@@ -82,8 +82,8 @@ if (isProd && existsSync(distPath)) {
     console.log(`[prod] s30 static: ${s30Dist} -> /s30`);
   }
   app.use(express.static(distPath, { index: false, extensions: ['html'] }));
-  // 루트(/) → arise-ai 게이트웨이(arise.html)
-  app.get('/', (req, res) => res.sendFile(join(distPath, 'arise.html')));
+  // 루트(/) → React SPA 게이트웨이(index.html)
+  app.get('/', (req, res) => res.sendFile(join(distPath, 'index.html')));
   // SPA fallback — /admin, /login 등 React 라우트 (s30·api·auth 제외)
   app.get('*', (req, res, next) => {
     if (req.path.startsWith('/auth') || req.path.startsWith('/api') || req.path.startsWith('/s30') || req.path === '/health') return next();

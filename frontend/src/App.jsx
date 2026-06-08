@@ -1,8 +1,31 @@
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+
+// Pages & Auth
+import Gateway from './pages/Gateway.jsx';
 import Login from './pages/Login.jsx';
 import AdminLogin from './pages/AdminLogin.jsx';
 import AdminDashboard from './pages/AdminDashboard.jsx';
+
+// Bymonolog variant
+import BymonologPage from './variants/bymonolog/page.jsx';
+import BymonologHubPage from './variants/bymonolog/hub/page.jsx';
+import BymonologGradPage from './variants/bymonolog/grad/page.jsx';
+import BymonologAuraPage from './variants/bymonolog/aura/page.jsx';
+
+// Tresmares variant
+import TresmaresPage from './variants/tresmares/page.jsx';
+import TresmaresHubPage from './variants/tresmares/hub/page.jsx';
+import TresmaresGradPage from './variants/tresmares/grad/page.jsx';
+import TresmaresAuraPage from './variants/tresmares/aura/page.jsx';
+
+// Datarooms
+import Regional from './datarooms/Regional.jsx';
+import Comparison from './datarooms/Comparison.jsx';
+import Faculty from './datarooms/Faculty.jsx';
+import UGLinkDashboard from './datarooms/UGLinkDashboard.jsx';
+import UGLinkGuide from './datarooms/UGLinkGuide.jsx';
+import AXMajors from './datarooms/AXMajors.jsx';
 
 function RedirectToAdmission() {
   useEffect(() => { window.location.replace('/admission-v3-dark.html'); }, []);
@@ -12,15 +35,38 @@ function RedirectToAdmission() {
 export default function App() {
   return (
     <Routes>
-      {/* admin (자체 ID/PW) — 신청자 OAuth와 격리, 시안 redirect보다 우선 */}
+      {/* Gateway */}
+      <Route path="/" element={<Gateway />} />
+
+      {/* Admin */}
       <Route path="/admin/login" element={<AdminLogin />} />
       <Route path="/admin" element={<AdminDashboard />} />
 
-      {/* 신청자 OAuth 에러 표시 */}
+      {/* Auth / Login */}
       <Route path="/login" element={<Login />} />
 
-      {/* 나머지: 시안 인덱스로 */}
-      <Route path="*" element={<RedirectToAdmission />} />
+      {/* Bymonolog routes */}
+      <Route path="/bymonolog" element={<BymonologPage />} />
+      <Route path="/bymonolog/hub" element={<BymonologHubPage />} />
+      <Route path="/bymonolog/grad" element={<BymonologGradPage />} />
+      <Route path="/bymonolog/aura" element={<BymonologAuraPage />} />
+
+      {/* Tresmares routes */}
+      <Route path="/tresmares" element={<TresmaresPage />} />
+      <Route path="/tresmares/hub" element={<TresmaresHubPage />} />
+      <Route path="/tresmares/grad" element={<TresmaresGradPage />} />
+      <Route path="/tresmares/aura" element={<TresmaresAuraPage />} />
+
+      {/* Datarooms */}
+      <Route path="/dataroom/regional" element={<Regional />} />
+      <Route path="/dataroom/comparison" element={<Comparison />} />
+      <Route path="/dataroom/faculty" element={<Faculty />} />
+      <Route path="/dataroom/uglink-dashboard" element={<UGLinkDashboard />} />
+      <Route path="/dataroom/uglink-guide" element={<UGLinkGuide />} />
+      <Route path="/dataroom/ax-majors" element={<AXMajors />} />
+
+      {/* Fallback to gateway */}
+      <Route path="*" element={<Gateway />} />
     </Routes>
   );
 }

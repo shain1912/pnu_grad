@@ -1,0 +1,112 @@
+/* =============================================================================
+   tailwind.css — 디자인 변형(bymonolog / tresmares)용 Tailwind v4 + 전역 토큰
+   원본 arise_pnu_redesign_claude/src/app/globals.css 를 "그대로" 포팅한다.
+   변형 페이지는 원본과 동일하게 풀 Tailwind(preflight 포함)로 렌더된다.
+
+   기존 pnug(신청/관리자/데이터룸) 페이지 보호 = cascade layer 순서로만 처리:
+     theme, base, [pnug], components, utilities
+   - 'pnug' 가 base(preflight)보다 위 → styles.css 가 preflight 를 이겨 pnug 외관 유지.
+   - 'utilities' 가 pnug 보다 위 → 변형 페이지에서 Tailwind 유틸리티가 styles.css
+     element 규칙(h1/h2)을 이긴다(원본과 동일한 결과).
+   - 각 pnug 페이지의 개별 CSS(gateway.css/admission.css/...)는 unlayered 라
+     모든 레이어를 이겨 그대로 유지된다.
+   ============================================================================= */
+
+/* 레이어 순서 고정 — Tailwind import 보다 먼저 선언해야 pnug 위치가 박힌다. */
+@layer theme, base, pnug, components, utilities;
+
+/* 폰트는 폐쇄망(air-gapped) 대응으로 src/fonts.js 에서 로컬 번들 import 한다.
+   (원본의 CDN @import url(...) 은 폐쇄망에서 로드 실패 → 글자체가 폴백으로 바뀜) */
+
+/* Tailwind v4 — 풀 임포트(theme + base/preflight + components + utilities). 원본과 동일. */
+@import "tailwindcss";
+
+/* --- Design tokens: Tailwind v4 가 이 --font-* 에서 font-* 유틸리티를 생성 ---
+   family 이름은 src/fonts.js 가 로드하는 로컬 패키지의 실제 이름과 일치해야 한다
+   (가변 폰트는 "... Variable" 접미사). 글리프는 원본 Google Fonts/Pretendard 와 동일. */
+@theme inline {
+  --font-sans: "Pretendard Variable", Pretendard, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", "Geist Mono", ui-monospace, monospace;
+  --font-serif: "Newsreader Variable", "Newsreader", "Nanum Myeongjo", Georgia, serif;
+  --font-display: "Archivo Variable", "Archivo", "Pretendard Variable", sans-serif;
+  --font-grotesk: "Space Grotesk Variable", "Space Grotesk", "Pretendard Variable", sans-serif;
+  --font-heavy: "Black Han Sans", "Archivo Variable", "Pretendard Variable", sans-serif;
+  --font-jakarta: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", "Pretendard Variable", sans-serif;
+  --font-rounded: "Jua", "Pretendard Variable", sans-serif;
+  --font-myeongjo: "Nanum Myeongjo", "Gowun Batang", serif;
+  --font-dohyeon: "Do Hyeon", "Pretendard Variable", sans-serif;
+}
+
+/* --- 원본 globals.css 의 baseline. @layer base 에 둬서 pnug(위)·변형 루트
+       (.tm/.mono-root, unlayered)가 각 페이지에서 덮어쓸 수 있게 한다. --- */
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #111111;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: auto;
+    -webkit-text-size-adjust: 100%;
+    /* 원본 layout.tsx 의 <html className="antialiased"> 와 동일 — 전역 폰트 스무딩.
+       이게 빠지면 같은 폰트도 더 두껍게 렌더돼 "글자체가 다르다"로 보인다. */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    margin: 0;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* Korean line-breaking: never split a word/phrase mid-way. */
+  :lang(ko),
+  h1, h2, h3, h4, h5, .display, .headline {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+}
+
+/* --- 헬퍼/유틸리티 클래스 (원본과 동일, unlayered) --- */
+.tw-balance {
+  text-wrap: balance;
+}
+.tw-nowrap {
+  white-space: nowrap;
+}
+
+/* Each variant sets its own --page-accent on its root wrapper. */
+::selection {
+  background: var(--page-accent, #111111);
+  color: var(--page-accent-text, #ffffff);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Shared full-screen scroll-snap deck (useLenis 가 html.snap-deck 토글). */
+html.snap-deck {
+  scroll-snap-type: y proximity;
+}
+.snap-panel {
+  min-height: 100dvh;
+  scroll-snap-align: start;
+}
+.snap-panel--free {
+  scroll-snap-align: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.snap-deck {
+    scroll-snap-type: none;
+  }
+  .snap-panel {
+    min-height: 0;
+  }
+}
